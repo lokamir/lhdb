@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsCustomer" parent="global:dataTypeTbsCustomer">
+      <PropertyDef name="tbsBasArea">
+        <Property name="dataType">dataTypeTbsBasArea</Property>
+        <Property name="label">区域</Property>
+      </PropertyDef>
+      <Reference name="tbsCustomerEnttypeSet">
+        <Property name="dataType">[dataTypeTbsCustomerEnttype]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference name="tbsCustomerIdnumSet">
+        <Property name="dataType">[dataTypeTbsCustomerIdnum]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasArea" parent="global:dataTypeTbsBasArea">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasEntproperty" parent="global:dataTypeTbsBasEntproperty">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasEntscale" parent="global:dataTypeTbsBasEntscale">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasIndutype" parent="global:dataTypeTbsBasIndutype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasBank" parent="global:dataTypeTbsBasBank">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsBasBankSet">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="dataProvider">tbsBasBankDao#loadSub</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasCggtyp" parent="global:dataTypeTbsBasCggtyp">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsBasCggtypSet">
+        <Property name="dataProvider">tbsBasCggtypDao#loadSub</Property>
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasBiztype" parent="global:dataTypeTbsBasBiztype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsBasBizvarSet">
+        <Property name="dataProvider">tbsBasBiztypevarDao#loadVar</Property>
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="pageSize">15</Property>
+        <Property name="dataType">[dataTypeTbsBasBizvar]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+      <Reference name="tbsProjundwrtBizvtSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsBasBizvar" parent="global:dataTypeTbsBasBizvar">
+      <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">业务品种</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">20</Property>
+          <Property name="resultMessage">请勿输入超过20个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+      <Reference name="tbsProjundwrtBizvtSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsBasConsway" parent="global:dataTypeTbsBasConsway">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+    <DataType name="dataTypeTbsBasCurrency" parent="global:dataTypeTbsBasCurrency">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+    <DataType name="dataTypeTbsBasEnttype" parent="global:dataTypeTbsBasEnttype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerEnttypeSet">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="dataProvider">tbsCustomerDao#loadTbsCustomerEnttype</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasGovfund" parent="global:dataTypeTbsBasGovfund">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+    <DataType name="dataTypeTbsBasIdcardtype" parent="global:dataTypeTbsBasIdcardtype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerIdnumSet">
+        <Property name="dataType">[dataTypeTbsCustomerIdnum]</Property>
+        <Property name="dataProvider">tbsCustomerDao#loadTbsCustomerIdnum</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference name="tbsCggGrbzSet"/>
+    </DataType>
+    <DataType name="dataTypeBdf2Dept" parent="global:dataTypeBdf2Dept">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsProjcompsryPayczzSet"/>
+      <Reference name="tbsProjrmsumSet"/>
+    </DataType>
+    <DataType name="dataTypeBdf2User" parent="global:dataTypeBdf2User">
+      <Property name="defaultDisplayProperty">cname</Property>
+      <Reference name="tbsAdminsignSet"/>
+      <Reference name="tbsProjSet_M"/>
+      <Reference name="tbsProjSet_S"/>
+      <Reference name="tbsProjcfm0AttendSet"/>
+      <Reference name="tbsProjcompsryPayczzSet"/>
+      <Reference name="tbsProjrmsumAttendSet"/>
+    </DataType>
+  </Model>
+  <View>
+    <AutoForm id="Show">
+      <Property name="labelWidth">90</Property>
+      <Property name="dataSet">test</Property>
+      <AutoFormElement>
+        <Property name="name">TbsBasArea</Property>
+        <Property name="property">tbsBasArea</Property>
+        <Property name="label">区域</Property>
+        <Property name="trigger">DropDownTbsBasArea</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">TbsBasEntproperty</Property>
+        <Property name="label">企业性质</Property>
+        <Property name="trigger">DropDownTbsBasEntproperty</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">TbsBasEntscale</Property>
+        <Property name="label">企业规模</Property>
+        <Property name="trigger">DropDownTbsBasEntscale</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">TbsBasIndutype</Property>
+        <Property name="label">行业类型</Property>
+        <Property name="trigger">DropDownTbsBasIndutype</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">TbsBasBank</Property>
+        <Property name="label">银行</Property>
+        <Property name="trigger">customDropDownTbsBasBank</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">TbsBasCggtyp</Property>
+        <Property name="label">反担保</Property>
+        <Property name="trigger">customDropDownTbsBasCggtyp</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">TbsBasBiztype</Property>
+        <Property name="label">业务类型</Property>
+        <Property name="trigger">DropDownTbsBasBiztype</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">TbsBasBizvar</Property>
+        <Property name="label">业务类型详细</Property>
+        <Property name="trigger">DropDownTbsBasBizvar</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="trigger">DropDownTbsBasEnttype</Property>
+        <Property name="name">TbsBasEnttype</Property>
+        <Property name="label">企业类型</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">TbsBasIdcardtype</Property>
+        <Property name="trigger">DropDownTbsBasIdcardtype</Property>
+        <Property name="label">证件类型</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">Bdf2Dept</Property>
+        <Property name="name">Bdf2Dept</Property>
+        <Property name="label">部门</Property>
+        <Property name="trigger">DropDownBdf2Dept</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">Bdf2User</Property>
+        <Property name="name">Bdf2User</Property>
+        <Property name="trigger">DropDownBdf2User</Property>
+        <Property name="label">用户名</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="trigger">dataSetTbsBankS</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="trigger">dataSetTbsBankM</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <Container id="ContainerTbsBasIdcardtype">
+      <GroupStart id="TbsBasIdcardtype"/>
+      <DataSet id="dataSetTbsBasIdcardtype">
+        <Property name="dataProvider">tbsBasIdcardtypeDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasIdcardtype]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasIdcardtype">
+        <Property name="dataSet">dataSetTbsBasIdcardtype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasEnttype">
+      <GroupStart id="TbsBasEnttype"/>
+      <DataSet id="dataSetTbsBasEnttype">
+        <Property name="dataProvider">tbsBasEnttypeDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasEnttype]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasEnttype">
+        <Property name="dataSet">dataSetTbsBasEnttype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasBiztype">
+      <GroupStart id="TbsBasBiztype"/>
+      <DataSet id="dataSetTbsBasBiztype">
+        <Property name="dataProvider">tbsBasBiztypevarDao#loadBiztype</Property>
+        <Property name="dataType">[dataTypeTbsBasBiztype]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasBiztype">
+        <Property name="dataSet">dataSetTbsBasBiztype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <DataSetDropDown id="DropDownTbsBasBizvar">
+        <Property name="dataSet">dataSetTbsBasBiztype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="dataPath">#.tbsBasBizvarSet</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasArea">
+      <GroupStart id="TbsBasArea"/>
+      <DataSet id="dataSetTbsBasArea">
+        <Property name="dataProvider">tbsBasAreaDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasArea]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasArea">
+        <Property name="dataSet">dataSetTbsBasArea</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasEntproperty">
+      <GroupStart id="TbsBasEntproperty"/>
+      <DataSet id="dataSetTbsBasEntproperty">
+        <Property name="dataProvider">tbsBasEntpropertyDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasEntproperty]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasEntproperty">
+        <Property name="dataSet">dataSetTbsBasEntproperty</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasEntscale">
+      <GroupStart id="TbsBasEntscale"/>
+      <DataSet id="dataSetTbsBasEntscale">
+        <Property name="dataProvider">tbsBasEntscaleDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasEntscale]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasEntscale">
+        <Property name="dataSet">dataSetTbsBasEntscale</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasIndutype">
+      <GroupStart id="TbsBasIndutype"/>
+      <DataSet id="dataSetTbsBasIndutype">
+        <Property name="dataProvider">tbsBasIndutypeDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasIndutype]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasIndutype">
+        <Property name="dataSet">dataSetTbsBasIndutype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasBank">
+      <GroupStart id="TbsBasBank"/>
+      <DataSet id="dataSetTbsBasBank">
+        <Property name="dataProvider">tbsBasBankDao#loadMain</Property>
+        <Property name="dataType">[dataTypeTbsBasBank]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </DataSet>
+      <CustomDropDown id="customDropDownTbsBasBank">
+        <ClientEvent name="onReady">&#xD;
+</ClientEvent>
+        <Property name="height">400</Property>
+        <Property name="autoOpen">true</Property>
+        <DataTree id="datatreeTbsBasBank">
+          <ClientEvent name="onDataRowClick">var dropDown = dorado.widget.DropDown.findDropDown(self);&#xD;
+var node = self.get(&quot;currentNode&quot;);&#xD;
+dropDown.close(node.get(&quot;data&quot;));&#xD;
+&#xD;
+</ClientEvent>
+          <Property name="dataSet">dataSetTbsBasBank</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">tbsBasBankSet</Property>
+              <Property name="labelProperty">name</Property>
+              <Property name="name">bank</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </CustomDropDown>
+      <DataSetDropDown id="DropdownTbsBankM">
+        <Property name="dataSet">dataSetTbsBasBank</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <DataSetDropDown id="DropdownTbsBankS">
+        <Property name="dataSet">dataSetTbsBasBank</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="dataPath">#.tbsBasBankSet</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasCggtyp">
+      <GroupStart id="TbsBasCggtyp"/>
+      <DataSet id="dataSetTbsBasCggtyp">
+        <Property name="dataProvider">tbsBasCggtypDao#loadMain</Property>
+        <Property name="readOnly">false</Property>
+        <Property name="dataType">[dataTypeTbsBasCggtyp]</Property>
+        <Property name="loadMode">lazy</Property>
+      </DataSet>
+      <CustomDropDown id="customDropDownTbsBasCggtyp">
+        <Property name="height">400</Property>
+        <DataTree id="dataTreeCggtyp">
+          <ClientEvent name="onDataRowClick">var dropDown = dorado.widget.DropDown.findDropDown(self);&#xD;
+var node = self.get(&quot;currentNode&quot;);&#xD;
+dropDown.close(node.get(&quot;data&quot;));&#xD;
+</ClientEvent>
+          <Property name="dataSet">dataSetTbsBasCggtyp</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="name">cggtyp</Property>
+              <Property name="labelProperty">name</Property>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">tbsBasCggtypSet</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </CustomDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerBdf2Dept">
+      <GroupStart id="Bdf2Dept"/>
+      <DataSet id="dataSetBdf2Dept">
+        <Property name="dataType">[dataTypeBdf2Dept]</Property>
+        <Property name="dataProvider">bdf2DeptDao#getAllByName</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownBdf2Dept">
+        <Property name="dataSet">dataSetBdf2Dept</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="filterOnOpen">false</Property>
+        <Property name="editable">false</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerBdf2User">
+      <GroupStart id="Bdf2User"/>
+      <DataSet id="dataSetBdf2User">
+        <Property name="dataType">[dataTypeBdf2User]</Property>
+        <Property name="dataProvider">bdf2UserDao#getAllByName</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownBdf2User">
+        <Property name="dataSet">dataSetBdf2User</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasCurrency">
+      <GroupStart id="TbsBasCurrency"/>
+      <DataSet id="dataSetTbsBasCurrency">
+        <Property name="dataProvider">tbsBasCurrencyDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasCurrency]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasCurrency">
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasGovfund">
+      <GroupStart id="TbsBasGovfund"/>
+      <DataSet id="dataSetTbsBasGovfund">
+        <Property name="dataProvider">tbsBasGovfundDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasGovfund]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasConsway">
+        <Property name="dataSet">dataSetTbsBasConsway</Property>
+        <Property name="autoOpen">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="Container_ddl_loantype">
+      <GroupStart id="ddlloantype"/>
+      <ListDropDown id="ddl_loantype">
+        <Property name="items">一次性放款,多次放款</Property>
+        <Property name="autoOpen">true</Property>
+      </ListDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="Container_ddl_repay">
+      <GroupStart id="ddlrepay"/>
+      <ListDropDown id="ddl_repay">
+        <Property name="items">一次性还款,按月还部分,到期一次性结清,按季度还部分,到期一次性结清,其他</Property>
+        <Property name="autoOpen">true</Property>
+      </ListDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsProJ">
+      <GroupStart id="TbsProj"/>
+      <DataSet id="dataSetTbsProj">
+        <Property name="dataProvider">tbsProjeaaDao#getAllProjnameByName</Property>
+        <Property name="dataType">[dataTypeTbsProj]</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlTbsProj">
+        <Property name="autoOpen">true</Property>
+        <Property name="dataSet">dataSetTbsProj</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="filterOnOpen">false</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsCustomer">
+      <GroupStart id="TbsCustomer"/>
+      <DataSet id="datasetTbsCustomer">
+        <Property name="dataType">[datatypeTbsCustomer]</Property>
+        <Property name="dataProvider">tbsCustomerDao#getAllByName</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlTbsCustomer">
+        <Property name="dataSet">datasetTbsCustomer</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="useEmptyItem">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+  </View>
+</ViewConfig>

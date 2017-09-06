@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeVcfmall">
+      <Property name="creationType">org.tbs.entity.Vcfmall</Property>
+      <PropertyDef name="detail"/>
+    </DataType>
+    <DataType name="dataTypeVcfmallDetail">
+      <Property name="creationType">org.tbs.entity.VcfmallDetail</Property>
+      <PropertyDef name="cfm_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="proj_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="bizvar_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="biztype_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cus_id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="period_cfm">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="proj_sn">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="cus_name">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="doc_sn">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="doc_cat">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="loantype">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="loanmem">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="repay">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="gatmem">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="repaymem">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="faloc">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="nfaloc">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="otloc">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="totloc">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="loc">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="repayinper">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrate">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="psfy">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="qtfy">
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSet1">
+      <Property name="dataType">[dataTypeVcfmall]</Property>
+      <Property name="dataProvider">projcfmall#getAllToPage</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <DataGrid>
+      <Property name="dataSet">dataSet1</Property>
+      <DataColumn>
+        <Property name="property">detail.cfm_id</Property>
+        <Property name="name">detail.cfm_id</Property>
+      </DataColumn>
+      <DataColumn>
+        <Editor/>
+      </DataColumn>
+      <DataColumn>
+        <Editor/>
+      </DataColumn>
+      <DataColumn>
+        <Editor/>
+      </DataColumn>
+      <DataColumn>
+        <Editor/>
+      </DataColumn>
+    </DataGrid>
+  </View>
+</ViewConfig>

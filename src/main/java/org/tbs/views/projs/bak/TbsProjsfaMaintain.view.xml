@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsProjsfa" parent="global:dataTypeTbsProjsfa">
+      <PropertyDef name="sn">
+        <Property name="dataType">String</Property>
+        <Property name="label">签批内容单编号</Property>
+        <Property name="defaultValue">保存后自动产生...</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+        <Property name="label">录入人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property name="dataType">String</Property>
+        <Property name="label">备注</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">删除标记</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="dataType">dataTypeTbsProj</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="projSn">
+        <Property name="dataType">String</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="faloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">申请融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="nfaloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">申请非融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="otloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">申请其他类担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="totloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">总申请担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="period">
+        <Property name="dataType">int</Property>
+        <Property name="label">申请授信期限</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="loantype">
+        <Property name="label">放款方式</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="loanmem">
+        <Property name="dataType">String</Property>
+        <Property name="label">放款说明</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="repay">
+        <Property name="dataType">String</Property>
+        <Property name="label">还款方式</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="repayinper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">每次还款额（元）</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="repaymem">
+        <Property name="dataType">String</Property>
+        <Property name="label">还款说明</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="gatmem">
+        <Property name="dataType">String</Property>
+        <Property name="label">担保费率说明</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="psfy">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评审费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="qtfy">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">其他费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrate">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">担保费率（‰/月）</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property name="label">签批内容</Property>
+      </PropertyDef>
+      <PropertyDef name="VOcname">
+        <Property name="label">录入人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="label">录入日期</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">是否通过审批</Property>
+      </PropertyDef>
+      <Reference name="tbsProjsfaBizvtSet">
+        <Property name="dataType">[dataTypeTbsProjsfaBizvt]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsProjsfaDao#loadTbsProjsfaBizvt</Property>
+      </Reference>
+      <Reference name="tbsProjsfaOpinionSet">
+        <Property name="dataType">[dataTypeTbsProjsfaOpinion]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsProjsfaDao#loadTbsProjsfaOpinion</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasBiztype" parent="global:dataTypeTbsBasBiztype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsBasBizvarSet">
+        <Property name="dataProvider">tbsBasBiztypevarDao#loadVar</Property>
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="pageSize">15</Property>
+        <Property name="dataType">[dataTypeTbsBasBizvar]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+      <Reference name="tbsProjundwrtBizvtSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsBasBizvar" parent="global:dataTypeTbsBasBizvar">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+      <Reference name="tbsProjundwrtBizvtSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsProjsfaBizvt" parent="global:dataTypeTbsProjsfaBizvt">
+      <PropertyDef name="tbsBasBiztype">
+        <Property name="dataType">dataTypeTbsBasBiztype</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasBizvar">
+        <Property name="dataType">dataTypeTbsBasBizvar</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsProjsfaOpinion" parent="global:dataTypeTbsProjsfaOpinion">
+      <PropertyDef name="content">
+        <Property></Property>
+        <Property name="label">签批意见</Property>
+      </PropertyDef>
+      <PropertyDef name="approve">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否通过</Property>
+      </PropertyDef>
+      <PropertyDef name="VOcname">
+        <Property name="label">签批人</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="defaultValue">${loginUser.getCname()}</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsProj" parent="global:dataTypeTbsProj">
+      <Property name="defaultDisplayProperty">projName</Property>
+      <PropertyDef name="tbsBasPs">
+        <Property name="dataType">dataTypeTbsBasPs</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsBasPs" parent="global:dataTypeTbsBasPs"/>
+    <DataType name="tempConditions">
+      <PropertyDef name="valid">
+        <Property name="defaultValue">2</Property>
+        <Property name="dataType">Integer</Property>
+      </PropertyDef>
+      <PropertyDef name="sn"/>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetProjsfa">
+      <Property name="dataProvider">tbsProjsfaDao#loadAll</Property>
+      <Property name="dataType">[dataTypeTbsProjsfa]</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <AutoForm id="autoformCondition">
+      <Property name="createPrivateDataSet">true</Property>
+      <Property name="cols">*,*,*</Property>
+      <Property name="labelWidth">180</Property>
+      <Property name="dataType">tempConditions</Property>
+      <AutoFormElement>
+        <Property name="name">tbsProj</Property>
+        <Property name="label">项目名称</Property>
+        <Property name="property">tbsProj</Property>
+        <Property name="labelWidth">100</Property>
+        <Property name="trigger">ddlTbsProj</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">sn</Property>
+        <Property name="property">sn</Property>
+        <Property name="label">签批内容单编号</Property>
+        <Property name="labelWidth">100</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">period</Property>
+        <Property name="property">period</Property>
+        <Property name="label">申请授信期限</Property>
+        <Property name="labelWidth">100</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="property">repay</Property>
+        <Property name="name">repay</Property>
+        <Property name="label">还款方式</Property>
+        <Property name="labelWidth">100</Property>
+        <Property name="trigger">ddl_repay</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">loantype</Property>
+        <Property name="property">loantype</Property>
+        <Property name="label">放款方式</Property>
+        <Property name="labelWidth">100</Property>
+        <Property name="trigger">ddl_loantype</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">valid</Property>
+        <Property name="property">valid</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="trigger">DropDownValid</Property>
+        <Property name="labelWidth">100</Property>
+        <Editor>
+          <TextEditor id="text">
+            <Property name="trigger">DropDownValid</Property>
+          </TextEditor>
+        </Editor>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">falocMin</Property>
+        <Property name="property">falocMin</Property>
+        <Property name="label">申请融资担保授信金额（元）</Property>
+        <Property name="labelAlign">left</Property>
+        <Property name="labelPosition">left</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="colSpan:2">
+        <Property name="name">falocMax</Property>
+        <Property name="property">falocMax</Property>
+        <Property name="label">——</Property>
+        <Property name="labelWidth">50</Property>
+        <Property name="labelPosition">left</Property>
+        <Property name="showLabel">true</Property>
+        <Property name="editorWidth">150</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">nfalocMin</Property>
+        <Property name="property">nfalocMin</Property>
+        <Property name="label">申请非融资担保授信金额（元）</Property>
+        <Property name="labelPosition">left</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="colSpan:2">
+        <Property name="name">nfalocMax</Property>
+        <Property name="property">nfalocMax</Property>
+        <Property name="label">——</Property>
+        <Property name="labelWidth">50</Property>
+        <Property name="editorWidth">150</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">otlocMin</Property>
+        <Property name="property">otlocMin</Property>
+        <Property name="label">申请其他类担保授信金额（元）</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="colSpan:2">
+        <Property name="name">otlocMax</Property>
+        <Property name="property">otlocMax</Property>
+        <Property name="label">——</Property>
+        <Property name="labelWidth">50</Property>
+        <Property name="editorWidth">150</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">totlocMin</Property>
+        <Property name="property">totlocMin</Property>
+        <Property name="label">总申请担保授信金额（元）</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement layoutConstraint="colSpan:2">
+        <Property name="name">totlocMax</Property>
+        <Property name="property">totlocMax</Property>
+        <Property name="label">——</Property>
+        <Property name="labelWidth">50</Property>
+        <Property name="editorWidth">150</Property>
+        <Editor/>
+      </AutoFormElement>
+    </AutoForm>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <Property name="caption">查 询</Property>
+        <Property name="iconClass">silk silk-zoom</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonAdd">
+        <Property name="caption">新 增</Property>
+        <Property name="iconClass">silk silk-add</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonEdit">
+        <Property name="caption">修 改</Property>
+        <Property name="iconClass">silk silk-table-edit</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonsave">
+        <Property name="caption">保 存</Property>
+        <Property name="iconClass">silk silk-disk</Property>
+        <Property name="action">updateAction</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonDel">
+        <Property name="caption">删 除</Property>
+        <Property name="tags">del</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+      </ToolBarButton>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dataSetCustomer</Property>
+      </DataPilot>
+    </ToolBar>
+    <Container id="UI">
+      <Property name="height">58%</Property>
+      <SplitPanel>
+        <Property name="direction">left</Property>
+        <Property name="position">65%</Property>
+        <MainControl>
+          <SplitPanel>
+            <Property name="position">50%</Property>
+            <Property name="direction">top</Property>
+            <MainControl>
+              <DataGrid id="DataGridOpinion">
+                <Property name="dataSet">dataSetProjsfa</Property>
+                <Property name="dataPath">#.tbsProjsfaOpinionSet</Property>
+                <Property name="readOnly">true</Property>
+                <DataColumn>
+                  <Property name="property">VOcname</Property>
+                  <Property name="name">VOcname</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn name="content">
+                  <Property name="property">content</Property>
+                </DataColumn>
+                <DataColumn name="approve">
+                  <Property name="property">approve</Property>
+                </DataColumn>
+              </DataGrid>
+            </MainControl>
+            <SideControl>
+              <DataGrid id="DataGridBizvt">
+                <Property name="dataSet">dataSetProjsfa</Property>
+                <Property name="dataPath">#.tbsProjsfaBizvtSet</Property>
+                <Property name="readOnly">true</Property>
+                <DataColumn name="tbsBasBiztype">
+                  <Property name="property">tbsBasBiztype</Property>
+                  <Property name="caption">业务类型</Property>
+                  <Property name="trigger">DropDownTbsBasBiztype</Property>
+                </DataColumn>
+                <DataColumn name="tbsBasBizvar">
+                  <Property name="property">tbsBasBizvar</Property>
+                  <Property name="caption">业务品种</Property>
+                  <Property name="trigger">DropDownTbsBasBizvar</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="name">loc</Property>
+                  <Property name="property">loc</Property>
+                  <Property name="caption">申请金额</Property>
+                </DataColumn>
+              </DataGrid>
+            </SideControl>
+          </SplitPanel>
+        </MainControl>
+        <SideControl>
+          <DataGrid id="DataGridMain">
+            <Property name="dataSet">dataSetProjsfa</Property>
+            <Property name="height">250</Property>
+            <Property name="readOnly">true</Property>
+            <RowNumColumn/>
+            <DataColumn name="sn">
+              <Property name="property">sn</Property>
+              <Property name="width">120</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">tbsProj.projName</Property>
+              <Property name="name">tbsProj.projName</Property>
+              <Property name="caption">项目名称</Property>
+              <Property name="width">200</Property>
+            </DataColumn>
+            <ColumnGroup>
+              <Property name="caption">申 请 担 保 金 额 （元）</Property>
+              <DataColumn name="faloc">
+                <Property name="property">faloc</Property>
+                <Property name="caption">融资担保</Property>
+                <Property name="width">100</Property>
+              </DataColumn>
+              <DataColumn name="nfaloc">
+                <Property name="property">nfaloc</Property>
+                <Property name="caption">非融资担保</Property>
+                <Property name="width">100</Property>
+                <Property name="readOnly">true</Property>
+              </DataColumn>
+              <DataColumn>
+                <Property name="property">otloc</Property>
+                <Property name="name">otloc</Property>
+                <Property name="caption">其他担保</Property>
+                <Property name="width">100</Property>
+                <Property name="readOnly">true</Property>
+              </DataColumn>
+              <DataColumn>
+                <Property name="name">totloc</Property>
+                <Property name="property">totloc</Property>
+                <Property name="caption">总担保金额</Property>
+                <Property name="width">100</Property>
+                <Property name="readOnly">true</Property>
+              </DataColumn>
+            </ColumnGroup>
+            <DataColumn name="period">
+              <Property name="property">period</Property>
+              <Property name="width">100</Property>
+            </DataColumn>
+            <DataColumn name="loantype">
+              <Property name="property">loantype</Property>
+              <Property name="width">120</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">repay</Property>
+              <Property name="width">120</Property>
+              <Property name="name">repay</Property>
+            </DataColumn>
+            <DataColumn name="valid">
+              <Property name="property">valid</Property>
+              <Property name="width">100</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="caption">项目状态</Property>
+              <Property name="name">tbsProj.tbsBasPs.name</Property>
+              <Property name="property">tbsProj.tbsBasPs.name</Property>
+              <Property name="width">100</Property>
+              <Editor/>
+            </DataColumn>
+          </DataGrid>
+        </SideControl>
+      </SplitPanel>
+    </Container>
+    <Dialog id="dialogEdit">
+      <Property name="caption">项目签批内容单</Property>
+      <Property name="width">1000</Property>
+      <Property name="height">500</Property>
+      <Property name="autoAdjustPosition">true</Property>
+      <Property name="iconClass">silk silk-application-edit</Property>
+      <Property name="showAnimateType">zoom</Property>
+      <Property name="maximizeable">false</Property>
+      <Property name="maximized">false</Property>
+      <Buttons>
+        <Button id="buttonSave">
+          <Property name="caption"> 确  认</Property>
+          <Property name="iconClass">silk silk-accept</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <Property name="caption"> 取  消</Property>
+          <Property name="iconClass">silk silk-delete</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <Container id="ContainerAutoform">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="ddlAutoform">
+            <Property name="dataSet">dataSetProjsfa</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelWidth">120</Property>
+            <AutoFormElement>
+              <Property name="name">sn</Property>
+              <Property name="property">sn</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="labelWidth">100</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:2">
+              <Property name="name">tbsProj</Property>
+              <Property name="property">tbsProj</Property>
+              <Property name="label">项目名称</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">faloc</Property>
+              <Property name="property">faloc</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="labelWidth">180</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">nfaloc</Property>
+              <Property name="property">nfaloc</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="labelWidth">180</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">otloc</Property>
+              <Property name="property">otloc</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="labelWidth">180</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">totloc</Property>
+              <Property name="property">totloc</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="labelWidth">180</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">period</Property>
+              <Property name="property">period</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">psfy</Property>
+              <Property name="property">psfy</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">qtfy</Property>
+              <Property name="property">qtfy</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">gatrate</Property>
+              <Property name="name">gatrate</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:3">
+              <Property name="name">gatmem</Property>
+              <Property name="property">gatmem</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">loantype</Property>
+              <Property name="property">loantype</Property>
+              <Property name="trigger">ddl_loantype</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:2">
+              <Property name="name">loanmem</Property>
+              <Property name="property">loanmem</Property>
+              <Property name="readOnly">false</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">repay</Property>
+              <Property name="property">repay</Property>
+              <Property name="trigger">ddl_repay</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:2">
+              <Property name="name">repaymem</Property>
+              <Property name="property">repaymem</Property>
+              <Property name="readOnly">false</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">repayinper</Property>
+              <Property name="property">repayinper</Property>
+              <Property name="readOnly">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:3">
+              <Property name="property">memo</Property>
+              <Property name="name">memo</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">VOcname</Property>
+              <Property name="name">VOcname</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">timestampInput</Property>
+              <Property name="property">timestampInput</Property>
+              <Property name="visible">true</Property>
+              <Property name="readOnly">true</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">valid</Property>
+              <Property name="name">valid</Property>
+              <Property name="readOnly">true</Property>
+              <Editor/>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+        <TabControl>
+          <ControlTab>
+            <Property name="caption">业务类型与品种</Property>
+            <Property name="width">200</Property>
+            <Container id="TbsProjsfaBizvt">
+              <Property name="width">600</Property>
+              <DataGrid id="DataGridIdCardType">
+                <Property name="dataSet">dataSetProjsfa</Property>
+                <Property name="dataPath">#.tbsProjsfaBizvtSet</Property>
+                <Property name="width">600</Property>
+                <Property name="readOnly">true</Property>
+                <RowNumColumn/>
+                <DataColumn name="tbsBasBiztype">
+                  <Property name="property">tbsBasBiztype</Property>
+                  <Property name="trigger">DropDownTbsBasBiztype</Property>
+                  <Property name="caption">业务类型</Property>
+                </DataColumn>
+                <DataColumn name="tbsBasBizvar">
+                  <Property name="property">tbsBasBizvar</Property>
+                  <Property name="trigger">DropDownTbsBasBizvar</Property>
+                  <Property name="caption">业务品种</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="name">loc</Property>
+                  <Property name="property">loc</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">签批意见</Property>
+            <Property name="width">200</Property>
+            <Container id="TbsProjsfaOpinion">
+              <DataPilot id="dataPilot1">
+                <Property name="dataSet">dataSetProjsfa</Property>
+                <Property name="itemCodes">+,-,x</Property>
+                <Property name="dataPath">#.tbsProjsfaOpinionSet</Property>
+              </DataPilot>
+              <DataGrid id="DataGridEntType">
+                <Property name="dataSet">dataSetProjsfa</Property>
+                <Property name="dataPath">#.tbsProjsfaOpinionSet</Property>
+                <Property name="width">600</Property>
+                <Property name="readOnly">true</Property>
+                <RowNumColumn/>
+                <DataColumn name="VOcname">
+                  <Property name="property">VOcname</Property>
+                </DataColumn>
+                <DataColumn name="content">
+                  <Property name="property">content</Property>
+                  <Property name="caption">签批人意见</Property>
+                </DataColumn>
+                <DataColumn name="approve">
+                  <Property name="property">approve</Property>
+                  <Property name="caption">是否通过</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+        </TabControl>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container id="DdlContainerImport">
+      <DataSet id="dataSetTbsProj">
+        <Property name="dataType">[dataTypeTbsProj]</Property>
+        <Property name="dataProvider">tbsProjsfaDao#getAllProjnameByName</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlTbsProj">
+        <Property name="autoOpen">true</Property>
+        <Property name="dataSet">dataSetTbsProj</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="filterOnOpen">false</Property>
+      </DataSetDropDown>
+      <AutoMappingDropDown id="DropDownValid"/>
+      <Import id="TbsBasBiztype" src="org.tbs.views.funs.Dropdown#TbsBasBiztype"/>
+      <Import id="ddlloantype" src="org.tbs.views.funs.Dropdown#ddlloantype"/>
+      <Import id="ddlrepay" src="org.tbs.views.funs.Dropdown#ddlrepay"/>
+    </Container>
+    <UpdateAction id="updateAction">
+      <Property name="dataResolver">tbsProjsfaDao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetProjsfa</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsFunFulTyp" parent="global:dataTypeTbsFunFulTyp">
+      <PropertyDef name="type">
+        <Property></Property>
+        <Property name="label">文件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="step">
+        <Property></Property>
+        <Property name="label">节点</Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否无效</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsFunFulTyp">
+      <Property name="dataType">[dataTypeTbsFunFulTyp]</Property>
+      <Property name="dataProvider">tbsFunFulTypDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,|</Property>
+        <Property name="dataSet">dataSetTbsFunFulTyp</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="dataGridTbsBasFunFulTyp">
+      <Property name="dataSet">dataSetTbsFunFulTyp</Property>
+      <Property name="width">60%</Property>
+      <RowNumColumn/>
+      <DataColumn name="type">
+        <Property name="property">type</Property>
+      </DataColumn>
+      <DataColumn name="step">
+        <Property name="property">step</Property>
+      </DataColumn>
+    </DataGrid>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsFunFulTypDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsFunFulTyp</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

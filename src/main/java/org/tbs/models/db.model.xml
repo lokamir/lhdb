@@ -1,0 +1,4283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model>
+  <DataType name="dataTypeBdf2Company">
+    <Property name="creationType">org.tbs.entity.Bdf2Company</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Component">
+    <Property name="creationType">org.tbs.entity.Bdf2Component</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="bdf2UrlComponentSet">
+      <Property name="dataType">[dataTypeBdf2UrlComponent]</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="componentId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Dept">
+    <Property name="creationType">org.tbs.entity.Bdf2Dept</Property>
+    <PropertyDef name="did">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Group">
+    <Property name="creationType">org.tbs.entity.Bdf2Group</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="bdf2RoleMemberSet">
+      <Property name="dataType">[dataTypeBdf2RoleMember]</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2GroupMember">
+    <Property name="creationType">org.tbs.entity.Bdf2GroupMember</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="groupId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="positionId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="deptId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Message">
+    <Property name="creationType">org.tbs.entity.Bdf2Message</Property>
+    <PropertyDef name="tags">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="sender">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="sendDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="content">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="title">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="receiver">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="reply">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="read">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2MessageTemplate">
+    <Property name="creationType">org.tbs.entity.Bdf2MessageTemplate</Property>
+    <PropertyDef name="content">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Position">
+    <Property name="creationType">org.tbs.entity.Bdf2Position</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Role">
+    <Property name="creationType">org.tbs.entity.Bdf2Role</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="enabled">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="createUser">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2RoleMember">
+    <Property name="creationType">org.tbs.entity.Bdf2RoleMember</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="positionId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="bdf2Group">
+      <Property name="dataType">dataTypeBdf2Group</Property>
+    </PropertyDef>
+    <PropertyDef name="granted">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="deptId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="roleId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2RoleResource">
+    <Property name="creationType">org.tbs.entity.Bdf2RoleResource</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="urlId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="packageId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="roleId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2Url">
+    <Property name="creationType">org.tbs.entity.Bdf2Url</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="icon">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="order">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="forNavigation">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="systemId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="url">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2UrlComponent">
+    <Property name="creationType">org.tbs.entity.Bdf2UrlComponent</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="urlId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="authorityType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="bdf2Component">
+      <Property name="dataType">dataTypeBdf2Component</Property>
+    </PropertyDef>
+    <PropertyDef name="roleId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2User">
+    <Property name="creationType">org.tbs.entity.Bdf2User</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="address">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="administrator">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="birthday">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="cname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="companyId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="email">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="enabled">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="ename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="male">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="mobile">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="password">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="salt">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2UserDept">
+    <Property name="creationType">org.tbs.entity.Bdf2UserDept</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="deptId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeBdf2UserPosition">
+    <Property name="creationType">org.tbs.entity.Bdf2UserPosition</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="positionId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsAdminsign">
+    <Property name="creationType">org.tbs.entity.TbsAdminsign</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="hbsfs">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bzhtfs">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="date">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsApprover">
+    <Property name="creationType">org.tbs.entity.TbsApprover</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="account">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="title">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="deptid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="deptname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by4">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasArea">
+    <Property name="creationType">org.tbs.entity.TbsBasArea</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasBank">
+    <Property name="creationType">org.tbs.entity.TbsBasBank</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="addr">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="cont">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="sxed">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="zbje">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sxye">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sxqsr">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="sxdqr">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edsx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="jtsx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="fdbs">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gtzcq">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="dckxq">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="fdbl">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasBiztype">
+    <Property name="creationType">org.tbs.entity.TbsBasBiztype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasBizvar">
+    <Property name="creationType">org.tbs.entity.TbsBasBizvar</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasCggtyp">
+    <Property name="creationType">org.tbs.entity.TbsBasCggtyp</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="subtable">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasConsway">
+    <Property name="creationType">org.tbs.entity.TbsBasConsway</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasCourt">
+    <Property name="creationType">org.tbs.entity.TbsBasCourt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="detail">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasCurrency">
+    <Property name="creationType">org.tbs.entity.TbsBasCurrency</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasEntproperty">
+    <Property name="creationType">org.tbs.entity.TbsBasEntproperty</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasEntscale">
+    <Property name="creationType">org.tbs.entity.TbsBasEntscale</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasEnttype">
+    <Property name="creationType">org.tbs.entity.TbsBasEnttype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasGovfund">
+    <Property name="creationType">org.tbs.entity.TbsBasGovfund</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasIdcardtype">
+    <Property name="creationType">org.tbs.entity.TbsBasIdcardtype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasIndutype">
+    <Property name="creationType">org.tbs.entity.TbsBasIndutype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasPs">
+    <Property name="creationType">org.tbs.entity.TbsBasPs</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCasher">
+    <Property name="creationType">org.tbs.entity.TbsCasher</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="udttotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ysdbf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ssdbf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="yspsf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sspsf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ysqtf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ssqtf">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggBzjzy">
+    <Property name="creationType">org.tbs.entity.TbsCggBzjzy</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">Boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="cat1">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat2">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat3">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="val">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bzjje">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="sw">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="fulId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="delDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggDy">
+    <Property name="creationType">org.tbs.entity.TbsCggDy</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">Boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="delDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="val">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="permax">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="evaprc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="strv">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="pledgeper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sw">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="mbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="medate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="cat1">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat2">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat3">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="mc">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="sl">
+      <Property name="dataType">float</Property>
+    </PropertyDef>
+    <PropertyDef name="ppxh">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="pp">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="xh">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="szd">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="fpjg">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="zmjz">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="tdyt">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="blon">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="lx">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="qdfs">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="nzj">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="mj">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gj">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="ghyt">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bh">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bzjg">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="cllx">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="qddate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by4">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggGrbz">
+    <Property name="creationType">org.tbs.entity.TbsCggGrbz</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">Boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="cat1">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat2">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat3">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="val">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sex">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="idcardnum">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="age">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="married">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tel">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="addr">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bzed">
+      <Property name="dataType">float</Property>
+    </PropertyDef>
+    <PropertyDef name="bzzrlx">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="fulId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="delDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggQybz">
+    <Property name="creationType">org.tbs.entity.TbsCggQybz</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">Boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="cat1">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat2">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat3">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="val">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="orgnum">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bizliznum">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="estdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="regaddr">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="puc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="legaler">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="mainbiz">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="contacts">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="title">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tel">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="lyta">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lytl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lytna">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rita">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ritl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ritna">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lymbi">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lyntp">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rimbi">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rintp">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bzed">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bzzrlx">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="fulId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="delDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggZy">
+    <Property name="creationType">org.tbs.entity.TbsCggZy</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">Boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="delDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="val">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="permax">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="evaprc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="strv">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="pledgeper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sw">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="mbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="medate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="cat1">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat2">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cat3">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="se">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="mc">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="dh">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="dfdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="zllx">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="jz">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="sl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="jyqqx">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="hm">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="sbyxq">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="qddsf">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="qdqr">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="ggr">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="xtjg">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="syl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="zh">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="zmye">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCustomer">
+    <Property name="creationType">org.tbs.entity.TbsCustomer</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="regaddr">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="operaddr">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="estdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="puc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="legaler">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="stockholder">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="mainbiz">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="lyta">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lytl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lytna">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rita">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ritl">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="ritna">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lymbi">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lyntp">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rimbi">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rintp">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="employee">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="contacts">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="title">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tel">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="fulId">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="compsry">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCustomerEnttype">
+    <Property name="creationType">org.tbs.entity.TbsCustomerEnttype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCustomerIdnum">
+    <Property name="creationType">org.tbs.entity.TbsCustomerIdnum</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="idnum">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsFunSeq">
+    <Property name="creationType">org.tbs.entity.TbsFunSeq</Property>
+    <PropertyDef name="seqName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="currentValue">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="increment">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsFunApprc">
+    <Property name="creationType">org.tbs.entity.TbsFunApprc</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="ufloid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="decs">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="nodename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="processid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="assignee">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bizid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="createdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="duedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="enddate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="hispid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="opinion">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="owners">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="pid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="rootpid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="state">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="taskid">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="taskname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="typ">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="url">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsFunFul">
+    <Property name="creationType">org.tbs.entity.TbsFunFul</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="comments">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="date">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="fclass">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="fname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="fid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="uppath">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="userId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="username">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="url">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by4">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsFunFulTyp">
+    <Property name="creationType">org.tbs.entity.TbsFunFulTyp</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="step">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProj">
+    <Property name="creationType">org.tbs.entity.TbsProj</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="acptdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="fundproj">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="bankpledge">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="period">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="totloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="label">当前可用融资担保授信额度（元）</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="votloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="label">当前可用其他类担保授信额度（元）</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="vtotloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="label">当前可用总担保授信额度（元）</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="vnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="label">当前可用非融资担保授信额度（元）</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="loantype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loanmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repay">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repayinper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="repaymem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="psfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="riskavoid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="oldid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sonid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="risk">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="initfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">已批复融资担保授信额度（元）</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="initnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">已批复非融资担保授信额度（元）</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="initotloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">已批复其他类担保授信额度（元）</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="inittotloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">已批复总担保授信额度（元）</Property>
+      <Property name="displayFormat">#,##0.00</Property>
+      <Property name="readOnly">true</Property>
+    </PropertyDef>
+    <PropertyDef name="nameloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatrateu">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by4">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by5">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by6">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by7">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by8">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by9">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjBank">
+    <Property name="creationType">org.tbs.entity.TbsProjBank</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjBizvt">
+    <Property name="creationType">org.tbs.entity.TbsProjBizvt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="initloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm0">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm0</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="jtrq">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="location">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="jtsj">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="type"/>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm0Attend">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm0Attend</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm1">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm1</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="arolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="brolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="meetingdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="meetingloc">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="attend">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tobe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="actbe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="nobe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="agree">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="opoose">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="waiver">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="debarb">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="meetingtype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="votloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="loantype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loanmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repay">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repayinper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="repaymem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="psfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatmem"/>
+    <PropertyDef name="riskavoid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm1Bizvt">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm1Bizvt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projcfm1Sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm2">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm2</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="arolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="brolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tobe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="actbe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="nobe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="agree">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="opoose">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="waiver">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="debarb">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="meetingtype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="votloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="loantype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loanmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repay">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repayinper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="repaymem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="psfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatmem"/>
+    <PropertyDef name="riskavoid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm2Bizvt">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm2Bizvt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projcfm2Sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjCgg">
+    <Property name="creationType">org.tbs.entity.TbsProjCgg</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="cggId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cggSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjCheck">
+    <Property name="creationType">org.tbs.entity.TbsProjCheck</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="chktype">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="chkdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjchangeRole">
+    <Property name="creationType">org.tbs.entity.TbsProjchangeRole</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjchangeMajcont">
+    <Property name="creationType">org.tbs.entity.TbsProjchangeMajcont</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="newbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="newedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="newperiodcfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="oldbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="oldedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="oldperiodcfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cggchange">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="newfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="newnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="newotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="newtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oldfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oldnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oldotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oldtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oldprojname">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjchangeMajcontCfm">
+    <Property name="creationType">org.tbs.entity.TbsProjchangeMajcontCfm</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="arolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="brolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="meetingdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="meetingloc">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="tobe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="actbe">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="agree">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="opoose">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="waiver">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="debarb">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="meetingstyle">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="meetingtype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="votloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="loantype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loanmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repay">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repayinper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="repaymem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatrateu">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="psfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="riskavoid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjchangeMajcontCfmattend">
+    <Property name="creationType">org.tbs.entity.TbsProjchangeMajcontCfmattend</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcompsry">
+    <Property name="creationType">org.tbs.entity.TbsProjcompsry</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bizmemo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="riskmemo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcompsryPay">
+    <Property name="creationType">org.tbs.entity.TbsProjcompsryPay</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="zbe">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="dcye">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bcdczje">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bcdczbj">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bcdczlx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="date">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="falocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfalocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otlocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm1Opinion">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm1Opinion</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projcfm1Sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="approve">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjcfm2Opinion">
+    <Property name="creationType">org.tbs.entity.TbsProjcfm2Opinion</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projcfm2Sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="approve">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="apvdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="content">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjeaa">
+    <Property name="creationType">org.tbs.entity.TbsProjeaa</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="arolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="brolename">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="totloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="period">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjHisloc">
+    <Property name="creationType">org.tbs.entity.TbsProjHisloc</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="totloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="cusName">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="cusId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="docSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="docCat">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bizvarId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="biztypeId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="loc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="oper">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjHisrole">
+    <Property name="creationType">org.tbs.entity.TbsProjHisrole</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjHisstatus">
+    <Property name="creationType">org.tbs.entity.TbsProjHisstatus</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="psdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjHtsh">
+    <Property name="creationType">org.tbs.entity.TbsProjHtsh</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjrol">
+    <Property name="creationType">org.tbs.entity.TbsProjrol</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bczczje">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bczczbj">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bczczlx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="date">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="cusId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="falocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfalocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otlocLx">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjRelease">
+    <Property name="creationType">org.tbs.entity.TbsProjRelease</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="rlsdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="faloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="nfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="otloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="totloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="lnrp">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjundwrt">
+    <Property name="creationType">org.tbs.entity.TbsProjundwrt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="vfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cvfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="appfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cvnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="appnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="votloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cvotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="appotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="loantype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loanmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repay">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="repayinper">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="repaymem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="gatrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="psfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="gatmem">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="apptotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cvtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="vtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="undbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="undedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="validdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="gatrateu">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="pid">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="rlsfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rlsnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rlsotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="rlstotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cfmfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cfmnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cfmotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="cfmtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjundwrtBank">
+    <Property name="creationType">org.tbs.entity.TbsProjundwrtBank</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjundwrtBizvt">
+    <Property name="creationType">org.tbs.entity.TbsProjundwrtBizvt</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="projundwrtSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="loc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjundwrtCfmar">
+    <Property name="creationType">org.tbs.entity.TbsProjundwrtCfmar</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="projundwrtSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="udtfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="udtnfaloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="udtotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="udttotloc">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="periodCfm">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="bdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="edate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="zht">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="bzht">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="undbdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="undedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="pid">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsPtyexp">
+    <Property name="creationType">org.tbs.entity.TbsPtyexp</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="keyidId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="feetype">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="date">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="fee">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="io">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsProjOpinion">
+    <Property name="creationType">org.tbs.entity.TbsProjOpinion</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="cfmtype">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="title">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="outcome">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="ocDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="comment">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsRiskProjcfm">
+    <Property name="creationType">org.tbs.entity.TbsRiskProjcfm</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="timestampUpdate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="keyinId">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="del">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="projSn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="jtrq">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="jtsj">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="location">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="typ">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="results">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsRiskProjcfmAttend">
+    <Property name="creationType">org.tbs.entity.TbsRiskProjcfmAttend</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloBlob">
+    <Property name="creationType">org.tbs.entity.UfloBlob</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloCalendar">
+    <Property name="creationType">org.tbs.entity.UfloCalendar</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="desc">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="categoryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloCalendarDate">
+    <Property name="creationType">org.tbs.entity.UfloCalendarDate</Property>
+    <PropertyDef name="calendarDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="rangeStartTime">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="calendarId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="dayOfMonth">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="monthOfYear">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="rangeEndTime">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="dayOfWeek">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloContextProperty">
+    <Property name="creationType">org.tbs.entity.UfloContextProperty</Property>
+    <PropertyDef name="value">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="key">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloDNodeAttribute">
+    <Property name="creationType">org.tbs.entity.UfloDNodeAttribute</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="nodeEntryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="label">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="authorityType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloDNodeEntry">
+    <Property name="creationType">org.tbs.entity.UfloDNodeEntry</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processEntryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="modifiable">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="removable">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="nodeType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloDProcessAttribute">
+    <Property name="creationType">org.tbs.entity.UfloDProcessAttribute</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processEntryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="label">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="authorityType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloDProcessEntry">
+    <Property name="creationType">org.tbs.entity.UfloDProcessEntry</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="addable">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="modifiable">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloDProcessEntryAssignee">
+    <Property name="creationType">org.tbs.entity.UfloDProcessEntryAssignee</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processEntryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="assigneeNameId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="assigneeId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="assigneeProviderId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloForm">
+    <Property name="creationType">org.tbs.entity.UfloForm</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="tableId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="categoryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="updateDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloHisActivity">
+    <Property name="creationType">org.tbs.entity.UfloHisActivity</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="leaveFlowName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="description">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="nodeName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="hisProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="rootProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="endDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloHisBlob">
+    <Property name="creationType">org.tbs.entity.UfloHisBlob</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloHisProcessInstance">
+    <Property name="creationType">org.tbs.entity.UfloHisProcessInstance</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="promoter">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="tag">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="endDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="businessId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloHisTask">
+    <Property name="creationType">org.tbs.entity.UfloHisTask</Property>
+    <PropertyDef name="taskId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="state">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="nodeName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="assignee">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="hisProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="endDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="taskName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="url">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="description">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="owner">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="duedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="rootProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="opinion">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="businessId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloHisVariable">
+    <Property name="creationType">org.tbs.entity.UfloHisVariable</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="value">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="hisProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="key">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloProcess">
+    <Property name="creationType">org.tbs.entity.UfloProcess</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="effectDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="description">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="categoryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="startProcessUrl">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="key">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="version">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloProcessInstance">
+    <Property name="creationType">org.tbs.entity.UfloProcessInstance</Property>
+    <PropertyDef name="promoter">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="currentTask">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="rootId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="tag">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="state">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="hisProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="parallelInstanceCount">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="currentNode">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="businessId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloProxyDefinition">
+    <Property name="creationType">org.tbs.entity.UfloProxyDefinition</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="start">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="issueUserCname">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="isProxyAll">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="issueUser">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="end">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloProxyProcess">
+    <Property name="creationType">org.tbs.entity.UfloProxyProcess</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="proxyDefId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processDefName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processDefId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloProxyUser">
+    <Property name="creationType">org.tbs.entity.UfloProxyUser</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="proxyDefId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="proxyUserCname">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="proxyUser">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTableColumn">
+    <Property name="creationType">org.tbs.entity.UfloTableColumn</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="dataType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="tableId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="empty">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="mappingSource">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="mapping">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="keyGenerationType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="defaultValue">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="editorType">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTableDefinition">
+    <Property name="creationType">org.tbs.entity.UfloTableDefinition</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="parentId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="memo">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="categoryId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTask">
+    <Property name="creationType">org.tbs.entity.UfloTask</Property>
+    <PropertyDef name="progress">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="countersignCount">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="state">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="nodeName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="assignee">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="dateUnit">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="taskName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="url">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="dueActionDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="description">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="owner">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="duedate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="rootProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="opinion">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="businessId">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="prevTask">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="createDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="prevState">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="ufloTaskParticipatorSet">
+      <Property name="dataType">[dataTypeUfloTaskParticipator]</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTaskAppointor">
+    <Property name="creationType">org.tbs.entity.UfloTaskAppointor</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="appointorNode">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="taskNodeName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="owner">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="appointor">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTaskParticipator">
+    <Property name="creationType">org.tbs.entity.UfloTaskParticipator</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="ufloTask">
+      <Property name="dataType">dataTypeUfloTask</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="user">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloTaskReminder">
+    <Property name="creationType">org.tbs.entity.UfloTaskReminder</Property>
+    <PropertyDef name="taskId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="startDate">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+    <PropertyDef name="cron">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="reminderType">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="processId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="taskNodeName">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="reminderHandlerBean">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeUfloVariable">
+    <Property name="creationType">org.tbs.entity.UfloVariable</Property>
+    <PropertyDef name="blobId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="stringValue">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="doubleValue">
+      <Property name="dataType">double</Property>
+    </PropertyDef>
+    <PropertyDef name="byteValue">
+      <Property name="dataType">byte</Property>
+    </PropertyDef>
+    <PropertyDef name="type">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="booleanValue">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+    <PropertyDef name="characterValue">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="id">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="shortValue">
+      <Property name="dataType">short</Property>
+    </PropertyDef>
+    <PropertyDef name="processInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="longValue">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="integerValue">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="serialVersionUID">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="rootProcessInstanceId">
+      <Property name="dataType">long</Property>
+    </PropertyDef>
+    <PropertyDef name="floatValue">
+      <Property name="dataType">float</Property>
+    </PropertyDef>
+    <PropertyDef name="key">
+      <Property name="dataType">String</Property>
+    </PropertyDef>
+    <PropertyDef name="dateValue">
+      <Property name="dataType">Date</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsCggChg">
+    <Property name="creationType">org.tbs.entity.TbsCggChg</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+      <Property name="label">ID</Property>
+    </PropertyDef>
+    <PropertyDef name="sn">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="timestampInput">
+      <Property name="dataType">Date</Property>
+      <Property name="label">插入时间戳</Property>
+    </PropertyDef>
+    <PropertyDef name="cusId">
+      <Property name="dataType">int</Property>
+      <Property name="label">客户id</Property>
+    </PropertyDef>
+    <PropertyDef name="projId">
+      <Property name="dataType">int</Property>
+      <Property name="label">项目id</Property>
+    </PropertyDef>
+    <PropertyDef name="xdeFaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">(风管填写)减少融资担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="xdeNfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">(风管填写)减少非融资担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="xdeOtloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">(风管填写)减少其他类担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="deFaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">减少融资担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="deNfaloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">减少非融资担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="deOtloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">减少其他类担保授信额度</Property>
+    </PropertyDef>
+    <PropertyDef name="deTotloc">
+      <Property name="dataType">BigDecimal</Property>
+      <Property name="label">减少总担保授信额度(前三项汇总，界面上不可修改)</Property>
+    </PropertyDef>
+    <PropertyDef name="tag">
+      <Property></Property>
+      <Property name="label">标记是否计算过，防止重复计算</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">int</Property>
+      <Property name="label">审批通过valid=1</Property>
+    </PropertyDef>
+    <PropertyDef name="oldprojname">
+      <Property></Property>
+      <Property name="label">原项目名称</Property>
+    </PropertyDef>
+    <PropertyDef name="by1">
+      <Property></Property>
+      <Property name="label">BY1</Property>
+    </PropertyDef>
+    <PropertyDef name="by2">
+      <Property></Property>
+      <Property name="label">BY2</Property>
+    </PropertyDef>
+    <PropertyDef name="by3">
+      <Property></Property>
+      <Property name="label">BY3</Property>
+    </PropertyDef>
+  </DataType>
+</Model>

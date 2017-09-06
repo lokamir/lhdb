@@ -1,0 +1,3142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="datatypeTbsBasCggtyp" parent="global:dataTypeTbsBasCggtyp">
+      <Reference name="tbsBasCggtypSet">
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="dataProvider">tbsBasCggtypDao#loadSub</Property>
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator2" type="length">
+          <Property name="resultMessage">请勿输入超过10个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCustomer" parent="dataTypeTbsCustomer">
+      <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsBasIdcardtype" parent="dataTypeTbsBasIdcardtype">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+    <DataType name="datatypeTbsCggDy0912" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="lx">
+        <Property name="label">使用权类型</Property>
+      </PropertyDef>
+      <PropertyDef name="nzj">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">年租金</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="mj">
+        <Property name="label">面积</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="szd">
+        <Property name="label">坐落</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">使用权取得年月</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="label">使用权到期年月</Property>
+      </PropertyDef>
+      <PropertyDef name="tdyt">
+        <Property name="label">土地用途</Property>
+      </PropertyDef>
+      <PropertyDef name="ghyt">
+        <Property></Property>
+        <Property name="label">规划用途</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">房产证编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggDy0507" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="ppxh">
+        <Property></Property>
+        <Property name="label">品牌型号</Property>
+      </PropertyDef>
+      <PropertyDef name="szd">
+        <Property name="label">所在地</Property>
+      </PropertyDef>
+      <PropertyDef name="fpjg">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">发票价格(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zmjz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">账面净值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="blon">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否浮动抵押</Property>
+      </PropertyDef>
+      <PropertyDef name="pp">
+        <Property></Property>
+        <Property name="label">品牌</Property>
+      </PropertyDef>
+      <PropertyDef name="xh">
+        <Property></Property>
+        <Property name="label">型号</Property>
+      </PropertyDef>
+      <PropertyDef name="cllx">
+        <Property></Property>
+        <Property name="label">车辆类型</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">车辆购买年月</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">车辆登记证编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggDy8" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">担保起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">担保到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="gj">
+        <Property></Property>
+        <Property name="label">国籍</Property>
+      </PropertyDef>
+      <PropertyDef name="qdfs">
+        <Property></Property>
+        <Property name="label">取得方式</Property>
+      </PropertyDef>
+      <PropertyDef name="fpjg">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">取得价格(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">取得/建成年月</Property>
+      </PropertyDef>
+      <PropertyDef name="bzjg">
+        <Property></Property>
+        <Property name="label">船舶所有权颁发机关</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">证书号码</Property>
+      </PropertyDef>
+      <PropertyDef name="blon">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否为在建船舶</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy13" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/质押人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">付款方</Property>
+      </PropertyDef>
+      <PropertyDef name="zmye">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">账面余额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="qdqr">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否取得确认</Property>
+      </PropertyDef>
+      <PropertyDef name="qddsf">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否签订三方监管协议</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy14" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">出质股权所在公司名称</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">出质股权数额</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">股权所在公司性质</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy15" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">经营权类型</Property>
+      </PropertyDef>
+      <PropertyDef name="jyqqx">
+        <Property name="dataType">int</Property>
+        <Property name="label">经营权期限</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">经营权的专门收费账户的开户行</Property>
+      </PropertyDef>
+      <PropertyDef name="zh">
+        <Property></Property>
+        <Property name="label">账号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy16" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">专利名称</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">专利类型</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">专利号</Property>
+      </PropertyDef>
+      <PropertyDef name="ggr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授权公告日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy17" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">著作权名称</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">著作权登记号</Property>
+      </PropertyDef>
+      <PropertyDef name="ggr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授权公告日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy18" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">著作权名称</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">著作权登记号</Property>
+      </PropertyDef>
+      <PropertyDef name="sbyxq">
+        <Property name="dataType">Date</Property>
+        <Property name="label">商标有效期</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy1920" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">种类</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">票面金额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">票据编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy21" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">签发人</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">货物种类</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">货物数量</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">货物价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="dfdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">提货日期</Property>
+      </PropertyDef>
+      <PropertyDef name="dh">
+        <Property></Property>
+        <Property name="label">单号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy22" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">基金类型</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">基金名称</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">出质基金数量</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy23" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="xtjg">
+        <Property></Property>
+        <Property name="label">信托发行机构</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">信托产品名称</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">信托类型</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">信托总额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押份额</Property>
+      </PropertyDef>
+      <PropertyDef name="dfdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">兑付日</Property>
+      </PropertyDef>
+      <PropertyDef name="syl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">预计收益率</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggQybz" parent="dataTypeTbsCggQybz">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">保证人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">保证人</Property>
+      </PropertyDef>
+      <PropertyDef name="orgnum">
+        <Property></Property>
+        <Property name="label">组织机构代码</Property>
+      </PropertyDef>
+      <PropertyDef name="bizliznum">
+        <Property></Property>
+        <Property name="label">统一社会信用代码</Property>
+      </PropertyDef>
+      <PropertyDef name="estdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">成立日期</Property>
+      </PropertyDef>
+      <PropertyDef name="regaddr">
+        <Property></Property>
+        <Property name="label">联系地址</Property>
+      </PropertyDef>
+      <PropertyDef name="puc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">实收资本</Property>
+      </PropertyDef>
+      <PropertyDef name="legaler">
+        <Property></Property>
+        <Property name="label">法人代表</Property>
+      </PropertyDef>
+      <PropertyDef name="mainbiz">
+        <Property></Property>
+        <Property name="label">主营业务概况</Property>
+      </PropertyDef>
+      <PropertyDef name="contacts">
+        <Property></Property>
+        <Property name="label">联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+        <Property name="label">联系人职位</Property>
+      </PropertyDef>
+      <PropertyDef name="tel">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="lyta">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rita">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lymbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lyntp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rimbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期本年累计主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rintp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期本年累计净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzed">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">保证金额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzzrlx">
+        <Property></Property>
+        <Property name="label">保证责任类型(单笔/最高额)</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggGrbz" parent="dataTypeTbsCggGrbz">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">保证人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">保证人</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasIdcardtype">
+        <Property name="dataType">datatypeTbsBasIdcardtype</Property>
+        <Property name="label">证件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="idcardnum">
+        <Property></Property>
+        <Property name="label">证件号码</Property>
+        <Validator type="custom">
+          <ClientEvent name="onValidate" signature="self,arg,autoformTbsCgg40,teIdcardnum,teAge40">if (arg.entity.get(&quot;tbsBasIdcardtype&quot;)) {&#xD;
+	debugger;&#xD;
+	// get card type&#xD;
+	var cardtypeId = arg.entity.get(&quot;tbsBasIdcardtype&quot;).get(&quot;id&quot;);&#xD;
+	var idcardnum = arg.entity.get(&quot;idcardnum&quot;);&#xD;
+	var now = new Date();&#xD;
+	var yearNow = now.getFullYear();&#xD;
+	// define 15bit &amp; 18bit rgExp&#xD;
+	rgExp15 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;&#xD;
+	//rgExp18 = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;&#xD;
+	rgExp18 = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}([0-9]|[X]|[x])$/;&#xD;
+	if(cardtypeId==1){&#xD;
+		if (idcardnum.match(rgExp15)){&#xD;
+			arg.entity.set(&quot;age&quot;,yearNow - 1900 - idcardnum.substring(6,8));&#xD;
+		} else if (idcardnum.match(rgExp18)){&#xD;
+			arg.entity.set(&quot;age&quot;,yearNow - idcardnum.substring(6,10));&#xD;
+		} else {&#xD;
+			throw new dorado.Exception(&quot;请输入合法的身份证号码！！&quot;);&#xD;
+		}&#xD;
+		&#xD;
+	}&#xD;
+}</ClientEvent>
+          <Property name="name">idNumValidate</Property>
+          <Property name="name">idNumValidate</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="age">
+        <Property name="dataType">int</Property>
+        <Property name="label">年龄</Property>
+      </PropertyDef>
+      <PropertyDef name="sex">
+        <Property name="label">性别</Property>
+      </PropertyDef>
+      <PropertyDef name="married">
+        <Property></Property>
+        <Property name="label">婚姻状态</Property>
+      </PropertyDef>
+      <PropertyDef name="tel">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="addr">
+        <Property></Property>
+        <Property name="label">联系地址</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="bzed">
+        <Property name="dataType">float</Property>
+        <Property name="label">保证额度</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzzrlx">
+        <Property></Property>
+        <Property name="label">保证责任类型</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日期</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">结束日期</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggBzjzy" parent="dataTypeTbsCggBzjzy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">出质人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">出质人</Property>
+      </PropertyDef>
+      <PropertyDef name="bzjje">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">保证金金额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsFunFul" parent="global:dataTypeTbsFunFul">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="comments">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property name="dataType">Date</Property>
+        <Property name="label">上传日期</Property>
+      </PropertyDef>
+      <PropertyDef name="fclass">
+        <Property></Property>
+        <Property name="label">文件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="fname">
+        <Property></Property>
+        <Property name="label">文件名称</Property>
+      </PropertyDef>
+      <PropertyDef name="fid">
+        <Property></Property>
+        <Property name="label">来源</Property>
+      </PropertyDef>
+      <PropertyDef name="username">
+        <Property></Property>
+        <Property name="label">上传人</Property>
+      </PropertyDef>
+      <PropertyDef name="url"/>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="datasetTbsBasCggtyp">
+      <Property name="dataProvider">tbsBasCggtypDao#loadMain</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="loadMode">lazy</Property>
+      <Property name="dataType">[datatypeTbsBasCggtyp]</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsFunFul">
+      <Property name="dataType">[dataTypeTbsFunFul]</Property>
+      <Property name="dataProvider">flsmgm#getquery</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <Container id="datasetCgg">
+      <Container id="datasetCggDy">
+        <DataSet id="datasetTbsCggDy0912">
+          <Property name="dataType">[datatypeTbsCggDy0912]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggDy0507">
+          <Property name="dataType">[datatypeTbsCggDy0507]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggDy8">
+          <Property name="dataType">[datatypeTbsCggDy8]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+      </Container>
+      <Container id="datasetCggZy">
+        <DataSet id="datasetTbsCggZy13">
+          <Property name="dataType">[datatypeTbsCggZy13]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy14">
+          <Property name="dataType">[datatypeTbsCggZy14]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy15">
+          <Property name="dataType">[datatypeTbsCggZy15]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy16">
+          <Property name="dataType">[datatypeTbsCggZy16]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy17">
+          <Property name="dataType">[datatypeTbsCggZy17]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy18">
+          <Property name="dataType">[datatypeTbsCggZy18]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy1920">
+          <Property name="dataType">[datatypeTbsCggZy1920]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy21">
+          <Property name="dataType">[datatypeTbsCggZy21]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy22">
+          <Property name="dataType">[datatypeTbsCggZy22]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy23">
+          <Property name="dataType">[datatypeTbsCggZy23]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+      </Container>
+      <DataSet id="datasetTbsCggQybz">
+        <Property name="dataType">[datatypeTbsCggQybz]</Property>
+        <Property name="dataProvider">tbsCggQybzDao#getAllForCggQybz</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+      <DataSet id="datasetTbsCggGrbz">
+        <Property name="dataType">[datatypeTbsCggGrbz]</Property>
+        <Property name="dataProvider">tbsCggGrbzDao#getAllForCggGrbz</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+      <DataSet id="datasetTbsCggBzjzy">
+        <Property name="dataType">[datatypeTbsCggBzjzy]</Property>
+        <Property name="dataProvider">tbsCggBzjzyDao#getAllForCggBzjzy</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+    </Container>
+    <Container id="top">
+      <Property name="height">8%</Property>
+      <Property name="visible">false</Property>
+      <AutoForm id="autoformCondition">
+        <Property name="createPrivateDataSet">true</Property>
+        <Property name="cols">*,*,*</Property>
+        <AutoFormElement id="afeTbsCustomer">
+          <Property name="name">tbsCustomer</Property>
+          <Property name="property">tbsCustomer</Property>
+          <Property name="labelWidth">100</Property>
+          <Property name="label">关联客户名称</Property>
+          <Editor>
+            <TextEditor id="teTbsCustomer">
+              <Property name="trigger">ddlTbsCustomer</Property>
+            </TextEditor>
+          </Editor>
+        </AutoFormElement>
+        <Button id="buttonFlsmgm">
+          <Property name="width">100</Property>
+          <Property name="caption"> 附件管理</Property>
+          <Property name="iconClass">silk silk-application-get</Property>
+        </Button>
+      </AutoForm>
+    </Container>
+    <SplitPanel>
+      <Property name="position">0%</Property>
+      <Property name="direction">left</Property>
+      <Property name="height">92%</Property>
+      <Property name="collapsed">false</Property>
+      <Property name="collapseBothSide">false</Property>
+      <MainControl>
+        <GroupBox>
+          <Property name="caption">反担保信息</Property>
+          <Property name="containerUi">default</Property>
+          <Property name="collapseable">false</Property>
+          <Buttons/>
+          <Children>
+            <Container id="cgg9">
+              <Property name="hideMode">display</Property>
+              <Property name="height">100%</Property>
+              <Property name="visible">false</Property>
+              <DataGrid id="datagridTbsCgg9">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="lx">
+                  <Property name="property">lx</Property>
+                  <Property name="trigger">listddlLx9</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddate">
+                  <Property name="property">qddate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tdyt">
+                  <Property name="property">tdyt</Property>
+                  <Property name="trigger">listddlTdyt9</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlLx9">
+                <Property name="items">出让,划拨</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+              <ListDropDown id="listddlTdyt9">
+                <Property name="items">工矿仓储,住宅,商服用地,研发,林地</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg10">
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg10">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">nzj</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn name="lx">
+                  <Property name="property">lx</Property>
+                  <Property name="trigger">listddlLx10</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddate">
+                  <Property name="property">qddate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tdyt">
+                  <Property name="property">tdyt</Property>
+                  <Property name="trigger">listddlTdyt10</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlLx10">
+                <Property name="items">承包,转承包,租赁,流转</Property>
+              </ListDropDown>
+              <ListDropDown id="listddlTdyt10">
+                <Property name="items">农地,工业建设用地</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg11">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg11">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ghyt">
+                  <Property name="property">ghyt</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bh">
+                  <Property name="property">bh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg12">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg12">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ghyt</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg5">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg5">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">sl</Property>
+                  <Property name="name">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ppxh</Property>
+                  <Property name="name">ppxh</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">szd</Property>
+                  <Property name="name">szd</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">zmjz</Property>
+                  <Property name="name">zmjz</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg6">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg6">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">sl</Property>
+                  <Property name="name">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ppxh</Property>
+                  <Property name="name">ppxh</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">szd</Property>
+                  <Property name="name">szd</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">zmjz</Property>
+                  <Property name="name">zmjz</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">blon</Property>
+                  <Property name="name">blon</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg7">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg7">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">pp</Property>
+                  <Property name="name">pp</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">xh</Property>
+                  <Property name="name">xh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">cllx</Property>
+                  <Property name="name">cllx</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qddate</Property>
+                  <Property name="name">qddate</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bh</Property>
+                  <Property name="name">bh</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg8">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg8">
+                <Property name="dataSet">datasetTbsCggDy8</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">gj</Property>
+                  <Property name="name">gj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qdfs</Property>
+                  <Property name="name">qdfs</Property>
+                  <Property name="trigger">listddlQdfs8</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qddate</Property>
+                  <Property name="name">qddate</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bzjg</Property>
+                  <Property name="name">bzjg</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bh</Property>
+                  <Property name="name">bh</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">blon</Property>
+                  <Property name="name">blon</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlQdfs8">
+                <Property name="items">购买,自建</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg13">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg13">
+                <Property name="dataSet">datasetTbsCggZy13</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zmye">
+                  <Property name="property">zmye</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qdqr">
+                  <Property name="property">qdqr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddsf">
+                  <Property name="property">qddsf</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg14">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg14">
+                <Property name="dataSet">datasetTbsCggZy14</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx14</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlZllx14">
+                <Property name="items">有限责任公司,上市股份有限公司,非上市股份有限公司</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg15">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg15">
+                <Property name="dataSet">datasetTbsCggZy15</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jyqqx">
+                  <Property name="property">jyqqx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zh">
+                  <Property name="property">zh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg16">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg16">
+                <Property name="dataSet">datasetTbsCggZy16</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx16</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ggr">
+                  <Property name="property">ggr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlZllx16">
+                <Property name="items">发明,使用新型,外观设计</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg17">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg17">
+                <Property name="dataSet">datasetTbsCggZy17</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ggr">
+                  <Property name="property">ggr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg18">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg18">
+                <Property name="dataSet">datasetTbsCggZy18</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sbyxq">
+                  <Property name="property">sbyxq</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg19">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg19">
+                <Property name="dataSet">datasetTbsCggZy1920</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx19</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlZllx19">
+                <Property name="items">银行汇票,商业汇票,银行本票,商业本票,支票</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg20">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg20">
+                <Property name="dataSet">datasetTbsCggZy1920</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg21">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg21">
+                <Property name="dataSet">datasetTbsCggZy21</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sl">
+                  <Property name="property">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dfdate">
+                  <Property name="property">dfdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dh">
+                  <Property name="property">dh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg21">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy21</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg22">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd22">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel22">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg22">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg22">
+                <Property name="dataSet">datasetTbsCggZy22</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx22</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlZllx22">
+                <Property name="items">股票基金,混合基金,债券基金,货币市场基金</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg23">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg23">
+                <Property name="dataSet">datasetTbsCggZy23</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="xtjg">
+                  <Property name="property">xtjg</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx23</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dfdate">
+                  <Property name="property">dfdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="syl">
+                  <Property name="property">syl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <ListDropDown id="listddlZllx23">
+                <Property name="items">单一,集合</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg39">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg39">
+                <Property name="dataSet">datasetTbsCggQybz</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="orgnum">
+                  <Property name="property">orgnum</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bizliznum">
+                  <Property name="property">bizliznum</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="regaddr">
+                  <Property name="property">regaddr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="puc">
+                  <Property name="property">puc</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bzed">
+                  <Property name="property">bzed</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzzrlx">
+                  <Property name="property">bzzrlx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bdate">
+                  <Property name="property">bdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg40">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg40">
+                <Property name="dataSet">datasetTbsCggGrbz</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="tbsBasIdcardtype">
+                  <Property name="property">tbsBasIdcardtype</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="idcardnum">
+                  <Property name="property">idcardnum</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="age">
+                  <Property name="property">age</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="married">
+                  <Property name="property">married</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tel">
+                  <Property name="property">tel</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="addr">
+                  <Property name="property">addr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzed">
+                  <Property name="property">bzed</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzzrlx">
+                  <Property name="property">bzzrlx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+            <Container id="cgg41">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <DataGrid id="datagridTbsCgg41">
+                <Property name="dataSet">datasetTbsCggBzjzy</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="bzjje">
+                  <Property name="property">bzjje</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bdate">
+                  <Property name="property">bdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </Children>
+        </GroupBox>
+      </MainControl>
+      <SideControl/>
+    </SplitPanel>
+    <Dialog id="dialogFlsmgm">
+      <Property name="visible">false</Property>
+      <Property name="width">55%</Property>
+      <Property name="height">68%</Property>
+      <Buttons/>
+      <Children>
+        <FieldSet id="SingleFileUpload">
+          <Property name="caption">单个文件上传</Property>
+          <Buttons>
+            <Button id="upbutton" layoutConstraint="padding:30">
+              <Property name="caption">上传文件</Property>
+              <Property name="action">singleUploadAction</Property>
+              <Property name="style">
+                <Property name="key"></Property>
+                <Property name="key1"></Property>
+              </Property>
+              <Property name="showTrigger">false</Property>
+              <Property name="iconClass">fa fa-upload</Property>
+            </Button>
+            <Button id="resetButton">
+              <Property name="caption">再传一次</Property>
+              <Property name="iconClass">fa fa-repeat</Property>
+              <Property name="disabled">false</Property>
+              <Property name="visible">false</Property>
+            </Button>
+          </Buttons>
+          <Children>
+            <UploadAction id="singleUploadAction">
+              <Property name="fileResolver">flsmgm#SingleUploader</Property>
+              <Property name="maxFileSize">5MB</Property>
+              <Filters/>
+            </UploadAction>
+            <ProgressBar id="aupb"/>
+          </Children>
+        </FieldSet>
+        <FieldSet id="FileDownload">
+          <Property name="caption">文件下载</Property>
+          <Buttons/>
+          <Children>
+            <ToolBar>
+              <DataPilot>
+                <ClientEvent name="onSubControlAction">var code = arg.code;  //实现多选记录，并同时删除的功能&#xD;
+switch(code){&#xD;
+	case &quot;-&quot;:&#xD;
+		var dataSet = this.get(&quot;#dataSetTbsFunFul&quot;);&#xD;
+		&#xD;
+		/*var selections = dataGridTbsFunFul.get(&quot;selection&quot;);&#xD;
+		dorado.MessageBox.alert(&quot;selections&quot;);&#xD;
+		if(!selections){&#xD;
+			break;&#xD;
+		}&#xD;
+		if (!selections.length) {&#xD;
+			selections = [selections];&#xD;
+		}			&#xD;
+		var selectionCopy = [];&#xD;
+		for (var i = 0; i &lt; selections.length; i++) {&#xD;
+			selectionCopy.push(selections[i]);&#xD;
+		}			&#xD;
+		for (var i = 0; i &lt; selectionCopy.length; i++) {&#xD;
+			var entity = selectionCopy[i];&#xD;
+			dataSetTbsFunFul.removeFile(entity.get('id'));&#xD;
+			entity.remove();&#xD;
+		};*/&#xD;
+		&#xD;
+		//dorado.MessageBox.alert(&quot;确定删除此文件？&quot;,{title:&quot;趣博信息技术&quot;});&#xD;
+		&#xD;
+}&#xD;
+</ClientEvent>
+                <Property name="dataSet">dataSetTbsFunFul</Property>
+                <Property name="itemCodes">pages,-</Property>
+              </DataPilot>
+              <ToolBarButton id="btnsaveAll">
+                <Property name="caption">保存</Property>
+                <Property name="iconClass">fa fa-floppy-o</Property>
+                <Property name="action">updateActionflsmgm</Property>
+              </ToolBarButton>
+              <Button id="btnRefresh">
+                <ClientEvent name="onClick" signature="self,arg,dataSetTbsFunFul">dataSetTbsFunFul.flush();</ClientEvent>
+                <Property name="caption">刷 新</Property>
+                <Property name="iconClass">fa fa-refresh</Property>
+              </Button>
+            </ToolBar>
+            <DataGrid id="dataGridTbsFunFul">
+              <Property name="dataSet">dataSetTbsFunFul</Property>
+              <Property name="filterMode">serverSide</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="selectionMode">multiRows</Property>
+              <Property name="sortMode">serverSide</Property>
+              <Property name="dynaRowHeight">true</Property>
+              <RowNumColumn/>
+              <DataColumn id="fname" name="fname">
+                <Property name="property">fname</Property>
+              </DataColumn>
+              <DataColumn name="fid">
+                <Property name="property">fid</Property>
+              </DataColumn>
+              <DataColumn name="fclass">
+                <Property name="property">fclass</Property>
+              </DataColumn>
+              <DataColumn name="username">
+                <Property name="property">username</Property>
+              </DataColumn>
+              <DataColumn name="date">
+                <Property name="property">date</Property>
+              </DataColumn>
+              <DataColumn name="comments">
+                <Property name="property">comments</Property>
+              </DataColumn>
+              <DataColumn>
+                <Property name="name">download_notuse</Property>
+                <Property name="align">center</Property>
+                <Property name="width">75</Property>
+                <Property name="caption">下 载</Property>
+                <Property name="visible">false</Property>
+                <Editor/>
+              </DataColumn>
+            </DataGrid>
+            <UpdateAction id="updateActionflsmgm">
+              <Property name="dataResolver">flsmgm#saveAll</Property>
+              <Property name="executingMessage">正在保存</Property>
+              <Property name="hotkey">ctrl+s</Property>
+              <Property name="successMessage">保存成功</Property>
+              <UpdateItem>
+                <Property name="dataSet">dataSetTbsFunFul</Property>
+              </UpdateItem>
+            </UpdateAction>
+            <DownloadAction id="downloadAction"/>
+          </Children>
+        </FieldSet>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container id="ddl">
+      <Container id="ddlDataSet">
+        <DataSet id="datasetTbsCustomer">
+          <Property name="dataType">[datatypeTbsCustomer]</Property>
+          <Property name="dataProvider">tbsCustomerDao#getAllByName</Property>
+        </DataSet>
+        <DataSet id="dataSetTbsBasIdcardtype">
+          <Property name="dataProvider">tbsBasIdcardtypeDao#loadHumanIdType</Property>
+          <Property name="dataType">[datatypeTbsBasIdcardtype]</Property>
+        </DataSet>
+      </Container>
+      <DataSetDropDown id="ddlTbsCustomer">
+        <Property name="dataSet">datasetTbsCustomer</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="useEmptyItem">false</Property>
+      </DataSetDropDown>
+      <ListDropDown id="listDdlPermax0523">
+        <Property name="items">单笔,最高额</Property>
+      </ListDropDown>
+    </Container>
+    <AjaxAction id="getCggTypIdAction">
+      <Property name="service">getCggDetails#getNodeTreeId</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>

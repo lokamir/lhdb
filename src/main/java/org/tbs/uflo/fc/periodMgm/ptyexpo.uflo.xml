@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="ptyexpo">
+   <description>期间管理-费用退回</description>
+   <start g="198,42,32,62" name="开始" label="填写退款金额及原因">
+      <description>${projName}</description>
+      <sequence-flow to="A角部门经理审批"/>
+   </start>
+   <task g="132,138,162,50" allow-specify-assignee="false" task-type="Normal" label="费用退回-A角部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="A角部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="总经理审批" g="-31,-13" name="通过"/>
+      <sequence-flow to="驳回修正" g="382,162:-69,-22" name="驳回"/>
+   </task>
+   <task g="155,227,115,50" allow-specify-assignee="false" task-type="Normal" label="费用退回-总经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="总经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="财务经理审批" g="-37,-6" name="通过"/>
+      <sequence-flow to="驳回修正" g="-69,-22" name="驳回"/>
+   </task>
+   <task g="131,318,166,50" allow-specify-assignee="false" task-type="Normal" label="费用退回-财务经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="财务经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="驳回修正" g="385,340:-69,-22" name="驳回"/>
+      <sequence-flow to="出纳付款" g="-42,-5" name="通过"/>
+   </task>
+   <task g="425,226,115,50" allow-specify-assignee="false" task-type="Normal" label="费用退回-驳回修正" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projName}</description>
+      <sequence-flow to="A角部门经理审批" g="484,72;286,72:-45,-22" name="确认修改"/>
+   </task>
+   <action g="107,535,221,50" handler-bean="actPtyexpO" name="通知项目经理A、B">
+      <sequence-flow to="结束"/>
+   </action>
+   <task g="157,429,115,50" allow-specify-assignee="false" task-type="Normal" label="费用退回-出纳付款" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="出纳付款">
+      <description>${projName}</description>
+      <sequence-flow to="通知项目经理A、B" g="-42,-16" name="确认"/>
+   </task>
+   <end g="191,626,53,62" terminate="true" name="结束"/>
+</uflo-process>

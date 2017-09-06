@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="htsh">
+   <description>承保审批-合同审核</description>
+   <start g="21,44,32,62" name="开始">
+      <description>合同审批-开始 PSID=10</description>
+      <sequence-flow to="部门经理审批"/>
+   </start>
+   <task g="170,49,139,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Htsh.d" assignment-type="Handler" name="部门经理审批">
+      <description>${projSn}-合同审批-部门经理审批 PSID=11</description>
+      <sequence-flow to="Action" g="-5,-22" name="通过"/>
+      <sequence-flow to="驳回修正" g="375,201:-76,-22" name="驳回"/>
+   </task>
+   <end g="226,426,32,62" terminate="true" name="结束"/>
+   <action g="186,231,115,50" handler-bean="actHtsh" name="Action">
+      <sequence-flow to="结束"/>
+   </action>
+   <task g="374,226,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.Htsh.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projSn}-合同审批-驳回修正 PSID=12</description>
+      <sequence-flow to="部门经理审批" g="513,250;512,73;448,73:-93,-22" name="修改确认"/>
+   </task>
+</uflo-process>

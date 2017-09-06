@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="Files">
+      <PropertyDef name="id">
+        <Property name="label">序号</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="label">文件名</Property>
+      </PropertyDef>
+      <PropertyDef name="size">
+        <Property name="label">文件大小</Property>
+      </PropertyDef>
+      <PropertyDef name="percent">
+        <Property name="label">上传进度</Property>
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="status">
+        <Property name="label">状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="value">队列中</Property>
+                <Property name="key">0</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">正在上传</Property>
+                <Property name="key">2</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">失败</Property>
+                <Property name="key">4</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">完成</Property>
+                <Property name="key">5</Property>
+              </Entity>
+              <Entity>
+                <Property name="value"></Property>
+                <Property name="key">-1</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="dataType">int</Property>
+        <Property name="defaultValue">-1</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsFunFulTyp" parent="global:dataTypeTbsFunFulTyp">
+      <Property name="defaultDisplayProperty">type</Property>
+      <Reference name="tbsFunFulSet">
+        <Property name="dataType">[dataTypeTbsFunFul]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsFunFul" parent="global:dataTypeTbsFunFul">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="comments">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property name="dataType">Date</Property>
+        <Property name="label">上传日期</Property>
+      </PropertyDef>
+      <PropertyDef name="fclass">
+        <Property></Property>
+        <Property name="label">文件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="fname">
+        <Property></Property>
+        <Property name="label">文件名称</Property>
+      </PropertyDef>
+      <PropertyDef name="fid">
+        <Property></Property>
+        <Property name="label">来源</Property>
+      </PropertyDef>
+      <PropertyDef name="username">
+        <Property></Property>
+        <Property name="label">上传人</Property>
+      </PropertyDef>
+      <PropertyDef name="url"/>
+      <PropertyDef name="uppath">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="userId">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by4">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsFunFulTyp">
+        <Property name="dataType">dataTypeTbsFunFulTyp</Property>
+        <Property name="label">文件分类</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsFunFul">
+      <Property name="dataType">[dataTypeTbsFunFul]</Property>
+      <Property name="dataProvider">flsmgm#getquery</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsFunFulTyp">
+      <Property name="dataType">[dataTypeTbsFunFulTyp]</Property>
+      <Property name="dataProvider">tbsFunFulTypDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <Container>
+      <Property name="width">100%</Property>
+      <Property name="height">100%</Property>
+      <FieldSet id="SingleFileUpload">
+        <Property name="caption">单个文件上传</Property>
+        <Property name="hideMode">display</Property>
+        <Buttons>
+          <Button id="upbutton" layoutConstraint="padding:30">
+            <Property name="caption">上传文件</Property>
+            <Property name="action">singleUploadAction</Property>
+            <Property name="style">
+              <Property name="key"></Property>
+              <Property name="key1"></Property>
+            </Property>
+            <Property name="showTrigger">false</Property>
+            <Property name="iconClass">fa fa-upload</Property>
+            <Property name="tags">upbuttontag</Property>
+          </Button>
+          <Button id="resetButton">
+            <Property name="caption">再传一次</Property>
+            <Property name="iconClass">fa fa-repeat</Property>
+            <Property name="disabled">false</Property>
+            <Property name="visible">false</Property>
+            <Property name="tags">upbuttontag</Property>
+          </Button>
+        </Buttons>
+        <Children>
+          <UploadAction id="singleUploadAction">
+            <Property name="fileResolver">flsmgm#SingleUploader</Property>
+            <Property name="maxFileSize">10MB</Property>
+            <Filters/>
+          </UploadAction>
+          <ProgressBar id="aupb"/>
+        </Children>
+      </FieldSet>
+      <FieldSet id="MultiFileUpload">
+        <Property name="caption">多个文件上传</Property>
+        <Property name="height">35%</Property>
+        <Property name="hideMode">display</Property>
+        <Buttons/>
+        <Children>
+          <Container>
+            <ToolBar>
+              <ToolBarButton id="btnadd">
+                <Property name="caption">添加文件</Property>
+                <Property name="iconClass">fa fa-upload</Property>
+                <Property name="action">multiFileUpload</Property>
+                <Property name="tags">upbuttontag</Property>
+              </ToolBarButton>
+              <ToolBarButton id="btndel">
+                <Property name="caption">删除文件</Property>
+                <Property name="iconClass">fa fa-times</Property>
+                <Property name="disabled">true</Property>
+                <Property name="tags">upbuttontag</Property>
+              </ToolBarButton>
+              <ToolBarButton id="btnstart">
+                <Property name="iconClass">fa fa-play</Property>
+                <Property name="caption">开始上传</Property>
+                <Property name="disabled">true</Property>
+                <Property name="tags">upbuttontag</Property>
+              </ToolBarButton>
+              <ToolBarButton id="btnstop">
+                <Property name="iconClass">fa fa-stop</Property>
+                <Property name="caption">停止上传</Property>
+                <Property name="disabled">true</Property>
+                <Property name="tags">upbuttontag</Property>
+              </ToolBarButton>
+            </ToolBar>
+            <UploadAction id="multiFileUpload">
+              <Property name="fileResolver">flsmgm#MultiUploader</Property>
+              <Property name="maxFileSize">10MB</Property>
+              <Property name="selectionMode">multiFiles</Property>
+              <Property name="autoUpload">false</Property>
+              <Property name="successMessage">文件上传成功</Property>
+              <Filters/>
+            </UploadAction>
+            <DataSet id="dsFiles1">
+              <Property name="dataType">[Files]</Property>
+            </DataSet>
+            <DataGrid id="gridFiles1">
+              <Property name="dataSet">dsFiles1</Property>
+              <Property name="selectionMode">multiRows</Property>
+              <Property name="stretchColumnsMode">auto</Property>
+              <RowSelectorColumn id="rsc"/>
+              <RowNumColumn/>
+              <DataColumn id="name">
+                <Property name="caption">文件名称</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="property">name</Property>
+                <Property name="editable">true</Property>
+                <Editor/>
+              </DataColumn>
+              <DataColumn id="size">
+                <Property name="editable">false</Property>
+                <Property name="property">size</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="caption">文件大小</Property>
+                <Editor/>
+              </DataColumn>
+              <DataColumn id="percent">
+                <Property name="caption">上传进度</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="property">percent</Property>
+                <Property name="editable">false</Property>
+                <Editor/>
+              </DataColumn>
+              <DataColumn id="status">
+                <Property name="caption">状态</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="property">status</Property>
+                <Property name="editable">false</Property>
+                <Property name="align">center</Property>
+                <Editor/>
+              </DataColumn>
+            </DataGrid>
+          </Container>
+        </Children>
+      </FieldSet>
+      <FieldSet id="FileDownload">
+        <Property name="caption">文件下载</Property>
+        <Property name="hideMode">display</Property>
+        <Buttons/>
+        <Children>
+          <ToolBar>
+            <DataPilot id="flsDataPilot">
+              <Property name="dataSet">dataSetTbsFunFul</Property>
+              <Property name="itemCodes">pages,-</Property>
+            </DataPilot>
+            <ToolBarButton id="btnsaveAll">
+              <Property name="caption">保存</Property>
+              <Property name="iconClass">fa fa-floppy-o</Property>
+              <Property name="action">updateActionflsmgm</Property>
+              <Property name="tags">downbuttontag</Property>
+            </ToolBarButton>
+            <Button id="btnRefresh">
+              <ClientEvent name="onClick" signature="self,arg,dataSetTbsFunFul">dataSetTbsFunFul.flush();</ClientEvent>
+              <Property name="caption">刷 新</Property>
+              <Property name="iconClass">fa fa-refresh</Property>
+            </Button>
+          </ToolBar>
+          <DataGrid id="dataGridTbsFunFul">
+            <Property name="dataSet">dataSetTbsFunFul</Property>
+            <Property name="filterMode">serverSide</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="selectionMode">multiRows</Property>
+            <Property name="sortMode">serverSide</Property>
+            <Property name="dynaRowHeight">true</Property>
+            <RowNumColumn/>
+            <DataColumn id="fname" name="fname">
+              <Property name="property">fname</Property>
+              <Property name="readOnly">true</Property>
+            </DataColumn>
+            <DataColumn name="fid">
+              <Property name="property">fid</Property>
+              <Property name="readOnly">true</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="name">fclass</Property>
+              <Property name="property">fclass</Property>
+              <Property name="readOnly">true</Property>
+              <Editor/>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">tbsFunFulTyp</Property>
+              <Property name="trigger">ddlTbsFunFulTyp</Property>
+              <Property name="name">tbsFunFulTyp</Property>
+            </DataColumn>
+            <DataColumn name="username">
+              <Property name="property">username</Property>
+              <Property name="readOnly">true</Property>
+            </DataColumn>
+            <DataColumn name="date">
+              <Property name="property">date</Property>
+              <Property name="readOnly">true</Property>
+            </DataColumn>
+            <DataColumn name="comments">
+              <Property name="property">comments</Property>
+              <Property name="readOnly">true</Property>
+            </DataColumn>
+          </DataGrid>
+          <UpdateAction id="updateActionflsmgm">
+            <Property name="dataResolver">flsmgm#saveAll</Property>
+            <Property name="executingMessage">正在保存</Property>
+            <Property name="hotkey">ctrl+s</Property>
+            <Property name="successMessage">保存成功</Property>
+            <UpdateItem>
+              <Property name="dataSet">dataSetTbsFunFul</Property>
+            </UpdateItem>
+          </UpdateAction>
+          <DownloadAction id="downloadAction"/>
+        </Children>
+      </FieldSet>
+    </Container>
+  </View>
+</ViewConfig>

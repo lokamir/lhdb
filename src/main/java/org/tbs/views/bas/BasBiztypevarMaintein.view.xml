@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasBiztype" parent="global:dataTypeTbsBasBiztype">
+      <Reference name="tbsBasBizvarSet">
+        <Property name="dataProvider">tbsBasBiztypevarDao#loadVar</Property>
+        <Property name="pageSize">15</Property>
+        <Property name="dataType">[dataTypeTbsBasBizvar]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">业务类型</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">20</Property>
+          <Property name="resultMessage">请勿输入超过20个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="defaultValue">1</Property>
+        <Property name="label">是否有效</Property>
+      </PropertyDef>
+      <Reference name="tbsProjundwrtBizvtSet">
+        <Property name="dataType">[dataTypeTbsProjundwrtBizvt]</Property>
+      </Reference>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsBasBizvar" parent="global:dataTypeTbsBasBizvar">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">业务品种</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">20</Property>
+          <Property name="resultMessage">请勿输入超过20个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <Reference name="tbsProjundwrtBizvtSet">
+        <Property name="dataType">[dataTypeTbsProjundwrtBizvt]</Property>
+      </Reference>
+      <Reference name="tbsProjBizvtSet"/>
+      <Reference name="tbsProjcfm2BizvtSet"/>
+      <Reference name="tbsProjcfm1BizvtSet"/>
+      <Reference name="tbsProjsfaBizvtSet"/>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">view.get(&quot;^addbro&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeBiztype){&#xD;
+	var currentNode =  dataTreeBiztype.get(&quot;currentNode&quot;);&#xD;
+	if (!currentNode){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作！&quot;); &#xD;
+	}&#xD;
+	var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+	currentEntity.createBrother({&#xD;
+		name:&quot;&lt;未命名>&quot;&#xD;
+	});&#xD;
+});&#xD;
+&#xD;
+view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeBiztype){&#xD;
+	var currentEntity =  dataTreeBiztype.get(&quot;currentEntity&quot;);&#xD;
+	if (!currentEntity){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作，或刷新后重新选择节点！&quot;); &#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;您真的要删除此项目吗？&quot;,&#xD;
+		{title:&quot;趣博信息技术&quot;,&#xD;
+		 detailCallback:function(btnID, text){&#xD;
+		 									  if (btnID == &quot;yes&quot;){&#xD;
+		  								                         currentEntity.remove();&#xD;
+			                                                    }&#xD;
+											  } &#xD;
+		}&#xD;
+	);	&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsBasBiztype">
+      <Property name="dataType">[dataTypeTbsBasBiztype]</Property>
+      <Property name="dataProvider">tbsBasBiztypevarDao#loadBiztype</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">200</Property>
+      <MainControl>
+        <Container>
+          <FieldSet>
+            <Property name="caption">业务品种</Property>
+            <Buttons/>
+            <Children>
+              <ToolBar id="toolBar1">
+                <Button id="btnSave">
+                  <Property name="caption">保 存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                  <Property name="action">updateActionSaveAll</Property>
+                </Button>
+                <Button id="btnRefresh">
+                  <ClientEvent name="onClick" signature="self,arg,dataSetTbsBasBiztype">dataSetTbsBasBiztype.flush();</ClientEvent>
+                  <Property name="caption">刷 新</Property>
+                  <Property name="iconClass">silk silk-arrow-refresh</Property>
+                </Button>
+              </ToolBar>
+              <AutoForm id="autoFormBiztype">
+                <Property name="dataSet">dataSetTbsBasBiztype</Property>
+                <Property name="labelSeparator">:</Property>
+                <Property name="dataPath">!Current_Biztype</Property>
+                <Property name="height">50</Property>
+                <AutoFormElement>
+                  <Property name="name">name</Property>
+                  <Property name="property">name</Property>
+                  <Property name="readOnly">false</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">valid</Property>
+                  <Property name="property">valid</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+              <ToolBar id="toolBar2">
+                <DataPilot id="dataPilotBizvar">
+                  <Property name="dataSet">dataSetTbsBasBiztype</Property>
+                  <Property name="itemCodes">pages,+,-,x</Property>
+                  <Property name="dataPath">!Current_Biztype.tbsBasBizvarSet</Property>
+                </DataPilot>
+              </ToolBar>
+              <DataGrid id="DataGridBizvar">
+                <Property name="dataSet">dataSetTbsBasBiztype</Property>
+                <Property name="dataPath">!Current_Biztype.tbsBasBizvarSet</Property>
+                <Property name="filterMode">clientSide</Property>
+                <IndicatorColumn/>
+                <RowNumColumn/>
+                <DataColumn name="name">
+                  <Property name="property">name</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                </DataColumn>
+              </DataGrid>
+            </Children>
+          </FieldSet>
+        </Container>
+      </MainControl>
+      <SideControl>
+        <FieldSet>
+          <Property name="caption">业务类型</Property>
+          <Buttons/>
+          <Children>
+            <DataTree id="dataTreeBiztype">
+              <ClientEvent name="onContextMenu" signature="self,arg,menuPop">menuPop.show({&#xD;
+	position: {&#xD;
+		left: arg.event.pageX,&#xD;
+		top: arg.event.pageY&#xD;
+	}&#xD;
+});</ClientEvent>
+              <Property name="currentNodeDataPath">Current_Biztype</Property>
+              <Property name="dataSet">dataSetTbsBasBiztype</Property>
+              <BindingConfigs>
+                <BindingConfig>
+                  <Property name="name">biztype</Property>
+                  <Property name="labelProperty">name</Property>
+                  <Property name="recursive">false</Property>
+                  <Property name="childrenProperty">tbsBasBizvarSet</Property>
+                </BindingConfig>
+              </BindingConfigs>
+            </DataTree>
+          </Children>
+        </FieldSet>
+      </SideControl>
+    </SplitPanel>
+    <Menu id="menuPop">
+      <MenuItem>
+        <Property name="name">BrotherLevelAdd</Property>
+        <Property name="caption">添加业务类型</Property>
+        <Property name="iconClass">silk silk-add</Property>
+        <Property name="tags">addbro</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">ChildLevelAdd</Property>
+        <Property name="caption">下级节点添加</Property>
+        <Property name="iconClass">silk silk-add</Property>
+        <Property name="tags">addchild</Property>
+        <Property name="visible">false</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">DelItem</Property>
+        <Property name="caption">删  除</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+        <Property name="tags">del</Property>
+      </MenuItem>
+    </Menu>
+    <UpdateAction id="updateActionSaveAll">
+      <Property name="dataResolver">tbsBasBiztypevarDao#saveAll</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasBiztype</Property>
+        <Property name="dataPath">!DIRTY_TREE</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

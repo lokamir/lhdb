@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasCourt" parent="global:dataTypeTbsBasCourt">
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">法院名称</Property>
+      </PropertyDef>
+      <PropertyDef name="detail">
+        <Property></Property>
+        <Property name="label">详细信息</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasArea">
+        <Property name="dataType">dataTypeTbsBasArea</Property>
+        <Property name="label">区域</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsBasArea" parent="global:dataTypeTbsBasArea">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsBasCourtSet">
+        <Property name="dataType">[dataTypeTbsBasCourt]</Property>
+      </Reference>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasCourt">
+      <Property name="dataType">[dataTypeTbsBasCourt]</Property>
+      <Property name="dataProvider">tbsBasCourtDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,|</Property>
+        <Property name="dataSet">dataSetTbsBasCourt</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="dataGridTbsBasCourt">
+      <Property name="dataSet">dataSetTbsBasCourt</Property>
+      <Property name="width">60%</Property>
+      <RowNumColumn/>
+      <DataColumn name="name">
+        <Property name="property">name</Property>
+      </DataColumn>
+      <DataColumn>
+        <Property name="property">tbsBasArea</Property>
+        <Property name="trigger">DropDownTbsBasArea</Property>
+      </DataColumn>
+      <DataColumn name="detail">
+        <Property name="property">detail</Property>
+      </DataColumn>
+      <DataColumn name="valid">
+        <Property name="property">valid</Property>
+      </DataColumn>
+    </DataGrid>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasCourtDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasCourt</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Import id="TbsBasArea" src="org.tbs.views.funs.Dropdown#TbsBasArea"/>
+  </View>
+</ViewConfig>

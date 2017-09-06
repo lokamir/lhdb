@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="perinsp">
+   <description>期间管理-定期检查
+</description>
+   <start g="208,53,56,62" name="开始" label="项目A/B角上传定期检查报告">
+      <description>${projName}</description>
+      <sequence-flow to="部门经理审批"/>
+   </start>
+   <task g="172,142,127,50" allow-specify-assignee="false" task-type="Normal" label="定期检查-部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="风管部门经理检查" g="-41,-9" name="不正常"/>
+      <sequence-flow to="结束" g="68,166;69,548:39,-183" name="正常"/>
+   </task>
+   <task g="155,232,161,50" allow-specify-assignee="false" task-type="Normal" label="定期检查-风管部门经理检查" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="风管部门经理检查">
+      <description>${projName}</description>
+      <sequence-flow to="分管总经理（风险）审批" g="-40,-9" name="不正常"/>
+      <sequence-flow to="结束" g="68,256;69,548:40,-132" name="正常"/>
+   </task>
+   <task g="140,324,196,50" allow-specify-assignee="false" task-type="Normal" label="定期检查-风管总经理（风险）审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="分管总经理（风险）审批">
+      <description>${projName}</description>
+      <sequence-flow to="Action" g="-40,-10" name="不正常"/>
+      <sequence-flow to="结束" g="69,349;69,548:37,-89" name="正常"/>
+   </task>
+   <action g="179,412,122,62" handler-bean="actProjCheck" name="Action">
+      <description>通知A、B角，A角部门经理，风管经理，风管部门经理，分管总经理（风险）
+项目标记风险proj.risk=1</description>
+      <sequence-flow to="结束"/>
+   </action>
+   <end g="225,518,32,62" terminate="true" name="结束"/>
+</uflo-process>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="Files">
+      <PropertyDef name="id">
+        <Property name="label">序号</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="label">文件名</Property>
+      </PropertyDef>
+      <PropertyDef name="size">
+        <Property name="label">文件大小</Property>
+      </PropertyDef>
+      <PropertyDef name="percent">
+        <Property name="label">上传进度</Property>
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="status">
+        <Property name="label">状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="value">队列中</Property>
+                <Property name="key">0</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">正在上传</Property>
+                <Property name="key">2</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">失败</Property>
+                <Property name="key">4</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">完成</Property>
+                <Property name="key">5</Property>
+              </Entity>
+              <Entity>
+                <Property name="value"></Property>
+                <Property name="key">-1</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="dataType">int</Property>
+        <Property name="defaultValue">-1</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <FieldSet id="SingleFileUpload">
+      <Property name="caption">单个文件上传</Property>
+      <Buttons>
+        <Button id="upbutton" layoutConstraint="padding:30">
+          <Property name="caption">上传文件</Property>
+          <Property name="action">singleUploadAction</Property>
+          <Property name="style">
+            <Property name="key"></Property>
+            <Property name="key1"></Property>
+          </Property>
+          <Property name="showTrigger">false</Property>
+          <Property name="iconClass">fa fa-upload</Property>
+        </Button>
+        <Button id="resetButton">
+          <Property name="caption">再传一次</Property>
+          <Property name="iconClass">fa fa-repeat</Property>
+          <Property name="disabled">false</Property>
+          <Property name="visible">false</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <UploadAction id="singleUploadAction">
+          <Property name="fileResolver">flsmgm#SingleUploader</Property>
+          <Property name="maxFileSize">10MB</Property>
+          <Filters/>
+        </UploadAction>
+        <ProgressBar id="aupb"/>
+      </Children>
+    </FieldSet>
+    <FieldSet id="MultiFileUpload">
+      <Property name="caption">多个文件上传</Property>
+      <Buttons/>
+      <Children>
+        <Container>
+          <ToolBar>
+            <ToolBarButton id="btnadd">
+              <Property name="caption">添加文件</Property>
+              <Property name="iconClass">fa fa-upload</Property>
+              <Property name="action">multiFileUpload</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btndel">
+              <Property name="caption">删除文件</Property>
+              <Property name="iconClass">fa fa-times</Property>
+              <Property name="disabled">true</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnstart">
+              <Property name="iconClass">fa fa-play</Property>
+              <Property name="caption">开始上传</Property>
+              <Property name="disabled">true</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnstop">
+              <Property name="iconClass">fa fa-stop</Property>
+              <Property name="caption">停止上传</Property>
+              <Property name="disabled">true</Property>
+            </ToolBarButton>
+          </ToolBar>
+          <UploadAction id="multiFileUpload">
+            <Property name="fileResolver">flsmgm#MultiUploader</Property>
+            <Property name="maxFileSize">10MB</Property>
+            <Property name="selectionMode">multiFiles</Property>
+            <Property name="autoUpload">false</Property>
+            <Property name="successMessage">文件上传成功</Property>
+            <Filters/>
+          </UploadAction>
+          <DataSet id="dsFiles1">
+            <Property name="dataType">[Files]</Property>
+          </DataSet>
+          <DataGrid id="gridFiles1">
+            <Property name="dataSet">dsFiles1</Property>
+            <Property name="selectionMode">multiRows</Property>
+            <Property name="stretchColumnsMode">auto</Property>
+            <RowSelectorColumn id="rsc"/>
+            <RowNumColumn/>
+            <DataColumn id="name">
+              <Property name="caption">文件名称</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="property">name</Property>
+              <Property name="editable">true</Property>
+              <Editor/>
+            </DataColumn>
+            <DataColumn id="size">
+              <Property name="editable">false</Property>
+              <Property name="property">size</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="caption">文件大小</Property>
+              <Editor/>
+            </DataColumn>
+            <DataColumn id="percent">
+              <Property name="caption">上传进度</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="property">percent</Property>
+              <Property name="editable">false</Property>
+              <Editor/>
+            </DataColumn>
+            <DataColumn id="status">
+              <Property name="caption">状态</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="property">status</Property>
+              <Property name="editable">false</Property>
+              <Property name="align">center</Property>
+              <Editor/>
+            </DataColumn>
+          </DataGrid>
+        </Container>
+      </Children>
+    </FieldSet>
+  </View>
+</ViewConfig>

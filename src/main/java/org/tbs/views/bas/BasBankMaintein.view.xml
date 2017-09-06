@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasBank" parent="global:dataTypeTbsBasBank">
+      <Reference name="tbsBasBankSet">
+        <Property name="dataType">[SELF]</Property>
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsBasBankDao#loadSub</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator2" type="length">
+          <Property name="minLength">1</Property>
+          <Property name="maxLength">15</Property>
+          <Property name="resultMessage">请勿输入超过15个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="defaultValue">1</Property>
+        <Property name="label">是否有效</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+        <Validator name="validator1" type="length">
+          <Property name="resultMessage">请勿输入超过500个字符！</Property>
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">500</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="addr">
+        <Property></Property>
+        <Property name="label">地址</Property>
+        <Validator name="validator1" type="length">
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">100</Property>
+          <Property name="resultMessage">请勿输入超过100个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="cont">
+        <Property></Property>
+        <Property name="label">联系方式</Property>
+        <Validator name="validator1" type="length">
+          <Property name="resultMessage">请勿输入超过100个字符！</Property>
+          <Property name="minLength">0</Property>
+          <Property name="maxLength">100</Property>
+        </Validator>
+      </PropertyDef>
+      <Reference name="tbsProjundwrtCfmarSet">
+        <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
+      </Reference>
+      <Reference name="tbsProjSet_S"/>
+      <Reference name="tbsProjSet_M"/>
+      <Reference name="tbsAdminsignSet"/>
+      <Reference name="tbsProjundwrtBankSet_S"/>
+      <Reference name="tbsProjBankSet_S"/>
+      <Reference name="tbsProjundwrtBankSet_M"/>
+      <Reference name="tbsProjBankSet_M"/>
+      <PropertyDef name="sxed">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">授信额度（万元）</Property>
+      </PropertyDef>
+      <PropertyDef name="zbje">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">在保金额（万元）</Property>
+      </PropertyDef>
+      <PropertyDef name="sxye">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">授信余额（万元)</Property>
+      </PropertyDef>
+      <PropertyDef name="sxqsr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="sxdqr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="edsx">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">单户担保额度上限（万元)</Property>
+      </PropertyDef>
+      <PropertyDef name="jtsx">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">单个集团担保额度上限（万元）</Property>
+      </PropertyDef>
+      <PropertyDef name="fdbs">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">净资产放大倍数（倍）</Property>
+      </PropertyDef>
+      <PropertyDef name="gtzcq">
+        <Property name="dataType">int</Property>
+        <Property name="label">共同追偿期（天）</Property>
+      </PropertyDef>
+      <PropertyDef name="dckxq">
+        <Property name="dataType">int</Property>
+        <Property name="label">代偿宽限期（天)</Property>
+      </PropertyDef>
+      <PropertyDef name="fdbl">
+        <Property/>
+        <Property name="label">风险分担比例</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">view.get(&quot;^addbro&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeBank){&#xD;
+	var currentNode =  dataTreeBank.get(&quot;currentNode&quot;);&#xD;
+	if (!currentNode){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作！&quot;); &#xD;
+	}&#xD;
+	var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+	currentEntity.createBrother({&#xD;
+		name:&quot;&lt;未命名>&quot;&#xD;
+	});&#xD;
+});&#xD;
+&#xD;
+view.get(&quot;^addchild&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeBank){&#xD;
+	var currentNode =  dataTreeBank.get(&quot;currentNode&quot;);&#xD;
+	if (!currentNode){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作！&quot;); &#xD;
+	}&#xD;
+	var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+	currentNode.expandAsync(function(){     //表示只有扩展节点才能操作&#xD;
+		currentEntity.createChild(&quot;tbsBasBankSet&quot;,{&#xD;
+			name:&quot;&lt;未命名>&quot; &#xD;
+		})&#xD;
+	});  &#xD;
+});&#xD;
+&#xD;
+view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeBank){&#xD;
+	var currentEntity =  dataTreeBank.get(&quot;currentEntity&quot;);&#xD;
+	if (!currentEntity){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作，或刷新后重新选择节点！&quot;); &#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;您真的要删除此项目吗？&quot;,&#xD;
+		{title:&quot;趣博信息技术&quot;,&#xD;
+		 detailCallback:function(btnID, text){&#xD;
+		 									  if (btnID == &quot;yes&quot;){&#xD;
+		  								                         currentEntity.remove();&#xD;
+			                                                    }&#xD;
+											  } &#xD;
+		}&#xD;
+	);	&#xD;
+});</ClientEvent>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsBasBank">
+      <Property name="dataProvider">tbsBasBankDao#loadMain</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="dataType">[dataTypeTbsBasBank]</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">200</Property>
+      <Property name="direction">left</Property>
+      <MainControl>
+        <Container>
+          <ToolBar>
+            <ToolBarButton id="btnAddBro">
+              <Property name="caption">同级节点添加</Property>
+              <Property name="iconClass">silk silk-anchor</Property>
+              <Property name="tags">addbro</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnAddChild">
+              <Property name="caption">下级节点添加</Property>
+              <Property name="iconClass">silk silk-add</Property>
+              <Property name="tags">addchild</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnDel">
+              <Property name="caption">删  除</Property>
+              <Property name="iconClass">silk silk-delete</Property>
+              <Property name="tags">del</Property>
+            </ToolBarButton>
+            <Separator/>
+            <ToolBarButton id="btnSave">
+              <Property name="caption">保 存</Property>
+              <Property name="iconClass">silk silk-disk</Property>
+              <Property name="action">updateActionSave</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnRefresh">
+              <ClientEvent name="onClick" signature="self,arg,dataSetTbsBasBank">dataSetTbsBasBank.flush();&#xD;
+</ClientEvent>
+              <Property name="caption">刷  新</Property>
+              <Property name="iconClass">silk silk-arrow-refresh</Property>
+            </ToolBarButton>
+          </ToolBar>
+          <FieldSet>
+            <Property name="caption">银行信息</Property>
+            <Property name="height">95%</Property>
+            <Buttons/>
+            <Children>
+              <AutoForm id="autoFormBank">
+                <Property name="dataSet">dataSetTbsBasBank</Property>
+                <Property name="dataPath">!Current_Bank</Property>
+                <Property name="cols">*,*,*</Property>
+                <Property name="labelWidth">200</Property>
+                <AutoFormElement>
+                  <Property name="property">name</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">sxed</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">zbje</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">sxye</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">sxqsr</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">sxdqr</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">edsx</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">jtsx</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">fdbs</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">gtzcq</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">dckxq</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">fdbl</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">addr</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">cont</Property>
+                  <Property name="editorType">TextArea</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">memo</Property>
+                  <Property name="editorType">TextArea</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">valid</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+          </FieldSet>
+        </Container>
+      </MainControl>
+      <SideControl>
+        <DataTree id="dataTreeBank">
+          <ClientEvent name="onContextMenu" signature="self,arg,menuPop">menuPop.show({&#xD;
+	position: {&#xD;
+		left: arg.event.pageX,&#xD;
+		top: arg.event.pageY&#xD;
+	}&#xD;
+});</ClientEvent>
+          <Property name="dataSet">dataSetTbsBasBank</Property>
+          <Property name="currentNodeDataPath">Current_Bank</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="name">bank</Property>
+              <Property name="labelProperty">name</Property>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">tbsBasBankSet</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <Menu id="menuPop">
+      <MenuItem>
+        <Property name="name">BrotherLevelAdd</Property>
+        <Property name="caption">同级节点添加</Property>
+        <Property name="iconClass">silk silk-anchor</Property>
+        <Property name="tags">addbro</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">ChildLevelAdd</Property>
+        <Property name="caption">下级节点添加</Property>
+        <Property name="iconClass">silk silk-add</Property>
+        <Property name="tags">addchild</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">DelItem</Property>
+        <Property name="caption">删  除</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+        <Property name="tags">del</Property>
+      </MenuItem>
+    </Menu>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasBankDao#saveAll</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="async">true</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasBank</Property>
+        <Property name="dataPath">!DIRTY_TREE</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

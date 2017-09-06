@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasEnttype" parent="global:dataTypeTbsBasEnttype">
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="defaultValue">1</Property>
+        <Property name="label">是否有效</Property>
+      </PropertyDef>
+      <Reference name="tbsCustomerEnttypeSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasEntscale">
+      <Property name="dataType">[dataTypeTbsBasEnttype]</Property>
+      <Property name="dataProvider">tbsBasEnttypeDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,|</Property>
+        <Property name="dataSet">dataSetTbsBasEntscale</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="dataGridTbsBasEntscale">
+      <Property name="dataSet">dataSetTbsBasEntscale</Property>
+      <DataColumn name="name">
+        <Property name="property">name</Property>
+      </DataColumn>
+      <DataColumn name="valid">
+        <Property name="property">valid</Property>
+      </DataColumn>
+    </DataGrid>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasEnttypeDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasEntscale</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

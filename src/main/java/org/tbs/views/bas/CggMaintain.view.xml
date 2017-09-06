@@ -1,0 +1,3903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="datatypeTbsBasCggtyp" parent="global:dataTypeTbsBasCggtyp">
+      <Reference name="tbsBasCggtypSet">
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="dataProvider">tbsBasCggtypDao#loadSub</Property>
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator2" type="length">
+          <Property name="resultMessage">请勿输入超过10个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCustomer" parent="dataTypeTbsCustomer">
+      <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsBasIdcardtype" parent="dataTypeTbsBasIdcardtype">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+    <DataType name="datatypeTbsCggDy0912" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押起始日</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押到期日</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="lx">
+        <Property name="label">使用权类型</Property>
+      </PropertyDef>
+      <PropertyDef name="nzj">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">年租金</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="mj">
+        <Property name="label">面积</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="szd">
+        <Property name="label">坐落</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">使用权取得年月</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="label">使用权到期年月</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="tdyt">
+        <Property name="label">土地用途</Property>
+      </PropertyDef>
+      <PropertyDef name="ghyt">
+        <Property></Property>
+        <Property name="label">规划用途</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">房产证编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggDy0507" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="ppxh">
+        <Property></Property>
+        <Property name="label">品牌型号</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="szd">
+        <Property name="label">所在地</Property>
+      </PropertyDef>
+      <PropertyDef name="fpjg">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">发票价格(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="zmjz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">账面净值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="blon">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否浮动抵押</Property>
+      </PropertyDef>
+      <PropertyDef name="pp">
+        <Property></Property>
+        <Property name="label">品牌</Property>
+      </PropertyDef>
+      <PropertyDef name="xh">
+        <Property></Property>
+        <Property name="label">型号</Property>
+      </PropertyDef>
+      <PropertyDef name="cllx">
+        <Property></Property>
+        <Property name="label">车辆类型</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">车辆购买年月</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">车辆登记证编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggDy8" parent="dataTypeTbsCggDy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">抵押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">抵押率(%)</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">抵押到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="label">数量</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="gj">
+        <Property></Property>
+        <Property name="label">国籍</Property>
+      </PropertyDef>
+      <PropertyDef name="qdfs">
+        <Property></Property>
+        <Property name="label">取得方式</Property>
+      </PropertyDef>
+      <PropertyDef name="fpjg">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">取得价格(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="qddate">
+        <Property name="label">取得/建成年月</Property>
+      </PropertyDef>
+      <PropertyDef name="bzjg">
+        <Property></Property>
+        <Property name="label">船舶所有权颁发机关</Property>
+      </PropertyDef>
+      <PropertyDef name="bh">
+        <Property></Property>
+        <Property name="label">证书号码</Property>
+      </PropertyDef>
+      <PropertyDef name="blon">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否为在建船舶</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="label">有效</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy13" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名/质押人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="defaultValue">0</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">付款方</Property>
+      </PropertyDef>
+      <PropertyDef name="zmye">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">账面余额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="qdqr">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否取得确认</Property>
+      </PropertyDef>
+      <PropertyDef name="qddsf">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否签订三方监管协议</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy14" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">出质股权所在公司名称</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">出质股权数额</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">股权所在公司性质</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy15" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">经营权类型</Property>
+      </PropertyDef>
+      <PropertyDef name="jyqqx">
+        <Property name="dataType">int</Property>
+        <Property name="label">经营权期限</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">经营权的专门收费账户的开户行</Property>
+      </PropertyDef>
+      <PropertyDef name="zh">
+        <Property></Property>
+        <Property name="label">账号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy16" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">专利名称</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">专利类型</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">专利号</Property>
+      </PropertyDef>
+      <PropertyDef name="ggr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授权公告日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy17" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">著作权名称</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">著作权登记号</Property>
+      </PropertyDef>
+      <PropertyDef name="ggr">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授权公告日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy18" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">著作权名称</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">著作权登记号</Property>
+      </PropertyDef>
+      <PropertyDef name="sbyxq">
+        <Property name="dataType">Date</Property>
+        <Property name="label">商标有效期</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy1920" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">种类</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">票面金额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="hm">
+        <Property></Property>
+        <Property name="label">票据编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy21" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">签发人</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">货物种类</Property>
+      </PropertyDef>
+      <PropertyDef name="sl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">货物数量</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">货物价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="dfdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">提货日期</Property>
+      </PropertyDef>
+      <PropertyDef name="dh">
+        <Property></Property>
+        <Property name="label">单号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy22" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">基金类型</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">基金名称</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">出质基金数量</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggZy23" parent="dataTypeTbsCggZy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">客户名</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="permax">
+        <Property></Property>
+        <Property name="label">计算方式</Property>
+      </PropertyDef>
+      <PropertyDef name="evaprc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评估价(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="strv">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">设定权利价值(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="pledgeper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押率(%)</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="xtjg">
+        <Property></Property>
+        <Property name="label">信托发行机构</Property>
+      </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">信托产品名称</Property>
+      </PropertyDef>
+      <PropertyDef name="zllx">
+        <Property></Property>
+        <Property name="label">信托类型</Property>
+      </PropertyDef>
+      <PropertyDef name="jz">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">信托总额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="se">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">质押份额</Property>
+      </PropertyDef>
+      <PropertyDef name="dfdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">兑付日</Property>
+      </PropertyDef>
+      <PropertyDef name="syl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">预计收益率</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">质押人</Property>
+      </PropertyDef>
+      <PropertyDef name="mbdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="medate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">质押到期日</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggQybz" parent="dataTypeTbsCggQybz">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">保证人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">保证人</Property>
+      </PropertyDef>
+      <PropertyDef name="orgnum">
+        <Property></Property>
+        <Property name="label">组织机构代码</Property>
+      </PropertyDef>
+      <PropertyDef name="bizliznum">
+        <Property></Property>
+        <Property name="label">统一社会信用代码</Property>
+      </PropertyDef>
+      <PropertyDef name="estdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">成立日期</Property>
+      </PropertyDef>
+      <PropertyDef name="regaddr">
+        <Property></Property>
+        <Property name="label">联系地址</Property>
+      </PropertyDef>
+      <PropertyDef name="puc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">实收资本</Property>
+      </PropertyDef>
+      <PropertyDef name="legaler">
+        <Property></Property>
+        <Property name="label">法人代表</Property>
+      </PropertyDef>
+      <PropertyDef name="mainbiz">
+        <Property></Property>
+        <Property name="label">主营业务概况</Property>
+      </PropertyDef>
+      <PropertyDef name="contacts">
+        <Property></Property>
+        <Property name="label">联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+        <Property name="label">联系人职位</Property>
+      </PropertyDef>
+      <PropertyDef name="tel">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="lyta">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rita">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lymbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lyntp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rimbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期本年累计主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rintp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期本年累计净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzed">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">保证金额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzzrlx">
+        <Property></Property>
+        <Property name="label">保证责任类型</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggGrbz" parent="dataTypeTbsCggGrbz">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">保证人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">保证人</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasIdcardtype">
+        <Property name="dataType">datatypeTbsBasIdcardtype</Property>
+        <Property name="label">证件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="idcardnum">
+        <Property></Property>
+        <Property name="label">证件号码</Property>
+        <Validator type="custom">
+          <ClientEvent name="onValidate" signature="self,arg,autoformTbsCgg40,teIdcardnum,teAge40">if (arg.entity.get(&quot;tbsBasIdcardtype&quot;)) {&#xD;
+	debugger;&#xD;
+	// get card type&#xD;
+	var cardtypeId = arg.entity.get(&quot;tbsBasIdcardtype&quot;).get(&quot;id&quot;);&#xD;
+	var idcardnum = arg.entity.get(&quot;idcardnum&quot;);&#xD;
+	var now = new Date();&#xD;
+	var yearNow = now.getFullYear();&#xD;
+	// define 15bit &amp; 18bit rgExp&#xD;
+	rgExp15 = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$/;&#xD;
+	//rgExp18 = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{4}$/;&#xD;
+	rgExp18 = /^[1-9][0-9]{5}(19[0-9]{2}|200[0-9]|2010)(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[0-9]{3}([0-9]|[X]|[x])$/;&#xD;
+	if(cardtypeId==1){&#xD;
+		if (idcardnum.match(rgExp15)){&#xD;
+			arg.entity.set(&quot;age&quot;,yearNow - 1900 - idcardnum.substring(6,8));&#xD;
+		} else if (idcardnum.match(rgExp18)){&#xD;
+			arg.entity.set(&quot;age&quot;,yearNow - idcardnum.substring(6,10));&#xD;
+		} else {&#xD;
+			throw new dorado.Exception(&quot;请输入合法的身份证号码！！&quot;);&#xD;
+		}&#xD;
+		&#xD;
+	}&#xD;
+}</ClientEvent>
+          <Property name="name">idNumValidate</Property>
+          <Property name="name">idNumValidate</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="age">
+        <Property name="dataType">int</Property>
+        <Property name="label">年龄</Property>
+      </PropertyDef>
+      <PropertyDef name="sex">
+        <Property name="label">性别</Property>
+      </PropertyDef>
+      <PropertyDef name="married">
+        <Property></Property>
+        <Property name="label">婚姻状态</Property>
+      </PropertyDef>
+      <PropertyDef name="tel">
+        <Property></Property>
+        <Property name="label">联系电话</Property>
+      </PropertyDef>
+      <PropertyDef name="addr">
+        <Property></Property>
+        <Property name="label">联系地址</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="bzed">
+        <Property name="dataType">float</Property>
+        <Property name="label">保证额度</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bzzrlx">
+        <Property></Property>
+        <Property name="label">保证责任类型</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日期</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">结束日期</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCggBzjzy" parent="dataTypeTbsCggBzjzy">
+      <PropertyDef name="tbsCustomer">
+        <Property name="dataType">datatypeTbsCustomer</Property>
+        <Property name="label">出质人</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="label">出质人</Property>
+      </PropertyDef>
+      <PropertyDef name="bzjje">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">保证金金额(元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="sw">
+        <Property></Property>
+        <Property name="label">顺位</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">起始日</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">到期日</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">有效</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsFunFul" parent="global:dataTypeTbsFunFul">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="comments">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property name="dataType">Date</Property>
+        <Property name="label">上传日期</Property>
+      </PropertyDef>
+      <PropertyDef name="fclass">
+        <Property></Property>
+        <Property name="label">文件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="fname">
+        <Property></Property>
+        <Property name="label">文件名称</Property>
+      </PropertyDef>
+      <PropertyDef name="fid">
+        <Property></Property>
+        <Property name="label">来源</Property>
+      </PropertyDef>
+      <PropertyDef name="username">
+        <Property></Property>
+        <Property name="label">上传人</Property>
+      </PropertyDef>
+      <PropertyDef name="url"/>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="datasetTbsBasCggtyp">
+      <Property name="dataProvider">tbsBasCggtypDao#loadMain</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="loadMode">lazy</Property>
+      <Property name="dataType">[datatypeTbsBasCggtyp]</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsFunFul">
+      <Property name="dataType">[dataTypeTbsFunFul]</Property>
+      <Property name="dataProvider">flsmgm#getquery</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <Container id="datasetCgg">
+      <Container id="datasetCggDy">
+        <DataSet id="datasetTbsCggDy0912">
+          <Property name="dataType">[datatypeTbsCggDy0912]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggDy0507">
+          <Property name="dataType">[datatypeTbsCggDy0507]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggDy8">
+          <Property name="dataType">[datatypeTbsCggDy8]</Property>
+          <Property name="dataProvider">tbsCggDyDao#getAllForCggDy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+      </Container>
+      <Container id="datasetCggZy">
+        <DataSet id="datasetTbsCggZy13">
+          <Property name="dataType">[datatypeTbsCggZy13]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy14">
+          <Property name="dataType">[datatypeTbsCggZy14]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy15">
+          <Property name="dataType">[datatypeTbsCggZy15]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy16">
+          <Property name="dataType">[datatypeTbsCggZy16]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy17">
+          <Property name="dataType">[datatypeTbsCggZy17]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy18">
+          <Property name="dataType">[datatypeTbsCggZy18]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy1920">
+          <Property name="dataType">[datatypeTbsCggZy1920]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy21">
+          <Property name="dataType">[datatypeTbsCggZy21]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy22">
+          <Property name="dataType">[datatypeTbsCggZy22]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+        <DataSet id="datasetTbsCggZy23">
+          <Property name="dataType">[datatypeTbsCggZy23]</Property>
+          <Property name="dataProvider">tbsCggZyDao#getAllForCggZy</Property>
+          <Property name="pageSize">10</Property>
+          <Property name="loadMode">manual</Property>
+        </DataSet>
+      </Container>
+      <DataSet id="datasetTbsCggQybz">
+        <Property name="dataType">[datatypeTbsCggQybz]</Property>
+        <Property name="dataProvider">tbsCggQybzDao#getAllForCggQybz</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+      <DataSet id="datasetTbsCggGrbz">
+        <Property name="dataType">[datatypeTbsCggGrbz]</Property>
+        <Property name="dataProvider">tbsCggGrbzDao#getAllForCggGrbz</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+      <DataSet id="datasetTbsCggBzjzy">
+        <Property name="dataType">[datatypeTbsCggBzjzy]</Property>
+        <Property name="dataProvider">tbsCggBzjzyDao#getAllForCggBzjzy</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="loadMode">manual</Property>
+      </DataSet>
+    </Container>
+    <Container id="top">
+      <Property name="height">8%</Property>
+      <AutoForm id="autoformCondition">
+        <Property name="createPrivateDataSet">true</Property>
+        <AutoFormElement id="afeTbsCustomer">
+          <Property name="name">tbsCustomer</Property>
+          <Property name="property">tbsCustomer</Property>
+          <Property name="labelWidth">100</Property>
+          <Property name="label">关联客户名称</Property>
+          <Editor>
+            <TextEditor id="teTbsCustomer">
+              <Property name="trigger">ddlTbsCustomer</Property>
+            </TextEditor>
+          </Editor>
+        </AutoFormElement>
+        <Button id="buttonFlsmgm">
+          <Property name="width">100</Property>
+          <Property name="caption"> 附件管理</Property>
+          <Property name="iconClass">silk silk-application-get</Property>
+        </Button>
+      </AutoForm>
+    </Container>
+    <SplitPanel>
+      <Property name="position">20%</Property>
+      <Property name="direction">left</Property>
+      <Property name="height">92%</Property>
+      <Property name="collapsed">false</Property>
+      <Property name="collapseBothSide">false</Property>
+      <MainControl>
+        <GroupBox>
+          <Property name="caption">反担保信息</Property>
+          <Property name="containerUi">default</Property>
+          <Property name="collapseable">false</Property>
+          <Buttons/>
+          <Children>
+            <Container id="cgg9">
+              <Property name="hideMode">display</Property>
+              <Property name="height">100%</Property>
+              <Property name="visible">false</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd9">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel9">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg9">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg9">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="lx">
+                  <Property name="property">lx</Property>
+                  <Property name="trigger">listddlLx9</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddate">
+                  <Property name="property">qddate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tdyt">
+                  <Property name="property">tdyt</Property>
+                  <Property name="trigger">listddlTdyt9</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg9">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <Property name="hotkey">alt+s</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlLx9">
+                <Property name="items">出让,划拨</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+              <ListDropDown id="listddlTdyt9">
+                <Property name="items">工矿仓储,住宅,商服用地,研发,林地</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg10">
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd10">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                  <Property name="tags">cggAdd</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel10">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                  <Property name="tags">cggDel</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg10">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg10">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">nzj</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn name="lx">
+                  <Property name="property">lx</Property>
+                  <Property name="trigger">listddlLx10</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddate">
+                  <Property name="property">qddate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tdyt">
+                  <Property name="property">tdyt</Property>
+                  <Property name="trigger">listddlTdyt10</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg10">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlLx10">
+                <Property name="items">承包,转承包,租赁,流转</Property>
+              </ListDropDown>
+              <ListDropDown id="listddlTdyt10">
+                <Property name="items">农地,工业建设用地</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg11">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd11">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                  <Property name="tags">cggAdd</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel11">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                  <Property name="tags">cggDel</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg11">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg11">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ghyt">
+                  <Property name="property">ghyt</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bh">
+                  <Property name="property">bh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg11">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg12">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd12">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                  <Property name="tags">cggAdd</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel12">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                  <Property name="tags">cggDel</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg12">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg12">
+                <Property name="dataSet">datasetTbsCggDy0912</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="szd">
+                  <Property name="property">szd</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mj">
+                  <Property name="property">mj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ghyt</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg12">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg5">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd5">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel5">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg5">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg5">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">sl</Property>
+                  <Property name="name">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ppxh</Property>
+                  <Property name="name">ppxh</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">szd</Property>
+                  <Property name="name">szd</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">zmjz</Property>
+                  <Property name="name">zmjz</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg5">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg6">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd6">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel6">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg6">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg6">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">sl</Property>
+                  <Property name="name">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">ppxh</Property>
+                  <Property name="name">ppxh</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">szd</Property>
+                  <Property name="name">szd</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">zmjz</Property>
+                  <Property name="name">zmjz</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">blon</Property>
+                  <Property name="name">blon</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg6">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg7">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd7">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel7">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg7">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg7">
+                <Property name="dataSet">datasetTbsCggDy0507</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">pp</Property>
+                  <Property name="name">pp</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">xh</Property>
+                  <Property name="name">xh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">cllx</Property>
+                  <Property name="name">cllx</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qddate</Property>
+                  <Property name="name">qddate</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bh</Property>
+                  <Property name="name">bh</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg7">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg8">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd8">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel8">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg8">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg8">
+                <Property name="dataSet">datasetTbsCggDy8</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">mc</Property>
+                  <Property name="name">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">gj</Property>
+                  <Property name="name">gj</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qdfs</Property>
+                  <Property name="name">qdfs</Property>
+                  <Property name="trigger">listddlQdfs8</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">fpjg</Property>
+                  <Property name="name">fpjg</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">qddate</Property>
+                  <Property name="name">qddate</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bzjg</Property>
+                  <Property name="name">bzjg</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">bh</Property>
+                  <Property name="name">bh</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">blon</Property>
+                  <Property name="name">blon</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg8">
+                <Property name="dataResolver">tbsCggDyDao#saveCggDy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggDy8</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlQdfs8">
+                <Property name="items">购买,自建</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg13">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd13">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel13">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg13">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg13">
+                <Property name="dataSet">datasetTbsCggZy13</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zmye">
+                  <Property name="property">zmye</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qdqr">
+                  <Property name="property">qdqr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="qddsf">
+                  <Property name="property">qddsf</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg13">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy13</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg14">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd14">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel14">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg14">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg14">
+                <Property name="dataSet">datasetTbsCggZy14</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx14</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg14">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy14</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlZllx14">
+                <Property name="items">有限责任公司,上市股份有限公司,非上市股份有限公司</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg15">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd15">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel15">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg15">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg15">
+                <Property name="dataSet">datasetTbsCggZy15</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jyqqx">
+                  <Property name="property">jyqqx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zh">
+                  <Property name="property">zh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg15">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy15</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg16">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd16">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel16">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg16">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg16">
+                <Property name="dataSet">datasetTbsCggZy16</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx16</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ggr">
+                  <Property name="property">ggr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg16">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy16</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlZllx16">
+                <Property name="items">发明,使用新型,外观设计</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg17">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd17">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel17">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg17">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg17">
+                <Property name="dataSet">datasetTbsCggZy17</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="ggr">
+                  <Property name="property">ggr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg17">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy17</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg18">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd18">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel18">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg18">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg18">
+                <Property name="dataSet">datasetTbsCggZy18</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sbyxq">
+                  <Property name="property">sbyxq</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg18">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy18</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg19">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd19">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel19">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg19">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg19">
+                <Property name="dataSet">datasetTbsCggZy1920</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx19</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg19">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy1920</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlZllx19">
+                <Property name="items">银行汇票,商业汇票,银行本票,商业本票,支票</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg20">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd20">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel20">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg20">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg20">
+                <Property name="dataSet">datasetTbsCggZy1920</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="hm">
+                  <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg20">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy1920</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg21">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd21">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel21">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg21">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg21">
+                <Property name="dataSet">datasetTbsCggZy21</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sl">
+                  <Property name="property">sl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dfdate">
+                  <Property name="property">dfdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dh">
+                  <Property name="property">dh</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg21">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy21</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg22">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd22">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel22">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg22">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg22">
+                <Property name="dataSet">datasetTbsCggZy22</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx22</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg22">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy22</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlZllx22">
+                <Property name="items">股票基金,混合基金,债券基金,货币市场基金</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg23">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd23">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel23">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg23">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg23">
+                <Property name="dataSet">datasetTbsCggZy23</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="permax">
+                  <Property name="property">permax</Property>
+                  <Property name="trigger">listDdlPermax0523</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="evaprc">
+                  <Property name="property">evaprc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="strv">
+                  <Property name="property">strv</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="pledgeper">
+                  <Property name="property">pledgeper</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="xtjg">
+                  <Property name="property">xtjg</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="zllx">
+                  <Property name="property">zllx</Property>
+                  <Property name="trigger">listddlZllx23</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="jz">
+                  <Property name="property">jz</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="se">
+                  <Property name="property">se</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dfdate">
+                  <Property name="property">dfdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="syl">
+                  <Property name="property">syl</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="mbdate">
+                  <Property name="property">mbdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="medate">
+                  <Property name="property">medate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg23">
+                <Property name="dataResolver">tbsCggZyDao#saveCggZy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggZy23</Property>
+                </UpdateItem>
+              </UpdateAction>
+              <ListDropDown id="listddlZllx23">
+                <Property name="items">单一,集合</Property>
+                <Property name="autoOpen">true</Property>
+                <Property name="editable">false</Property>
+              </ListDropDown>
+            </Container>
+            <Container id="cgg39">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd39">
+                  <Property name="caption">新 增</Property>
+                  <Property name="iconClass">silk silk-add</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggEdit39">
+                  <Property name="caption">修 改</Property>
+                  <Property name="iconClass">silk silk-table-edit</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel39">
+                  <Property name="caption">删 除</Property>
+                  <Property name="tags">del</Property>
+                  <Property name="iconClass">silk silk-delete</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg39">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+                <DataPilot id="datapilotTbsCgg39">
+                  <Property name="dataSet">datasetTbsCggQybz</Property>
+                  <Property name="itemCodes">x</Property>
+                </DataPilot>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg39">
+                <Property name="dataSet">datasetTbsCggQybz</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="orgnum">
+                  <Property name="property">orgnum</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bizliznum">
+                  <Property name="property">bizliznum</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="regaddr">
+                  <Property name="property">regaddr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="puc">
+                  <Property name="property">puc</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bzed">
+                  <Property name="property">bzed</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzzrlx">
+                  <Property name="property">bzzrlx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bdate">
+                  <Property name="property">bdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg39">
+                <Property name="dataResolver">tbsCggQybzDao#saveCggQybz</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggQybz</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg40">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd40">
+                  <Property name="caption">新 增</Property>
+                  <Property name="iconClass">silk silk-add</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggEdit40">
+                  <Property name="caption">修 改</Property>
+                  <Property name="iconClass">silk silk-table-edit</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel40">
+                  <Property name="caption">删 除</Property>
+                  <Property name="tags">del</Property>
+                  <Property name="iconClass">silk silk-delete</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg40">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+                <DataPilot id="datapilotTbsCgg40">
+                  <Property name="dataSet">datasetTbsCggGrbz</Property>
+                  <Property name="itemCodes">x</Property>
+                </DataPilot>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg40">
+                <Property name="dataSet">datasetTbsCggGrbz</Property>
+                <Property name="readOnly">true</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="tbsBasIdcardtype">
+                  <Property name="property">tbsBasIdcardtype</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="idcardnum">
+                  <Property name="property">idcardnum</Property>
+                  <Property name="width">140</Property>
+                </DataColumn>
+                <DataColumn name="age">
+                  <Property name="property">age</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="married">
+                  <Property name="property">married</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="tel">
+                  <Property name="property">tel</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="addr">
+                  <Property name="property">addr</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzed">
+                  <Property name="property">bzed</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="bzzrlx">
+                  <Property name="property">bzzrlx</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg40">
+                <Property name="dataResolver">tbsCggGrbzDao#saveCggGrbz</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggGrbz</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+            <Container id="cgg41">
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Property name="height">100%</Property>
+              <ToolBar>
+                <Property name="width">3000</Property>
+                <ToolBarButton id="btnCggAdd41">
+                  <Property name="caption">添加</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -120px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCggDel41">
+                  <Property name="caption">删除</Property>
+                  <Property name="icon">url(>skin>common/icons.gif) -140px -0px</Property>
+                </ToolBarButton>
+                <ToolBarButton id="btnCgg41">
+                  <Property name="caption">保存</Property>
+                  <Property name="iconClass">silk silk-disk</Property>
+                </ToolBarButton>
+              </ToolBar>
+              <DataGrid id="datagridTbsCgg41">
+                <Property name="dataSet">datasetTbsCggBzjzy</Property>
+                <Property name="width">3000</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">by3</Property>
+                  <Property name="width">120</Property>
+                  <Property name="name">by3</Property>
+                </DataColumn>
+                <DataColumn name="bzjje">
+                  <Property name="property">bzjje</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="sw">
+                  <Property name="property">sw</Property>
+                  <Property name="width">120</Property>
+                  <Property name="visible">false</Property>
+                </DataColumn>
+                <DataColumn name="bdate">
+                  <Property name="property">bdate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="edate">
+                  <Property name="property">edate</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="memo">
+                  <Property name="property">memo</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="valid">
+                  <Property name="property">valid</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+              </DataGrid>
+              <UpdateAction id="updateactionTbsCgg41">
+                <Property name="dataResolver">tbsCggBzjzyDao#saveCggBzjzy</Property>
+                <Property name="executingMessage">正在运行..</Property>
+                <Property name="successMessage">维护成功...</Property>
+                <UpdateItem>
+                  <Property name="dataSet">datasetTbsCggBzjzy</Property>
+                </UpdateItem>
+              </UpdateAction>
+            </Container>
+          </Children>
+        </GroupBox>
+      </MainControl>
+      <SideControl>
+        <DataTree id="dataTreeCggtyp">
+          <Property name="dataSet">datasetTbsBasCggtyp</Property>
+          <Property name="currentNodeDataPath">Current_Cggtyp</Property>
+          <Property name="width">200</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="name">cggtyp</Property>
+              <Property name="labelProperty">name</Property>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">tbsBasCggtypSet</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <Dialog id="dialogTbsCgg39">
+      <Property name="width">1000</Property>
+      <Property name="height">500</Property>
+      <Property name="iconClass">silk silk-application-edit</Property>
+      <Property name="showAnimateType">zoom</Property>
+      <Property name="caption">企业保证维护</Property>
+      <Buttons>
+        <Button id="btnCggConfirm39">
+          <Property name="caption"> 确  认</Property>
+          <Property name="iconClass">silk silk-accept</Property>
+        </Button>
+        <Button id="btnTbcCggCancel39">
+          <Property name="caption"> 取  消</Property>
+          <Property name="iconClass">silk silk-delete</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformTbsCgg39">
+          <Property name="dataSet">datasetTbsCggQybz</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelWidth">130</Property>
+          <Property name="width">1000</Property>
+          <AutoFormElement>
+            <Property name="name">by3</Property>
+            <Property name="property">by3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">orgnum</Property>
+            <Property name="property">orgnum</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bizliznum</Property>
+            <Property name="property">bizliznum</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">estdate</Property>
+            <Property name="property">estdate</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">regaddr</Property>
+            <Property name="property">regaddr</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">puc</Property>
+            <Property name="property">puc</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">legaler</Property>
+            <Property name="property">legaler</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">mainbiz</Property>
+            <Property name="property">mainbiz</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">contacts</Property>
+            <Property name="property">contacts</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">title</Property>
+            <Property name="property">title</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">tel</Property>
+            <Property name="property">tel</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lyta</Property>
+            <Property name="property">lyta</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lytl</Property>
+            <Property name="property">lytl</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lytna</Property>
+            <Property name="property">lytna</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">rita</Property>
+            <Property name="property">rita</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ritl</Property>
+            <Property name="property">ritl</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">ritna</Property>
+            <Property name="property">ritna</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lymbi</Property>
+            <Property name="property">lymbi</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">lyntp</Property>
+            <Property name="property">lyntp</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">rimbi</Property>
+            <Property name="property">rimbi</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">rintp</Property>
+            <Property name="property">rintp</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bzed</Property>
+            <Property name="property">bzed</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bzzrlx</Property>
+            <Property name="property">bzzrlx</Property>
+            <Property name="trigger">listddlBzzrlx39</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bdate</Property>
+            <Property name="property">bdate</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">edate</Property>
+            <Property name="property">edate</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">valid</Property>
+            <Property name="property">valid</Property>
+            <Property name="visible">false</Property>
+            <Property name="hideMode">display</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+        <ListDropDown id="listddlBzzrlx39">
+          <Property name="items">一般保证,连带责任保证</Property>
+          <Property name="autoOpen">true</Property>
+          <Property name="editable">false</Property>
+        </ListDropDown>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogTbsCgg40">
+      <Property name="width">1000</Property>
+      <Property name="height">500</Property>
+      <Property name="iconClass">silk silk-application-edit</Property>
+      <Property name="showAnimateType">zoom</Property>
+      <Property name="caption">个人保证维护</Property>
+      <Buttons>
+        <Button id="btnCggConfirm40">
+          <Property name="caption"> 确  认</Property>
+          <Property name="iconClass">silk silk-accept</Property>
+        </Button>
+        <Button id="btnTbcCggCancel40">
+          <Property name="caption"> 取  消</Property>
+          <Property name="iconClass">silk silk-delete</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <AutoForm id="autoformTbsCgg40">
+          <Property name="dataSet">datasetTbsCggGrbz</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="labelWidth">130</Property>
+          <Property name="width">1000</Property>
+          <AutoFormElement>
+            <Property name="name">by3</Property>
+            <Property name="property">by3</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">tbsBasIdcardtype</Property>
+            <Property name="property">tbsBasIdcardtype</Property>
+            <Editor>
+              <TextEditor id="teTbsBasIdCardtype">
+                <Property name="trigger">listddlIdtype40</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">idcardnum</Property>
+            <Property name="property">idcardnum</Property>
+            <Editor>
+              <TextEditor id="teIdcardnum"/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">age</Property>
+            <Property name="property">age</Property>
+            <Property name="readOnly">false</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor>
+              <TextEditor id="teAge40">
+                <Property name="readOnly">true</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">sex</Property>
+            <Property name="property">sex</Property>
+            <Property name="trigger">listddlSex40</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">married</Property>
+            <Property name="property">married</Property>
+            <Property name="trigger">listddlMarried40</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">tel</Property>
+            <Property name="property">tel</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">addr</Property>
+            <Property name="property">addr</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">memo</Property>
+            <Property name="property">memo</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bzed</Property>
+            <Property name="property">bzed</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bzzrlx</Property>
+            <Property name="property">bzzrlx</Property>
+            <Property name="trigger">listddlBzzrlx39</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">bdate</Property>
+            <Property name="property">bdate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">edate</Property>
+            <Property name="property">edate</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="name">valid</Property>
+            <Property name="property">valid</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
+        <ListDropDown id="listddlSex40">
+          <Property name="items">男,女</Property>
+          <Property name="autoOpen">true</Property>
+          <Property name="editable">false</Property>
+        </ListDropDown>
+        <ListDropDown id="listddlMarried40">
+          <Property name="items">已婚,未婚,离异</Property>
+          <Property name="autoOpen">true</Property>
+          <Property name="editable">false</Property>
+        </ListDropDown>
+        <ListDropDown id="listddlBzzrlx40">
+          <Property name="items">一般保证,连带责任保证</Property>
+          <Property name="autoOpen">true</Property>
+          <Property name="editable">false</Property>
+        </ListDropDown>
+        <DataSetDropDown id="listddlIdtype40">
+          <Property name="dataSet">dataSetTbsBasIdcardtype</Property>
+          <Property name="useEmptyItem">true</Property>
+          <Property name="editable">false</Property>
+          <Property name="autoOpen">true</Property>
+        </DataSetDropDown>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="dialogFlsmgm">
+      <Property name="visible">false</Property>
+      <Property name="width">55%</Property>
+      <Property name="height">68%</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameAttach">
+          <Property name="height">100%</Property>
+        </IFrame>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container id="ddl">
+      <Container id="ddlDataSet">
+        <DataSet id="datasetTbsCustomer">
+          <Property name="dataType">[datatypeTbsCustomer]</Property>
+          <Property name="dataProvider">tbsCustomerDao#getAllByName</Property>
+        </DataSet>
+        <DataSet id="dataSetTbsBasIdcardtype">
+          <Property name="dataProvider">tbsBasIdcardtypeDao#loadHumanIdType</Property>
+          <Property name="dataType">[datatypeTbsBasIdcardtype]</Property>
+        </DataSet>
+      </Container>
+      <DataSetDropDown id="ddlTbsCustomer">
+        <Property name="dataSet">datasetTbsCustomer</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="useEmptyItem">false</Property>
+      </DataSetDropDown>
+      <ListDropDown id="listDdlPermax0523">
+        <Property name="items">单笔,最高额</Property>
+      </ListDropDown>
+    </Container>
+  </View>
+</ViewConfig>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasCggtyp" parent="global:dataTypeTbsBasCggtyp">
+      <Reference name="tbsBasCggtypSet">
+        <Property name="cacheMode">bothSides</Property>
+        <Property name="dataProvider">tbsBasCggtypDao#loadSub</Property>
+        <Property name="dataType">[SELF]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+        <Property name="required">true</Property>
+        <Validator name="validator2" type="length">
+          <Property name="resultMessage">请勿输入超过10个字符！</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onReady">view.get(&quot;^addbro&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeCggtyp){&#xD;
+	var currentNode =  dataTreeCggtyp.get(&quot;currentNode&quot;);&#xD;
+	if (!currentNode){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作！&quot;); &#xD;
+	}&#xD;
+	var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+	currentEntity.createBrother({&#xD;
+		name:&quot;&lt;未命名>&quot;&#xD;
+	});&#xD;
+});&#xD;
+&#xD;
+view.get(&quot;^addchild&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeCggtyp){&#xD;
+	var currentNode =  dataTreeCggtyp.get(&quot;currentNode&quot;);&#xD;
+	if (!currentNode){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作！&quot;); &#xD;
+	}&#xD;
+	var currentEntity = currentNode.get(&quot;data&quot;);&#xD;
+	currentNode.expandAsync(function(){     //表示只有扩展节点才能操作&#xD;
+		currentEntity.createChild(&quot;tbsBasCggtypSet&quot;,{&#xD;
+			name:&quot;&lt;未命名>&quot; &#xD;
+		})&#xD;
+	});  &#xD;
+});&#xD;
+&#xD;
+view.get(&quot;^del&quot;).addListener(&quot;onClick&quot;,function(self, arg, dataTreeCggtyp){&#xD;
+	var currentEntity =  dataTreeCggtyp.get(&quot;currentEntity&quot;);&#xD;
+	if (!currentEntity){&#xD;
+		throw new dorado.Exception(&quot;请先选中一个节点后进行操作，或刷新后重新选择节点！&quot;); &#xD;
+	}&#xD;
+	dorado.MessageBox.confirm(&quot;您真的要删除此项目吗？&quot;,&#xD;
+		{title:&quot;趣博信息技术&quot;,&#xD;
+		 detailCallback:function(btnID, text){&#xD;
+		 									  if (btnID == &quot;yes&quot;){&#xD;
+		  								                         currentEntity.remove();&#xD;
+			                                                    }&#xD;
+											  } &#xD;
+		}&#xD;
+	);	&#xD;
+});&#xD;
+&#xD;
+</ClientEvent>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsBasCggtyp">
+      <Property name="dataProvider">tbsBasCggtypDao#loadMain</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="dataType">[dataTypeTbsBasCggtyp]</Property>
+      <Property name="loadMode">lazy</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">200</Property>
+      <Property name="direction">left</Property>
+      <MainControl>
+        <Container>
+          <ToolBar>
+            <ToolBarButton id="btnAddBro">
+              <Property name="caption">同级节点添加</Property>
+              <Property name="iconClass">silk silk-anchor</Property>
+              <Property name="tags">addbro</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnAddChild">
+              <Property name="caption">下级节点添加</Property>
+              <Property name="iconClass">silk silk-add</Property>
+              <Property name="tags">addchild</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnDel">
+              <Property name="caption">删  除</Property>
+              <Property name="iconClass">silk silk-delete</Property>
+              <Property name="tags">del</Property>
+            </ToolBarButton>
+            <Separator/>
+            <ToolBarButton id="btnSave">
+              <Property name="caption">保 存</Property>
+              <Property name="iconClass">silk silk-disk</Property>
+              <Property name="action">updateActionSave</Property>
+            </ToolBarButton>
+            <ToolBarButton id="btnRefresh">
+              <ClientEvent name="onClick" signature="self,arg,dataSetTbsBasCggtyp">dataSetTbsBasCggtyp.flush();&#xD;
+</ClientEvent>
+              <Property name="caption">刷  新</Property>
+              <Property name="iconClass">silk silk-arrow-refresh</Property>
+            </ToolBarButton>
+          </ToolBar>
+          <FieldSet>
+            <Property name="caption">反担保类型</Property>
+            <Property name="height">300</Property>
+            <Buttons/>
+            <Children>
+              <AutoForm id="autoFormBank">
+                <Property name="dataSet">dataSetTbsBasCggtyp</Property>
+                <Property name="labelSeparator">:</Property>
+                <Property name="dataPath">!Current_Cggtyp</Property>
+                <AutoFormElement>
+                  <Property name="name">名称</Property>
+                  <Property name="property">name</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">是否有效</Property>
+                  <Property name="property">valid</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+          </FieldSet>
+        </Container>
+      </MainControl>
+      <SideControl>
+        <DataTree id="dataTreeCggtyp">
+          <ClientEvent name="onContextMenu" signature="self,arg,menuPop">menuPop.show({&#xD;
+	position: {&#xD;
+		left: arg.event.pageX,&#xD;
+		top: arg.event.pageY&#xD;
+	}&#xD;
+});</ClientEvent>
+          <Property name="dataSet">dataSetTbsBasCggtyp</Property>
+          <Property name="currentNodeDataPath">Current_Cggtyp</Property>
+          <BindingConfigs>
+            <BindingConfig>
+              <Property name="name">cggtyp</Property>
+              <Property name="labelProperty">name</Property>
+              <Property name="recursive">true</Property>
+              <Property name="childrenProperty">tbsBasCggtypSet</Property>
+            </BindingConfig>
+          </BindingConfigs>
+        </DataTree>
+      </SideControl>
+    </SplitPanel>
+    <Menu id="menuPop">
+      <MenuItem>
+        <Property name="name">BrotherLevelAdd</Property>
+        <Property name="caption">同级节点添加</Property>
+        <Property name="iconClass">silk silk-anchor</Property>
+        <Property name="tags">addbro</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">ChildLevelAdd</Property>
+        <Property name="caption">下级节点添加</Property>
+        <Property name="iconClass">silk silk-add</Property>
+        <Property name="tags">addchild</Property>
+      </MenuItem>
+      <MenuItem>
+        <Property name="name">DelItem</Property>
+        <Property name="caption">删  除</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+        <Property name="tags">del</Property>
+      </MenuItem>
+    </Menu>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasCggtypDao#saveAll</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="hotkey">ctrl+s</Property>
+      <Property name="async">true</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasCggtyp</Property>
+        <Property name="dataPath">!DIRTY_TREE</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

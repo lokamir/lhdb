@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsApprover" parent="global:dataTypeTbsApprover">
+      <PropertyDef name="bdf2User">
+        <Property name="dataType">dataTypeBdf2User</Property>
+        <Property name="label">审批人</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="account">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by4">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2Dept">
+        <Property name="dataType">dataTypeBdf2Dept</Property>
+        <Property name="label">部门</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeBdf2User" parent="global:dataTypeBdf2User">
+      <Property name="defaultDisplayProperty">cname</Property>
+    </DataType>
+    <DataType name="dataTypeBdf2Dept" parent="global:dataTypeBdf2Dept">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsApprover">
+      <Property name="dataType">[dataTypeTbsApprover]</Property>
+      <Property name="dataProvider">tbsApproverDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="pageSize">20</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,pages</Property>
+        <Property name="dataSet">dataSetTbsApprover</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+        <Property name="iconClass">silk silk-disk</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <Container id="dataGrid">
+      <Property name="height">95%</Property>
+      <DataGrid id="dataGridTbsApprover">
+        <Property name="dataSet">dataSetTbsApprover</Property>
+        <Property name="width">600</Property>
+        <Property name="filterMode">clientSide</Property>
+        <RowNumColumn/>
+        <DataColumn name="title">
+          <Property name="property">title</Property>
+          <Property name="editable">true</Property>
+          <Property name="trigger">ddlTitle</Property>
+          <Property name="caption">职位</Property>
+        </DataColumn>
+        <DataColumn>
+          <Property name="name">bdf2User</Property>
+          <Property name="property">bdf2User</Property>
+          <Property name="trigger">ddlBdf2User</Property>
+          <Property name="caption">姓名</Property>
+        </DataColumn>
+        <DataColumn name="bdf2Dept">
+          <Property name="property">bdf2Dept</Property>
+          <Property name="trigger">ddlBdf2Dept</Property>
+          <Property name="caption">部门</Property>
+        </DataColumn>
+      </DataGrid>
+    </Container>
+    <UpdateAction id="updateActionSave">
+      <ClientEvent name="onSuccess" signature="self,arg,dataSetTbsApprover">dataSetTbsApprover.flushAsync();&#xD;
+</ClientEvent>
+      <Property name="dataResolver">tbsApproverDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsApprover</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <Container id="ddl">
+      <DataSet id="datasetBdf2User">
+        <Property name="dataProvider">bdf2UserDao#getAllByName</Property>
+        <Property name="dataType">[dataTypeBdf2User]</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlBdf2User">
+        <Property name="dataSet">datasetBdf2User</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+      </DataSetDropDown>
+      <DataSet id="dataSetBdf2Dept">
+        <Property name="dataType">[dataTypeBdf2Dept]</Property>
+        <Property name="dataProvider">bdf2DeptDao#getAllByName</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlBdf2Dept">
+        <Property name="autoOpen">true</Property>
+        <Property name="dataSet">dataSetBdf2Dept</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="filterOnTyping">true</Property>
+      </DataSetDropDown>
+      <ListDropDown id="ddlTitle">
+        <Property name="items">董事长[总经理/决策人],业务总监,副总经理,总经理助理,业务一部门经理,业务二部门经理,业务三部门经理,风险管理部门经理,风险管理部门经理[副],财务部门经理[副],综合管理部门经理,出纳,风管经理,法务经理,受理请印人,风险控制委员会成员,业务审核委员会成员,风控会主任委员,业管会主任委员,财务部分管总经理,行政分管总经理,风管分管总经理,评审会秘书</Property>
+        <Property name="autoOpen">true</Property>
+      </ListDropDown>
+    </Container>
+  </View>
+</ViewConfig>

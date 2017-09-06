@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsCustomer" parent="global:dataTypeTbsCustomer">
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">客户名称</Property>
+        <Validator name="validator1" type="required">
+          <Property name="resultMessage">内容不能为空</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property name="dataType">String</Property>
+        <Property name="label">客户编号</Property>
+        <Property name="readOnly">true</Property>
+        <Property name="defaultValue">保存后自动产生...</Property>
+      </PropertyDef>
+      <PropertyDef name="regaddr">
+        <Property name="dataType">String</Property>
+        <Property name="label">注册地</Property>
+        <Validator name="validator1" type="required">
+          <Property name="resultMessage">内容不能为空</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="operaddr">
+        <Property name="dataType">String</Property>
+        <Property name="label">实际经营地</Property>
+        <Validator name="validator1" type="required">
+          <Property name="resultMessage">内容不能为空</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="tbsBasArea">
+        <Property name="dataType">dataTypeTbsBasArea</Property>
+        <Property name="label">区域</Property>
+      </PropertyDef>
+      <PropertyDef name="estdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">成立日期</Property>
+      </PropertyDef>
+      <PropertyDef name="puc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">实收资本（万元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="legaler">
+        <Property name="dataType">String</Property>
+        <Property name="label">法定代表人</Property>
+      </PropertyDef>
+      <PropertyDef name="stockholder">
+        <Property name="dataType">String</Property>
+        <Property name="label">股东</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasEntproperty">
+        <Property name="dataType">dataTypeTbsBasEntproperty</Property>
+        <Property name="label">企业性质</Property>
+        <Validator name="validator1" type="required">
+          <Property name="resultMessage">内容不能为空</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="tbsBasEntscale">
+        <Property name="dataType">dataTypeTbsBasEntscale</Property>
+        <Property name="label">企业规模</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasIndutype">
+        <Property name="dataType">dataTypeTbsBasIndutype</Property>
+        <Property name="label">行业类型</Property>
+      </PropertyDef>
+      <PropertyDef name="contacts">
+        <Property name="dataType">String</Property>
+        <Property name="label">联系人</Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property name="dataType">String</Property>
+        <Property name="label">职位</Property>
+      </PropertyDef>
+      <PropertyDef name="tel">
+        <Property name="dataType">String</Property>
+        <Property name="label">电话</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">15</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="employee">
+        <Property name="dataType">int</Property>
+        <Property name="label">职工人数</Property>
+      </PropertyDef>
+      <PropertyDef name="mainbiz">
+        <Property name="dataType">String</Property>
+        <Property name="label">主营业务</Property>
+      </PropertyDef>
+      <PropertyDef name="lyta">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lytna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度末净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rita">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritl">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期负债合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="ritna">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">最近一期净资产合计(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lymbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="lyntp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">上年度净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rimbi">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">近一期年累计主营业务收入(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="rintp">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">近一期年累计净利润总额(万元)</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+        <Property name="label">录入人</Property>
+        <Property name="visible">false</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="VOcname">
+        <Property name="label">录入人</Property>
+        <Property name="defaultValue">${loginUser.getCname()}</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="label">录入日期</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <Reference name="tbsCustomerEnttypeSet">
+        <Property name="dataType">[dataTypeTbsCustomerEnttype]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsCustomerDao#loadTbsCustomerEnttype</Property>
+      </Reference>
+      <Reference name="tbsCustomerIdnumSet">
+        <Property name="dataType">[dataTypeTbsCustomerIdnum]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsCustomerDao#loadTbsCustomerIdnum</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="fulId">
+        <Property></Property>
+        <Property name="label">是否无锡市</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="compsry">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">该客户代偿余额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsBasArea" parent="global:dataTypeTbsBasArea">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasEntproperty" parent="global:dataTypeTbsBasEntproperty">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasEntscale" parent="global:dataTypeTbsBasEntscale">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasIndutype" parent="global:dataTypeTbsBasIndutype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsCustomerSet">
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasIdcardtype" parent="global:dataTypeTbsBasIdcardtype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="idnum">
+        <Property name="dataType">String</Property>
+        <Property name="label">证件号码</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsBasIdcardtype">
+        <Property name="dataType">dataTypeTbsBasIdcardtype</Property>
+        <Property name="label">证件类型</Property>
+        <Validator name="validator1" type="required">
+          <Property name="resultMessage">内容不能为空，或先删除记录！</Property>
+        </Validator>
+      </PropertyDef>
+      <Reference name="tbsCustomerIdnumSet">
+        <Property name="dataType">[dataTypeTbsCustomerIdnum]</Property>
+        <Property name="dataProvider">tbsCustomerDao#loadTbsCustomerIdnum</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsBasEnttype" parent="global:dataTypeTbsBasEnttype">
+      <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="tempConditions">
+      <PropertyDef name="valid">
+        <Property name="defaultValue">2</Property>
+        <Property name="dataType">Integer</Property>
+      </PropertyDef>
+      <PropertyDef name="sn"/>
+    </DataType>
+    <DataType name="dataTypeTbsCustomerIdnum" parent="global:dataTypeTbsCustomerIdnum">
+      <PropertyDef name="tbsBasIdcardtype">
+        <Property name="label">证件类型</Property>
+        <Property name="dataType">dataTypeTbsBasIdcardtype</Property>
+      </PropertyDef>
+      <PropertyDef name="idnum">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsCustomerEnttype" parent="global:dataTypeTbsCustomerEnttype">
+      <PropertyDef name="tbsBasEnttype">
+        <Property name="dataType">dataTypeTbsBasEnttype</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetCustomer">
+      <Property name="dataType">[dataTypeTbsCustomer]</Property>
+      <Property name="dataProvider">tbsCustomerDao#loadAll</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <Container id="Conditions">
+      <AutoForm id="autoformCondition">
+        <Property name="cols">*,*,*,*,*</Property>
+        <Property name="dataType">tempConditions</Property>
+        <Property name="createPrivateDataSet">true</Property>
+        <AutoFormElement>
+          <Property name="name">sn</Property>
+          <Property name="property">sn</Property>
+          <Property name="label">客户编号</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">name</Property>
+          <Property name="property">name</Property>
+          <Property name="label">客户名称</Property>
+          <Property name="labelPosition">left</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">regaddr</Property>
+          <Property name="property">regaddr</Property>
+          <Property name="label">注册地</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">operaddr</Property>
+          <Property name="property">operaddr</Property>
+          <Property name="label">实际经营地</Property>
+          <Property name="labelWidth">85</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">tbsBasArea</Property>
+          <Property name="property">tbsBasArea</Property>
+          <Property name="editable">false</Property>
+          <Property name="trigger">DropDownTbsBasArea</Property>
+          <Property name="label">区域</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">tbsBasEntproperty</Property>
+          <Property name="property">tbsBasEntproperty</Property>
+          <Property name="trigger">DropDownTbsBasEntproperty</Property>
+          <Property name="label">企业性质</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">tbsBasEntscale</Property>
+          <Property name="property">tbsBasEntscale</Property>
+          <Property name="trigger">DropDownTbsBasEntscale</Property>
+          <Property name="label">企业规模</Property>
+          <Property name="labelWidth">85</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">tbsBasIndutype</Property>
+          <Property name="property">tbsBasIndutype</Property>
+          <Property name="trigger">DropDownTbsBasIndutype</Property>
+          <Property name="editable">false</Property>
+          <Property name="label">行业类型</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement id="valid">
+          <Property name="name">valid</Property>
+          <Property name="property">valid</Property>
+          <Property name="readOnly">false</Property>
+          <Property name="label">是否有效</Property>
+          <Editor>
+            <TextEditor>
+              <ClientEvent name="onReady">self.set(&quot;mapping&quot;, [&#xD;
+{key:2,&#xD;
+	value:&quot;全部&quot;},&#xD;
+    {        key : 1,&#xD;
+	        value : &quot;是&quot;    },&#xD;
+	    {        key : 0,&#xD;
+		        value : &quot;否&quot;    }]);</ClientEvent>
+              <Property name="trigger">DropDownValid</Property>
+            </TextEditor>
+          </Editor>
+        </AutoFormElement>
+      </AutoForm>
+    </Container>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <Property name="caption">查 询</Property>
+        <Property name="iconClass">silk silk-zoom</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonAdd">
+        <Property name="caption">新 增</Property>
+        <Property name="iconClass">silk silk-add</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonEdit">
+        <Property name="caption">修 改</Property>
+        <Property name="iconClass">silk silk-table-edit</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonsave">
+        <Property name="caption">保 存</Property>
+        <Property name="action">updateActionSave</Property>
+        <Property name="iconClass">silk silk-disk</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonDel">
+        <Property name="caption">删 除</Property>
+        <Property name="tags">del</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonRefresh">
+        <Property name="caption">刷 新</Property>
+        <Property name="iconClass">silk silk-arrow-refresh</Property>
+      </ToolBarButton>
+      <DataPilot>
+        <Property name="itemCodes">x,|,pages</Property>
+        <Property name="dataSet">dataSetCustomer</Property>
+      </DataPilot>
+      <ToolBarButton id="buttonRef">
+        <Property name="caption">查看参考文件</Property>
+        <Property name="iconClass">silk silk-note</Property>
+        <Property name="splitButton">false</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <Container id="UI">
+      <Property name="height">82%</Property>
+      <SplitPanel>
+        <Property name="direction">top</Property>
+        <Property name="position">60%</Property>
+        <MainControl>
+          <TabControl id="Sub">
+            <ControlTab>
+              <Property name="caption">证件类型</Property>
+              <Container id="UiTbsCustomerIdnum">
+                <DataGrid id="UiDataGridIdCardType_1">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
+                  <Property name="width">600</Property>
+                  <Property name="readOnly">true</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="tbsBasIdcardtype">
+                    <Property name="property">tbsBasIdcardtype</Property>
+                    <Property name="trigger">DropDownTbsBasIdcardtype</Property>
+                  </DataColumn>
+                  <DataColumn name="idnum">
+                    <Property name="property">idnum</Property>
+                    <Property name="caption">证件号码</Property>
+                    <Editor/>
+                  </DataColumn>
+                </DataGrid>
+              </Container>
+            </ControlTab>
+            <ControlTab>
+              <Property name="caption">企业类型</Property>
+              <Container id="UiTbsCustomerEnttype">
+                <DataGrid id="UiDataGridEntType_2">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
+                  <Property name="width">300</Property>
+                  <Property name="readOnly">true</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="tbsBasEnttype">
+                    <Property name="property">tbsBasEnttype</Property>
+                    <Property name="trigger">DropDownTbsBasEnttype</Property>
+                    <Property name="caption">企业类型</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Container>
+            </ControlTab>
+          </TabControl>
+        </MainControl>
+        <SideControl>
+          <DataGrid id="Main">
+            <Property name="dataSet">dataSetCustomer</Property>
+            <Property name="height">100%</Property>
+            <Property name="readOnly">true</Property>
+            <RowNumColumn/>
+            <DataColumn name="sn">
+              <Property name="property">sn</Property>
+            </DataColumn>
+            <DataColumn name="name">
+              <Property name="property">name</Property>
+            </DataColumn>
+            <DataColumn name="regaddr">
+              <Property name="property">regaddr</Property>
+            </DataColumn>
+            <DataColumn name="operaddr">
+              <Property name="property">operaddr</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">tbsBasArea</Property>
+              <Property name="trigger">DropDownTbsBasArea</Property>
+            </DataColumn>
+            <DataColumn name="estdate">
+              <Property name="property">estdate</Property>
+            </DataColumn>
+            <DataColumn name="legaler">
+              <Property name="property">legaler</Property>
+            </DataColumn>
+            <DataColumn name="tbsBasEntproperty">
+              <Property name="property">tbsBasEntproperty</Property>
+              <Property name="trigger">DropDownTbsBasEntproperty</Property>
+            </DataColumn>
+            <DataColumn name="tbsBasEntscale">
+              <Property name="property">tbsBasEntscale</Property>
+              <Property name="trigger">DropDownTbsBasEntscale</Property>
+            </DataColumn>
+            <DataColumn name="tbsBasIndutype">
+              <Property name="property">tbsBasIndutype</Property>
+              <Property name="trigger">DropDownTbsBasIndutype</Property>
+            </DataColumn>
+            <DataColumn name="valid">
+              <Property name="property">valid</Property>
+            </DataColumn>
+          </DataGrid>
+        </SideControl>
+      </SplitPanel>
+    </Container>
+    <Dialog id="dialogEdit">
+      <Property name="caption">客户详细资料</Property>
+      <Property name="width">1000</Property>
+      <Property name="height">500</Property>
+      <Property name="autoAdjustPosition">true</Property>
+      <Property name="iconClass">silk silk-application-edit</Property>
+      <Property name="showAnimateType">zoom</Property>
+      <Buttons>
+        <Button id="buttonSave">
+          <Property name="caption"> 确  认</Property>
+          <Property name="iconClass">silk silk-accept</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <Property name="caption"> 取  消</Property>
+          <Property name="iconClass">silk silk-delete</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <Container id="ContainerAutoform">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="ddlAutoform">
+            <Property name="dataSet">dataSetCustomer</Property>
+            <Property name="cols">*,*,*</Property>
+            <AutoFormElement>
+              <Property name="name">sn</Property>
+              <Property name="property">sn</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">name</Property>
+              <Property name="property">name</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">fulId</Property>
+              <Property name="property">fulId</Property>
+              <Property name="trigger">isWuxi</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">regaddr</Property>
+              <Property name="property">regaddr</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">operaddr</Property>
+              <Property name="property">operaddr</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsBasArea</Property>
+              <Property name="property">tbsBasArea</Property>
+              <Property name="editable">false</Property>
+              <Property name="trigger">DropDownTbsBasArea</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">estdate</Property>
+              <Property name="property">estdate</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">puc</Property>
+              <Property name="name">puc</Property>
+              <Property name="labelWidth">120</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">legaler</Property>
+              <Property name="property">legaler</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">stockholder</Property>
+              <Property name="property">stockholder</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsBasEntproperty</Property>
+              <Property name="property">tbsBasEntproperty</Property>
+              <Property name="trigger">DropDownTbsBasEntproperty</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsBasEntscale</Property>
+              <Property name="property">tbsBasEntscale</Property>
+              <Property name="trigger">DropDownTbsBasEntscale</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsBasIndutype</Property>
+              <Property name="property">tbsBasIndutype</Property>
+              <Property name="trigger">DropDownTbsBasIndutype</Property>
+              <Property name="editable">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">contacts</Property>
+              <Property name="property">contacts</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">title</Property>
+              <Property name="property">title</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tel</Property>
+              <Property name="property">tel</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">employee</Property>
+              <Property name="property">employee</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="colSpan:3">
+              <Property name="name">mainbiz</Property>
+              <Property name="property">mainbiz</Property>
+              <Property name="editorWidth">578</Property>
+              <Property name="label">主营业      务概况</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">lyta</Property>
+              <Property name="property">lyta</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">lytl</Property>
+              <Property name="property">lytl</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">lytna</Property>
+              <Property name="property">lytna</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">rita</Property>
+              <Property name="property">rita</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">ritl</Property>
+              <Property name="property">ritl</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">ritna</Property>
+              <Property name="property">ritna</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">lymbi</Property>
+              <Property name="property">lymbi</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">lyntp</Property>
+              <Property name="property">lyntp</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">rimbi</Property>
+              <Property name="property">rimbi</Property>
+              <Property name="labelWidth">190</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">rintp</Property>
+              <Property name="property">rintp</Property>
+              <Property name="labelWidth">180</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">compsry</Property>
+              <Property name="property">compsry</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">VOcname</Property>
+              <Property name="name">VOcname</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="labelWidth">160</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">timestampInput</Property>
+              <Property name="name">timestampInput</Property>
+              <Property name="labelWidth">160</Property>
+              <Property name="readOnly">true</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">valid</Property>
+              <Property name="property">valid</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">keyinId</Property>
+              <Property name="property">keyinId</Property>
+              <Property name="labelWidth">220</Property>
+              <Property name="showHint">true</Property>
+              <Property name="visible">false</Property>
+              <Editor/>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+        <TabControl>
+          <ControlTab>
+            <Property name="caption">证件类型</Property>
+            <Container id="DialogTbsCustomerIdnum">
+              <DataPilot id="DialogDataPilot_1">
+                <Property name="dataSet">dataSetCustomer</Property>
+                <Property name="itemCodes">+,-,x</Property>
+                <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
+              </DataPilot>
+              <DataGrid id="DialogDataGridIdCardType_1">
+                <Property name="dataSet">dataSetCustomer</Property>
+                <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
+                <Property name="width">600</Property>
+                <RowNumColumn/>
+                <DataColumn name="tbsBasIdcardtype">
+                  <Property name="property">tbsBasIdcardtype</Property>
+                  <Property name="trigger">DropDownTbsBasIdcardtype</Property>
+                  <Property name="caption">证件类型</Property>
+                </DataColumn>
+                <DataColumn name="idnum">
+                  <Property name="property">idnum</Property>
+                  <Property name="caption">证件号码</Property>
+                  <Editor/>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">企业类型</Property>
+            <Container id="DialogTbsCustomerEnttype">
+              <DataPilot id="DialogDataPilot_2">
+                <Property name="dataSet">dataSetCustomer</Property>
+                <Property name="itemCodes">+,-,x</Property>
+                <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
+              </DataPilot>
+              <DataGrid id="DialogDataGridEntType_2">
+                <Property name="dataSet">dataSetCustomer</Property>
+                <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
+                <Property name="width">300</Property>
+                <RowNumColumn/>
+                <DataColumn name="tbsBasEnttype">
+                  <Property name="property">tbsBasEnttype</Property>
+                  <Property name="trigger">DropDownTbsBasEnttype</Property>
+                  <Property name="caption">企业类型</Property>
+                </DataColumn>
+              </DataGrid>
+            </Container>
+          </ControlTab>
+        </TabControl>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container id="ContainerImport">
+      <Import id="TbsBasIdcardtype" src="org.tbs.views.funs.Dropdown#TbsBasIdcardtype"/>
+      <Import id="TbsBasArea" src="org.tbs.views.funs.Dropdown#TbsBasArea"/>
+      <Import id="TbsBasEnttype" src="org.tbs.views.funs.Dropdown#TbsBasEnttype"/>
+      <Import id="TbsBasBiztype" src="org.tbs.views.funs.Dropdown#TbsBasBiztype"/>
+      <Import id="TbsBasEntproperty" src="org.tbs.views.funs.Dropdown#TbsBasEntproperty"/>
+      <Import id="TbsBasEntscale" src="org.tbs.views.funs.Dropdown#TbsBasEntscale"/>
+      <Import id="TbsBasIndutype" src="org.tbs.views.funs.Dropdown#TbsBasIndutype"/>
+      <AutoMappingDropDown id="DropDownValid"/>
+      <ListDropDown id="isWuxi">
+        <Property name="items">是,否</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+      </ListDropDown>
+    </Container>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsCustomerDao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetCustomer</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

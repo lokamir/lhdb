@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasArea" parent="global:dataTypeTbsBasArea">
+      <PropertyDef name="p1"/>
+      <Reference name="tbsCustomerSet"/>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasArea">
+      <Property name="dataType">[dataTypeTbsBasArea]</Property>
+      <Property name="dataProvider">tbsBasAreaDao#getAll</Property>
+    </DataSet>
+    <DataGrid>
+      <Property name="dataSet">dataSetTbsBasArea</Property>
+      <DataColumn name="name">
+        <Property name="property">name</Property>
+      </DataColumn>
+      <DataColumn name="valid">
+        <Property name="property">valid</Property>
+      </DataColumn>
+      <DataColumn name="p1">
+        <Property name="property">p1</Property>
+      </DataColumn>
+    </DataGrid>
+  </View>
+</ViewConfig>

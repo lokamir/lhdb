@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="projcreate">
+   <description>项目受理审批</description>
+   <start g="38,41,32,62" name="开始">
+      <description/>
+      <sequence-flow to="部门经理分配AB角"/>
+   </start>
+   <task g="131,46,166,50" allow-specify-assignee="true" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="Handler" name="部门经理分配AB角">
+      <description>${projSn}-项目受理-部门经理分配AB角</description>
+      <sequence-flow to="受理单修正" g="332,189:-37,-49" name="驳回"/>
+      <sequence-flow to="通知AB角已受理" g="-36,-16" name="通过"/>
+   </task>
+   <task g="409,164,135,50" allow-specify-assignee="true" task-type="Normal" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="ProcessPromoter" name="受理单修正">
+      <description>${projSn}-项目受理-受理修正</description>
+      <sequence-flow to="部门经理分配AB角" g="477,71:-25,39" name="确认修改"/>
+   </task>
+   <action g="132,292,162,50" handler-bean="actGnrtProjeaa" name="生成立项审批单">
+      <description>${projSn}-立项申请-生成立项申请单</description>
+      <sequence-flow to="A角确认" g="-5,-20" name="通过"/>
+   </action>
+   <task g="146,437,133,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="Handler" name="A角确认">
+      <description>${projSn}-立项申请-A角确认</description>
+      <sequence-flow to="B角确认" g="-13,-17" name="通过"/>
+      <sequence-flow to="删除立项审批单" g="-20,-15" name="驳回"/>
+   </task>
+   <action g="397,387,138,50" handler-bean="actDelProjeaa" name="删除立项审批单">
+      <description>${projSn}-立项申请-删除立项审批表</description>
+      <sequence-flow to="部门经理分配AB角" g="12,-22" name="确认修改"/>
+   </action>
+   <task g="141,763,145,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="Handler" name="业务总监审批">
+      <description>${projSn}-立项申请-业务总监审批</description>
+      <sequence-flow to="通知AB角已立项" g="-8,-23" name="通过"/>
+      <sequence-flow to="立项单修正" g="-63,-19" name="驳回"/>
+   </task>
+   <task g="137,542,149,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="Handler" name="B角确认">
+      <description>${projSn}-立项申请-B角确认</description>
+      <sequence-flow to="立项单修正" g="259,639:-10,-39" name="驳回"/>
+      <sequence-flow to="业务总监审批" g="-41,-9" name="通过"/>
+   </task>
+   <action g="142,872,144,50" handler-bean="actEaaDone" name="通知AB角已立项" label="通知AB角">
+      <description>${projSn}-立项申请-立项通过，通知AB角</description>
+      <sequence-flow to="结束"/>
+   </action>
+   <end g="198,966,32,62" terminate="true" name="结束"/>
+   <task g="414,768,129,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.creation.TbsProjDetails.d" assignment-type="Handler" name="立项单修正">
+      <description>${projSn}-立项申请-驳回修正</description>
+      <sequence-flow to="B角确认" g="474,566:-20,95" name="确认修改"/>
+   </task>
+   <action g="141,171,145,50" handler-bean="actInformRoleAB" name="通知AB角已受理" label="通知AB角">
+      <description>${projSn}-项目受理-通知AB角已被分配任务</description>
+      <sequence-flow to="生成立项审批单" g="-34,-16" name="通过"/>
+   </action>
+</uflo-process>

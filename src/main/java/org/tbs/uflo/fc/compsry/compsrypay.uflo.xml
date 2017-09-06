@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="compsrypay">
+   <description>风险项目管理-代偿请款</description>
+   <start g="40,47,32,62" name="开始" url="org.tbs.views.projs.compsry.DetailDialog2.d">
+      <sequence-flow to="A部门经理审批"/>
+   </start>
+   <task g="126,52,138,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="A部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="分支" g="-15,-22" name="通过"/>
+      <sequence-flow to="驳回修改" g="-27,-21" name="驳回"/>
+   </task>
+   <task g="248,141,154,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="风管部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="驳回" g="-45,-22" name="驳回"/>
+      <sequence-flow to="通过" g="-91,-34" name="通过"/>
+   </task>
+   <task g="478,141,154,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="财务部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="驳回" g="64,-30" name="驳回"/>
+      <sequence-flow to="通过" g="7,-12" name="通过"/>
+   </task>
+   <task g="354,455,166,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="分管总经理（风险）">
+      <description>${projName}</description>
+      <sequence-flow to="总经理审批" g="-17,-19" name="通过"/>
+      <sequence-flow to="驳回修改" g="23,-5" name="驳回"/>
+   </task>
+   <task g="122,456,147,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="总经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="驳回修改" g="-26,10" name="驳回"/>
+      <sequence-flow to="项目审批通过" g="6,-14" name="通过"/>
+   </task>
+   <action g="362,673,171,50" handler-bean="actCompsryPay1" name="付款完成通知A和B">
+      <sequence-flow to="A角补录代偿证明"/>
+   </action>
+   <task g="390,567,115,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="Handler" name="出纳付款">
+      <description>${projName}</description>
+      <sequence-flow to="付款完成通知A和B" g="9,-3" name="确认"/>
+   </task>
+   <task g="130,674,150,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="ProcessPromoter" name="A角补录代偿证明">
+      <description>${projName}</description>
+      <sequence-flow to="通知A和B代偿余额增加" g="11,-2" name="确认"/>
+   </task>
+   <action g="107,781,198,50" handler-bean="actCompsryPay2" name="通知A和B代偿余额增加">
+      <sequence-flow to="更新表单金额"/>
+   </action>
+   <fork g="430,47,32,62" name="分支">
+      <sequence-flow to="风管部门经理审批"/>
+      <sequence-flow to="财务部门经理审批"/>
+   </fork>
+   <join g="311,244,32,62" name="驳回" multiplicity="1">
+      <sequence-flow to="决策"/>
+   </join>
+   <join g="544,245,32,62" name="通过">
+      <sequence-flow to="决策"/>
+   </join>
+   <decision expression="${reject&gt;0?&quot;驳回&quot;:&quot;通过&quot;}" g="420,313,32,62" name="决策" decision-type="Expression">
+      <sequence-flow to="分管总经理（风险）" g="4,-12" name="通过"/>
+      <sequence-flow to="驳回修改" g="-10,-18" name="驳回"/>
+   </decision>
+   <end g="590,777,32,62" terminate="true" name="结束"/>
+   <task g="138,318,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.compsry.DetailDialog2.d" assignment-type="ProcessPromoter" name="驳回修改">
+      <description>${projName}</description>
+      <sequence-flow to="A部门经理审批" g="85,343;83,77:-50,-13" name="修改确认"/>
+   </task>
+   <action g="128,567,134,50" handler-bean="actCompsryPay3" name="项目审批通过">
+      <sequence-flow to="出纳付款"/>
+   </action>
+   <action g="380,782,138,50" handler-bean="actCompsryPay4" name="更新表单金额">
+      <sequence-flow to="结束"/>
+   </action>
+</uflo-process>

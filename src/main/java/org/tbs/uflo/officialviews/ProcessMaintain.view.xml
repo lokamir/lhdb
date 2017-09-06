@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeProcess">
+      <Property name="creationType">com.bstek.uflo.model.ProcessDefinition</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+      <PropertyDef name="key">
+        <Property name="dataType">String</Property>
+        <Property name="label">关键字</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="version">
+        <Property name="dataType">int</Property>
+        <Property name="label">版本</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="dataType">Date</Property>
+        <Property name="label">生效日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+        <Property name="name">effectDate</Property>
+      </PropertyDef>
+      <PropertyDef name="description">
+        <Property name="dataType">String</Property>
+        <Property name="label">描述</Property>
+      </PropertyDef>
+      <Reference>
+        <Property name="name">processInstances</Property>
+        <Property name="dataType">[dataTypeProcessInstance]</Property>
+        <Property name="dataProvider">uflo.processMaintain#loadTopProcessInstance</Property>
+        <Property name="pageSize">8</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference>
+        <Property name="name">historyProcessInstances</Property>
+        <Property name="dataType">[dataTypeHistoryProcessInstance]</Property>
+        <Property name="dataProvider">uflo.processMaintain#loadHistoryProcessInstance</Property>
+        <Property name="pageSize">10</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeProcessInstance">
+      <Property name="creationType">com.bstek.uflo.model.ProcessInstance</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="currentNode">
+        <Property name="dataType">String</Property>
+        <Property name="label">所在节点名称</Property>
+      </PropertyDef>
+      <PropertyDef name="promoter">
+        <Property name="dataType">String</Property>
+        <Property name="label">发起人</Property>
+      </PropertyDef>
+      <PropertyDef name="processId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <Reference>
+        <Property name="name">tasks</Property>
+        <Property name="dataType">[dataTypeTask]</Property>
+        <Property name="dataProvider">uflo.processMaintain#loadTasks</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference>
+        <Property name="name">children</Property>
+        <Property name="dataType">[SELF]</Property>
+        <Property name="dataProvider">uflo.processMaintain#loadProcessInstanceByParentId</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="cacheMode">noCache</Property>
+      </Reference>
+      <PropertyDef>
+        <Property name="name">root</Property>
+        <Property name="dataType">String</Property>
+        <Property name="label"> </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTask">
+      <Property name="creationType">com.bstek.uflo.model.task.Task</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+      <PropertyDef name="taskName">
+        <Property name="dataType">String</Property>
+        <Property name="label">任务名称</Property>
+      </PropertyDef>
+      <PropertyDef name="assignee">
+        <Property name="dataType">String</Property>
+        <Property name="label">当前处理人</Property>
+      </PropertyDef>
+      <PropertyDef name="owner">
+        <Property name="dataType">String</Property>
+        <Property name="label">所有者</Property>
+      </PropertyDef>
+      <PropertyDef name="processInstanceId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="prevTask">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="url">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="duedate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">过期日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="nodeName">
+        <Property name="dataType">String</Property>
+        <Property name="label">所在节点名</Property>
+      </PropertyDef>
+      <PropertyDef name="description">
+        <Property name="dataType">String</Property>
+        <Property name="label">描述</Property>
+      </PropertyDef>
+      <PropertyDef name="processId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="name">state</Property>
+        <Property name="label">状态</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="name">type</Property>
+        <Property name="label">任务类型</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeVariable">
+      <PropertyDef>
+        <Property name="name">key</Property>
+        <Property name="dataType">String</Property>
+        <Property name="label">变量名</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="name">value</Property>
+        <Property name="dataType">String</Property>
+        <Property name="label">变量值</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="dataType">String</Property>
+        <Property name="name">type</Property>
+        <Property name="label">类型</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">String</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">int</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">boolean</Property>
+              </Entity>
+            </Collection>
+          </Property>
+          <Property name="keyProperty">key</Property>
+          <Property name="valueProperty">key</Property>
+        </Property>
+        <Property name="defaultValue">String</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeParticipator">
+      <Property name="creationType">com.bstek.uflo.model.task.TaskParticipator</Property>
+      <PropertyDef name="user">
+        <Property name="dataType">String</Property>
+        <Property name="label">参与者</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeSequenceFlow">
+      <Property name="creationType">com.bstek.uflo.process.flow.SequenceFlowImpl</Property>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">连接名称</Property>
+      </PropertyDef>
+      <PropertyDef name="toNode">
+        <Property name="dataType">String</Property>
+        <Property name="label">连接的目标节点名</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeHistoryProcessInstance">
+      <Property name="creationType">com.bstek.uflo.model.HistoryProcessInstance</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+      <PropertyDef name="processId">
+        <Property name="dataType">long</Property>
+        <Property name="label">流程ID</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="processInstanceId">
+        <Property name="dataType">long</Property>
+        <Property name="label">流程实例ID</Property>
+      </PropertyDef>
+      <PropertyDef name="endDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">结束日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <Reference>
+        <Property name="name">historyTasks</Property>
+        <Property name="dataType">[dataTypeHistoryTask]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">uflo.processMaintain#loadHistoryTasks</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeHistoryTask">
+      <Property name="creationType">com.bstek.uflo.model.HistoryTask</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+        <Property name="label">ID</Property>
+      </PropertyDef>
+      <PropertyDef name="nodeName">
+        <Property name="dataType">String</Property>
+        <Property name="label">所在节点名</Property>
+      </PropertyDef>
+      <PropertyDef name="description">
+        <Property name="dataType">String</Property>
+        <Property name="label">描述</Property>
+      </PropertyDef>
+      <PropertyDef name="processId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="taskName">
+        <Property name="dataType">String</Property>
+        <Property name="label">任务名称</Property>
+      </PropertyDef>
+      <PropertyDef name="createDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">创建日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="endDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">完成日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="assignee">
+        <Property name="dataType">String</Property>
+        <Property name="label">领取人</Property>
+      </PropertyDef>
+      <PropertyDef name="historyProcessInstanceId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="processInstanceId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeJumpNode">
+      <Property name="creationType">com.bstek.uflo.command.impl.jump.JumpNode</Property>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">节点名称</Property>
+      </PropertyDef>
+      <PropertyDef name="isTask">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetProcess">
+      <Property name="dataType">[dataTypeProcess]</Property>
+      <Property name="dataProvider">uflo.processMaintain#loadProcess</Property>
+      <Property name="pageSize">20</Property>
+    </DataSet>
+    <DataSet id="dataSetVariable">
+      <Property name="dataType">[dataTypeVariable]</Property>
+    </DataSet>
+    <Container>
+      <SplitPanel>
+        <Property name="position">40%</Property>
+        <MainControl>
+          <Container>
+            <TabControl>
+              <ControlTab>
+                <Property name="caption">运行中的流程实例</Property>
+                <Container>
+                  <Container layoutConstraint="center">
+                    <Property name="height">50%</Property>
+                    <ToolBar>
+                      <DataPilot>
+                        <Property name="dataSet">dataSetProcess</Property>
+                        <Property name="dataPath">#.processInstances</Property>
+                        <Property name="itemCodes">pages</Property>
+                      </DataPilot>
+                      <ToolBarButton>
+                        <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var dataTreeGrid = view.id(&quot;dataTreeGrid&quot;);&#xD;
+//var processInstanceId=ds.getData(&quot;#.#processInstances.id&quot;);&#xD;
+var processInstanceId=dataTreeGrid.getCurrentItem(&quot;id&quot;).get(&quot;data&quot;).getData().id;&#xD;
+if(processInstanceId){&#xD;
+	dorado.MessageBox.confirm(&quot;真的要删除当前流程实例吗？&quot;,function(){&#xD;
+		var action=view.id(&quot;ajaxActionDeleteProcessInstance&quot;);&#xD;
+		action.set(&quot;parameter&quot;,processInstanceId);&#xD;
+		action.execute(function(){&#xD;
+			ds.getData(&quot;#&quot;).reset(&quot;processInstances&quot;);&#xD;
+		});&#xD;
+	});&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请先选择要删除的流程实例！&quot;);&#xD;
+}&#xD;
+</ClientEvent>
+                        <Property name="caption">删除实例</Property>
+                        <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                      </ToolBarButton>
+                    </ToolBar>
+                    <DataTreeGrid id="dataTreeGrid">
+                      <Property name="dataSet">dataSetProcess</Property>
+                      <Property name="dataPath">#.processInstances</Property>
+                      <Property name="dataType">dataTypeProcessInstance</Property>
+                      <Property name="readOnly">true</Property>
+                      <Property name="treeColumn">root</Property>
+                      <Property name="currentNodeDataPath">CURRENT_PROCESS_INSTANCE</Property>
+                      <BindingConfigs>
+                        <BindingConfig>
+                          <Property name="childrenProperty">children</Property>
+                          <Property name="name">id</Property>
+                          <Property name="recursive">true</Property>
+                          <Property name="expandLevel">3</Property>
+                        </BindingConfig>
+                      </BindingConfigs>
+                      <Columns>
+                        <DataColumn>
+                          <Property name="property">root</Property>
+                          <Property name="name">root</Property>
+                          <Property name="width">20</Property>
+                          <Editor/>
+                        </DataColumn>
+                        <DataColumn>
+                          <Property name="name">id</Property>
+                          <Property name="property">id</Property>
+                          <Property name="width">60</Property>
+                          <Editor/>
+                        </DataColumn>
+                        <DataColumn>
+                          <Property name="name">createDate</Property>
+                          <Property name="property">createDate</Property>
+                          <Property name="width">125</Property>
+                          <Editor/>
+                        </DataColumn>
+                        <DataColumn>
+                          <Property name="name">currentNode</Property>
+                          <Property name="property">currentNode</Property>
+                          <Property name="width">150</Property>
+                          <Editor/>
+                        </DataColumn>
+                        <DataColumn>
+                          <Property name="name">promoter</Property>
+                          <Property name="property">promoter</Property>
+                          <Property name="width">150</Property>
+                          <Editor/>
+                        </DataColumn>
+                      </Columns>
+                    </DataTreeGrid>
+                    <AjaxAction id="ajaxActionDeleteProcessInstance">
+                      <Property name="service">uflo.processMaintain#deleteProcessInstance</Property>
+                      <Property name="successMessage">删除操作成功</Property>
+                    </AjaxAction>
+                  </Container>
+                  <Container>
+                    <UfloProcessDiagram id="ufloProcessDiagramDisplayByTask">
+                      <Property name="requestParameterType">taskId</Property>
+                    </UfloProcessDiagram>
+                    <ToolBar>
+                      <MenuButton>
+                        <ClientEvent name="onReady">var menu=self.get(&quot;menu&quot;);&#xD;
+menu.set(&quot;onShow&quot;,function(self,arg){&#xD;
+	var claim=view.tag(&quot;claim&quot;);&#xD;
+	var release=view.tag(&quot;release&quot;);&#xD;
+	var start=view.tag(&quot;start&quot;);&#xD;
+	var complete=view.tag(&quot;complete&quot;);&#xD;
+	var addcountersign=view.tag(&quot;addcountersign&quot;);&#xD;
+	var appointassignee=view.tag(&quot;appointassignee&quot;);&#xD;
+	var changeassignee=view.tag(&quot;changeassignee&quot;);&#xD;
+	var data=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks&quot;);&#xD;
+	if(data){&#xD;
+		var state=data.get(&quot;state&quot;);&#xD;
+		var type=data.get(&quot;type&quot;);&#xD;
+		var assignee=data.get(&quot;assignee&quot;);&#xD;
+		if(state==&quot;Created&quot; || state==&quot;Reserved&quot;){&#xD;
+			start.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			start.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+		if(type==&quot;Participative&quot; &amp;&amp; assignee &amp;&amp; state!=&quot;InProgress&quot;){&#xD;
+			release.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			release.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+		if(state==&quot;Ready&quot;){&#xD;
+			claim.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			claim.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+		if(state==&quot;InProgress&quot;){&#xD;
+			complete.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			complete.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+		if(type==&quot;Countersign&quot;){&#xD;
+			addcountersign.set(&quot;disabled&quot;,false);&#xD;
+		}else{&#xD;
+			addcountersign.set(&quot;disabled&quot;,true);&#xD;
+		}&#xD;
+		if(state==&quot;InProgress&quot;){&#xD;
+			changeassignee.set(&quot;disabled&quot;,true);&#xD;
+		}else{&#xD;
+			changeassignee.set(&quot;disabled&quot;,false);&#xD;
+		}&#xD;
+		appointassignee.set(&quot;disabled&quot;,false);&#xD;
+	}else{&#xD;
+		claim.set(&quot;disabled&quot;,true);&#xD;
+		release.set(&quot;disabled&quot;,true);&#xD;
+		start.set(&quot;disabled&quot;,true);&#xD;
+		complete.set(&quot;disabled&quot;,true);&#xD;
+		appointassignee.set(&quot;disabled&quot;,true);&#xD;
+		changeassignee.set(&quot;disabled&quot;,true);&#xD;
+		addcountersign.set(&quot;disabled&quot;,true);&#xD;
+	}&#xD;
+});&#xD;
+</ClientEvent>
+                        <Property name="caption">任务操作</Property>
+                        <Property name="icon">url(skin>common/icons.gif) -100px -120px</Property>
+                        <MenuItem>
+                          <ClientEvent name="onClick">view.id(&quot;dialogParticipator&quot;).show();</ClientEvent>
+                          <Property name="caption">领取任务</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -200px -100px</Property>
+                          <Property name="tags">claim</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var action=view.id(&quot;ajaxActionReleaseTask&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;真的要释放当前领取的任务吗？&quot;,function(){&#xD;
+	var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+	action.set(&quot;parameter&quot;,taskId);&#xD;
+	action.execute(function(){&#xD;
+		view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">释放任务</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -220px -100px</Property>
+                          <Property name="tags">release</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var action=view.id(&quot;ajaxActionStartTask&quot;);&#xD;
+dorado.MessageBox.confirm(&quot;真的要开始当前任务吗？&quot;,function(){&#xD;
+	var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+	action.set(&quot;parameter&quot;,taskId);&#xD;
+	action.execute(function(){&#xD;
+		view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">开始任务</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -180px -280px</Property>
+                          <Property name="tags">start</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+view.id(&quot;dialogCompleteTask&quot;).show();</ClientEvent>
+                          <Property name="caption">完成任务</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -20px 0px</Property>
+                          <Property name="tags">complete</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选择一个任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var taskType=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.type&quot;);&#xD;
+if(taskType!=&quot;Countersign&quot;){&#xD;
+	dorado.MessageBox.alert(&quot;当前任务不是一个会签类型的任务，不能进行此操作。&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+dorado.MessageBox.prompt(&quot;请输入加签处理人&quot;,function(username){&#xD;
+	var action=view.id(&quot;ajaxActionAddCountersign&quot;);&#xD;
+	action.set(&quot;parameter&quot;,{taskId:taskId,username:username});&#xD;
+	action.execute(function(){&#xD;
+		view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">添加会签</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -240px -100px</Property>
+                          <Property name="tags">addcountersign</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+view.id(&quot;dialogAppoint&quot;).show();</ClientEvent>
+                          <Property name="caption">指定下一任务节点处理人</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -100px</Property>
+                          <Property name="tags">appointassignee</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var task=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks&quot;);&#xD;
+if(!task){&#xD;
+	dorado.MessageBox.alert(&quot;请先选择一个任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var taskId=task.get(&quot;id&quot;);&#xD;
+var state=task.get(&quot;state&quot;);&#xD;
+if(state==&quot;InProgress&quot;){&#xD;
+	dorado.MessageBox.alert(&quot;当前任务已开始，不能进行此操作。&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+dorado.MessageBox.prompt(&quot;请输入新的任务处理人&quot;,function(username){&#xD;
+	var action=view.id(&quot;ajaxActionChangeTaskAssignee&quot;);&#xD;
+	action.set(&quot;parameter&quot;,{taskId:taskId,username:username});&#xD;
+	action.execute(function(){&#xD;
+		view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">更改任务处理人</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -160px -100px</Property>
+                          <Property name="tags">changeassignee</Property>
+                        </MenuItem>
+                      </MenuButton>
+                      <MenuButton>
+                        <ClientEvent name="onReady">var menu=self.get(&quot;menu&quot;);&#xD;
+menu.set(&quot;onShow&quot;,function(self,arg){&#xD;
+	var rollback=view.tag(&quot;rollback&quot;);&#xD;
+	var forward=view.tag(&quot;forward&quot;);&#xD;
+	var withdraw=view.tag(&quot;withdraw&quot;);&#xD;
+	var data=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks&quot;);&#xD;
+	if(data){&#xD;
+		rollback.set(&quot;disabled&quot;,false);&#xD;
+		forward.set(&quot;disabled&quot;,false);&#xD;
+		withdraw.set(&quot;disabled&quot;,false);&#xD;
+	}else{&#xD;
+		rollback.set(&quot;disabled&quot;,true);&#xD;
+		forward.set(&quot;disabled&quot;,true);&#xD;
+		withdraw.set(&quot;disabled&quot;,true);&#xD;
+	}&#xD;
+});&#xD;
+</ClientEvent>
+                        <Property name="caption">流程跳转</Property>
+                        <Property name="icon">url(skin>common/icons.gif) -300px -240px</Property>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+view.id(&quot;dialogRollback&quot;).show();</ClientEvent>
+                          <Property name="caption">回退</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -220px -240px</Property>
+                          <Property name="tags">rollback</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+dorado.MessageBox.confirm(&quot;真的要撤消当前任务回到上一任务节点吗？&quot;,function(){&#xD;
+	var action=view.id(&quot;ajaxActionWithdraw&quot;);&#xD;
+	action.set(&quot;parameter&quot;,{taskId:id});&#xD;
+	action.execute();&#xD;
+});</ClientEvent>
+                          <Property name="caption">撤回</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -160px -240px</Property>
+                          <Property name="tags">withdraw</Property>
+                        </MenuItem>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+view.id(&quot;dialogForward&quot;).show();</ClientEvent>
+                          <Property name="caption">跳转</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -200px -240px</Property>
+                          <Property name="tags">forward</Property>
+                        </MenuItem>
+                      </MenuButton>
+                      <MenuButton>
+                        <ClientEvent name="onReady">var menu=self.get(&quot;menu&quot;);&#xD;
+menu.set(&quot;onShow&quot;,function(self,arg){&#xD;
+	var diagram=view.tag(&quot;diagram&quot;);&#xD;
+	var data=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks&quot;);&#xD;
+	if(data){&#xD;
+		diagram.set(&quot;disabled&quot;,false);&#xD;
+	}else{&#xD;
+		diagram.set(&quot;disabled&quot;,true);&#xD;
+	}&#xD;
+});&#xD;
+</ClientEvent>
+                        <Property name="caption">其它操作</Property>
+                        <Property name="icon">url(skin>common/icons.gif) -60px -20px</Property>
+                        <MenuItem>
+                          <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中一条任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var diagram=view.id(&quot;ufloProcessDiagramDisplayByTask&quot;);&#xD;
+diagram.set(&quot;requestParameterValue&quot;,id)&#xD;
+diagram.show();</ClientEvent>
+                          <Property name="caption">查看流程图</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -300px -20px</Property>
+                          <Property name="tags">diagram</Property>
+                        </MenuItem>
+                      </MenuButton>
+                    </ToolBar>
+                    <DataGrid>
+                      <ClientEvent name="onGetBindingDataType">arg.dataType = view.getDataType(&quot;dataTypeTask&quot;);
+arg.processDefault = false;</ClientEvent>
+                      <Property name="dataSet">dataSetProcess</Property>
+                      <Property name="dataPath">!CURRENT_PROCESS_INSTANCE.tasks</Property>
+                      <Property name="readOnly">true</Property>
+                      <Property name="stretchColumnsMode">off</Property>
+                      <DataColumn name="id">
+                        <Property name="property">id</Property>
+                        <Property name="width">40</Property>
+                      </DataColumn>
+                      <DataColumn name="taskName">
+                        <Property name="property">taskName</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="description">
+                        <Property name="property">description</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="owner">
+                        <Property name="property">owner</Property>
+                        <Property name="width">100</Property>
+                      </DataColumn>
+                      <DataColumn>
+                        <Property name="property">assignee</Property>
+                        <Property name="name">assignee</Property>
+                        <Property name="width">100</Property>
+                        <Editor/>
+                      </DataColumn>
+                      <DataColumn>
+                        <Property name="property">state</Property>
+                        <Property name="name">state</Property>
+                        <Property name="width">60</Property>
+                      </DataColumn>
+                      <DataColumn name="createDate">
+                        <Property name="property">createDate</Property>
+                        <Property name="width">120</Property>
+                      </DataColumn>
+                      <DataColumn name="duedate">
+                        <Property name="property">duedate</Property>
+                        <Property name="width">120</Property>
+                      </DataColumn>
+                      <DataColumn name="nodeName">
+                        <Property name="property">nodeName</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn>
+                        <Property name="property">type</Property>
+                        <Property name="name">type</Property>
+                        <Property name="width">60</Property>
+                      </DataColumn>
+                    </DataGrid>
+                    <Dialog id="dialogCompleteTask">
+                      <ClientEvent name="onShow">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+var ds=view.id(&quot;dataSetSequenceFlow&quot;);&#xD;
+ds.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+ds.flushAsync();&#xD;
+view.id(&quot;dataSetVariable&quot;).clear();&#xD;
+</ClientEvent>
+                      <Property name="modal">true</Property>
+                      <Property name="width">400</Property>
+                      <Property name="height">400</Property>
+                      <Property name="center">true</Property>
+                      <Property name="caption">完成任务</Property>
+                      <Buttons>
+                        <Button>
+                          <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var taskId=ds.getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要完成的任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var action=view.id(&quot;updateActionCompleteTask&quot;);&#xD;
+var name=view.id(&quot;dataSetSequenceFlow&quot;).getData(&quot;#.name&quot;);&#xD;
+if(name){&#xD;
+	action.set(&quot;parameter&quot;,{taskId:taskId,sequenceFlowName:name});&#xD;
+}else{&#xD;
+	action.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+}&#xD;
+&#xD;
+dorado.MessageBox.confirm(&quot;真的要完成选中的任务吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		ds.getData(&quot;#&quot;).reset(&quot;processInstances&quot;);&#xD;
+		view.id(&quot;dialogCompleteTask&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">确定</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                        </Button>
+                        <Button>
+                          <ClientEvent name="onClick">view.id(&quot;dialogCompleteTask&quot;).hide();</ClientEvent>
+                          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                          <Property name="caption">取消</Property>
+                        </Button>
+                      </Buttons>
+                      <Children>
+                        <ToolBar>
+                          <DataPilot>
+                            <Property name="dataSet">dataSetVariable</Property>
+                            <Property name="itemCodes">+,-</Property>
+                          </DataPilot>
+                        </ToolBar>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetVariable</Property>
+                          <Property name="height">160</Property>
+                          <DataColumn>
+                            <Property name="property">key</Property>
+                            <Property name="name">key</Property>
+                          </DataColumn>
+                          <DataColumn>
+                            <Property name="property">value</Property>
+                            <Property name="name">value</Property>
+                          </DataColumn>
+                          <DataColumn>
+                            <Property name="property">type</Property>
+                            <Property name="name">type</Property>
+                            <Property name="width">90</Property>
+                          </DataColumn>
+                        </DataGrid>
+                        <DataSet id="dataSetSequenceFlow">
+                          <Property name="dataType">[dataTypeSequenceFlow]</Property>
+                          <Property name="dataProvider">uflo.processMaintain#loadSequenceFlows</Property>
+                          <Property name="loadMode">manual</Property>
+                        </DataSet>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetSequenceFlow</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="name">
+                            <Property name="property">name</Property>
+                          </DataColumn>
+                          <DataColumn name="toNode">
+                            <Property name="property">toNode</Property>
+                          </DataColumn>
+                        </DataGrid>
+                        <UpdateAction id="updateActionCompleteTask">
+                          <Property name="dataResolver">uflo.processMaintain#completeTask</Property>
+                          <Property name="successMessage">完成任务操作成功</Property>
+                          <Property name="alwaysExecute">true</Property>
+                          <UpdateItem>
+                            <Property name="dataSet">dataSetVariable</Property>
+                            <Property name="dataPath">[#visible]</Property>
+                          </UpdateItem>
+                        </UpdateAction>
+                      </Children>
+                      <Tools/>
+                    </Dialog>
+                    <AjaxAction id="ajaxActionStartTask">
+                      <Property name="service">uflo.processMaintain#startTask</Property>
+                      <Property name="successMessage">操作成功</Property>
+                    </AjaxAction>
+                    <Dialog id="dialogParticipator">
+                      <ClientEvent name="onShow">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+var ds=view.id(&quot;dataSetParticipator&quot;);&#xD;
+ds.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+ds.flushAsync();</ClientEvent>
+                      <Property name="center">true</Property>
+                      <Property name="width">300</Property>
+                      <Property name="height">260</Property>
+                      <Buttons>
+                        <Button>
+                          <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var taskId=ds.getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要完成的任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var user=view.id(&quot;dataSetParticipator&quot;).getData(&quot;#.user&quot;);&#xD;
+if(!user){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要领取当前任务的参与者&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var action=view.id(&quot;ajaxActionClaimTask&quot;);&#xD;
+action.set(&quot;parameter&quot;,{taskId:taskId,username:user});&#xD;
+dorado.MessageBox.confirm(&quot;真的要让&quot;+user+&quot;领取当前任务吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		ds.getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+		view.id(&quot;dialogParticipator&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">确定</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                        </Button>
+                        <Button>
+                          <ClientEvent name="onClick">view.id(&quot;dialogParticipator&quot;).hide();</ClientEvent>
+                          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                          <Property name="caption">取消</Property>
+                        </Button>
+                      </Buttons>
+                      <Children>
+                        <DataSet id="dataSetParticipator">
+                          <Property name="dataProvider">uflo.processMaintain#loadTaskParticipators</Property>
+                          <Property name="dataType">[dataTypeParticipator]</Property>
+                          <Property name="loadMode">manual</Property>
+                        </DataSet>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetParticipator</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="user">
+                            <Property name="property">user</Property>
+                          </DataColumn>
+                        </DataGrid>
+                        <AjaxAction id="ajaxActionClaimTask">
+                          <Property name="service">uflo.processMaintain#claimTask</Property>
+                          <Property name="successMessage">操作成功</Property>
+                        </AjaxAction>
+                      </Children>
+                      <Tools/>
+                    </Dialog>
+                    <Dialog id="dialogRollback">
+                      <ClientEvent name="onShow">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+var ds=view.id(&quot;dataSetRollback&quot;);&#xD;
+ds.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+ds.flushAsync();</ClientEvent>
+                      <Property name="center">true</Property>
+                      <Property name="width">300</Property>
+                      <Property name="height">260</Property>
+                      <Buttons>
+                        <Button>
+                          <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var taskId=ds.getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要完成的任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var nodeName=view.id(&quot;dataSetRollback&quot;).getData(&quot;#.name&quot;);&#xD;
+if(!nodeName){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要回退到的目标节点名称&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var action=view.id(&quot;ajaxActionRollback&quot;);&#xD;
+action.set(&quot;parameter&quot;,{taskId:taskId,nodeName:nodeName});&#xD;
+dorado.MessageBox.confirm(&quot;真的要回退到&quot;+nodeName+&quot;节点吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		ds.getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+		view.id(&quot;dialogRollback&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">确定</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                        </Button>
+                        <Button>
+                          <ClientEvent name="onClick">view.id(&quot;dialogRollback&quot;).hide();</ClientEvent>
+                          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                          <Property name="caption">取消</Property>
+                        </Button>
+                      </Buttons>
+                      <Children>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetRollback</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="name">
+                            <Property name="property">name</Property>
+                          </DataColumn>
+                        </DataGrid>
+                        <AjaxAction id="ajaxActionRollback">
+                          <Property name="service">uflo.processMaintain#rollbackTask</Property>
+                          <Property name="successMessage">操作成功</Property>
+                        </AjaxAction>
+                        <DataSet id="dataSetRollback">
+                          <Property name="dataProvider">uflo.processMaintain#loadAvliableRollbackTasks</Property>
+                          <Property name="dataType">[dataTypeJumpNode]</Property>
+                          <Property name="loadMode">manual</Property>
+                        </DataSet>
+                      </Children>
+                      <Tools/>
+                    </Dialog>
+                    <AjaxAction id="ajaxActionWithdraw">
+                      <ClientEvent name="onSuccess">var info=&quot;操作成功&quot;;&#xD;
+if(arg.result){&#xD;
+	info=arg.result;&#xD;
+}else{&#xD;
+	var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+	ds.getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+}&#xD;
+dorado.MessageBox.alert(info);</ClientEvent>
+                      <Property name="service">uflo.processMaintain#withdrawTask</Property>
+                    </AjaxAction>
+                    <Dialog id="dialogForward">
+                      <ClientEvent name="onShow">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+var ds=view.id(&quot;dataSetForward&quot;);&#xD;
+ds.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+ds.flushAsync();</ClientEvent>
+                      <Property name="center">true</Property>
+                      <Property name="width">300</Property>
+                      <Property name="height">260</Property>
+                      <Buttons>
+                        <Button>
+                          <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var taskId=ds.getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要完成的任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var nodeName=view.get(&quot;#dataSetForward&quot;).getData(&quot;#.name&quot;);&#xD;
+if(!nodeName){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要跳转到的目标节点名称&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var action=view.id(&quot;ajaxActionForward&quot;);&#xD;
+action.set(&quot;parameter&quot;,{taskId:taskId,nodeName:nodeName});&#xD;
+dorado.MessageBox.confirm(&quot;真的要跳转到&quot;+nodeName+&quot;节点吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		ds.getData(&quot;!CURRENT_PROCESS_INSTANCE&quot;).reset(&quot;tasks&quot;);&#xD;
+		view.id(&quot;dialogForward&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">确定</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                        </Button>
+                        <Button>
+                          <ClientEvent name="onClick">view.id(&quot;dialogForward&quot;).hide();</ClientEvent>
+                          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                          <Property name="caption">取消</Property>
+                        </Button>
+                      </Buttons>
+                      <Children>
+                        <DataSet id="dataSetForward">
+                          <Property name="dataProvider">uflo.processMaintain#loadAvliableForwardTasks</Property>
+                          <Property name="dataType">[dataTypeJumpNode]</Property>
+                          <Property name="loadMode">manual</Property>
+                        </DataSet>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetForward</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="name">
+                            <Property name="property">name</Property>
+                          </DataColumn>
+                        </DataGrid>
+                        <AjaxAction id="ajaxActionForward">
+                          <Property name="service">uflo.processMaintain#forwardTask</Property>
+                          <Property name="successMessage">操作成功</Property>
+                        </AjaxAction>
+                      </Children>
+                      <Tools/>
+                    </Dialog>
+                    <AjaxAction id="ajaxActionAddCountersign">
+                      <Property name="service">uflo.processMaintain#addCountersign</Property>
+                      <Property name="successMessage">操作成功</Property>
+                    </AjaxAction>
+                    <Dialog id="dialogAppoint">
+                      <ClientEvent name="onShow">var taskId=view.id(&quot;dataSetProcess&quot;).getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+var ds=view.id(&quot;dataSetAppoint&quot;);&#xD;
+ds.set(&quot;parameter&quot;,{taskId:taskId});&#xD;
+ds.flushAsync();</ClientEvent>
+                      <Property name="center">true</Property>
+                      <Property name="width">300</Property>
+                      <Property name="height">260</Property>
+                      <Buttons>
+                        <Button>
+                          <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var taskId=ds.getData(&quot;!CURRENT_PROCESS_INSTANCE.#tasks.id&quot;);&#xD;
+if(!taskId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要完成的任务&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var nodeName=view.get(&quot;#dataSetAppoint&quot;).getData(&quot;#.name&quot;);&#xD;
+if(!nodeName){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要指定任务处理人的目标任务节点名称&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+dorado.MessageBox.prompt(&quot;请输入指定的任务处理人&quot;,function(username){&#xD;
+	var action=view.id(&quot;ajaxActionAppoint&quot;);&#xD;
+	action.set(&quot;parameter&quot;,{taskId:taskId,taskNodeName:nodeName,assignee:username});&#xD;
+	action.execute(function(){&#xD;
+		view.id(&quot;dialogAppoint&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                          <Property name="caption">确定</Property>
+                          <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                        </Button>
+                        <Button>
+                          <ClientEvent name="onClick">view.id(&quot;dialogAppoint&quot;).hide();</ClientEvent>
+                          <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                          <Property name="caption">取消</Property>
+                        </Button>
+                      </Buttons>
+                      <Children>
+                        <DataSet id="dataSetAppoint">
+                          <Property name="dataType">[Map]</Property>
+                          <Property name="dataProvider">uflo.processMaintain#loadAvliableAppointAssigneeTaskNodes</Property>
+                          <Property name="loadMode">manual</Property>
+                        </DataSet>
+                        <AjaxAction id="ajaxActionAppoint">
+                          <Property name="service">uflo.processMaintain#appointTaskNodeAssignee</Property>
+                          <Property name="successMessage">操作成功</Property>
+                        </AjaxAction>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetAppoint</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="name">
+                            <Property name="property">name</Property>
+                            <Property name="caption">任务节点名称</Property>
+                          </DataColumn>
+                        </DataGrid>
+                      </Children>
+                      <Tools/>
+                    </Dialog>
+                    <AjaxAction id="ajaxActionReleaseTask">
+                      <Property name="service">uflo.processMaintain#releaseTask</Property>
+                      <Property name="successMessage">操作成功</Property>
+                    </AjaxAction>
+                    <AjaxAction id="ajaxActionChangeTaskAssignee">
+                      <Property name="service">uflo.processMaintain#changeTaskAssignee</Property>
+                      <Property name="successMessage">操作成功</Property>
+                    </AjaxAction>
+                  </Container>
+                </Container>
+              </ControlTab>
+              <ControlTab>
+                <Property name="caption">历史流程实例</Property>
+                <Container>
+                  <Container>
+                    <Property name="height">50%</Property>
+                    <ToolBar>
+                      <DataPilot>
+                        <Property name="itemCodes">pages</Property>
+                        <Property name="dataSet">dataSetProcess</Property>
+                        <Property name="dataPath">#.historyProcessInstances</Property>
+                      </DataPilot>
+                    </ToolBar>
+                    <DataGrid>
+                      <Property name="dataSet">dataSetProcess</Property>
+                      <Property name="dataPath">#.historyProcessInstances</Property>
+                      <Property name="readOnly">true</Property>
+                      <DataColumn name="id">
+                        <Property name="property">id</Property>
+                        <Property name="width">60</Property>
+                      </DataColumn>
+                      <DataColumn name="processId">
+                        <Property name="property">processId</Property>
+                        <Property name="width">100</Property>
+                      </DataColumn>
+                      <DataColumn name="createDate">
+                        <Property name="property">createDate</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="processInstanceId">
+                        <Property name="property">processInstanceId</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                      <DataColumn name="endDate">
+                        <Property name="property">endDate</Property>
+                        <Property name="width">150</Property>
+                      </DataColumn>
+                    </DataGrid>
+                  </Container>
+                  <Panel>
+                    <Property name="caption">历史任务</Property>
+                    <Buttons/>
+                    <Children>
+                      <Container>
+                        <DataGrid>
+                          <Property name="dataSet">dataSetProcess</Property>
+                          <Property name="dataPath">#.#historyProcessInstances.historyTasks</Property>
+                          <Property name="readOnly">true</Property>
+                          <DataColumn name="id">
+                            <Property name="property">id</Property>
+                            <Property name="width">60</Property>
+                          </DataColumn>
+                          <DataColumn name="nodeName">
+                            <Property name="property">nodeName</Property>
+                            <Property name="width">100</Property>
+                          </DataColumn>
+                          <DataColumn name="description">
+                            <Property name="property">description</Property>
+                            <Property name="width">150</Property>
+                          </DataColumn>
+                          <DataColumn name="taskName">
+                            <Property name="property">taskName</Property>
+                            <Property name="width">150</Property>
+                          </DataColumn>
+                          <DataColumn name="createDate">
+                            <Property name="property">createDate</Property>
+                            <Property name="width">150</Property>
+                          </DataColumn>
+                          <DataColumn name="endDate">
+                            <Property name="property">endDate</Property>
+                            <Property name="width">150</Property>
+                          </DataColumn>
+                          <DataColumn name="assignee">
+                            <Property name="property">assignee</Property>
+                            <Property name="width">150</Property>
+                          </DataColumn>
+                        </DataGrid>
+                      </Container>
+                    </Children>
+                    <Tools/>
+                  </Panel>
+                </Container>
+              </ControlTab>
+            </TabControl>
+          </Container>
+        </MainControl>
+        <SideControl>
+          <Container>
+            <UfloProcessDiagram id="ufloProcessDiagramDisplay"/>
+            <ToolBar>
+              <DataPilot>
+                <Property name="dataSet">dataSetProcess</Property>
+                <Property name="itemCodes">pages</Property>
+              </DataPilot>
+              <ToolBarButton>
+                <ClientEvent name="onClick">if(view.id(&quot;dataSetProcess&quot;).getData(&quot;#&quot;)){&#xD;
+	view.id(&quot;dialogNewProcessInstance&quot;).show();&#xD;
+}else{&#xD;
+	dorado.MessageBox.alert(&quot;请先选中流程模版&quot;);&#xD;
+}</ClientEvent>
+                <Property name="caption">创建新实例</Property>
+                <Property name="icon">url(skin>common/icons.gif) -300px -220px</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var data=ds.getData(&quot;#&quot;);&#xD;
+if(!data){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中要删除的流程模版!&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+dorado.MessageBox.confirm(&quot;真的要删除当前流程模版？&quot;,function(){&#xD;
+	var action=view.id(&quot;ajaxActionDeleteProcess&quot;);&#xD;
+	action.set(&quot;parameter&quot;,data.get(&quot;id&quot;));&#xD;
+	action.execute(function(){&#xD;
+		ds.flushAsync();&#xD;
+	});&#xD;
+});</ClientEvent>
+                <Property name="caption">删除流程</Property>
+                <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">view.id(&quot;dialogDeploy&quot;).show();</ClientEvent>
+                <Property name="caption">部署新流程</Property>
+                <Property name="icon">url(skin>common/icons.gif) -120px -240px</Property>
+              </ToolBarButton>
+              <ToolBarButton>
+                <ClientEvent name="onClick">var id=view.id(&quot;dataSetProcess&quot;).getData(&quot;#.id&quot;);&#xD;
+if(!id){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中流程模版&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var diagram=view.id(&quot;ufloProcessDiagramDisplay&quot;);&#xD;
+diagram.set(&quot;requestParameterValue&quot;,id)&#xD;
+diagram.show();</ClientEvent>
+                <Property name="caption">流程图</Property>
+                <Property name="icon">url(skin>common/icons.gif) -300px -20px</Property>
+              </ToolBarButton>
+            </ToolBar>
+            <DataGrid>
+              <Property name="dataSet">dataSetProcess</Property>
+              <Property name="stretchColumnsMode">lastColumn</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="showFilterBar">true</Property>
+              <Property name="filterMode">serverSide</Property>
+              <RowNumColumn/>
+              <DataColumn name="description">
+                <Property name="property">description</Property>
+                <Property name="filterable">false</Property>
+                <Property name="width">200</Property>
+              </DataColumn>
+              <DataColumn name="id">
+                <Property name="property">id</Property>
+                <Property name="width">60</Property>
+                <Property name="filterable">true</Property>
+              </DataColumn>
+              <DataColumn name="key">
+                <Property name="property">key</Property>
+                <Property name="width">160</Property>
+                <Property name="filterable">true</Property>
+              </DataColumn>
+              <DataColumn name="name">
+                <Property name="property">name</Property>
+                <Property name="width">150</Property>
+                <Property name="filterable">true</Property>
+              </DataColumn>
+              <DataColumn name="createDate">
+                <Property name="property">createDate</Property>
+                <Property name="width">125</Property>
+                <Property name="filterable">false</Property>
+              </DataColumn>
+              <DataColumn>
+                <Property name="property">effectDate</Property>
+                <Property name="width">125</Property>
+                <Property name="name">effectDate</Property>
+                <Property name="filterable">false</Property>
+              </DataColumn>
+              <DataColumn name="version">
+                <Property name="property">version</Property>
+                <Property name="width">40</Property>
+                <Property name="filterable">false</Property>
+              </DataColumn>
+            </DataGrid>
+            <Dialog id="dialogDeploy">
+              <Property name="center">true</Property>
+              <Property name="width">350</Property>
+              <Property name="height">160</Property>
+              <Property name="modal">true</Property>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">var deployProcessForm=$(&quot;#deployProcessForm&quot;);&#xD;
+deployProcessForm.submit();</ClientEvent>
+                  <Property name="caption">确定</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                </Button>
+                <Button>
+                  <ClientEvent name="onClick">view.id(&quot;dialogDeploy&quot;).hide();</ClientEvent>
+                  <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                  <Property name="caption">取消</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <HtmlContainer>
+                  <ClientEvent name="onRefreshDom">var iframe=document.getElementById(&quot;iframeForUpload&quot;);&#xD;
+if(iframe.attachEvent){&#xD;
+    iframe.attachEvent(&quot;onload&quot;, function(){&#xD;
+       var content=$(iframe).contents()[0].body.innerHTML;&#xD;
+       if(!content || content==&quot;&quot;){&#xD;
+    		return;&#xD;
+       }&#xD;
+       if(content==&quot;error&quot;){&#xD;
+           dorado.MessageBox.alert(&quot;流程模版上传失败！&quot;);&#xD;
+       }else{&#xD;
+        	view.id(&quot;dialogDeploy&quot;).hide();&#xD;
+       	 	dorado.MessageBox.alert(&quot;上传操作完成&quot;);&#xD;
+        	view.id(&quot;dataSetProcess&quot;).flushAsync();       &#xD;
+       }&#xD;
+    });&#xD;
+}else{&#xD;
+    iframe.onload = function(){&#xD;
+       var content=$($(iframe).contents()[0].body.innerHTML).html();&#xD;
+       if(!content || content==&quot;&quot;){&#xD;
+    		return;&#xD;
+       }&#xD;
+       var json=eval('('+content+')');&#xD;
+       if(json.result==&quot;fail&quot;){&#xD;
+           dorado.MessageBox.alert(&quot;流程模版上传失败，错误消息如下：\n&quot;+json.error);&#xD;
+       }else{&#xD;
+        	view.id(&quot;dialogDeploy&quot;).hide();&#xD;
+       	 	dorado.MessageBox.alert(&quot;上传操作完成&quot;);&#xD;
+        	view.id(&quot;dataSetProcess&quot;).flushAsync();       &#xD;
+       }&#xD;
+    };&#xD;
+}</ClientEvent>
+                  <Property name="content">&lt;form id=&quot;deployProcessForm&quot; target=&quot;iframeForUpload&quot; action=&quot;dorado/uflo/deploy.process&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;>&#xD;
+	&lt;input name=&quot;processFile&quot; type=&quot;file&quot; value=&quot;请选择流程模版文件&quot;>&#xD;
+&lt;/form>&#xD;
+&lt;iframe id=&quot;iframeForUpload&quot; name=&quot;iframeForUpload&quot; width=&quot;0&quot; height=&quot;0&quot; src=&quot;&quot;>&lt;/iframe></Property>
+                </HtmlContainer>
+              </Children>
+              <Tools/>
+            </Dialog>
+            <AjaxAction id="ajaxActionDeleteProcess">
+              <Property name="successMessage">操作成功！</Property>
+              <Property name="service">uflo.processMaintain#deleteProcess</Property>
+            </AjaxAction>
+            <Dialog id="dialogNewProcessInstance">
+              <ClientEvent name="onShow">view.id(&quot;dataSetVariable&quot;).clear();</ClientEvent>
+              <Property name="modal">true</Property>
+              <Property name="width">400</Property>
+              <Property name="height">300</Property>
+              <Property name="center">true</Property>
+              <Property name="caption">创建新的流程实例</Property>
+              <Buttons>
+                <Button>
+                  <ClientEvent name="onClick">var ds=view.id(&quot;dataSetProcess&quot;);&#xD;
+var processId=ds.getData(&quot;#.id&quot;);&#xD;
+if(!processId){&#xD;
+	dorado.MessageBox.alert(&quot;请先选中流程模版&quot;);&#xD;
+	return;&#xD;
+}&#xD;
+var action=view.id(&quot;updateActionStartProcess&quot;);&#xD;
+action.set(&quot;parameter&quot;,processId);&#xD;
+dorado.MessageBox.confirm(&quot;真的要创建流程实例吗？&quot;,function(){&#xD;
+	action.execute(function(){&#xD;
+		ds.getData(&quot;#&quot;).reset(&quot;processInstances&quot;);&#xD;
+		view.id(&quot;dialogNewProcessInstance&quot;).hide();&#xD;
+	});&#xD;
+});</ClientEvent>
+                  <Property name="caption">确定</Property>
+                  <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+                </Button>
+                <Button>
+                  <ClientEvent name="onClick">view.id(&quot;dialogNewProcessInstance&quot;).hide();</ClientEvent>
+                  <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                  <Property name="caption">取消</Property>
+                </Button>
+              </Buttons>
+              <Children>
+                <ToolBar>
+                  <DataPilot>
+                    <Property name="dataSet">dataSetVariable</Property>
+                    <Property name="itemCodes">+,-</Property>
+                  </DataPilot>
+                </ToolBar>
+                <DataGrid>
+                  <Property name="dataSet">dataSetVariable</Property>
+                  <DataColumn>
+                    <Property name="property">key</Property>
+                    <Property name="name">key</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="property">value</Property>
+                    <Property name="name">value</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="property">type</Property>
+                    <Property name="name">type</Property>
+                    <Property name="width">90</Property>
+                  </DataColumn>
+                </DataGrid>
+                <UpdateAction id="updateActionStartProcess">
+                  <Property name="dataResolver">uflo.processMaintain#startProcess</Property>
+                  <Property name="successMessage">流程实例创建成功</Property>
+                  <Property name="alwaysExecute">true</Property>
+                  <UpdateItem>
+                    <Property name="dataSet">dataSetVariable</Property>
+                    <Property name="dataPath">[#visible]</Property>
+                  </UpdateItem>
+                </UpdateAction>
+              </Children>
+              <Tools/>
+            </Dialog>
+          </Container>
+        </SideControl>
+      </SplitPanel>
+    </Container>
+  </View>
+</ViewConfig>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="compsry">
+   <description>风险项目管理-代偿审议</description>
+   <start g="355,30,69,62" name="开始" url="org.tbs.views.projs.compsry.DetailDialog1.d">
+      <description>代偿审议-开始
+</description>
+      <sequence-flow to="B角确认"/>
+   </start>
+   <task g="330,115,115,50" allow-specify-assignee="false" task-type="Normal" label="代偿审议-B角确认" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="B角确认">
+      <description>${projName}</description>
+      <sequence-flow to="A部门经理审批" g="-37,-6" name="通过"/>
+      <sequence-flow to="驳回修正" g="-69,-22" name="驳回"/>
+   </task>
+   <task g="310,185,154,50" allow-specify-assignee="false" task-type="Normal" label="代偿审议-A部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="A部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="风管部门经理审批" g="-34,-8" name="通过"/>
+      <sequence-flow to="驳回修正" g="82,210:118,-22" name="驳回"/>
+   </task>
+   <task g="306,255,160,50" allow-specify-assignee="false" task-type="Normal" label="代偿审议-风管部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="风管部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="Action1" g="-32,-8" name="通过"/>
+      <sequence-flow to="驳回修正" g="81,280:119,-24" name="驳回"/>
+   </task>
+   <action g="328,329,115,50" handler-bean="actCompsry1" name="Action1">
+      <sequence-flow to="业务审核委员会秘书录入会议决议"/>
+   </action>
+   <task g="262,405,252,76" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="代偿审议-业务审核委员会秘书录入会议决议" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="业务审核委员会秘书录入会议决议">
+      <description>${projName}</description>
+      <sequence-flow to="决定是否召开风险管理会议" g="-36,-10" name="确认"/>
+   </task>
+   <task g="253,702,269,76" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="代偿审议-风险管理审核委员会秘书录入会议决议" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="风险管理审核委员会秘书录入会议决议">
+      <description>${projName}</description>
+      <sequence-flow to="Action3" g="-34,-12" name="确认"/>
+   </task>
+   <action g="330,824,115,50" handler-bean="actCompsry3" name="Action3">
+      <sequence-flow to="结束"/>
+   </action>
+   <task g="24,114,115,50" allow-specify-assignee="false" task-type="Normal" label="代偿审议-驳回修正" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projName}</description>
+      <sequence-flow to="B角确认" g="81,82;388,82:-150,-23" name="修改确认"/>
+   </task>
+   <end g="372,898,32,62" terminate="true" name="结束"/>
+   <action g="330,608,115,50" handler-bean="actCompsry2" name="Action2">
+      <sequence-flow to="风险管理审核委员会秘书录入会议决议"/>
+   </action>
+   <task g="281,517,213,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="代偿审议-风险管理审核委员会决定是否召开会议" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog1.d" assignment-type="Handler" name="决定是否召开风险管理会议">
+      <description>${projName}</description>
+      <sequence-flow to="Action3" g="177,542;177,847:6,-23" name="否"/>
+      <sequence-flow to="Action2" g="-17,-8" name="是"/>
+   </task>
+</uflo-process>

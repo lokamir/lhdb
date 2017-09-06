@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasCurrency" parent="global:dataTypeTbsBasCurrency">
+      <PropertyDef name="name">
+        <Property></Property>
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <Reference name="tbsProjSet">
+        <Property name="dataType">[dataTypeTbsProj]</Property>
+      </Reference>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasCurrency">
+      <Property name="dataType">[dataTypeTbsBasCurrency]</Property>
+      <Property name="dataProvider">tbsBasCurrencyDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,|</Property>
+        <Property name="dataSet">dataSetTbsBasCurrency</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="dataGridTbsBasCurrency">
+      <Property name="dataSet">dataSetTbsBasCurrency</Property>
+      <DataColumn name="name">
+        <Property name="property">name</Property>
+      </DataColumn>
+      <DataColumn name="valid">
+        <Property name="property">valid</Property>
+      </DataColumn>
+    </DataGrid>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasCurrencyDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasCurrency</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

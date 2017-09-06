@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasArea" parent="global:dataTypeTbsBasArea">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="bank">
+        <Property name="dataType">[dataTypeTbsBasBank]</Property>
+      </PropertyDef>
+      <Reference name="tbsCustomerSet"/>
+    </DataType>
+    <DataType name="dataTypeTbsBasBank" parent="global:dataTypeTbsBasBank">
+      <PropertyDef name="rid"/>
+      <Reference name="tbsProjundwrtCfmarSet"/>
+      <Reference name="tbsBasBankSet"/>
+      <Reference name="tbsProjSet_1"/>
+      <Reference name="tbsProjSet_2"/>
+      <Reference name="tbsAdminsignSet"/>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasArea">
+      <Property name="dataType">[dataTypeTbsBasArea]</Property>
+      <Property name="dataProvider">tbsBasAreaDao#getAllBanks</Property>
+    </DataSet>
+    <Container>
+      <Property name="height">300</Property>
+      <DataGrid id="dgTbsBasArea">
+        <Property name="dataSet">dataSetTbsBasArea</Property>
+        <DataColumn name="name">
+          <Property name="property">name</Property>
+        </DataColumn>
+        <DataColumn name="valid">
+          <Property name="property">valid</Property>
+        </DataColumn>
+      </DataGrid>
+    </Container>
+    <Container>
+      <Property name="height">300</Property>
+      <DataGrid id="dgBank">
+        <Property name="dataSet">dataSetTbsBasArea</Property>
+        <Property name="dataPath">#.bank</Property>
+        <DataColumn name="id">
+          <Property name="property">id</Property>
+        </DataColumn>
+        <DataColumn name="name">
+          <Property name="property">name</Property>
+        </DataColumn>
+        <DataColumn>
+          <Property name="name">rid</Property>
+          <Editor/>
+        </DataColumn>
+      </DataGrid>
+    </Container>
+  </View>
+</ViewConfig>

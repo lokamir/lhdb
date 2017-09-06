@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="changerole">
+   <description>项目变更-项目经理变更</description>
+   <start g="278,65,54,58" name="开始" task-name="开始" url="org.tbs.views.projs.change.DetailDialog2.d">
+      <description>项目经理变更-开始</description>
+      <sequence-flow to="是否来自其他部门"/>
+   </start>
+   <decision expression="${othdept==1?&quot;是&quot;:&quot;否&quot;}" g="253,205,103,62" name="是否来自其他部门" decision-type="Expression">
+      <sequence-flow to="业务总监审批" g="-16,-11" name="是"/>
+      <sequence-flow to="Action" g="509,235;509,513:-18,-134" name="否"/>
+   </decision>
+   <task g="217,341,180,50" allow-specify-assignee="false" task-type="Normal" label="项目经理变更-业务总监审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog2.d" assignment-type="Handler" name="业务总监审批">
+      <description>${projName}</description>
+      <sequence-flow to="Action" g="-33,-19" name="通过"/>
+      <sequence-flow to="驳回修正" g="99,365:5,-19" name="驳回"/>
+   </task>
+   <action g="243,489,128,50" handler-bean="actChangeRole" name="Action">
+      <sequence-flow to="结束"/>
+   </action>
+   <end g="280,609,53,56" terminate="true" name="结束"/>
+   <task g="26,211,147,47" allow-specify-assignee="false" task-type="Normal" label="项目经理变更-驳回修正" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog2.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projName}</description>
+      <sequence-flow to="是否来自其他部门" g="-22,-21" name="修改确认"/>
+   </task>
+</uflo-process>

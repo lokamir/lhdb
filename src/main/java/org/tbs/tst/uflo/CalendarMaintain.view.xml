@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeCalendarDef">
+      <ClientEvent name="onCurrentChange">window.refreshCalendarDataGrid(arg.newCurrent);&#xD;
+</ClientEvent>
+      <Property name="creationType">com.bstek.uflo.model.calendar.CalendarDef</Property>
+      <Reference name="calendarDates">
+        <Property name="dataType">[dataTypeCalendarDate]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">uflo.calendarMaintain#loadCalendarDate</Property>
+      </Reference>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="categoryId">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">日期名称</Property>
+      </PropertyDef>
+      <PropertyDef name="desc">
+        <Property name="dataType">String</Property>
+        <Property name="label">日期描述</Property>
+      </PropertyDef>
+      <PropertyDef>
+        <Property name="name">type</Property>
+        <Property name="dataType">String</Property>
+        <Property name="label">类型</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">daily</Property>
+                <Property name="value">每天的某段时间</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">weekly</Property>
+                <Property name="value">星期</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">monthly</Property>
+                <Property name="value">月中的某些天</Property>
+              </Entity>
+              <Entity>
+                <Property name="value">每年都经历的日期</Property>
+                <Property name="key">annual</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">holiday</Property>
+                <Property name="value">假日</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">workday</Property>
+                <Property name="value">工作日</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="defaultValue">holiday</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeCalendarDate">
+      <Property name="creationType">com.bstek.uflo.model.calendar.CalendarDate</Property>
+      <PropertyDef name="id">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property name="dataType">String</Property>
+        <Property name="label">名称</Property>
+      </PropertyDef>
+      <PropertyDef name="calendarId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="rangeStartTime">
+        <Property name="dataType">String</Property>
+        <Property name="label">开始时间</Property>
+      </PropertyDef>
+      <PropertyDef name="rangeEndTime">
+        <Property name="dataType">String</Property>
+        <Property name="label">结束时间</Property>
+      </PropertyDef>
+      <PropertyDef name="calendarDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">日期</Property>
+      </PropertyDef>
+      <PropertyDef name="dayOfMonth">
+        <Property name="dataType">int</Property>
+        <Property name="label">日</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">1号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">2</Property>
+                <Property name="value">2号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">3</Property>
+                <Property name="value">3号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">4</Property>
+                <Property name="value">4号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">5</Property>
+                <Property name="value">5号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">6</Property>
+                <Property name="value">6号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">6</Property>
+                <Property name="value">6号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">7</Property>
+                <Property name="value">7号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">8</Property>
+                <Property name="value">8号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">9</Property>
+                <Property name="value">9号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">10</Property>
+                <Property name="value">10号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">11</Property>
+                <Property name="value">11号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">12</Property>
+                <Property name="value">12号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">13</Property>
+                <Property name="value">13号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">14</Property>
+                <Property name="value">14号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">15</Property>
+                <Property name="value">15号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">16</Property>
+                <Property name="value">16号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">17</Property>
+                <Property name="value">17号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">18</Property>
+                <Property name="value">18号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">19</Property>
+                <Property name="value">19号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">20</Property>
+                <Property name="value">20号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">21</Property>
+                <Property name="value">21号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">22</Property>
+                <Property name="value">22号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">23</Property>
+                <Property name="value">23号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">24</Property>
+                <Property name="value">24号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">25</Property>
+                <Property name="value">25号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">26</Property>
+                <Property name="value">26号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">27</Property>
+                <Property name="value">27号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">28</Property>
+                <Property name="value">28号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">29</Property>
+                <Property name="value">29号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">30</Property>
+                <Property name="value">30号</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">31</Property>
+                <Property name="value">31号</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <PropertyDef name="monthOfYear">
+        <Property name="dataType">int</Property>
+        <Property name="label">月</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">0</Property>
+                <Property name="value">一月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">二月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">2</Property>
+                <Property name="value">三月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">3</Property>
+                <Property name="value">四月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">4</Property>
+                <Property name="value">五月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">5</Property>
+                <Property name="value">六月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">6</Property>
+                <Property name="value">七月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">7</Property>
+                <Property name="value">八月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">8</Property>
+                <Property name="value">九月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">9</Property>
+                <Property name="value">十月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">10</Property>
+                <Property name="value">十一月</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">11</Property>
+                <Property name="value">十二月</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+      <PropertyDef name="dayOfWeek">
+        <Property name="dataType">int</Property>
+        <Property name="label">星期</Property>
+        <Property name="mapping">
+          <Property name="mapValues">
+            <Collection>
+              <Entity>
+                <Property name="key">2</Property>
+                <Property name="value">星期一</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">3</Property>
+                <Property name="value">星期二</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">4</Property>
+                <Property name="value">星期三</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">5</Property>
+                <Property name="value">星期四</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">6</Property>
+                <Property name="value">星期五</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">7</Property>
+                <Property name="value">星期六</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">1</Property>
+                <Property name="value">星期日</Property>
+              </Entity>
+            </Collection>
+          </Property>
+        </Property>
+        <Property name="defaultValue">1</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <ClientEvent name="onCreate">window.refreshCalendarDataGrid = function(current){&#xD;
+	if(!current){&#xD;
+		return;&#xD;
+	}&#xD;
+	view.tag(&quot;d&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.tag(&quot;m&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.tag(&quot;w&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.tag(&quot;y&quot;).set(&quot;visible&quot;,false);&#xD;
+	view.tag(&quot;t&quot;).set(&quot;visible&quot;,false);&#xD;
+	&#xD;
+	var type=current.get(&quot;type&quot;);&#xD;
+	if(type==&quot;holiday&quot;){&#xD;
+		view.tag(&quot;d&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+	if(type==&quot;workday&quot;){&#xD;
+		view.tag(&quot;d&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+	if(type==&quot;monthly&quot;){&#xD;
+		view.tag(&quot;m&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+	if(type==&quot;weekly&quot;){&#xD;
+		view.tag(&quot;w&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+	if(type==&quot;annual&quot;){&#xD;
+		view.tag(&quot;m&quot;).set(&quot;visible&quot;,true);&#xD;
+		view.tag(&quot;y&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+	if(type==&quot;daily&quot;){&#xD;
+		view.tag(&quot;t&quot;).set(&quot;visible&quot;,true);&#xD;
+	}&#xD;
+};&#xD;
+</ClientEvent>
+    <DataSet id="dataSetCalendar">
+      <Property name="dataType">[dataTypeCalendarDef]</Property>
+      <Property name="dataProvider">uflo.calendarMaintain#loadCalendarDef</Property>
+    </DataSet>
+    <SplitPanel>
+      <Property name="position">550</Property>
+      <MainControl>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <ClientEvent name="onSubControlAction">var ds=view.id(&quot;dataSetCalendar&quot;);&#xD;
+switch(arg.code){&#xD;
+	case &quot;+&quot;:&#xD;
+		ds.getData(&quot;#.calendarDates&quot;).insert({calendarId:ds.getData(&quot;#.id&quot;)});&#xD;
+		view.id(&quot;dialogCalendarDate&quot;).show();&#xD;
+		break;&#xD;
+	case &quot;-&quot;:&#xD;
+		dorado.MessageBox.confirm(&quot;真的要删除当前信息吗？&quot;,function(){&#xD;
+			ds.getData(&quot;#.#calendarDates&quot;).remove();&#xD;
+			view.id(&quot;updateActionSaveCalendar&quot;).execute();&#xD;
+		});&#xD;
+		break;&#xD;
+}&#xD;
+arg.processDefault=false;</ClientEvent>
+              <Property name="itemCodes">+,-</Property>
+              <Property name="dataSet">dataSetCalendar</Property>
+              <Property name="dataPath">#.calendarDates</Property>
+            </DataPilot>
+          </ToolBar>
+          <DataGrid id="dataGridDate">
+            <Property name="dataSet">dataSetCalendar</Property>
+            <Property name="dataPath">#.calendarDates</Property>
+            <Property name="readOnly">true</Property>
+            <DataColumn name="name">
+              <Property name="property">name</Property>
+            </DataColumn>
+            <DataColumn name="calendarDate">
+              <Property name="property">calendarDate</Property>
+              <Property name="tags">d</Property>
+            </DataColumn>
+            <DataColumn name="monthOfYear">
+              <Property name="property">monthOfYear</Property>
+              <Property name="tags">y</Property>
+            </DataColumn>
+            <DataColumn name="dayOfMonth">
+              <Property name="property">dayOfMonth</Property>
+              <Property name="tags">m</Property>
+            </DataColumn>
+            <DataColumn name="dayOfWeek">
+              <Property name="property">dayOfWeek</Property>
+              <Property name="tags">w</Property>
+            </DataColumn>
+            <DataColumn name="rangeStartTime">
+              <Property name="property">rangeStartTime</Property>
+              <Property name="tags">t</Property>
+            </DataColumn>
+            <DataColumn name="rangeEndTime">
+              <Property name="property">rangeEndTime</Property>
+              <Property name="tags">t</Property>
+            </DataColumn>
+          </DataGrid>
+          <Dialog id="dialogCalendarDate">
+            <ClientEvent name="onShow">view.tag(&quot;calendarDate&quot;).set(&quot;visible&quot;,false);&#xD;
+view.tag(&quot;dayOfMonth&quot;).set(&quot;visible&quot;,false);&#xD;
+view.tag(&quot;dayOfWeek&quot;).set(&quot;visible&quot;,false);&#xD;
+view.tag(&quot;monthOfYear&quot;).set(&quot;visible&quot;,false);&#xD;
+view.tag(&quot;daily&quot;).set(&quot;visible&quot;,false);&#xD;
+var type=view.id(&quot;dataSetCalendar&quot;).getData(&quot;#.type&quot;);&#xD;
+if(type==&quot;holiday&quot;){&#xD;
+	view.tag(&quot;calendarDate&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+if(type==&quot;workday&quot;){&#xD;
+	view.tag(&quot;calendarDate&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+if(type==&quot;monthly&quot;){&#xD;
+	view.tag(&quot;dayOfMonth&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+if(type==&quot;weekly&quot;){&#xD;
+	view.tag(&quot;dayOfWeek&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+if(type==&quot;annual&quot;){&#xD;
+	view.tag(&quot;dayOfMonth&quot;).set(&quot;visible&quot;,true);&#xD;
+	view.tag(&quot;monthOfYear&quot;).set(&quot;visible&quot;,true);&#xD;
+}&#xD;
+if(type==&quot;daily&quot;){&#xD;
+	view.tag(&quot;daily&quot;).set(&quot;visible&quot;,true);&#xD;
+}</ClientEvent>
+            <Property name="center">true</Property>
+            <Property name="modal">true</Property>
+            <Property name="width">400</Property>
+            <Property name="height">200</Property>
+            <Property name="caption">日期添加</Property>
+            <Buttons>
+              <Button>
+                <ClientEvent name="onClick">var current = view.id(&quot;dataSetCalendar&quot;).getData(&quot;#.#calendarDates&quot;);&#xD;
+var currentDef = view.id(&quot;dataSetCalendar&quot;).getData(&quot;#&quot;);&#xD;
+if(currentDef.get(&quot;type&quot;)==&quot;daily&quot;){&#xD;
+	current.set(&quot;rangeStartTime&quot;,view.id(&quot;dateTimeSpinnerStart&quot;).get(&quot;text&quot;));&#xD;
+	current.set(&quot;rangeEndTime&quot;,view.id(&quot;dateTimeSpinnerEnd&quot;).get(&quot;text&quot;));&#xD;
+	var startTime = current.get(&quot;rangeStartTime&quot;);&#xD;
+	var endTime = current.get(&quot;rangeEndTime&quot;);&#xD;
+	var startHour = parseInt(startTime.substring(0,2)),startMinute = parseInt(startTime.substring(3,5)),startSecond = parseInt(startTime.substring(6,8));&#xD;
+	var endHour = parseInt(endTime.substring(0,2)),endMinute = parseInt(endTime.substring(3,5)),endSecond = parseInt(endTime.substring(6,8));&#xD;
+	var isValid = false;&#xD;
+	if(startHour &lt; endHour){&#xD;
+		isValid = true;&#xD;
+	}else if(startHour == endHour){&#xD;
+		if(startMinute &lt; endMinute){&#xD;
+			isValid = true;&#xD;
+		}else if(startMinute == endMinute){&#xD;
+			if(startSecond&lt;=endSecond){&#xD;
+				isValid = true;&#xD;
+			}&#xD;
+		}&#xD;
+	}&#xD;
+	if(!isValid){&#xD;
+		dorado.MessageBox.alert(&quot;开始时间不能大于结束时间！&quot;);&#xD;
+		return;&#xD;
+	}&#xD;
+}&#xD;
+view.id(&quot;updateActionSaveCalendar&quot;).execute(function(){&#xD;
+	view.id(&quot;dialogCalendarDate&quot;).hide();&#xD;
+});&#xD;
+</ClientEvent>
+                <Property name="caption">确认</Property>
+                <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+              </Button>
+              <Button>
+                <ClientEvent name="onClick">view.id(&quot;dataSetCalendar&quot;).getData(&quot;#.calendarDates&quot;).cancel();&#xD;
+view.id(&quot;dialogCalendarDate&quot;).hide();</ClientEvent>
+                <Property name="caption">取消</Property>
+                <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+              </Button>
+            </Buttons>
+            <Children>
+              <AutoForm>
+                <Property name="dataSet">dataSetCalendar</Property>
+                <Property name="dataPath">#.#calendarDates</Property>
+                <Property name="cols">*</Property>
+                <Property name="labelAlign">right</Property>
+                <AutoFormElement>
+                  <Property name="name">name</Property>
+                  <Property name="property">name</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">calendarDate</Property>
+                  <Property name="property">calendarDate</Property>
+                  <Property name="tags">calendarDate</Property>
+                  <Property name="hideMode">display</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">monthOfYear</Property>
+                  <Property name="property">monthOfYear</Property>
+                  <Property name="tags">monthOfYear</Property>
+                  <Property name="hideMode">display</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">dayOfMonth</Property>
+                  <Property name="property">dayOfMonth</Property>
+                  <Property name="tags">dayOfMonth</Property>
+                  <Property name="hideMode">display</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">dayOfWeek</Property>
+                  <Property name="property">dayOfWeek</Property>
+                  <Property name="tags">dayOfWeek</Property>
+                  <Property name="hideMode">display</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">rangeStartTime</Property>
+                  <Property name="name">rangeStartTime</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="tags">daily</Property>
+                  <Editor>
+                    <DateTimeSpinner id="dateTimeSpinnerStart"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">rangeEndTime</Property>
+                  <Property name="name">rangeEndTime</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="tags">daily</Property>
+                  <Editor>
+                    <DateTimeSpinner id="dateTimeSpinnerEnd"/>
+                  </Editor>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+            <Tools/>
+          </Dialog>
+        </Container>
+      </MainControl>
+      <SideControl>
+        <Container>
+          <ToolBar>
+            <DataPilot>
+              <ClientEvent name="onSubControlAction">var ds=view.id(&quot;dataSetCalendar&quot;);&#xD;
+switch(arg.code){&#xD;
+	case &quot;+&quot;:&#xD;
+		ds.insert();&#xD;
+		view.id(&quot;dialogCalendar&quot;).show();&#xD;
+		break;&#xD;
+	case &quot;-&quot;:&#xD;
+		dorado.MessageBox.confirm(&quot;真的要删除当前信息吗？&quot;,function(){&#xD;
+			ds.getData(&quot;#&quot;).remove();&#xD;
+			view.id(&quot;updateActionSaveCalendar&quot;).execute();&#xD;
+		});&#xD;
+		break;&#xD;
+}&#xD;
+arg.processDefault=false;&#xD;
+</ClientEvent>
+              <Property name="itemCodes">+,-</Property>
+              <Property name="dataSet">dataSetCalendar</Property>
+            </DataPilot>
+            <ToolBarButton>
+              <ClientEvent name="onClick">var data=view.id(&quot;dataSetCalendar&quot;).getData(&quot;#&quot;);&#xD;
+if(data){&#xD;
+	view.id(&quot;dialogCalendar&quot;).show();&#xD;
+	view.tag(&quot;type&quot;).set(&quot;readOnly&quot;,true);&#xD;
+}</ClientEvent>
+              <Property name="caption">修改</Property>
+              <Property name="icon">url(skin>common/icons.gif) -200px 0px</Property>
+            </ToolBarButton>
+          </ToolBar>
+          <DataGrid id="dataGrid1">
+            <Property name="dataSet">dataSetCalendar</Property>
+            <Property name="readOnly">true</Property>
+            <DataColumn name="name">
+              <Property name="property">name</Property>
+            </DataColumn>
+            <DataColumn name="type">
+              <Property name="property">type</Property>
+              <Property name="width">140</Property>
+            </DataColumn>
+            <DataColumn name="desc">
+              <Property name="property">desc</Property>
+            </DataColumn>
+          </DataGrid>
+          <Dialog id="dialogCalendar">
+            <ClientEvent name="beforeHide">view.tag(&quot;type&quot;).set(&quot;readOnly&quot;,false);</ClientEvent>
+            <Property name="center">true</Property>
+            <Property name="modal">true</Property>
+            <Property name="width">400</Property>
+            <Property name="height">220</Property>
+            <Buttons>
+              <Button>
+                <ClientEvent name="onClick">view.id(&quot;updateActionSaveCalendar&quot;).execute(function(){&#xD;
+	var current =  view.id(&quot;dataSetCalendar&quot;).getData(&quot;#&quot;);&#xD;
+	current.reset(&quot;calendarDates&quot;);&#xD;
+	window.refreshCalendarDataGrid(current);&#xD;
+	view.id(&quot;dataGridDate&quot;).refresh();&#xD;
+	view.id(&quot;dialogCalendar&quot;).hide();&#xD;
+});&#xD;
+</ClientEvent>
+                <Property name="caption">确认</Property>
+                <Property name="icon">url(skin>common/icons.gif) -140px -20px</Property>
+              </Button>
+              <Button>
+                <ClientEvent name="onClick">view.id(&quot;dataSetCalendar&quot;).getData().cancel();&#xD;
+view.id(&quot;dialogCalendar&quot;).hide();</ClientEvent>
+                <Property name="caption">取消</Property>
+                <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+              </Button>
+            </Buttons>
+            <Children>
+              <AutoForm>
+                <Property name="dataSet">dataSetCalendar</Property>
+                <Property name="cols">*</Property>
+                <Property name="labelAlign">right</Property>
+                <AutoFormElement>
+                  <Property name="name">name</Property>
+                  <Property name="property">name</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">type</Property>
+                  <Property name="property">type</Property>
+                  <Property name="tags">type</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">desc</Property>
+                  <Property name="property">desc</Property>
+                  <Property name="editorType">TextArea</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Children>
+            <Tools/>
+          </Dialog>
+        </Container>
+      </SideControl>
+    </SplitPanel>
+    <UpdateAction id="updateActionSaveCalendar">
+      <Property name="successMessage">操作成功</Property>
+      <Property name="dataResolver">uflo.calendarMaintain#saveCalendar</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetCalendar</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="ireginsp">
+   <description>期间管理-不定期检查
+</description>
+   <start g="208,53,56,62" name="开始" label="不定期检查-风管经理上传不定期检查报告">
+      <description>${projName}</description>
+      <sequence-flow to="风管部门经理检查"/>
+   </start>
+   <task g="154,142,162,50" allow-specify-assignee="false" task-type="Normal" label="不定期检查-风管部门经理检查" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="风管部门经理检查">
+      <description>${projName}</description>
+      <sequence-flow to="分管总经理（风险）审批" g="-41,-9" name="不正常"/>
+      <sequence-flow to="结束" g="69,166;72,779:36,-324" name="正常"/>
+   </task>
+   <task g="137,232,197,50" allow-specify-assignee="false" task-type="Normal" label="不定期检查-分管总经理（风险）审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="分管总经理（风险）审批">
+      <description>${projName}</description>
+      <sequence-flow to="结束" g="70,256;73,779:34,-287" name="正常"/>
+      <sequence-flow to="Action" g="-47,-12" name="不正常"/>
+   </task>
+   <action g="175,318,122,62" handler-bean="actProjCheck" name="Action">
+      <description>通知A、B角，A角部门经理，风管经理，风管部门经理，分管总经理（风险）
+标记项目风险proj.risk=1</description>
+      <sequence-flow to="是否上会"/>
+   </action>
+   <end g="223,749,32,62" terminate="true" name="结束"/>
+   <task g="74,604,328,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="不定期检查-风管委员会秘书录入“风管委员会议决议单”" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="风管委员会秘书录入“风管委员会决议单”">
+      <description>${projName}</description>
+      <sequence-flow to="结束" g="-36,-20" name="确认"/>
+   </task>
+   <task g="179,504,115,50" allow-specify-assignee="false" task-type="Normal" label="不定期检查-风管总经理决定是否上会" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="是否上会">
+      <description>${projName}</description>
+      <sequence-flow to="风管委员会秘书录入“风管委员会决议单”" g="-26,-5" name="是"/>
+      <sequence-flow to="结束" g="72,528;73,780:10,-121" name="否"/>
+   </task>
+</uflo-process>

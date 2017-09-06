@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="changemajcont">
+   <description>项目变更-项目三要素变更</description>
+   <start g="165,82,32,62" name="开始" task-name="开始" url="org.tbs.views.projs.change.DetailDialog1.d">
+      <description>项目三要素变更</description>
+      <sequence-flow to="B角确认"/>
+   </start>
+   <task g="102,249,157,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-B角确认" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="B角确认">
+      <description>${projName}</description>
+      <sequence-flow to="部门经理审批" g="-29,-12" name="通过"/>
+      <sequence-flow to="驳回修正" g="393,273:-27,-18" name="驳回"/>
+   </task>
+   <task g="336,165,115,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-驳回修正" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projName}</description>
+      <sequence-flow to="B角确认" g="180,190:90,-18" name="修改确认"/>
+   </task>
+   <task g="101,347,158,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="风管经理审批" g="-31,-19" name="通过"/>
+      <sequence-flow to="驳回修正" g="394,371:-29,-19" name="驳回"/>
+   </task>
+   <task g="101,448,157,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="项目三要素变更-风管经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="风管经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="风管部门经理审批" g="-30,-22" name="通过"/>
+      <sequence-flow to="驳回修正" g="394,473:-28,-20" name="驳回"/>
+   </task>
+   <task g="99,561,161,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-风管部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="风管部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="评审会秘书录入决议" g="-37,-19" name="通过"/>
+      <sequence-flow to="驳回修正" g="394,586:-27,-18" name="驳回"/>
+   </task>
+   <task g="89,666,183,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="项目三要素变更-评审会秘书录入决议" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="评审会秘书录入决议">
+      <description>${projName}</description>
+      <sequence-flow to="驳回修正" g="395,691:-32,-19" name="驳回"/>
+      <sequence-flow to="主任委员审批(业务)" g="-29,-25" name="通过"/>
+   </task>
+   <task g="94,887,172,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-决策人审批（小于2000万:总经理; 大于2000万:董事长）" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="决策人审批">
+      <description>${projName}</description>
+      <sequence-flow to="Action" g="-30,-21" name="通过"/>
+      <sequence-flow to="驳回修正" g="396,911:-33,-20" name="驳回"/>
+   </task>
+   <end g="160,1118,41,62" terminate="true" name="结束"/>
+   <action g="123,1008,115,50" handler-bean="actChangeMajcont" name="Action">
+      <sequence-flow to="结束"/>
+   </action>
+   <task g="90,776,180,50" allow-specify-assignee="false" task-type="Normal" label="项目三要素变更-主任委员审批(业务)" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog1.d" assignment-type="Handler" name="主任委员审批(业务)">
+      <description>${projName}</description>
+      <sequence-flow to="决策人审批" g="-39,-22" name="通过"/>
+      <sequence-flow to="驳回修正" g="396,800:-30,-18" name="驳回"/>
+   </task>
+</uflo-process>

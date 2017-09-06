@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="projcgg">
+   <description>承保审批-项目与反担保关联</description>
+   <start g="103,35,32,62" name="开始" url="org.tbs.uflo.views.cgg.d">
+      <description>项目与反担保关联-开始 PSID=13</description>
+      <sequence-flow to="是否有保证金反担保"/>
+   </start>
+   <end g="528,429,43,62" terminate="true" name="结束">
+      <description>PSID=23</description>
+   </end>
+   <action g="255,434,115,50" handler-bean="actProjCgg" name="Action">
+      <sequence-flow to="结束"/>
+   </action>
+   <task g="244,267,135,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.projcgg.d" assignment-type="Handler" name="风管经理审批">
+      <description>${projSn}-项目与反担保关联-风管经理审批 PSID=14</description>
+      <sequence-flow to="Action" g="-5,-20" name="通过"/>
+      <sequence-flow to="驳回修正" g="-67,-20" name="驳回"/>
+   </task>
+   <decision expression="${bzjzy==1?&quot;有&quot;:&quot;无&quot;}" g="260,36,104,62" name="是否有保证金反担保" decision-type="Expression">
+      <description>项目与反担保关联-是否有保证金</description>
+      <sequence-flow to="风管经理审批" g="-17,-20" name="无"/>
+      <sequence-flow to="出纳费用确认" g="-6,-20" name="有"/>
+   </decision>
+   <task g="458,43,138,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.projcgg.d" assignment-type="Handler" name="出纳费用确认">
+      <description>${projSn}-项目与反担保关联-出纳费用确认 PSID=14
+</description>
+      <sequence-flow to="财务部门经理审批" g="-5,-20" name="通过"/>
+      <sequence-flow to="驳回修正" g="527,132;620,132:-67,-20" name="驳回"/>
+   </task>
+   <task g="686,46,158,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.projcgg.d" assignment-type="Handler" name="财务部门经理审批">
+      <description>${projSn}-项目与反担保关联-财务经理审批 PSID=14</description>
+      <sequence-flow to="风管经理审批" g="767,290:-5,-20" name="通过"/>
+      <sequence-flow to="驳回修正" g="620,133:-67,-20" name="驳回"/>
+   </task>
+   <task g="512,189,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.projcgg.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projSn}-项目与反担保关联-驳回修正 PSID=24</description>
+      <sequence-flow to="是否有保证金反担保" g="498,171:-127,-20" name="修改确认"/>
+   </task>
+</uflo-process>

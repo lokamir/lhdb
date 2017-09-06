@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uflo-process name="releaseproj">
+   <description>项目解保
+</description>
+   <start g="283,82,32,62" name="开始" url="org.tbs.views.projs.release.DetailDialog1.d">
+      <description>项目解保-开始</description>
+      <sequence-flow to="部门经理审批"/>
+   </start>
+   <task g="230,225,137,50" allow-specify-assignee="false" task-type="Normal" label="项目解保-部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="Handler" name="部门经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="驳回修正" g="102,250:5,-19" name="驳回"/>
+      <sequence-flow to="风管经理审批" g="-26,-40" name="通过"/>
+   </task>
+   <action g="241,477,115,50" handler-bean="actRelease" name="Action">
+      <sequence-flow to="结束"/>
+   </action>
+   <end g="272,593,54,62" terminate="true" name="结束"/>
+   <task g="45,147,115,50" allow-specify-assignee="false" task-type="Normal" label="项目解保-驳回修正" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="ProcessPromoter" name="驳回修正">
+      <description>${projName}</description>
+      <sequence-flow to="部门经理审批" g="298,171:-133,-21" name="修改确认"/>
+   </task>
+   <task g="223,363,152,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="项目解保-风管经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="Handler" name="风管经理审批">
+      <description>${projName}</description>
+      <sequence-flow to="Action" g="-27,-32" name="通过"/>
+      <sequence-flow to="驳回修正" g="102,386:5,-19" name="驳回"/>
+   </task>
+</uflo-process>

@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsProjHtsh" parent="global:dataTypeTbsProjHtsh">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="dataType">dataTypeTbsProj</Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <PropertyDef name="serialVersionUID">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property name="dataType">String</Property>
+        <Property name="label">审批意见</Property>
+      </PropertyDef>
+      <PropertyDef name="projSn">
+        <Property name="dataType">String</Property>
+        <Property name="label">项目编号</Property>
+      </PropertyDef>
+      <PropertyDef name="psid">
+        <Property name="dataType">dataTypeTbsProj</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeConditions">
+      <PropertyDef name="proj_Id">
+        <Property></Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="defaultValue">2</Property>
+        <Property name="dataType">String</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapValid&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsProj" parent="global:dataTypeTbsProj">
+      <Property name="defaultDisplayProperty">projName</Property>
+      <PropertyDef name="tbsBasPs">
+        <Property name="dataType">dataTypeTbsBasPs</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsBasPs" parent="global:dataTypeTbsBasPs"/>
+    <DataType name="datatypeTbsFunApprc" parent="dataTypeTbsFunApprc">
+      <Property name="creationType">org.tbs.entity.TbsFunApprc</Property>
+      <PropertyDef name="taskname">
+        <Property></Property>
+        <Property name="label">任务名称</Property>
+      </PropertyDef>
+      <PropertyDef name="assignee">
+        <Property></Property>
+        <Property name="label">处理人</Property>
+      </PropertyDef>
+      <PropertyDef name="opinion">
+        <Property></Property>
+        <Property name="label">审批意见</Property>
+      </PropertyDef>
+      <PropertyDef name="createdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">发起日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="enddate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">完成日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View id="view">
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsProjHtsh">
+      <Property name="dataType">[dataTypeTbsProjHtsh]</Property>
+      <Property name="dataProvider">tbsProjHtshDao#loadAll</Property>
+      <Property name="pageSize">15</Property>
+    </DataSet>
+    <DataSet id="dataSetHistoryTask">
+      <Property name="dataType">[datatypeTbsFunApprc]</Property>
+      <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
+    </DataSet>
+    <Container id="Condition">
+      <AutoForm id="autoformCondition">
+        <Property name="createPrivateDataSet">true</Property>
+        <Property name="cols">*,*,*</Property>
+        <Property name="labelWidth">110</Property>
+        <Property name="dataType">dataTypeConditions</Property>
+        <AutoFormElement>
+          <Property name="name">proj_Id</Property>
+          <Property name="property">proj_Id</Property>
+          <Property name="trigger">ddlTbsProj</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
+          <Property name="name">valid</Property>
+          <Property name="property">valid</Property>
+          <Editor/>
+        </AutoFormElement>
+      </AutoForm>
+    </Container>
+    <ToolBar>
+      <ToolBarButton id="buttonQuery">
+        <Property name="caption">查 询</Property>
+        <Property name="iconClass">silk silk-zoom</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonAdd">
+        <Property name="caption">新 增</Property>
+        <Property name="iconClass">silk silk-add</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonEdit">
+        <Property name="caption">修 改</Property>
+        <Property name="iconClass">silk silk-table-edit</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonsave">
+        <Property name="caption">保 存</Property>
+        <Property name="action">updateAction</Property>
+        <Property name="iconClass">silk silk-disk</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonDel">
+        <Property name="caption">删 除</Property>
+        <Property name="iconClass">silk silk-delete</Property>
+      </ToolBarButton>
+      <DataPilot>
+        <Property name="itemCodes">pages</Property>
+        <Property name="dataSet">dataSetTbsProjcfm1</Property>
+      </DataPilot>
+      <ToolBarButton id="buttonStartAppr">
+        <Property name="caption">提交审批</Property>
+        <Property name="iconClass">silk silk-flag</Property>
+        <Property name="action">ajaxAction1</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <Container id="UI">
+      <Property name="height">85%</Property>
+      <SplitPanel>
+        <Property name="direction">top</Property>
+        <Property name="position">60%</Property>
+        <MainControl>
+          <TabControl>
+            <ControlTab id="HisTaskTab">
+              <Property name="caption">审批历史记录</Property>
+              <DataGrid>
+                <Property name="readOnly">true</Property>
+                <Property name="dataSet">dataSetHistoryTask</Property>
+                <RowNumColumn/>
+                <DataColumn>
+                  <Property name="property">taskname</Property>
+                  <Property name="name">taskname</Property>
+                </DataColumn>
+                <DataColumn name="assignee">
+                  <Property name="property">assignee</Property>
+                </DataColumn>
+                <DataColumn name="opinion">
+                  <Property name="property">opinion</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">createdate</Property>
+                  <Property name="name">createdate</Property>
+                </DataColumn>
+                <DataColumn>
+                  <Property name="property">enddate</Property>
+                  <Property name="name">enddate</Property>
+                </DataColumn>
+              </DataGrid>
+            </ControlTab>
+          </TabControl>
+        </MainControl>
+        <SideControl>
+          <DataGrid id="Main">
+            <Property name="dataSet">dataSetTbsProjHtsh</Property>
+            <Property name="readOnly">true</Property>
+            <Property name="height">100%</Property>
+            <DataColumn>
+              <Property name="property">projSn</Property>
+              <Editor/>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">tbsProj</Property>
+              <Property name="name">tbsProj</Property>
+            </DataColumn>
+            <DataColumn name="valid">
+              <Property name="property">valid</Property>
+              <Property name="width">150</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">tbsProj.tbsBasPs.name</Property>
+              <Property name="name">tbsProj.tbsBasPs.name</Property>
+              <Property name="caption">项目状态</Property>
+              <Property name="width">300</Property>
+              <Editor/>
+            </DataColumn>
+          </DataGrid>
+        </SideControl>
+      </SplitPanel>
+    </Container>
+    <Dialog id="dialogEdit">
+      <Property name="caption">项目合同审核表</Property>
+      <Property name="width">500</Property>
+      <Property name="height">300</Property>
+      <Property name="autoAdjustPosition">true</Property>
+      <Property name="iconClass">silk silk-application-edit</Property>
+      <Property name="showAnimateType">zoom</Property>
+      <Buttons>
+        <Button id="buttonSave">
+          <Property name="caption"> 确  认</Property>
+          <Property name="iconClass">silk silk-accept</Property>
+        </Button>
+        <Button id="buttonCancel">
+          <Property name="caption"> 取  消</Property>
+          <Property name="iconClass">silk silk-delete</Property>
+        </Button>
+      </Buttons>
+      <Children>
+        <Container id="ContainerAutoform">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="ddlAutoform">
+            <Property name="dataSet">dataSetTbsProjHtsh</Property>
+            <Property name="cols">*</Property>
+            <AutoFormElement>
+              <Property name="name">tbsProj</Property>
+              <Property name="property">tbsProj</Property>
+              <Property name="trigger">ddlTbsProj</Property>
+              <Editor/>
+            </AutoFormElement>
+            <Label/>
+            <AutoFormElement>
+              <Property name="name">valid</Property>
+              <Property name="property">valid</Property>
+              <Property name="labelWidth">120</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="property">by3</Property>
+              <Property name="name">by3</Property>
+              <Property name="readOnly">true</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Container id="DdlContainer">
+      <DataSet id="dataSetTbsProj">
+        <Property name="dataProvider">tbsProjHtshDao#getProjByNameForHtsh</Property>
+        <Property name="dataType">[dataTypeTbsProj]</Property>
+      </DataSet>
+      <DataSetDropDown id="ddlTbsProj">
+        <Property name="autoOpen">true</Property>
+        <Property name="dataSet">dataSetTbsProj</Property>
+        <Property name="dynaFilter">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="filterOnTyping">true</Property>
+        <Property name="filterOnOpen">false</Property>
+      </DataSetDropDown>
+    </Container>
+    <UpdateAction id="updateAction">
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <Property name="dataResolver">tbsProjHtshDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsProjHtsh</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <AjaxAction id="ajaxAction1">
+      <Property name="service">tbsProjHtshDao#StartWF</Property>
+    </AjaxAction>
+  </View>
+</ViewConfig>
