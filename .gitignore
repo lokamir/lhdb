@@ -3,3 +3,5 @@ src/main/webapp/flsmgm/*
 src/main/webapp/WEB-INF/dorado-home/datasources.xml
 src/main/webapp/WEB-INF/lib/*
 WebContent/WEB-INF/lib/*
+src/main/webapp/WEB-INF/uppath.properties
+src/main/webapp/flsmgm2017/*
