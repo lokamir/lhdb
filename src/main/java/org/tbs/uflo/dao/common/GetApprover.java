@@ -116,7 +116,7 @@ public class GetApprover implements AssignmentHandler {
 	        SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 	        String amount = queryAmount.uniqueResult().toString();
 	        float tm = Float.valueOf(amount);
-	        if (tm >= 20000000.0) {
+	        if (tm > 20000000.0) {
 	            // 董事长审批	
 	            String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 	            SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -224,7 +224,7 @@ public class GetApprover implements AssignmentHandler {
 		        SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 		        String amount = queryAmount.uniqueResult().toString();
 		        float tm = Float.valueOf(amount);
-		        if( tm >= 20000000){
+		        if( tm > 20000000){
 		        	String sql = "select account from tbs_approver where title like '董事长' ";
 					SQLQuery sqlquery=session.createSQLQuery(sql);
 					users=sqlquery.list();
