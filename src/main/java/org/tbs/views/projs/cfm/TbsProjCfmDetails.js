@@ -165,6 +165,7 @@ var downloadbutton = "disable";
 				// initialize outcome options
 				listDdlOutcome.set("items",["通过","驳回"]);
 			} else if(psid == 37) {
+				view.get("#autoformTbsProjCfm0").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 				autoformTbsProjCfm0.set("readOnly", false);
 				groupboxCfm0ProjOpin.set("visible", true);
 				datapilotCfm0ProjOpin.set("visible", true);
@@ -174,6 +175,7 @@ var downloadbutton = "disable";
 				listDdlOutcome.set("items",["会议","签批"]);
 				tabInAppr.set("visible", true);
 				groupboxCfm0Appr.set("visible", true);
+				uploadbutton="";
 			} else if(psid == 36) {
 				tabInAppr.set("visible", true);
 				autoformTbsProj_main.set("readOnly", false);
@@ -218,7 +220,12 @@ var downloadbutton = "disable";
 				//	}
 				//});
 			} else if(psid == 8) {
-				 var autoformCfm1 = view.get("#autoformCfm1");
+					if(view.get("#autoformCfm1").get("entity")){
+						view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
+					}else if(view.get("#autoformCfm2").get("entity")){
+						view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
+					}
+				 	var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
 				    var autoformCfm2 = view.get("#autoformCfm2");

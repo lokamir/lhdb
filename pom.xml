@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bstek.bdf2</groupId>
 	<version>1.0.0</version>
-	<artifactId>bdf2_core</artifactId>
+	<artifactId>lhdb</artifactId>
 	<packaging>war</packaging>
 	
 	<dependencies>	

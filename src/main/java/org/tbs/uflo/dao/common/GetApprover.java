@@ -235,7 +235,7 @@ public class GetApprover implements AssignmentHandler {
 		        }
 			}
 			if (cn.equals("请印审批")) {
-				String sql = "select account from tbs_approver where trim(title) in ('受理请印人','综合管理部门经理') ";
+				String sql = "select account from tbs_approver where trim(title) in ('行政经理') ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}

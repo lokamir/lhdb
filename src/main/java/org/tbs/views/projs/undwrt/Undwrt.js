@@ -8,6 +8,7 @@ var projid;
 var psid;
 var valid;
 var taskid = "${request.getParameter('taskId')}";
+var taskName = "${param.taskName}";
 var outcome = "修改确认";
 var readonly = false;
 /*======Get status from CurrentRecordSets======*/

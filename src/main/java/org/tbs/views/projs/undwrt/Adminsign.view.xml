@@ -54,6 +54,12 @@
         <Property name="label">承保单号</Property>
         <Property name="readOnly">true</Property>
       </PropertyDef>
+      <PropertyDef name="by2">
+        <Property name="label">请印人</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Users&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsBasBank" parent="global:dataTypeTbsBasBank">
       <Property name="defaultDisplayProperty">name</Property>
@@ -182,8 +188,8 @@
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
-                    <Property name="name">keyinId</Property>
-                    <Property name="property">keyinId</Property>
+                    <Property name="name">by2</Property>
+                    <Property name="property">by2</Property>
                     <Property name="label">请印人</Property>
                     <Editor/>
                   </AutoFormElement>

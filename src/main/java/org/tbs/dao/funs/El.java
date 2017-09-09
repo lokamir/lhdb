@@ -58,7 +58,8 @@ public class El extends HibernateDao {
 			uid = Integer.parseInt(str_uid);
 			return uid;
 		} finally {
-			session.clear();
+			//session.clear();
+			session.flush();
 			session.close();
 		}
 	}
