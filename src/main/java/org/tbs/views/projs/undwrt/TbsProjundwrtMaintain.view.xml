@@ -135,17 +135,11 @@
         <Property name="readOnly">false</Property>
         <Property name="label">承保开始日期</Property>
         <Property name="dataType">Date</Property>
-        <Validator name="validator1" type="required">
-          <Property name="resultMessage">必须选择一个开始日期</Property>
-        </Validator>
       </PropertyDef>
       <PropertyDef name="undedate">
         <Property name="readOnly">false</Property>
         <Property name="label">承保结束日期</Property>
         <Property name="dataType">Date</Property>
-        <Validator name="validator1" type="required">
-          <Property name="resultMessage">必须选择一个结束日期</Property>
-        </Validator>
       </PropertyDef>
       <PropertyDef name="by3">
         <Property name="label">承保期限（月）</Property>

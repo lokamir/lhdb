@@ -180,7 +180,7 @@
       <Property name="defaultDisplayProperty">name</Property>
     </DataType>
     <DataType name="datatypeTbsBasPs" parent="global:dataTypeTbsBasPs">
-      <Property name="defaultDisplayProperty">id</Property>
+      <Property name="defaultDisplayProperty">name</Property>
     </DataType>
     <DataType name="datatypeTbsBasGovfund" parent="dataTypeTbsBasGovfund">
       <Property name="defaultDisplayProperty">name</Property>

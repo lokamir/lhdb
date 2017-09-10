@@ -72,7 +72,6 @@ var downloadbutton = "disable";
 	var data = datasetTbsProj.getData("#");
 	var listDdlOutcome = view.get("#listDdlOutcome");
 	//var loginUser = "${loginUsername}";
-
 	if (data) {
 		psid = data.get("tbsBasPs.id");
 		id = data.get("id");
@@ -80,9 +79,13 @@ var downloadbutton = "disable";
 //		if (psid == 5 && data.get("bdf2User_A.username") == loginUser) {  //No Arole No start approve
 		if (psid == 5) {
 			btnSubmit.set("visible", true);
-			view.get("#datapilotTbsProjBank").set("visible", false);
-			view.get("#datapilotTbsProjBizvt").set("visible", false);
-			view.get("#datapilotTbsProjCgg").set("visible", false);
+			autoformTbsProj_main.set("readOnly", false);
+			view.get("#datapilotTbsProjBank").set("visible", true);
+			view.get("#datapilotTbsProjBizvt").set("visible", true);
+			view.get("#datapilotTbsProjCgg").set("visible", true);
+			view.get("#datagridTbsProjBank").set("readOnly", false);
+			view.get("#datagridTbsProjBizvt").set("readOnly", false);
+			view.get("#datagridTbsProjCgg").set("readOnly", false);
 			//upbutton.set("disabled",false);
 			uploadbutton="";
 		} else {
@@ -650,6 +653,66 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	window.parent.closeProcessDialog('${request.getParameter("type")}');
 };
 
+/** @Bind #btnSave.onClick */
+!function(self, arg) {
+
+	//=======子表数据验证========
+	//var dialogMainForm = window.parent.$id("dialogMainForm").objects[0];
+	//var datasetTbsProjS = window.parent.$id("datasetTbsProj").objects[0];
+	var datasetTbsProj = view.get("#datasetTbsProj");
+	var updateActionSave = view.get("#updateActionSave");
+
+	// 子tab中的datagrid去空
+	var TbsProjCgg = datasetTbsProj.getData("#").get("tbsProjCggSet");
+	TbsProjCgg.each(function(entity) {
+		if (entity.get("cggId") == "") {
+			entity.set("cggId", null);
+		}
+	});
+
+	var TbsBasIdcardtype = datasetTbsProj.getData("#").get("tbsProjBizvtSet");
+	TbsBasIdcardtype.each(function(entity) {
+		if (entity.get("tbsBasBizvar") == "") {
+			entity.set("tbsBasBizvar", null);
+		}
+		if (entity.get("tbsBasBiztype") == "") {
+			entity.set("tbsBasBiztype", null);
+		}
+	});
+
+	var TbsBasEnttype = datasetTbsProj.getData("#").get("tbsProjBankSet");
+	TbsBasEnttype.each(function(entity) {
+		if (entity.get("tbsBasBank_M") == "") {
+			entity.set("tbsBasBank_M", null);
+		}
+		if (entity.get("tbsBasBank_S") == "") {
+			entity.set("tbsBasBank_S", null);
+		}
+	});
+	
+	var targetData = datasetTbsProj.getData("#.tbsProjBizvtSet");
+	var targetData2 = datasetTbsProj.getData("#.tbsProjBizvtSet");
+	var i = 0, j = 0;
+	targetData.each(function(entity) {
+		if (entity.get("tbsBasBizvar.id")) {
+			j++;
+		}
+		;
+		targetData2.each(function(entity2) {
+					if (entity.get("tbsBasBizvar.id") == entity2.get("tbsBasBizvar.id")) {
+						i++;
+					}
+				});
+	});
+	if (i > j) {
+		dorado.MessageBox.alert("业务类型和品种有重复，请删除后再确认！", {
+			title : "趣博信息科技"
+		});
+		return;
+	} else {
+		updateActionSave.execute();
+	}
+};
 
 /* =======================发送审批=================== */
 /** @Bind #btnSubmit.onClick */
@@ -672,7 +735,8 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	var dialogMainForm = window.parent.$id("dialogMainForm").objects[0];
 	var datasetTbsProj = window.parent.$id("datasetTbsProj").objects[0];
 	dialogMainForm.hide();
-	datasetTbsProj.get("data:#").cancel();
+	//datasetTbsProj.get("data:#").cancel();
+	datasetTbsProj.getData("#").cancel();
 	datasetTbsProj.getData("#").get("tbsProjBizvtSet").cancel();
 	datasetTbsProj.getData("#").get("tbsProjBankSet").cancel();
 };
@@ -680,7 +744,6 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 /* ========保存后刷新，执行query相同的方法========= */
 /** @Bind #updateActionSave.onSuccess */
 !function(self, arg) {
-	debugger;
 	var autoformCondition = window.parent.$id("autoformCondition").objects[0];
 	var datasetTbsProj = window.parent.$id("datasetTbsProj").objects[0];
 	var entity = autoformCondition.get("entity");

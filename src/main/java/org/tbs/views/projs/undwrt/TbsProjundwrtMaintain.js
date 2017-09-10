@@ -36,6 +36,7 @@ function GetCRStatus(ds){
     	readonly = "false";
     	//upbutton.set("disabled",false);
     	uploadbutton = "";
+    	view.get("#ddlAutoform").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
     }else{
     	buttonDel.set("disabled",true);
     	buttonUflo.set("disabled",true);
@@ -98,9 +99,9 @@ function GetCRStatus(ds){
 	};
 };
 
-/** @Bind #undbdate.onPost */
-/** @Bind #by3.onPost */
-!function(self,arg,ddlAutoform,buttonSave,apptotloc,dataSetTbsProjundwrt){
+///** @Bind #undbdate.onPost */
+///** @Bind #by3.onPost */
+/*!function(self,arg,ddlAutoform,buttonSave,apptotloc,dataSetTbsProjundwrt){
 	var crs = ddlAutoform.get("entity"); 
 	var bdate = crs.get("bdate"); var edate = crs.get("edate");
 	var undbdate = crs.get("undbdate"); //var undedate = crs.get("undedate");
@@ -114,7 +115,7 @@ function GetCRStatus(ds){
 	}else{
 		buttonSave.set("disabled",false);
 	}
-};
+};*/
 
 /*========审批历史创建时刷新=========*/
 /** @Bind #dataSetHistoryTask.onCreate */

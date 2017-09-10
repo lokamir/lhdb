@@ -5,17 +5,22 @@
       <description>合同审批-开始 PSID=10</description>
       <sequence-flow to="部门经理审批"/>
    </start>
-   <task g="170,49,139,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Htsh.d" assignment-type="Handler" name="部门经理审批">
+   <task assignment-handler-bean="getApprover" g="170,49,139,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Htsh.d" task-type="Normal" name="部门经理审批" allow-specify-assignee="false">
       <description>${projSn}-合同审批-部门经理审批 PSID=11</description>
-      <sequence-flow to="Action" g="-5,-22" name="通过"/>
-      <sequence-flow to="驳回修正" g="375,201:-76,-22" name="驳回"/>
+      <sequence-flow g="375,201:-51,-68" name="驳回" to="驳回修正"/>
+      <sequence-flow g="11,-21" name="通过" to="法务经理审批"/>
    </task>
-   <end g="226,426,32,62" terminate="true" name="结束"/>
-   <action g="186,231,115,50" handler-bean="actHtsh" name="Action">
+   <end g="223,419,32,62" name="结束" terminate="true"/>
+   <action handler-bean="actHtsh" g="181,324,115,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <task g="374,226,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.Htsh.d" assignment-type="ProcessPromoter" name="驳回修正">
+   <task g="374,226,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Htsh.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projSn}-合同审批-驳回修正 PSID=12</description>
-      <sequence-flow to="部门经理审批" g="513,250;512,73;448,73:-93,-22" name="修改确认"/>
+      <sequence-flow g="513,250;512,73;448,73:-93,-22" name="修改确认" to="部门经理审批"/>
+   </task>
+   <task assignment-handler-bean="getApprover" g="169,225,140,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Htsh.d" task-type="Normal" name="法务经理审批" allow-specify-assignee="false">
+      <description>${projSn}-合同审批-法务经理审批 PSID=11</description>
+      <sequence-flow g="11,-15" name="通过" to="Action"/>
+      <sequence-flow g="-14,4" name="驳回" to="驳回修正"/>
    </task>
 </uflo-process>
