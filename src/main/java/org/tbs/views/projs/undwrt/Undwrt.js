@@ -28,7 +28,7 @@ function GetCRStatus(ds){
 /** @Bind #dataSetTbsProjundwrt.onLoadData */
 !function(self,arg,buttonAppr,buttonClose,buttonResend,DdlOutcome,OpinionGroupBox,DocGroupBox,dataSetTbsFunFul,upbutton,tabInAppr,tabMain,chunaGroupBox){
 	GetCRStatus(self);
-	var loginU="${loginUser.getUsername()}";
+	//var loginU="${loginUser.getUsername()}";
 	if (psid == 19 || psid == 9  ){  //驳回
 		tabMain.set("currentIndex", 1);
 		buttonClose.set("visible",false);
@@ -38,8 +38,18 @@ function GetCRStatus(ds){
 		OpinionGroupBox.set("visible",false);
 		DocGroupBox.set("height","88%");	
 		//dataSetTbsFunFul.set("readOnly",false);  //uploader 
+		//upbutton.set("disabled",false);
 		readonly = "false";
-    	upbutton.set("disabled",false);
+	}else if(taskName =='出纳费用确认'||'财务部门经理审批') {
+		tabMain.set("currentIndex", 0);
+		tabInAppr.set("visible",true);
+		buttonClose.set("visible",true);
+		buttonAppr.set("visible",true);
+		buttonResend.set("visible",false);
+		DdlOutcome.set("items",["通过","驳回"]);
+		readonly = "true";
+		self.set("readOnly",false);  
+		view.get("#tabCN").set("visible",true);
 	}else{
 		tabMain.set("currentIndex", 0);
 		tabInAppr.set("visible",true);
@@ -50,10 +60,9 @@ function GetCRStatus(ds){
 		self.set("readOnly",true);
 		//dataSetTbsFunFul.set("readOnly",true); 
 		readonly = "true";
-    	upbutton.set("disabled",true);
-    	if (loginU == 'admin' || loginU == 'xinc') {  // xinc在审批时需要填写承保单
+    	/*if (loginU == 'admin' || loginU == 'xinc') {  // xinc在审批时需要填写承保单
     		self.set("readOnly",false);
-    	};
+    	};*/
     	
 	};
 };
@@ -131,6 +140,34 @@ function GetCRStatus(ds){
 		dorado.MessageBox.alert("对不起，【承保期限（月）】必须输入一个大于零的数字！",{title:"趣博信息科技"});
 	}else{
 		buttonResend.set("disabled",false);
+	}
+};
+
+/** @Bind #gatrateu.onPost */
+/** @Bind #gatrate.onPost */
+/** @Bind #appotloc.onPost */
+!function(self,arg,dataSetTbsProjundwrt){
+	var cns = view.get("#cnAutoform").get("entity"); 
+	var month = dataSetTbsProjundwrt.getData("#.by3");
+	var apptotloc = dataSetTbsProjundwrt.getData("#.apptotloc");
+	var gatrateu = cns.get("gatrateu");
+	switch(gatrateu)
+	{
+	case "‰/月":
+		var gatrate = cns.get("gatrate");
+		var gatreckon = gatrate*apptotloc*month/1000;
+		cns.set("gatreckon",gatreckon);
+	  break;
+	case "‰/笔":
+		var gatrate = cns.get("gatrate");
+		var gatreckon = gatrate*apptotloc/1000;
+		cns.set("gatreckon",gatreckon);
+	  break;
+	case "%/年":
+		var gatrate = cns.get("gatrate");
+		var gatreckon = gatrate*apptotloc*month/120;
+		cns.set("gatreckon",gatreckon);
+	  break;
 	}
 };
 

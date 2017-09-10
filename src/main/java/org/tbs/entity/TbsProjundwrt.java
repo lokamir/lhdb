@@ -111,10 +111,25 @@ public class TbsProjundwrt implements Serializable {
 	private BigDecimal psfy;
 
 	/**
+	 * 咨询费用（元）:其他费用（元）
+	 */
+	private BigDecimal zxfy;
+	
+	/**
+	 * 其他费用（元）:财务费用（元）
+	 */
+	private BigDecimal financial;
+	
+	/**
 	 * 其他费用（元）:其他费用（元）
 	 */
 	private BigDecimal qtfy;
 
+	/**
+	 * 担保费用计算后金额
+	 */
+	private BigDecimal gatreckon;
+	
 	/**
 	 * 担保费率说明:担保费率说明
 	 */
@@ -214,7 +229,7 @@ public class TbsProjundwrt implements Serializable {
 			Date bdate,Date edate,Date undbdate,Date undedate,
 			String loantype, String loanmem, String repay,
 			BigDecimal repayinper, String repaymem, int periodCfm,
-			BigDecimal gatrate, BigDecimal psfy, BigDecimal qtfy,
+			BigDecimal gatrate, BigDecimal psfy, BigDecimal qtfy,BigDecimal zxfy,BigDecimal financial,BigDecimal gatreckon,
 			String gatmem, boolean del, String by1, String by2, String by3, String pid,
 			String gatrateu,
 			TbsCustomer tbsCustomer, TbsProj tbsProj,
@@ -254,8 +269,11 @@ public class TbsProjundwrt implements Serializable {
 		this.repaymem = repaymem;
 		this.periodCfm = periodCfm;
 		this.gatrate = gatrate;
+		this.gatreckon = gatreckon;
 		this.psfy = psfy;
 		this.qtfy = qtfy;
+		this.zxfy = zxfy;
+		this.financial = financial;
 		this.gatmem = gatmem;
 		this.del = del;
 		this.by1 = by1;
@@ -448,6 +466,15 @@ public class TbsProjundwrt implements Serializable {
 	public BigDecimal getGatrate() {
 		return gatrate;
 	}
+	
+	public void setGatreckon(BigDecimal gatreckon) {
+		this.gatreckon = gatreckon;
+	}
+	
+	@Column(name = "GATRECKON")
+	public BigDecimal getGatreckon() {
+		return gatreckon;
+	}
 
 	public void setPsfy(BigDecimal psfy) {
 		this.psfy = psfy;
@@ -465,6 +492,24 @@ public class TbsProjundwrt implements Serializable {
 	@Column(name = "QTFY")
 	public BigDecimal getQtfy() {
 		return qtfy;
+	}
+	
+	public void setZxfy(BigDecimal zxfy) {
+		this.zxfy = zxfy;
+	}
+	
+	@Column(name = "ZXFY")
+	public BigDecimal getZxfy() {
+		return zxfy;
+	}
+	
+	public void setFinancial(BigDecimal financial) {
+		this.financial = financial;
+	}
+	
+	@Column(name = "FINANCIAL")
+	public BigDecimal getFinancial() {
+		return financial;
 	}
 
 	public void setGatmem(String gatmem) {
@@ -761,7 +806,7 @@ public class TbsProjundwrt implements Serializable {
 				+ ",appnfaloc=" + appnfaloc + ",appotloc=" + appotloc + ",loantype=" + loantype
 				+ ",loanmem=" + loanmem + ",repay=" + repay + ",repayinper="
 				+ repayinper + ",repaymem=" + repaymem + ",periodCfm="
-				+ periodCfm + ",gatrate=" + gatrate + ",psfy=" + psfy
+				+ periodCfm + ",gatrate=" + gatrate + ",psfy=" + psfy + ",zxfy=" + zxfy + ",financial=" + financial + ",gatreckon=" + gatreckon
 				+ ",qtfy=" + qtfy + ",gatmem=" + gatmem + ",del=" + del
 				+ ",by1=" + by1 + ",by2=" + by2 + ",by3=" + by3
 				+ ",tbsCustomer=" + tbsCustomer + ",tbsProj=" + tbsProj

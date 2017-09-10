@@ -3095,8 +3095,18 @@
     <PropertyDef name="qtfy">
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
+    <PropertyDef name="zxfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="financial">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
     <PropertyDef name="gatmem">
       <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="gatreckon">
+      <Property></Property>
+      <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
     <PropertyDef name="del">
       <Property name="dataType">boolean</Property>

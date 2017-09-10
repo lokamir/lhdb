@@ -160,6 +160,14 @@
         <Property name="label">其他费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
       <PropertyDef name="gatmem">
         <Property></Property>
         <Property name="label">担保费率说明</Property>
@@ -187,6 +195,10 @@
         <Property></Property>
         <Property name="label">担保费率单位</Property>
         <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="gatreckon">
+        <Property name="label">担保费用计算后金额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
@@ -988,6 +1000,59 @@
             </Container>
           </SideControl>
         </SplitPanel>
+      </ControlTab>
+      <ControlTab id="tabCN">
+        <Property name="caption">出纳审批单</Property>
+        <Property name="visible">false</Property>
+        <AutoForm id="cnAutoform">
+          <Property name="cols">*,*,*</Property>
+          <Property name="dataSet">dataSetTbsProjundwrt</Property>
+          <Property name="labelWidth">150</Property>
+          <Property name="width">300</Property>
+          <AutoFormElement>
+            <Property name="label">担保费率</Property>
+            <Property name="property">gatrate</Property>
+            <Property name="name">gatrate</Property>
+            <Editor>
+              <TextEditor id="gatrate"/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="dataSet">dataSetTbsProjundwrt</Property>
+            <Property name="property">gatrateu</Property>
+            <Property name="name">gatrateu</Property>
+            <Property name="label">担保费按</Property>
+            <Editor>
+              <TextEditor id="gatrateu">
+                <Property name="trigger">ddlGatrateu</Property>
+              </TextEditor>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">金额总计</Property>
+            <Property name="name">gatreckon</Property>
+            <Property name="property">gatreckon</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">另收取评审费用人名币</Property>
+            <Property name="name">psfy</Property>
+            <Property name="property">psfy</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="property">financial</Property>
+            <Property name="name">financial</Property>
+            <Property name="label">另收取财务费</Property>
+            <Editor/>
+          </AutoFormElement>
+          <AutoFormElement>
+            <Property name="label">咨询费用</Property>
+            <Property name="property">zxfy</Property>
+            <Property name="name">zxfy</Property>
+            <Editor/>
+          </AutoFormElement>
+        </AutoForm>
       </ControlTab>
       <ControlTab id="tabAttach">
         <Property name="caption">附件管理</Property>
