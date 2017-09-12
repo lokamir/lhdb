@@ -40,7 +40,7 @@ function GetCRStatus(ds){
 		//dataSetTbsFunFul.set("readOnly",false);  //uploader 
 		//upbutton.set("disabled",false);
 		readonly = "false";
-	}else if(taskName =='出纳费用确认'||'财务部门经理审批') {
+	}else if(taskName =='出纳费用确认'||taskName =='财务部门经理审批') {
 		tabMain.set("currentIndex", 0);
 		tabInAppr.set("visible",true);
 		buttonClose.set("visible",true);

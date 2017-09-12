@@ -15,7 +15,7 @@
       </PropertyDef>
       <PropertyDef name="keyinId">
         <Property name="dataType">int</Property>
-        <Property name="label">录入人</Property>
+        <Property name="label">请印人</Property>
         <Property name="mapping">
           <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Users&quot;).getResult()}</Property>
         </Property>
@@ -45,6 +45,7 @@
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
         <Property name="label">经办人</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
       </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="label">项目名称</Property>
@@ -55,10 +56,11 @@
         <Property name="readOnly">true</Property>
       </PropertyDef>
       <PropertyDef name="by2">
-        <Property name="label">请印人</Property>
+        <Property name="label">录入人</Property>
         <Property name="mapping">
           <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Users&quot;).getResult()}</Property>
         </Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
       </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsBasBank" parent="global:dataTypeTbsBasBank">
@@ -188,9 +190,9 @@
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
-                    <Property name="name">by2</Property>
-                    <Property name="property">by2</Property>
-                    <Property name="label">请印人</Property>
+                    <Property name="name">keyinId</Property>
+                    <Property name="property">keyinId</Property>
+                    <Property name="readOnly">true</Property>
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement layoutConstraint="colSpan:2">
@@ -235,9 +237,9 @@
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
-                    <Property name="name">keyinId</Property>
-                    <Property name="property">keyinId</Property>
-                    <Property name="readOnly">true</Property>
+                    <Property name="name">by2</Property>
+                    <Property name="property">by2</Property>
+                    <Property name="label">请印人</Property>
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
