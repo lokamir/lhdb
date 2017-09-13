@@ -315,7 +315,7 @@
             <AutoFormElement>
               <Property name="name">keyinId</Property>
               <Property name="property">keyinId</Property>
-              <Property name="readOnly">true</Property>
+              <Property name="readOnly">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement layoutConstraint="colSpan:2">

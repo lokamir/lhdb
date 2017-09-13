@@ -79,6 +79,11 @@ self.flushAsync();
 	/** @Bind #buttonEdit.onClick */
 	!function(self,arg,dialogEdit){
 		dialogEdit.show();
+		if(psid==28){
+		view.get("#ddlAutoform").set("entity.by2","${dorado.getDataProvider('el#Uid').getResult()}");
+		view.get("#ddlAutoform").set("entity.keyinId",0);
+		view.get("#ddlAutoform").get("entity.keyinId").setState(dorado.Entity.STATE_NONE );
+		}
 	};
 	
 	/*========保存后刷新，执行query相同的方法=========*/
