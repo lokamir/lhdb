@@ -545,6 +545,7 @@
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
+                    <Property name="visible">false</Property>
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>

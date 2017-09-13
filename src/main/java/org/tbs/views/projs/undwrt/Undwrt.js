@@ -125,8 +125,9 @@ function GetCRStatus(ds){
 	};
 };
 
-/** @Bind #undbdate.onPost */
-/** @Bind #by3.onPost */
+///** @Bind #undbdate.onPost */
+///** @Bind #by3.onPost */
+/*
 !function(self,arg,ddlAutoform,buttonResend,apptotloc,dataSetTbsProjundwrt){
 	var crs = ddlAutoform.get("entity"); 
 	var bdate = crs.get("bdate"); var edate = crs.get("edate");
@@ -141,11 +142,12 @@ function GetCRStatus(ds){
 	}else{
 		buttonResend.set("disabled",false);
 	}
-};
+};*/
 
 /** @Bind #gatrateu.onPost */
 /** @Bind #gatrate.onPost */
 /** @Bind #appotloc.onPost */
+/** @Bind #tabCN.onClick */
 !function(self,arg,dataSetTbsProjundwrt){
 	var cns = view.get("#cnAutoform").get("entity"); 
 	var month = dataSetTbsProjundwrt.getData("#.by3");
@@ -165,7 +167,7 @@ function GetCRStatus(ds){
 	  break;
 	case "%/年":
 		var gatrate = cns.get("gatrate");
-		var gatreckon = gatrate*apptotloc*month/120;
+		var gatreckon = gatrate*apptotloc*month/1200;
 		cns.set("gatreckon",gatreckon);
 	  break;
 	}

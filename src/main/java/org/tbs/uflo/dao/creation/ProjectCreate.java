@@ -220,7 +220,7 @@ public class ProjectCreate extends HibernateDao {
 	    }
 	} else if (psid == 3) {
 	    // only the last node will change the psid
-	    if (outcome.equals("通过") && nodeName.equals("业务总监审批")) {
+	    if (outcome.equals("通过") && nodeName.equals("分管业务总经理")) {
 		// proj state from 3:"立项申请中" to 5:"立项申请通过"
 		sqlProcedure = "call p_hisstatus(" + businessId + ",5,3)";
 	    } else if (outcome.equals("驳回")) {

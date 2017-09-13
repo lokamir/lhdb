@@ -269,7 +269,7 @@ public class ProjectCfm extends ProjectCreate {
 
 	if (psid == 6) {
 	    // only the last node will change the psid
-	    if (outcome.equals("通过") && nodeName.equals("业务总监审批")) {
+	    if (outcome.equals("通过") && nodeName.equals("分管业务总经理")) {
 		sqlProcedure = "call p_hisstatus(" + businessId + ",37,6)";  // gnr cfm0
 	    } else if (outcome.equals("驳回")) {
 		sqlProcedure = "call p_hisstatus(" + businessId + ",36,6)";
