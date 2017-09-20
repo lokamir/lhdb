@@ -110,7 +110,7 @@ function GetCRStatus(ds){
 	var dataSet = dataSetTbsProjundwrt.getData("#");
 	var appfaloc = crs.get("appfaloc"); var appnfaloc = crs.get("appnfaloc"); var appotloc = crs.get("appotloc"); 
 	var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");
-	if (appfaloc == 0 && appfaloc == 0 && appotloc == 0 ) {
+	if (appfaloc == 0 && appnfaloc == 0 && appotloc == 0 ) {
 		buttonResend.set("disabled",true);
 		buttonAppr.set("disabled",true);
 		dorado.MessageBox.alert("对不起，【本次承保金额】不能都为 【0.00】 ",{title:"趣博信息科技"});

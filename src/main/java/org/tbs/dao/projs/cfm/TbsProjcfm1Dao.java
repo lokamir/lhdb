@@ -113,6 +113,12 @@ public class TbsProjcfm1Dao extends HibernateDao {
 				String meetingdate_date = df.format(meetingdate);
 				whereCase += " AND meetingdate ='" + meetingdate_date+"'";
 			}
+			/*List<Object> proj = this.query("select id from "
+					+ TbsProj.class.getName()+" where ps_id in (6,7,8,10,21,26,27,31,36,37)");
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("proj", proj);
+			String hql="from "+TbsProjcfm1.class.getName()+" where Del=0 and proj_id in (:proj) " + whereCase+" order by id desc";
+			this.pagingQuery(page, hql, "select count(*) "+hql,map);*/
 			String hql="from "+TbsProjcfm1.class.getName()+" where Del=0 " + whereCase+" order by id desc";
 			this.pagingQuery(page, hql, "select count(*) "+hql);
 		} else

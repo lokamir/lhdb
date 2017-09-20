@@ -41,7 +41,8 @@
         <Property></Property>
         <Property name="label">委托担保合同号</Property>
         <Property name="defaultValue">保存后自动生成...</Property>
-        <Property name="readOnly">true</Property>
+        <Property name="readOnly">false</Property>
+        <Property name="tags">edit</Property>
       </PropertyDef>
       <PropertyDef name="zht">
         <Property></Property>
