@@ -110,6 +110,16 @@
   				</exclusion>
   			</exclusions>
 		</dependency>
+		<!-- 为了解决servlet-api.jar冲突 -->
+		
+		<dependency>
+    		<groupId>javax.servlet</groupId>
+    			<artifactId>servlet-api</artifactId>
+   				 <version>2.5</version>
+    			<scope>provided</scope>
+  		 </dependency>
+  		  
+		<!-- 为了解决servlet-api.jar冲突结束 -->
 	</dependencies>
 	<!-- Spring -->	
 	<dependencyManagement>

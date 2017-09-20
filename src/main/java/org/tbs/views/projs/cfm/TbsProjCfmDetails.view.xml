@@ -2600,7 +2600,7 @@
       <Import id="Bdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
       <Import id="ddlTbsProj" src="org.tbs.views.funs.Dropdown#TbsProj"/>
       <ListDropDown id="ddl_meetingtype">
-        <Property name="items">新项目,老项目新增,新项目变更,老项目变更,超时效项目,补议项目,其他</Property>
+        <Property name="items">新项目,老项目新增,新项目变更,老项目变更,超时效项目,补议项目,其他,老项目换项目经理</Property>
       </ListDropDown>
       <ListDropDown id="ddlGatrateu">
         <Property name="items">‰/月,%/年,‰/笔</Property>

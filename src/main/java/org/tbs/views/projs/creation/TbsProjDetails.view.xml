@@ -1471,7 +1471,7 @@
         <Button id="btnSave">
           <Property name="caption"> 确  认</Property>
           <Property name="iconClass">silk silk-accept</Property>
-          <Property name="disabled">true</Property>
+          <Property name="disabled">false</Property>
         </Button>
         <Button id="btnSubmit">
           <Property name="caption">发送审批</Property>

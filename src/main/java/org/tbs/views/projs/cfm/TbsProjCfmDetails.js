@@ -4,6 +4,7 @@ var id;
 var fromAppr = 1;
 var uploadbutton = "disable";
 var downloadbutton = "disable";
+var taskName = "${param.taskName}";
 
 /** @Bind view.onReady */
 !function(self, arg, autoformTbsProj_main) {
@@ -278,6 +279,7 @@ var downloadbutton = "disable";
 //2017-06-23 新增 决议审批autoformCfm自动统计票数
 /** @Bind #tabCfm1r2.onClick */
 !function(self){
+	if(taskName == '评审会秘书录入会议决议单'){
 	var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
 	var type = view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype");
 	var agree = 0;
@@ -328,7 +330,7 @@ var downloadbutton = "disable";
 		autoformCfm1.get("entity").set("opoose",opoose);
 		autoformCfm1.get("entity").set("agree",agree);
 	}*/
-	
+	}
 };
 
 

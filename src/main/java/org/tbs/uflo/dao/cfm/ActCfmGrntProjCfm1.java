@@ -97,6 +97,8 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 		// save cfm1Id into process variables
 		processClient.saveProcessVariable(piId, "cfm1r2Id", projcfm2Id);
 	    }
+	}catch(Exception e){
+		System.out.println("error!");
 	} finally {
 	    session.flush();
 	}

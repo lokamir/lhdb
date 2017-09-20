@@ -294,16 +294,16 @@
           <Property name="property">bdf2User</Property>
           <Property name="width">100</Property>
         </DataColumn>
-        <DataColumn name="valid">
-          <Property name="property">valid</Property>
-          <Property name="width">100</Property>
-        </DataColumn>
         <DataColumn>
           <Property name="caption">项目状态</Property>
           <Property name="name">tbsProj.tbsBasPs.name</Property>
           <Property name="property">tbsProj.tbsBasPs.name</Property>
           <Property name="width">130</Property>
           <Editor/>
+        </DataColumn>
+        <DataColumn name="valid">
+          <Property name="property">valid</Property>
+          <Property name="width">100</Property>
         </DataColumn>
       </DataGrid>
     </Container>
