@@ -168,6 +168,11 @@ public class GetApprover implements AssignmentHandler {
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}
+			if (cn.equals("分管风险领导")) {
+				String sql = "select account from tbs_approver where trim(title) in ('分管风管总经理') ";
+				SQLQuery sqlquery=session.createSQLQuery(sql);
+				users=sqlquery.list();
+			}
 			if (cn.equals("风管经理审批")) {
 				String sql = "select account from tbs_approver where trim(title)='风管经理' ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
@@ -213,8 +218,8 @@ public class GetApprover implements AssignmentHandler {
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}
-			if (cn.equals("风管分管总经理")) {
-				String sql = "select account from tbs_approver where trim(title) in ('风管分管总经理') ";
+			if (cn.equals("分管风管总经理")) {
+				String sql = "select account from tbs_approver where trim(title) in ('分管风管总经理') ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}
@@ -253,7 +258,7 @@ public class GetApprover implements AssignmentHandler {
 				users=sqlquery.list();
 			}
 			if ((cn.equals("分管总经理（风险）审批")||cn.equals("是否上会"))&&(pname.equals("ireginsp")||pname.equals("perinsp"))) {
-				String sql = "select account from tbs_approver where trim(title)='风管分管总经理' ";
+				String sql = "select account from tbs_approver where trim(title)='分管风管总经理' ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}
@@ -365,7 +370,7 @@ public class GetApprover implements AssignmentHandler {
 				users=sqlquery.list();
 			} 
 			if (cn.equals("分管总经理（风险）") && pname.equals("compsrypay")) {
-				String sql = "select account from tbs_approver where title like '%风管分管总经理%' ";
+				String sql = "select account from tbs_approver where title like '%分管风管总经理%' ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			} 
@@ -393,7 +398,7 @@ public class GetApprover implements AssignmentHandler {
 			
 			//=======反担保物解除开始=========
 			if ((cn.equals("风管部负责人审批")||cn.equals("风管负责人审批")) && (pname.equals("cggrevoke"))) {
-				String sql = "select account from tbs_approver where trim(title) in ('风管分管总经理') ";
+				String sql = "select account from tbs_approver where trim(title) in ('分管风管总经理') ";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
 				users=sqlquery.list();
 			}
