@@ -187,6 +187,17 @@ public class TbsProjcfm1 implements Serializable {
 	private String repaymem;
 
 	/**
+	 * 咨询费用（元）:咨询费用（元）
+	 */
+	private BigDecimal zxfy;
+
+	/**
+	 * 其他费用（元）:财务费用（元）
+	 */
+	private BigDecimal financial;
+	
+	
+	/**
 	 * 担保费率（‰/月）:担保费率（‰/月）
 	 */
 	private BigDecimal gatrate;
@@ -270,7 +281,7 @@ public class TbsProjcfm1 implements Serializable {
 			BigDecimal votloc, BigDecimal vtotloc, int periodCfm, Date bdate,
 			Date edate, String loantype, String loanmem, String repay,
 			BigDecimal repayinper, String repaymem, BigDecimal gatrate,
-			BigDecimal psfy, BigDecimal qtfy, String gatmem,
+			BigDecimal psfy, BigDecimal qtfy,BigDecimal financial,BigDecimal zxfy, String gatmem,
 			String riskavoid, String by1, String by2, String by3,
 			TbsProj tbsProj, Bdf2Dept bdf2Dept, Bdf2User bdf2User,
 			Set<TbsProjcfm1Bizvt> tbsProjcfm1BizvtSet,
@@ -313,6 +324,8 @@ public class TbsProjcfm1 implements Serializable {
 		this.repaymem = repaymem;
 		this.gatrate = gatrate;
 		this.gatrateu = gatrateu;
+		this.financial = financial;
+		this.zxfy = zxfy;
 		this.psfy = psfy;
 		this.qtfy = qtfy;
 		this.gatmem = gatmem;
@@ -656,6 +669,24 @@ public class TbsProjcfm1 implements Serializable {
 		return gatrate;
 	}
 
+	public void setZxfy(BigDecimal zxfy) {
+		this.zxfy = zxfy;
+	}
+	
+	@Column(name = "ZXFY")
+	public BigDecimal getZxfy() {
+		return zxfy;
+	}
+	
+	@Column(name = "FINANCIAL")
+	public BigDecimal getFinancial() {
+		return financial;
+	}
+
+	public void setFinancial(BigDecimal financial) {
+		this.financial = financial;
+	}
+
 	public void setPsfy(BigDecimal psfy) {
 		this.psfy = psfy;
 	}
@@ -803,7 +834,7 @@ public class TbsProjcfm1 implements Serializable {
 				+ ",bdate=" + bdate + ",edate=" + edate + ",loantype="
 				+ loantype + ",loanmem=" + loanmem + ",repay=" + repay
 				+ ",repayinper=" + repayinper + ",repaymem=" + repaymem
-				+ ",gatrate=" + gatrate + ",psfy=" + psfy + ",qtfy=" + qtfy
+				+ ",gatrate=" + gatrate + ",psfy=" + psfy + ",qtfy=" + qtfy+ ",zxfy=" + zxfy+ ",financial=" + financial
 				+ ",gatmem=" + gatmem + ",riskavoid=" + riskavoid + ",by1="
 				+ by1 + ",by2=" + by2 + ",by3=" + by3 + ",gatrateu=" + gatrateu + ",tbsProj=" + tbsProj
 				+ ",bdf2Dept=" + bdf2Dept + ",bdf2User=" + bdf2User

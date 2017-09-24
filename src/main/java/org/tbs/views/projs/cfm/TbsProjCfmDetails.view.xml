@@ -732,10 +732,17 @@
         <Property name="label">评审费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
-      <PropertyDef name="qtfy">
-        <Property name="dataType">BigDecimal</Property>
-        <Property name="label">其他费用（元）</Property>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
         <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
       </PropertyDef>
       <PropertyDef name="gatmem">
         <Property name="label">担保费率说明</Property>
@@ -766,10 +773,6 @@
         <Property name="dataProvider">tbsProjcfm1Dao#loadTbsProjcfm1Bizvt</Property>
         <Property name="dataType">[dataTypeTbsProjcfm1Bizvt]</Property>
       </Reference>
-      <PropertyDef name="gatrateu">
-        <Property></Property>
-        <Property name="label">担保费率单位</Property>
-      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjcfm2" parent="global:dataTypeTbsProjcfm2">
       <PropertyDef name="id">
@@ -933,6 +936,18 @@
         <Property name="label">其他费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
+      </PropertyDef>
       <PropertyDef name="gatmem">
         <Property name="label">担保费率说明</Property>
       </PropertyDef>
@@ -958,10 +973,6 @@
         <Property name="dataProvider">tbsProjcfm2Dao#loadTbsProjcfm2Bizvt</Property>
         <Property name="dataType">[dataTypeTbsProjcfm2Bizvt]</Property>
       </Reference>
-      <PropertyDef name="gatrateu">
-        <Property></Property>
-        <Property name="label">担保费率单位</Property>
-      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjcfm1Bizvt" parent="global:dataTypeTbsProjcfm1Bizvt">
       <PropertyDef name="tbsBasBiztype">
@@ -1988,7 +1999,7 @@
                       <Property name="name">gatrate</Property>
                       <Property name="property">gatrate</Property>
                       <Property name="labelPosition">left</Property>
-                      <Property name="visible">false</Property>
+                      <Property name="visible">true</Property>
                       <Property name="hideMode">display</Property>
                       <Editor/>
                     </AutoFormElement>
@@ -1996,9 +2007,19 @@
                       <Property name="name">gatrateu</Property>
                       <Property name="property">gatrateu</Property>
                       <Property name="trigger">ddlGatrateu</Property>
-                      <Property name="visible">false</Property>
+                      <Property name="visible">true</Property>
                       <Property name="hideMode">display</Property>
                       <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">gatmem</Property>
+                      <Property name="property">gatmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">psfy</Property>
@@ -2006,19 +2027,14 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">qtfy</Property>
-                      <Property name="property">qtfy</Property>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
                       <Editor/>
                     </AutoFormElement>
-                    <AutoFormElement layoutConstraint="colSpan:3">
-                      <Property name="name">gatmem</Property>
-                      <Property name="property">gatmem</Property>
-                      <Property name="labelPosition">top</Property>
-                      <Property name="visible">false</Property>
-                      <Property name="hideMode">display</Property>
-                      <Editor>
-                        <TextArea layoutConstraint="colSpan:2"/>
-                      </Editor>
+                    <AutoFormElement>
+                      <Property name="name">zxfy</Property>
+                      <Property name="property">zxfy</Property>
+                      <Editor/>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:3">
                       <Property name="name">memo</Property>
@@ -2260,7 +2276,7 @@
                       <Property name="name">gatrate</Property>
                       <Property name="property">gatrate</Property>
                       <Property name="labelPosition">left</Property>
-                      <Property name="visible">false</Property>
+                      <Property name="visible">true</Property>
                       <Property name="hideMode">display</Property>
                       <Editor/>
                     </AutoFormElement>
@@ -2268,9 +2284,19 @@
                       <Property name="name">gatrateu</Property>
                       <Property name="property">gatrateu</Property>
                       <Property name="trigger">ddlGatrateu</Property>
-                      <Property name="visible">false</Property>
+                      <Property name="visible">true</Property>
                       <Property name="hideMode">display</Property>
                       <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">gatmem</Property>
+                      <Property name="property">gatmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">psfy</Property>
@@ -2281,16 +2307,6 @@
                       <Property name="name">qtfy</Property>
                       <Property name="property">qtfy</Property>
                       <Editor/>
-                    </AutoFormElement>
-                    <AutoFormElement layoutConstraint="colSpan:3">
-                      <Property name="name">gatmem</Property>
-                      <Property name="property">gatmem</Property>
-                      <Property name="labelPosition">top</Property>
-                      <Property name="visible">false</Property>
-                      <Property name="hideMode">display</Property>
-                      <Editor>
-                        <TextArea layoutConstraint="colSpan:2"/>
-                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:3">
                       <Property name="name">memo</Property>

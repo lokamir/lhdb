@@ -74,7 +74,7 @@ public class ActProjCheck implements ActionHandler {
 					"SystemSender"); // 获得消息的发送人，默认为“系统发信人”
 			Collection<IUser> receivers = new ArrayList<IUser>();
 			// 获取A角部门经理，风管经理，风管部门经理，分管总经理（风险）
-			String sql_fgid = "select account from tbs.bdf2_user_dept a, tbs.tbs_approver b where b.title like '%风管分管总经理%' or b.title like '%风险管理部门经理%' or b.title like '%风管经理%' or a.dept_id_=b.deptid and b.title like '%部门经理%' and a.username_='"
+			String sql_fgid = "select account from tbs.bdf2_user_dept a, tbs.tbs_approver b where b.title like '%分管风管总经理%' or b.title like '%风险管理部门经理%' or b.title like '%风管经理%' or a.dept_id_=b.deptid and b.title like '%部门经理%' and a.username_='"
 					+ userA.getUsername() + "'";
 			SQLQuery query_fgid = session.createSQLQuery(sql_fgid);
 			List<String> str_fgid = query_fgid.list();

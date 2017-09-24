@@ -177,6 +177,14 @@
         <Property name="label">其他费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
       <PropertyDef name="gatmem">
         <Property name="label">担保费率说明</Property>
       </PropertyDef>
@@ -954,8 +962,13 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">qtfy</Property>
-              <Property name="property">qtfy</Property>
+              <Property name="name">financial</Property>
+              <Property name="property">financial</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">zxfy</Property>
+              <Property name="property">zxfy</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

@@ -84,6 +84,19 @@ self.flushAsync();
 		}
 	};
 	
+	/*=======================请印审批经办人下拉框===================*/
+	/** @Bind #DropDownBdf2User.onReady */
+	!function(self){
+		var list=[] ;
+		var approver = view.get("#dataSetTbsApprover").getData();
+		approver.each(function(entity){
+			if(entity.get("title") =="行政经理" || entity.get("title") =="综合管理部门经理" ){
+				list.push(entity.get("cname"));
+			}
+		});
+		view.get("#dataSetBdf2User").set("parameter",list);
+	};
+	
 	/*========保存后刷新，执行query相同的方法=========*/
 	/**@Bind #updateAction.onSuccess */
 	!function(self,arg,autoformCondition,dataSetTbsAdminsign){ 

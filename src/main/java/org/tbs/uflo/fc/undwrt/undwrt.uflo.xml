@@ -5,75 +5,75 @@
       <description>承保审批-开始 PSID=23</description>
       <sequence-flow to="B角确认"/>
    </start>
-   <task g="177,40,115,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="B角确认">
+   <task assignment-handler-bean="getApprover" g="177,40,115,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="B角确认" allow-specify-assignee="false">
       <description>${projSn}-承保审批-B角确认 PSID=15</description>
-      <sequence-flow to="部门经理审批" g="320,65:-5,-22" name="通过"/>
-      <sequence-flow to="驳回修正" g="364,132;204,229:66,-69" name="驳回"/>
+      <sequence-flow g="320,65:-5,-22" name="通过" to="部门经理审批"/>
+      <sequence-flow g="364,132;204,229:66,-69" name="驳回" to="驳回修正"/>
    </task>
-   <task g="404,40,146,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="部门经理审批">
+   <task assignment-handler-bean="getApprover" g="404,40,146,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="部门经理审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-部门经理审批 PSID=15</description>
-      <sequence-flow to="分支" g="3,-17" name="通过"/>
-      <sequence-flow to="驳回修正" g="203,229:-20,-18" name="驳回"/>
+      <sequence-flow g="3,-17" name="通过" to="分支"/>
+      <sequence-flow g="203,229:-20,-18" name="驳回" to="驳回修正"/>
    </task>
-   <task g="585,401,152,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="财务部门经理审批">
+   <task assignment-handler-bean="getApprover" g="585,401,152,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="财务部门经理审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-财务经理审批 PSID=15</description>
-      <sequence-flow to="驳回" g="175,425:11,-19" name="驳回"/>
-      <sequence-flow to="通过" g="662,483:-43,-20" name="通过"/>
+      <sequence-flow g="175,425:11,-19" name="驳回" to="驳回"/>
+      <sequence-flow g="662,483:-43,-20" name="通过" to="通过"/>
    </task>
-   <task g="404,590,156,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="风管部门经理审批">
+   <task assignment-handler-bean="getApprover" g="404,590,156,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="风管部门经理审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-风管部门经理审批 PSID=15</description>
-      <sequence-flow to="驳回修正" g="79,614:5,-17" name="驳回"/>
-      <sequence-flow to="风管分管总经理" g="4,-16" name="通过"/>
+      <sequence-flow g="79,614:5,-17" name="驳回" to="驳回修正"/>
+      <sequence-flow g="4,-16" name="通过" to="分管风管总经理"/>
    </task>
-   <task g="421,756,127,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="决策人审批">
+   <task assignment-handler-bean="getApprover" g="421,756,127,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="决策人审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-决策人审批 PSID=15</description>
-      <sequence-flow to="Action" g="2,-25" name="通过"/>
-      <sequence-flow to="驳回修正" g="80,776:1,-16" name="驳回"/>
+      <sequence-flow g="2,-25" name="通过" to="Action"/>
+      <sequence-flow g="80,776:1,-16" name="驳回" to="驳回修正"/>
    </task>
-   <action g="427,863,115,50" handler-bean="actUndwrt" name="Action">
+   <action handler-bean="actUndwrt" g="427,863,115,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <end g="461,952,47,62" terminate="true" name="结束">
+   <end g="461,952,47,62" name="结束" terminate="true">
       <description>PSID=28</description>
    </end>
-   <task g="19,207,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="ProcessPromoter" name="驳回修正">
+   <task g="19,207,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projSn}-承保审批-驳回修正 PSID=19or9</description>
-      <sequence-flow to="B角确认" g="166,144;236,143:-17,-19" name="修改确认"/>
+      <sequence-flow g="166,144;236,143:-17,-19" name="修改确认" to="B角确认"/>
    </task>
-   <task g="217,292,163,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="法务经理审批">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="217,292,163,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Countersign" name="法务经理审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-法务经理审批 PSID=15</description>
-      <sequence-flow to="驳回" g="201,317:-7,-19" name="驳回"/>
-      <sequence-flow to="通过" g="300,483:7,-20" name="通过"/>
+      <sequence-flow g="201,317:-7,-19" name="驳回" to="驳回"/>
+      <sequence-flow g="300,483:7,-20" name="通过" to="通过"/>
    </task>
-   <task g="398,293,159,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="风管经理审批">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="398,293,159,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Countersign" name="风管经理审批" allow-specify-assignee="false">
       <description>${projSn}-承保审批-风管经理审批 PSID=15</description>
-      <sequence-flow to="驳回" g="379,366;190,365:-87,-19" name="驳回"/>
-      <sequence-flow to="通过" g="7,-53" name="通过"/>
+      <sequence-flow g="379,366;190,365:-87,-19" name="驳回" to="驳回"/>
+      <sequence-flow g="7,-53" name="通过" to="通过"/>
    </task>
    <fork g="461,168,32,62" name="分支">
-      <sequence-flow to="法务经理审批" g="402,197;299,197:-47,2" name="法务确认"/>
-      <sequence-flow to="风管经理审批" g="-50,-18" name="风管确认"/>
-      <sequence-flow to="出纳费用确认" g="660,199:-51,3" name="财务确认"/>
+      <sequence-flow g="402,197;299,197:-47,2" name="法务确认" to="法务经理审批"/>
+      <sequence-flow g="-50,-18" name="风管确认" to="风管经理审批"/>
+      <sequence-flow g="660,199:-51,3" name="财务确认" to="出纳费用确认"/>
    </fork>
-   <task g="582,295,152,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="出纳费用确认">
+   <task assignment-handler-bean="getApprover" g="582,295,152,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="出纳费用确认" allow-specify-assignee="false">
       <description>${projSn}-承保审批-出纳费用确认 PSID=15</description>
-      <sequence-flow to="财务部门经理审批" g="-34,-10" name="通过"/>
-      <sequence-flow to="驳回" g="559,393;185,394:-180,-17" name="驳回"/>
+      <sequence-flow g="-34,-10" name="通过" to="财务部门经理审批"/>
+      <sequence-flow g="559,393;185,394:-180,-17" name="驳回" to="驳回"/>
    </task>
-   <join g="150,448,32,62" name="驳回" multiplicity="1">
-      <sequence-flow to="决策" g="-2,15" name="驳回"/>
+   <join multiplicity="1" g="150,448,32,62" name="驳回">
+      <sequence-flow g="-2,15" name="驳回" to="决策"/>
    </join>
    <decision expression="${reject&gt;0?&quot;驳回&quot;:&quot;通过&quot;}" g="272,535,32,62" name="决策" decision-type="Expression">
       <description>判断聚合后是走驳回还是通过路径</description>
-      <sequence-flow to="风管部门经理审批" g="480,565:-93,-22" name="通过"/>
-      <sequence-flow to="驳回修正" g="79,565:6,-19" name="驳回"/>
+      <sequence-flow g="480,565:-93,-22" name="通过" to="风管部门经理审批"/>
+      <sequence-flow g="79,565:6,-19" name="驳回" to="驳回修正"/>
    </decision>
    <join g="461,453,32,62" name="通过">
-      <sequence-flow to="决策" g="-59,0" name="通过"/>
+      <sequence-flow g="-59,0" name="通过" to="决策"/>
    </join>
-   <task g="396,672,170,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrt.d" assignment-type="Handler" name="风管分管总经理">
+   <task assignment-handler-bean="getApprover" g="396,672,170,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="分管风管总经理" allow-specify-assignee="false">
       <description>${projSn}-承保审批-分管总经理（风险） PSID=15</description>
-      <sequence-flow to="决策人审批" g="6,-16" name="通过"/>
-      <sequence-flow to="驳回修正" g="80,697:4,-19" name="驳回"/>
+      <sequence-flow g="6,-16" name="通过" to="决策人审批"/>
+      <sequence-flow g="80,697:4,-19" name="驳回" to="驳回修正"/>
    </task>
 </uflo-process>

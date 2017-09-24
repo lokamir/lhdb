@@ -111,7 +111,7 @@ public class TbsProjundwrt implements Serializable {
 	private BigDecimal psfy;
 
 	/**
-	 * 咨询费用（元）:其他费用（元）
+	 * 咨询费用（元）:咨询费用（元）
 	 */
 	private BigDecimal zxfy;
 	

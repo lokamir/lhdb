@@ -6,22 +6,22 @@
       <description>项目解保-开始</description>
       <sequence-flow to="部门经理审批"/>
    </start>
-   <task g="230,225,137,50" allow-specify-assignee="false" task-type="Normal" label="项目解保-部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="Handler" name="部门经理审批">
+   <task assignment-handler-bean="getApprover" g="230,225,137,50" label="项目解保-部门经理审批" assignment-type="Handler" url="org.tbs.views.projs.release.DetailDialog1.d" task-type="Normal" name="部门经理审批" allow-specify-assignee="true">
       <description>${projName}</description>
-      <sequence-flow to="驳回修正" g="102,250:5,-19" name="驳回"/>
-      <sequence-flow to="风管经理审批" g="-26,-40" name="通过"/>
+      <sequence-flow g="102,250:5,-19" name="驳回" to="驳回修正"/>
+      <sequence-flow g="-26,-40" name="通过" to="风管经理审批"/>
    </task>
-   <action g="241,477,115,50" handler-bean="actRelease" name="Action">
+   <action handler-bean="actRelease" g="241,477,115,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <end g="272,593,54,62" terminate="true" name="结束"/>
-   <task g="45,147,115,50" allow-specify-assignee="false" task-type="Normal" label="项目解保-驳回修正" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="ProcessPromoter" name="驳回修正">
+   <end g="272,593,54,62" name="结束" terminate="true"/>
+   <task assignment-handler-bean="getApprover" g="45,147,115,50" label="项目解保-驳回修正" assignment-type="ProcessPromoter" url="org.tbs.views.projs.release.DetailDialog1.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="部门经理审批" g="298,171:-133,-21" name="修改确认"/>
+      <sequence-flow g="298,171:-133,-21" name="修改确认" to="部门经理审批"/>
    </task>
-   <task g="223,363,152,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="项目解保-风管经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.release.DetailDialog1.d" assignment-type="Handler" name="风管经理审批">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="223,363,152,50" label="项目解保-风管经理审批" assignment-type="Handler" url="org.tbs.views.projs.release.DetailDialog1.d" task-type="Countersign" name="风管经理审批" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="Action" g="-27,-32" name="通过"/>
-      <sequence-flow to="驳回修正" g="102,386:5,-19" name="驳回"/>
+      <sequence-flow g="-27,-32" name="通过" to="Action"/>
+      <sequence-flow g="102,386:5,-19" name="驳回" to="驳回修正"/>
    </task>
 </uflo-process>

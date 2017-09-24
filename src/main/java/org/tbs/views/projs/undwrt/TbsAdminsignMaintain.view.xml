@@ -44,7 +44,6 @@
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
         <Property name="label">经办人</Property>
-        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
       </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="label">项目名称</Property>
@@ -77,6 +76,7 @@
     <DataType name="dataTypeBdf2User" parent="global:dataTypeBdf2User">
       <Property name="defaultDisplayProperty">cname</Property>
       <Reference name="tbsAdminsignSet"/>
+      <Reference name="tbsApproverSet"/>
     </DataType>
     <DataType name="tempConditions">
       <PropertyDef name="tbsProj">
@@ -133,6 +133,46 @@
         <Property name="displayFormat">Y-m-d H:i:s</Property>
       </PropertyDef>
     </DataType>
+    <DataType name="dataTypeTbsApprover" parent="global:dataTypeTbsApprover">
+      <PropertyDef name="bdf2User">
+        <Property name="dataType">dataTypeBdf2User</Property>
+        <Property name="label">审批人</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="account">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by4">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2Dept">
+        <Property name="dataType">dataTypeBdf2Dept</Property>
+        <Property name="label">部门</Property>
+      </PropertyDef>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -144,6 +184,16 @@
     <DataSet id="dataSetHistoryTask">
       <Property name="dataType">[datatypeTbsFunApprc]</Property>
       <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
+    </DataSet>
+    <DataSet id="dataSetBdf2User">
+      <Property name="dataType">[dataTypeBdf2User]</Property>
+      <Property name="dataProvider">bdf2UserDao#getCName</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsApprover">
+      <Property name="dataType">[dataTypeTbsApprover]</Property>
+      <Property name="dataProvider">tbsApproverDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="pageSize">999</Property>
     </DataSet>
     <Container id="Condition">
       <AutoForm id="autoformCondition">
@@ -376,9 +426,14 @@
       <Tools/>
     </Dialog>
     <Container id="Ddl">
-      <Import id="DropDownBdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
       <Import id="TbsBasBank" src="org.tbs.views.funs.Dropdown#TbsBasBank"/>
       <Import id="ddlTbsProj" src="org.tbs.views.funs.Dropdown#TbsProj"/>
+      <DataSetDropDown id="DropDownBdf2User">
+        <Property name="dataSet">dataSetBdf2User</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">false</Property>
+        <Property name="dynaFilter">false</Property>
+      </DataSetDropDown>
     </Container>
     <UpdateAction id="updateAction">
       <Property name="dataResolver">tbsAdminsignDao#save</Property>

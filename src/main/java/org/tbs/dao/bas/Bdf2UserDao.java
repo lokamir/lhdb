@@ -25,4 +25,16 @@ public class Bdf2UserDao extends HibernateDao {
 	}
     }
   
+  @DataProvider  //下拉框请印审批专用
+  public Collection<Bdf2User> getCName(Collection<String> name) throws Exception {
+	  String cname ="";
+	if(!name.isEmpty()){
+		for(String n:name){
+			cname +=n+"','";
+		}
+	    return this.query("from " + Bdf2User.class.getName() + " where ename not like 'adm%' and cname in ('" + cname + "null') ");
+	} else {
+	    return this.query("from " + Bdf2User.class.getName() + " where ename not like 'adm%' " );
+	}
+    }
 }

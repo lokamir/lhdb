@@ -28,7 +28,7 @@ PSID=6</description>
       <description>${projSn}-决策审批-风管部门经理审批
 PSID=6</description>
       <sequence-flow g="-32,-27" name="驳回" to="退回A角修正"/>
-      <sequence-flow g="-29,-11" name="通过" to="分管业务总经理"/>
+      <sequence-flow g="-29,-11" name="通过" to="分管风险领导"/>
    </task>
    <action handler-bean="actCfmGrntProjCfm0" g="216,504,157,50" name="生成上会通知单">
       <sequence-flow to="评审会秘书录入会议信息"/>
@@ -38,8 +38,8 @@ PSID=6</description>
 psid=36</description>
       <sequence-flow g="631,85:-5,-20" name="修改确认" to="B角确认"/>
    </task>
-   <task assignment-handler-bean="getApprover" g="216,432,157,50" assignment-type="Handler" url="org.tbs.views.projs.cfm.TbsProjCfmDetails.d" task-type="Normal" name="分管业务总经理" allow-specify-assignee="false">
-      <description>${projSn}-决策审批-分管业务总经理
+   <task assignment-handler-bean="getApprover" g="216,432,157,50" assignment-type="Handler" url="org.tbs.views.projs.cfm.TbsProjCfmDetails.d" task-type="Normal" name="分管风险领导" allow-specify-assignee="false">
+      <description>${projSn}-决策审批-分管风险领导
 PSID=6</description>
       <sequence-flow g="-32,-14" name="通过" to="生成上会通知单"/>
       <sequence-flow g="-35,-19" name="驳回" to="退回A角修正"/>

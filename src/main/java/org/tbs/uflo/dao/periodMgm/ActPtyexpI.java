@@ -57,13 +57,13 @@ public class ActPtyexpI implements ActionHandler {
 			DefaultUser sender = (DefaultUser) session.get(DefaultUser.class,
 					"SystemSender"); // 获得消息的发送人，默认为“系统发信人”
 			Collection<IUser> receivers = new ArrayList<IUser>();
-			String sql_fgid="select account from tbs.tbs_approver where title like '%财务部分管总经理%'";
+			String sql_fgid="select account from tbs.tbs_approver where title like '%分管财务总经理%'";
 			SQLQuery query_fgid=session.createSQLQuery(sql_fgid);
 			List<String> str_fgid = query_fgid.list();
 			for(String temp:str_fgid){
 				DefaultUser receiverFG = (DefaultUser) session.get(
 						DefaultUser.class, temp);
-				receivers.add(receiverFG);//财务部分管总经理
+				receivers.add(receiverFG);//分管财务总经理
 			}
 			receivers.add(receiverA);
 			receivers.add(receiverB);

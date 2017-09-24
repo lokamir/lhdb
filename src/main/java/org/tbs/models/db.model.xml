@@ -2028,6 +2028,12 @@
     <PropertyDef name="qtfy">
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
+    <PropertyDef name="zxfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="financial">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
     <PropertyDef name="gatmem"/>
     <PropertyDef name="riskavoid">
       <Property></Property>
@@ -2165,6 +2171,12 @@
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
     <PropertyDef name="qtfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="zxfy">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
+    <PropertyDef name="financial">
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
     <PropertyDef name="gatmem"/>

@@ -5,13 +5,15 @@
       <description/>
       <sequence-flow to="部门经理分配AB角"/>
    </start>
-   <task assignment-handler-bean="getApprover" g="131,46,166,50" assignment-type="Handler" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="部门经理分配AB角" allow-specify-assignee="true">
-      <description>${projSn}-项目受理-部门经理分配AB角</description>
+   <task assignment-handler-bean="getApprover" g="131,46,166,50" assignment-type="Handler" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="部门经理分配AB角" task-name="项目受理-部门经理分配AB角" allow-specify-assignee="true">
+      <description>${projSn}-项目受理-部门经理分配AB角
+psid=2</description>
       <sequence-flow g="332,189:-37,-49" name="驳回" to="受理单修正"/>
       <sequence-flow g="-36,-16" name="通过" to="通知AB角已受理"/>
    </task>
-   <task g="409,164,135,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="受理单修正" allow-specify-assignee="true">
-      <description>${projSn}-项目受理-受理修正</description>
+   <task g="409,164,135,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="受理单修正" task-name="受理单修正" allow-specify-assignee="true">
+      <description>${projSn}-项目受理-受理修正
+psid=30</description>
       <sequence-flow g="477,71:-25,39" name="确认修改" to="部门经理分配AB角"/>
    </task>
    <action handler-bean="actGnrtProjeaa" g="132,292,162,50" name="生成立项审批单">
@@ -27,7 +29,7 @@
       <description>${projSn}-立项申请-删除立项审批表</description>
       <sequence-flow g="12,-22" name="确认修改" to="部门经理分配AB角"/>
    </action>
-   <task assignment-handler-bean="getApprover" g="141,763,145,50" assignment-type="Handler" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="分管业务总经理" allow-specify-assignee="false">
+   <task assignment-handler-bean="getApprover" g="141,763,145,50" label="分管业务领导" assignment-type="Handler" url="org.tbs.views.projs.creation.TbsProjDetails.d" task-type="Normal" name="分管业务总经理" allow-specify-assignee="false">
       <description>${projSn}-立项申请-业务总监审批</description>
       <sequence-flow g="-8,-23" name="通过" to="通知AB角已立项"/>
       <sequence-flow g="-63,-19" name="驳回" to="立项单修正"/>

@@ -161,8 +161,20 @@
         <Property name="label">其他费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
       <PropertyDef name="gatmem">
         <Property name="label">担保费率说明</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
       </PropertyDef>
       <PropertyDef name="riskavoid">
         <Property></Property>
@@ -191,10 +203,6 @@
         <Property name="dataType">[dataTypeTbsProjcfm2Opinion]</Property>
         <Property name="parameter">$${this.id}</Property>
       </Reference>
-      <PropertyDef name="gatrateu">
-        <Property></Property>
-        <Property name="label">担保费率单位</Property>
-      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjcfm2Bizvt" parent="global:dataTypeTbsProjcfm2Bizvt">
       <PropertyDef name="tbsBasBiztype">
