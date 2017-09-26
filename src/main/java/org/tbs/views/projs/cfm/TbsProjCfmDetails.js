@@ -224,6 +224,7 @@ var taskName = "${param.taskName}";
 				//	}
 				//});
 			} else if(psid == 8) {
+				if(taskName == "评审会秘书录入会议决议单"){
 					if(view.get("#autoformCfm1").get("entity")){
 						view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}else if(view.get("#autoformCfm2").get("entity")){
@@ -249,6 +250,28 @@ var taskName = "${param.taskName}";
 				    groupboxCfm0Appr.set("visible", false);
 				    groupboxAppr.set("visible", false);
 				    listDdlOutcome.set("items",["确认修改"]);
+				}else if(taskName == "主任委员审批"){
+					var autoformCfm1 = view.get("#autoformCfm1");
+				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
+				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
+				    var autoformCfm2 = view.get("#autoformCfm2");
+				    var dataPilotTbsProjCfm2 = view.get("#dataPilotTbsProjCfm2");
+				    var DialogTbsProjCfm2 = view.get("#DialogTbsProjCfm2");
+				    DialogTbsProjCfm1.set("readOnly", true);
+				    dataPilotTbsProjCfm1.set("visible", true);
+				    autoformCfm1.set("readOnly", true);
+				    DialogTbsProjCfm2.set("readOnly", true);
+				    dataPilotTbsProjCfm2.set("visible", true);
+				    autoformCfm2.set("readOnly", true);
+				    tabCfm0.set("visible", true);
+				    tabInAppr.set("visible", true);
+				    groupboxCfm0.set("visible", false);
+				    groupboxCfm1r2ProjOpin.set("visible", true);
+				    groupboxCfm1r2Appr.set("visible", true);
+				    groupboxCfm0Appr.set("visible", false);
+				    groupboxAppr.set("visible", false);
+					listDdlOutcome.set("items",["通过","驳回"]);
+				}
 			} else if(psid == 26) {
 				var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				var dataPilotTbsProjCfm2 = view.get("#dataPilotTbsProjCfm2");

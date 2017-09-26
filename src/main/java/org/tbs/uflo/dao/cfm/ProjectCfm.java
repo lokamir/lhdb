@@ -235,26 +235,34 @@ public class ProjectCfm extends ProjectCreate {
 	String flowPath = new String();
 
 	// 2 destination case
-	if (psid == 6 ||psid == 21 || psid == 26) {
-	    if (outcome.equals("通过")) {
-		flowPath = "通过";
-	    } else {
-		flowPath = "驳回";
-	    }
-	} else if (psid == 37) {
-	    if (outcome.equals("会议")) {
-		flowPath = "会议";
-	    } else {
-		flowPath = "签批";
-	    }
-	} else if (psid == 22 && this.cmpt == 1) {
-	    // psid = 22 and counter sign ends
-	    if (this.pass == 1) {
-		flowPath = "通过";
-	    } else {
-		flowPath = "驳回";
-	    }
-	}
+		if (psid == 6 || psid == 21 || psid == 26) {
+			if (outcome.equals("通过")) {
+				flowPath = "通过";
+			} else {
+				flowPath = "驳回";
+			}
+		} else if (psid == 37) {
+			if (outcome.equals("会议")) {
+				flowPath = "会议";
+			} else {
+				flowPath = "签批";
+			}
+		} else if (psid == 8) {
+			if (outcome.equals("通过")) {
+				flowPath = "通过";
+			} else if (outcome.equals("确认修改")) {
+				flowPath = "确认修改";
+			} else if (outcome.equals("驳回")) {
+				flowPath = "驳回";
+			}
+		} else if (psid == 22 && this.cmpt == 1) {
+			// psid = 22 and counter sign ends
+			if (this.pass == 1) {
+				flowPath = "通过";
+			} else {
+				flowPath = "驳回";
+			}
+		}
 
 	return flowPath;
     }
@@ -299,7 +307,11 @@ public class ProjectCfm extends ProjectCreate {
 		}
 	    }
 	}else if (psid == 8) {
-	    sqlProcedure = "call p_hisstatus(" + businessId + ",26,8)";
+		if (outcome.equals("通过") && nodeName.equals("主任委员审批")){
+			sqlProcedure = "call p_hisstatus(" + businessId + ",26,8)";
+		} else if (outcome.equals("驳回")) {
+			sqlProcedure = "call p_hisstatus(" + businessId + ",36,8)";
+		}
 	} else if (psid == 26) {
 	    if (outcome.equals("通过") && nodeName.equals("决策人审批")){
 		sqlProcedure = "call p_hisstatus(" + businessId + ",10,26)";
@@ -350,7 +362,9 @@ public class ProjectCfm extends ProjectCreate {
 	    msgTitle = "【决策审批】上会类型确认！";
 	} else if (psid == 21) {
 	    msgTitle = "【决策审批】会议决议已产生！";
-	} else if (psid == 8) {
+	} else if (psid == 8 && nodeName == "评审会秘书录入会议决议单") {
+	    msgTitle = "【决策审批】决议审批开始！";
+	} else if (psid == 8 && nodeName == "主任委员审批") {
 	    msgTitle = "【决策审批】决议审批开始！";
 	} else if (psid == 26) {
 	    if (outcome.equals("通过")) {
@@ -387,8 +401,10 @@ public class ProjectCfm extends ProjectCreate {
 	    msgContent = "您发送的【决策审批】\n【项目名称："+projName+"】\n已将上会类型确定为：【"+outcome+"】\n"+"审批意见:"+comment+"\n日期："+today;
 	} else if (psid == 21) {
 	    msgContent = "您发送的【决策审批】\n【项目名称："+projName+"】\n已将上会类型确定为：【"+outcome+"】\n"+"审批意见:"+comment+"\n日期："+today;
-	} else if (psid == 8) {
+	} else if (psid == 8 && nodeName == "评审会秘书录入会议决议单") {
 	    msgContent = "您发送的【决策审批】\n【项目名称："+projName+"】\n已经通过会议/会签。\n已开始决议审批";
+	} else if (psid == 8 && nodeName == "主任委员审批") {
+	    msgContent = "您发送的【决策审批】\n【项目名称："+projName+"】\n已经通过会议/会签。\n已开始主任委员审批";
 	} else if (psid == 26) {
 	    if (outcome.equals("通过")) {
 		msgContent = "您发送的【决策审批】\n【项目名称："+projName+"】\n已经通过【"+nodeName+"】审批！\n"+"审批意见:"+comment+"\n日期："+today;

@@ -153,6 +153,10 @@
         <Property name="dataType">dataTypeBdf2User</Property>
         <Property name="label">项目经理B</Property>
       </PropertyDef>
+      <PropertyDef name="risk">
+        <Property name="label">状态</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
       <Reference name="tbsProjCheckSet">
         <Property name="dataType">[dataTypeTbsProjCheck]</Property>
         <Property name="dataProvider">tbsProjCheckDao#loadProjCheck1</Property>
@@ -419,6 +423,11 @@
             <DataColumn name="fundproj">
               <Property name="property">fundproj</Property>
               <Property name="width">100</Property>
+            </DataColumn>
+            <DataColumn>
+              <Property name="property">risk</Property>
+              <Property name="width">100</Property>
+              <Property name="name">risk</Property>
             </DataColumn>
             <DataColumn>
               <Property name="name">valid</Property>
