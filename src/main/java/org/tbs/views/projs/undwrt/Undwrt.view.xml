@@ -967,8 +967,8 @@
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
-                  <Property name="name">qtfy</Property>
-                  <Property name="property">qtfy</Property>
+                  <Property name="name">financial</Property>
+                  <Property name="property">financial</Property>
                   <Property name="readOnly">false</Property>
                   <Editor/>
                 </AutoFormElement>

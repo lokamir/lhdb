@@ -1508,6 +1508,7 @@
                         <Property name="name">tbsBasCourt</Property>
                         <Property name="property">tbsBasCourt</Property>
                         <Property name="trigger">ddlTbsBasCourt</Property>
+                        <Property name="visible">false</Property>
                         <Editor/>
                       </AutoFormElement>
                       <AutoFormElement>

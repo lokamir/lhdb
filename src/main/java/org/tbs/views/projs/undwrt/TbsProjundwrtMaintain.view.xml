@@ -104,21 +104,6 @@
       <PropertyDef name="psid">
         <Property name="dataType">dataTypeTbsProj</Property>
       </PropertyDef>
-      <Reference name="tbsProjundwrtBankSet">
-        <Property name="dataType">[dataTypeTbsProjundwrtBank]</Property>
-        <Property name="parameter">$${this.id}</Property>
-        <Property name="dataProvider">tbsProjundwrtDao#loadBank</Property>
-      </Reference>
-      <Reference name="tbsProjundwrtBizvtSet">
-        <Property name="dataProvider">tbsProjundwrtDao#loadBizvt</Property>
-        <Property name="dataType">[dataTypeTbsProjundwrtBizvt]</Property>
-        <Property name="parameter">$${this.id}</Property>
-      </Reference>
-      <Reference name="tbsProjundwrtCfmarSet">
-        <Property name="dataProvider">tbsProjundwrtDao#loadCfmar</Property>
-        <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
-        <Property name="parameter">$${this.id}</Property>
-      </Reference>
       <PropertyDef name="bdate">
         <Property name="dataType">Date</Property>
         <Property name="label">授信开始日期</Property>
@@ -150,6 +135,29 @@
         <Property></Property>
         <Property name="label">担保费率单位</Property>
       </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <Reference name="tbsProjundwrtBankSet">
+        <Property name="dataType">[dataTypeTbsProjundwrtBank]</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsProjundwrtDao#loadBank</Property>
+      </Reference>
+      <Reference name="tbsProjundwrtBizvtSet">
+        <Property name="dataProvider">tbsProjundwrtDao#loadBizvt</Property>
+        <Property name="dataType">[dataTypeTbsProjundwrtBizvt]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
+      <Reference name="tbsProjundwrtCfmarSet">
+        <Property name="dataProvider">tbsProjundwrtDao#loadCfmar</Property>
+        <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
+        <Property name="parameter">$${this.id}</Property>
+      </Reference>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
       <Property name="defaultDisplayProperty">name</Property>
@@ -1240,8 +1248,8 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">qtfy</Property>
-                      <Property name="property">qtfy</Property>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>

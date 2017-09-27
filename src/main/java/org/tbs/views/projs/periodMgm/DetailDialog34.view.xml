@@ -416,6 +416,14 @@
                 <Property name="value">评审费</Property>
               </Entity>
               <Entity>
+                <Property name="key">咨询费用</Property>
+                <Property name="value">咨询费用</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">财务顾问费</Property>
+                <Property name="value">财务顾问费</Property>
+              </Entity>
+              <Entity>
                 <Property name="key">其他费用</Property>
                 <Property name="value">其他费用</Property>
               </Entity>
@@ -432,7 +440,7 @@
       </PropertyDef>
       <PropertyDef name="fee">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">收款金额（元）</Property>
+        <Property name="label">金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="io">
@@ -635,6 +643,22 @@
         <Property></Property>
         <Property name="label">担保费率说明</Property>
       </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
+        <Property name="dataType">String</Property>
+      </PropertyDef>
+      <PropertyDef name="operation">
+        <Property name="label">明细</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
       <PropertyDef name="tbsCustomer">
         <Property name="dataType">dataTypeTbsCustomer</Property>
         <Property name="label">客户名称</Property>
@@ -654,14 +678,6 @@
         <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
         <Property name="parameter">$${this.id}</Property>
       </Reference>
-      <PropertyDef name="gatrateu">
-        <Property></Property>
-        <Property name="label">担保费率单位</Property>
-        <Property name="dataType">String</Property>
-      </PropertyDef>
-      <PropertyDef name="operation">
-        <Property name="label">明细</Property>
-      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsFunApprc" parent="global:dataTypeTbsFunApprc">
       <Property name="creationType">org.tbs.entity.TbsFunApprc</Property>
@@ -1498,8 +1514,13 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">qtfy</Property>
-              <Property name="property">qtfy</Property>
+              <Property name="name">financial</Property>
+              <Property name="property">financial</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">zxfy</Property>
+              <Property name="property">zxfy</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
