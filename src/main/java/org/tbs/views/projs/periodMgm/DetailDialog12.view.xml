@@ -922,12 +922,12 @@
       <PropertyDef name="bdf2Dept">
         <Property name="dataType">dataTypeBdf2Dept</Property>
         <Property name="label">业务部门</Property>
-        <Property name="readOnly">true</Property>
+        <Property name="readOnly">false</Property>
       </PropertyDef>
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
         <Property name="label">部门经理</Property>
-        <Property name="readOnly">true</Property>
+        <Property name="readOnly">false</Property>
       </PropertyDef>
     </DataType>
   </Model>
@@ -1118,11 +1118,13 @@
             <AutoFormElement>
               <Property name="name">bdf2Dept</Property>
               <Property name="property">bdf2Dept</Property>
+              <Property name="trigger">DropDownBdf2Dept</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">bdf2User</Property>
               <Property name="property">bdf2User</Property>
+              <Property name="trigger">DropDownBdf2User</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement layoutConstraint="colSpan:3">
@@ -1135,6 +1137,8 @@
             <AutoFormElement>
               <Property name="name">valid</Property>
               <Property name="property">valid</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="visible">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

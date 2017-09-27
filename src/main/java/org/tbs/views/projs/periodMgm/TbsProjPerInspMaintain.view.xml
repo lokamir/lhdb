@@ -424,7 +424,7 @@
               <Property name="property">fundproj</Property>
               <Property name="width">100</Property>
             </DataColumn>
-            <DataColumn>
+            <DataColumn id="risk">
               <Property name="property">risk</Property>
               <Property name="width">100</Property>
               <Property name="name">risk</Property>

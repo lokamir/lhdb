@@ -91,6 +91,16 @@
 	}
 };
 
+/** @Bind #risk.onRenderCell */
+!function(self, arg) {
+	if(arg.data.get("risk")==true){
+		arg.dom.innerText = "不正常";
+	}else if(arg.data.get("risk")==false){
+		arg.dom.innerText = "正常";
+	}
+	
+};
+
 /** @Bind #dialogProjDetails.onHide */
 !function(dataSetTbsProj){
 	dataSetTbsProj.getData("#.tbsProjCheckSet").flushAsync();

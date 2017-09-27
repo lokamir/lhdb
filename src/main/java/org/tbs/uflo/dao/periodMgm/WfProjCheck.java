@@ -127,16 +127,20 @@ public class WfProjCheck extends HibernateDao {
 		TbsProjCheck tbsProjCheck = (TbsProjCheck) session.get(TbsProjCheck.class,
 				Integer.valueOf(businessId));
 		TbsProj tbsProj = tbsProjCheck.getTbsProj();
-	//	String keyinid = (String) processClient.getProcessVariable("keyinid",processInstanceId);
-		if (outcome.equals("正常")||outcome.equals("确认")) {
-			String sql = "update tbs.tbs_proj_check set valid = 1"
-					+ " where del = 0 and id=" + businessId + " ";
-			SQLQuery sqlquery = session.createSQLQuery(sql);
-			sqlquery.executeUpdate();
+		if (outcome.equals("正常")){
 			String sqlrisk = "UPDATE `tbs`.`tbs_proj` SET `risk` = '0' WHERE `ID`="
 					+ tbsProj.getId() + "";
 			SQLQuery sqlquery1 = session.createSQLQuery(sqlrisk);
 			sqlquery1.executeUpdate();
+			String sql = "update tbs.tbs_proj_check set valid = 1"
+					+ " where del = 0 and id=" + businessId + " ";
+			SQLQuery sqlquery = session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
+		}else if (outcome.equals("确认")){
+			String sql = "update tbs.tbs_proj_check set valid = 3"
+					+ " where del = 0 and id=" + businessId + " ";
+			SQLQuery sqlquery = session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
 		}
 		if (outcome.equals("是")) {
 			// ====设置by2===		
