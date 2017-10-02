@@ -760,6 +760,8 @@
       </PropertyDef>
       <PropertyDef name="by2">
         <Property></Property>
+        <Property name="label">会议审议单编号</Property>
+        <Property name="defaultValue">直接输入后缀</Property>
       </PropertyDef>
       <PropertyDef name="by3">
         <Property></Property>
@@ -1817,6 +1819,16 @@
                       <Property name="property">sn</Property>
                       <Property name="name">sn</Property>
                       <Property name="readOnly">false</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="property">by2</Property>
+                      <Property name="name">by2</Property>
+                      <Property name="readOnly">false</Property>
+                      <Editor>
+                        <TextEditor id="by2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">projName</Property>
@@ -2305,8 +2317,13 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">qtfy</Property>
-                      <Property name="property">qtfy</Property>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">zxfy</Property>
+                      <Property name="property">zxfy</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:3">

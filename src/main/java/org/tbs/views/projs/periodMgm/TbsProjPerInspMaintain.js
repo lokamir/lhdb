@@ -86,9 +86,12 @@
 !function(self, arg) {
 	var risk = arg.data.get("risk");
 	if (risk == 1) {
-		arg.dom.style.background = "#FFFF00";
+		arg.dom.style.background = "#EE0000";
 		arg.dom.style.color = "#0A0A0A";
-	}
+	}else if(risk == 0){
+		arg.dom.style.background = "#FFFFFF";
+		arg.dom.style.color = "#0A0A0A";
+	};
 };
 
 /** @Bind #risk.onRenderCell */

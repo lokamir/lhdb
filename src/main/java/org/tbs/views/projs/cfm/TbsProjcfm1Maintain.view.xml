@@ -613,8 +613,8 @@
               <Property name="dataSet">dataSetTbsProjcfm1</Property>
               <Property name="readOnly">true</Property>
               <DataColumn>
-                <Property name="name">sn</Property>
-                <Property name="property">sn</Property>
+                <Property name="name">by2</Property>
+                <Property name="property">by2</Property>
                 <Property name="width">150</Property>
                 <Property name="align">left</Property>
                 <Editor/>
@@ -750,8 +750,8 @@
             <Property name="cols">*,*,*</Property>
             <Property name="labelWidth">120</Property>
             <AutoFormElement>
-              <Property name="property">sn</Property>
-              <Property name="name">sn</Property>
+              <Property name="property">by2</Property>
+              <Property name="name">by2</Property>
               <Property name="readOnly">false</Property>
             </AutoFormElement>
             <AutoFormElement>

@@ -578,6 +578,12 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	tbsBasBizvar.set("readOnly", true);
 };
 
+/** @Bind #by2.onPost */
+!function(self,arg){
+	var entity = view.get("#autoformCfm1").get("entity.by2");
+	view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn")+entity);
+};
+
 /** @Bind #bizvtloc.onTextEdit */
 !function(self,arg,datasetTbsProj,faloc,nfaloc,otloc,bizvtloc,tbsBasBizvar){
 	var newloc = bizvtloc.get("text");

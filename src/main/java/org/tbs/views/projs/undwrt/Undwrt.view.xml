@@ -1029,7 +1029,7 @@
             </Editor>
           </AutoFormElement>
           <AutoFormElement>
-            <Property name="label">金额总计</Property>
+            <Property name="label">担保费金额总计</Property>
             <Property name="name">gatreckon</Property>
             <Property name="property">gatreckon</Property>
             <Editor/>

@@ -1221,7 +1221,15 @@
                         <TextArea layoutConstraint="colSpan:3"/>
                       </Editor>
                     </AutoFormElement>
-                    <Label/>
+                    <AutoFormElement>
+                      <Property name="name">gatmem</Property>
+                      <Property name="property">gatmem</Property>
+                      <Property name="readOnly">true</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Editor>
+                        <TextArea/>
+                      </Editor>
+                    </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">gatrate</Property>
                       <Property name="property">gatrate</Property>
@@ -1234,13 +1242,10 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">gatmem</Property>
-                      <Property name="property">gatmem</Property>
-                      <Property name="readOnly">true</Property>
-                      <Property name="labelPosition">top</Property>
-                      <Editor>
-                        <TextArea/>
-                      </Editor>
+                      <Property name="label">担保费金额总计</Property>
+                      <Property name="name">gatreckon</Property>
+                      <Property name="property">gatreckon</Property>
+                      <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">psfy</Property>
@@ -1250,6 +1255,12 @@
                     <AutoFormElement>
                       <Property name="name">financial</Property>
                       <Property name="property">financial</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="label">咨询费用</Property>
+                      <Property name="property">zxfy</Property>
+                      <Property name="name">zxfy</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>

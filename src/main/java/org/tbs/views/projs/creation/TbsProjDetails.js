@@ -281,11 +281,11 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	if (del3 == 1) {
 		projDS.set("otloc",0);
 	}
-	/*if((sum1+sum2+sum3)!=0){
+	if((sum1+sum2+sum3)!=0){
 		view.get("#btnSave").set("disabled",false);
 	}else{
 		view.get("#btnSave").set("disabled",true);
-	}*/
+	}
 	return null;
 };
 
@@ -301,11 +301,12 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	var otloc = crs.get("otloc");
 	dataSet.set("totloc",faloc+nfaloc+otloc);
 	dataSet.set("nameloc",faloc+nfaloc+otloc);
-	/*if(faloc+nfaloc+otloc!=0){
+	if(faloc+nfaloc+otloc!=0){
 		view.get("#btnSave").set("disabled",false);
 	}else{
 		view.get("#btnSave").set("disabled",true);
-	}*/
+		view.get("#btnSubmit").set("disabled",true);
+	}
 };
 
 /*==========projeaa===========*/
