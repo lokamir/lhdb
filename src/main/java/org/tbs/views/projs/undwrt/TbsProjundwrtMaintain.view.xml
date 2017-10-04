@@ -761,7 +761,7 @@
             </ControlTab>
             <ControlTab id="HisTaskTab">
               <Property name="caption">审批历史记录</Property>
-              <DataGrid>
+              <DataGrid id="dataGridHis">
                 <Property name="readOnly">true</Property>
                 <Property name="dataSet">dataSetHistoryTask</Property>
                 <RowNumColumn/>
@@ -1310,6 +1310,17 @@
             <Property name="property">valid</Property>
           </DataColumn>
         </DataGrid>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="DialogTbsFunApprc">
+      <Property name="height">450</Property>
+      <Property name="width">800</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameTbsFunApprc">
+          <Property name="height">100%</Property>
+        </IFrame>
       </Children>
       <Tools/>
     </Dialog>

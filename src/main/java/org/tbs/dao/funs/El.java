@@ -106,6 +106,19 @@ public class El extends HibernateDao {
 		}
 		return mapValue;
 	}
+	
+	// 用户名与用户名映射 用于DataType的mapValues属性
+		// ${dorado.getDataProvider("el#mapBdf2Usernames").getResult()}
+		@DataProvider
+		public Map<String, String> mapBdf2Usernames() {
+			List<Bdf2User> bdf2Users = this.query("from "
+					+ Bdf2User.class.getName());
+			Map<String, String> mapValue = new LinkedHashMap<String, String>();
+			for (Bdf2User bdf2User : bdf2Users) {
+				mapValue.put(bdf2User.getUsername(), bdf2User.getCname());
+			}
+			return mapValue;
+		}
 
 	// 是否有效
 	// ${dorado.getDataProvider("el#mapValid").getResult()}

@@ -4,6 +4,7 @@
 <PackageInfo name="dorado-hibernate" version="1.2.2.140519.1930"/>
 <PackageInfo name="dorado-intro" version="0.2.1.140715.2255"/>
 <PackageInfo name="bdf2-orm" version="2.1.0-SNAPSHOT"/>
+<PackageInfo name="dorado-skin-concise-red" version="1.0.65"/>
 <PackageInfo name="dorado-skin-hankstyle" version="1.0.17"/>
 <PackageInfo name="bdf2-core" version="2.0.9"/>
 <PackageInfo name="bdf2-uflo" version="2.1.3"/>
@@ -138,20 +139,19 @@
 <Prop name="available" defaultValue="true" type="boolean"/>
 <Prop name="joinType" enumValues="INNER_JOIN,FULL_JOIN,LEFT_JOIN,RIGHT_JOIN"/></Props><Children><Child name="Criterions"><Rule name="Wrapper.Criterions" label="Criterions" nodeName="Criterions"><Children><Child rule="BaseCriterion" name="Criterions" aggregated="true"></Child></Children></Rule></Child></Children></Rule><Rule name="BaseCriterion" abstract="true" type="com.bstek.dorado.hibernate.criteria.criterion.BaseCriterion"><Props>
 <Prop name="available" defaultValue="true" type="boolean"/>
-<Prop name="not" defaultValue="false" type="boolean"/></Props></Rule><Rule name="NonValueCriterion" parents="SingleProperyCriterion" label="NonValueCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.NonValueCriterion"><PrimitiveProps>
+<Prop name="not" defaultValue="false" type="boolean"/></Props></Rule><Rule name="JunctionCriterion" parents="BaseCriterion" abstract="true" type="com.bstek.dorado.hibernate.criteria.criterion.JunctionCriterion"><Children><Child rule="BaseCriterion" name="Criterions" aggregated="true"></Child></Children></Rule><Rule name="NonValueCriterion" parents="SingleProperyCriterion" label="NonValueCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.NonValueCriterion"><PrimitiveProps>
 <Prop name="op" enumValues="null,!null,empty,!empty"/></PrimitiveProps></Rule><Rule name="SingleProperyCriterion" parents="BaseCriterion" abstract="true" type="com.bstek.dorado.hibernate.criteria.criterion.SingleProperyCriterion"><Props>
-<Prop name="propertyName"/></Props></Rule><Rule name="InCriterion" parents="SingleProperyCriterion" label="InCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.InCriterion"><Props>
+<Prop name="propertyName"/></Props></Rule><Rule name="SubQueryValueCriterion" parents="BaseCriterion" label="SubQueryValueCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SubQueryValueCriterion"><Props>
 <Prop name="dataType"/>
-<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="DoublePropertyCriterion" parents="BaseCriterion" label="DoublePropertyCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.DoublePropertyCriterion"><Props>
+<Prop name="op" enumValues="=,=all,&gt;=,&gt;=all,&gt;=some,&gt;,&gt;all,&gt;some,in,&lt;=,&lt;=all,&lt;=some,&lt;,&lt;all,&lt;some,&lt;&gt;,!in"/></Props><Children><Child rule="TopCriteria" name="Criteria" fixed="true"></Child></Children></Rule><Rule name="DoublePropertyCriterion" parents="BaseCriterion" label="DoublePropertyCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.DoublePropertyCriterion"><Props>
 <Prop name="op" enumValues="=,&lt;&gt;,&gt;,&lt;,&lt;=,&gt;="/>
 <Prop name="propertyName1"/>
-<Prop name="propertyName2"/></Props></Rule><Rule name="SingleCriterion" parents="SingleProperyCriterion" label="SingleCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SingleCriterion"><Props>
+<Prop name="propertyName2"/></Props></Rule><Rule name="IdEqCriterion" parents="BaseCriterion" label="IdEqCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.IdEqCriterion"><Props>
+<Prop name="dataType"/>
+<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="SingleCriterion" parents="SingleProperyCriterion" label="SingleCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SingleCriterion"><Props>
 <Prop name="dataType"/>
 <Prop name="op" enumValues="=,&lt;&gt;,&gt;,&lt;,&lt;=,&gt;=,like,like%,%like,%like%,ilike,ilike%,%ilike,%ilike%"/>
-<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="SizeCriterion" parents="SingleProperyCriterion" label="SizeCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SizeCriterion"><Props>
-<Prop name="op" enumValues="=,&lt;&gt;,&gt;,&lt;,&gt;=,&lt;="/></Props></Rule><Rule name="AndCriterion" parents="JunctionCriterion" label="AndCriterion" nodeName="And" type="com.bstek.dorado.hibernate.criteria.criterion.AndCriterion"></Rule><Rule name="JunctionCriterion" parents="BaseCriterion" abstract="true" type="com.bstek.dorado.hibernate.criteria.criterion.JunctionCriterion"><Children><Child rule="BaseCriterion" name="Criterions" aggregated="true"></Child></Children></Rule><Rule name="IdEqCriterion" parents="BaseCriterion" label="IdEqCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.IdEqCriterion"><Props>
-<Prop name="dataType"/>
-<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="SubQueryPropertyCriterion" parents="SingleProperyCriterion" label="SubQueryPropertyCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SubQueryPropertyCriterion"><Props>
+<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="AndCriterion" parents="JunctionCriterion" label="AndCriterion" nodeName="And" type="com.bstek.dorado.hibernate.criteria.criterion.AndCriterion"></Rule><Rule name="SubQueryPropertyCriterion" parents="SingleProperyCriterion" label="SubQueryPropertyCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SubQueryPropertyCriterion"><Props>
 <Prop name="op" enumValues="=,=all,&gt;=,&gt;=all,&gt;=some,&gt;,&gt;all,&gt;some,in,&lt;=,&lt;=all,&lt;=some,&lt;,&lt;all,&lt;some,&lt;&gt;,!in"/></Props><Children><Child rule="TopCriteria" name="Criteria" fixed="true"></Child></Children></Rule><Rule name="SubQueryNoValueCriterion" parents="BaseCriterion" label="SubQueryNoValueCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SubQueryNoValueCriterion"><Props>
 <Prop name="op" enumValues="exists,!exists"/></Props><Children><Child rule="TopCriteria" name="Criteria" fixed="true"></Child></Children></Rule><Rule name="SqlCriterion" parents="BaseCriterion" label="SqlCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SqlCriterion"><Props>
 <Prop name="clause"/></Props><Children><Child name="Parameters" fixed="true"><Rule name="Wrapper.Parameters" label="Parameters" nodeName="Parameters"><Children><Child rule="Parameter" name="Parameters" aggregated="true"></Child></Children></Rule></Child></Children></Rule><Rule name="Parameter" label="Parameter" type="com.bstek.dorado.hibernate.criteria.criterion.SqlCriterion$Parameter"><Props>
@@ -160,9 +160,10 @@
 <Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="BetweenCriterion" parents="SingleProperyCriterion" label="BetweenCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.BetweenCriterion"><Props>
 <Prop name="dataType"/>
 <Prop name="value1" type="java.lang.Object"/>
-<Prop name="value2" type="java.lang.Object"/></Props></Rule><Rule name="SubQueryValueCriterion" parents="BaseCriterion" label="SubQueryValueCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SubQueryValueCriterion"><Props>
+<Prop name="value2" type="java.lang.Object"/></Props></Rule><Rule name="OrCriterion" parents="JunctionCriterion" label="OrCriterion" nodeName="Or" type="com.bstek.dorado.hibernate.criteria.criterion.OrCriterion"></Rule><Rule name="InCriterion" parents="SingleProperyCriterion" label="InCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.InCriterion"><Props>
 <Prop name="dataType"/>
-<Prop name="op" enumValues="=,=all,&gt;=,&gt;=all,&gt;=some,&gt;,&gt;all,&gt;some,in,&lt;=,&lt;=all,&lt;=some,&lt;,&lt;all,&lt;some,&lt;&gt;,!in"/></Props><Children><Child rule="TopCriteria" name="Criteria" fixed="true"></Child></Children></Rule><Rule name="OrCriterion" parents="JunctionCriterion" label="OrCriterion" nodeName="Or" type="com.bstek.dorado.hibernate.criteria.criterion.OrCriterion"></Rule><Rule name="FetchMode" label="FetchMode" type="com.bstek.dorado.hibernate.criteria.FetchMode"><Props>
+<Prop name="value" type="java.lang.Object"/></Props></Rule><Rule name="SizeCriterion" parents="SingleProperyCriterion" label="SizeCriterion" type="com.bstek.dorado.hibernate.criteria.criterion.SizeCriterion"><Props>
+<Prop name="op" enumValues="=,&lt;&gt;,&gt;,&lt;,&gt;=,&lt;="/></Props></Rule><Rule name="FetchMode" label="FetchMode" type="com.bstek.dorado.hibernate.criteria.FetchMode"><Props>
 <Prop name="associationPath"/>
 <Prop name="available" defaultValue="true" type="boolean"/>
 <Prop name="mode" enumValues="DEFAULT,JOIN,SELECT"/></Props></Rule><Rule name="Order" label="Order" type="com.bstek.dorado.hibernate.criteria.order.Order"><Props>
@@ -171,13 +172,13 @@
 <Prop name="ignoreCase" type="boolean"/>
 <Prop name="propertyName"/></Props></Rule><Rule name="BaseProjection" abstract="true" type="com.bstek.dorado.hibernate.criteria.projection.BaseProjection"><Props>
 <Prop name="alias"/>
-<Prop name="available" defaultValue="true" type="boolean"/></Props></Rule><Rule name="CountProjection" parents="SinglePropertyProjection" label="CountProjection" type="com.bstek.dorado.hibernate.criteria.projection.CountProjection"><Props>
-<Prop name="distinct" type="boolean"/></Props></Rule><Rule name="SinglePropertyProjection" parents="BaseProjection" abstract="true" type="com.bstek.dorado.hibernate.criteria.projection.SinglePropertyProjection"><Props>
-<Prop name="propertyName"/></Props></Rule><Rule name="AvgProjection" parents="SinglePropertyProjection" label="AvgProjection" type="com.bstek.dorado.hibernate.criteria.projection.AvgProjection"></Rule><Rule name="SqlProjection" parents="BaseProjection" label="SqlProjection" type="com.bstek.dorado.hibernate.criteria.projection.SqlProjection"><Props>
+<Prop name="available" defaultValue="true" type="boolean"/></Props></Rule><Rule name="AvgProjection" parents="SinglePropertyProjection" label="AvgProjection" type="com.bstek.dorado.hibernate.criteria.projection.AvgProjection"></Rule><Rule name="SinglePropertyProjection" parents="BaseProjection" abstract="true" type="com.bstek.dorado.hibernate.criteria.projection.SinglePropertyProjection"><Props>
+<Prop name="propertyName"/></Props></Rule><Rule name="CountProjection" parents="SinglePropertyProjection" label="CountProjection" type="com.bstek.dorado.hibernate.criteria.projection.CountProjection"><Props>
+<Prop name="distinct" type="boolean"/></Props></Rule><Rule name="PropertyProjection" parents="SinglePropertyProjection" label="PropertyProjection" type="com.bstek.dorado.hibernate.criteria.projection.PropertyProjection"></Rule><Rule name="SumProjection" parents="SinglePropertyProjection" label="SumProjection" type="com.bstek.dorado.hibernate.criteria.projection.SumProjection"></Rule><Rule name="MinProjection" parents="SinglePropertyProjection" label="MinProjection" type="com.bstek.dorado.hibernate.criteria.projection.MinProjection"></Rule><Rule name="GroupByProjection" parents="SinglePropertyProjection" label="GroupByProjection" type="com.bstek.dorado.hibernate.criteria.projection.GroupByProjection"></Rule><Rule name="MaxProjection" parents="SinglePropertyProjection" label="MaxProjection" type="com.bstek.dorado.hibernate.criteria.projection.MaxProjection"></Rule><Rule name="SqlProjection" parents="BaseProjection" label="SqlProjection" type="com.bstek.dorado.hibernate.criteria.projection.SqlProjection"><Props>
 <Prop name="clause"/>
 <Prop name="groupBy"/></Props><Children><Child name="Columns" fixed="true"><Rule name="Wrapper.Columns" label="Columns" nodeName="Columns"><Children><Child rule="Column" name="Columns" aggregated="true"></Child></Children></Rule></Child></Children></Rule><Rule name="Column" label="Column" type="com.bstek.dorado.hibernate.criteria.projection.SqlProjection$Column"><Props>
 <Prop name="columanAlias"/>
-<Prop name="hibernateType" enumValues="integer,long,short,float,double,character,byte,boolean,yes_no,true_false,string,date,time,timestamp,calendar,calendar_date,big_decimal,big_integer"/></Props></Rule><Rule name="MinProjection" parents="SinglePropertyProjection" label="MinProjection" type="com.bstek.dorado.hibernate.criteria.projection.MinProjection"></Rule><Rule name="GroupByProjection" parents="SinglePropertyProjection" label="GroupByProjection" type="com.bstek.dorado.hibernate.criteria.projection.GroupByProjection"></Rule><Rule name="RowCountProjection" parents="BaseProjection" label="RowCountProjection" type="com.bstek.dorado.hibernate.criteria.projection.RowCountProjection"></Rule><Rule name="MaxProjection" parents="SinglePropertyProjection" label="MaxProjection" type="com.bstek.dorado.hibernate.criteria.projection.MaxProjection"></Rule><Rule name="SumProjection" parents="SinglePropertyProjection" label="SumProjection" type="com.bstek.dorado.hibernate.criteria.projection.SumProjection"></Rule><Rule name="PropertyProjection" parents="SinglePropertyProjection" label="PropertyProjection" type="com.bstek.dorado.hibernate.criteria.projection.PropertyProjection"></Rule><Rule name="SubCriteria" parents="BaseCriteria" label="SubCriteria" type="com.bstek.dorado.hibernate.criteria.SubCriteria"><Props>
+<Prop name="hibernateType" enumValues="integer,long,short,float,double,character,byte,boolean,yes_no,true_false,string,date,time,timestamp,calendar,calendar_date,big_decimal,big_integer"/></Props></Rule><Rule name="RowCountProjection" parents="BaseProjection" label="RowCountProjection" type="com.bstek.dorado.hibernate.criteria.projection.RowCountProjection"></Rule><Rule name="SubCriteria" parents="BaseCriteria" label="SubCriteria" type="com.bstek.dorado.hibernate.criteria.SubCriteria"><Props>
 <Prop name="associationPath"/>
 <Prop name="available" defaultValue="true" type="boolean"/>
 <Prop name="joinType" enumValues="INNER_JOIN,FULL_JOIN,LEFT_JOIN,RIGHT_JOIN"/></Props></Rule><Rule name="DirectDataResolver" parents="AbstractDataResolver" label="DirectDataResolver" type="com.bstek.dorado.data.resolver.DirectDataResolver" scope="public" sortFactor="5" icon="/com/bstek/dorado/data/resolver/DirectDataResolver.png" reserve="direct"><PrimitiveProps>
@@ -350,7 +351,7 @@
 <Prop name="verticalText" type="boolean"/></Props><Children><Child rule="Tab" name="Tab" aggregated="true" public="false"></Child></Children></Rule><Rule name="ToolBar" parents="com.bstek.dorado.view.widget.Control" label="ToolBar" type="com.bstek.dorado.view.widget.base.toolbar.ToolBar" sortFactor="2023" category="General" icon="/com/bstek/dorado/view/widget/base/toolbar/ToolBar.png" clientTypes="desktop"><Props>
 <Prop name="fixRight" type="boolean"/>
 <Prop name="height" visible="false"/>
-<Prop name="showMenuOnHover" defaultValue="false" type="boolean"/></Props><Children><Child rule="com.bstek.dorado.view.widget.base.toolbar.Label" name="ToolBarLabel" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.base.toolbar.Button" name="ToolBarButton" aggregated="true"></Child><Child rule="Fill" name="Fill" aggregated="true"></Child><Child rule="MenuButton" name="MenuButton" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.base.toolbar.Separator" name="Separator" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.Control" name="Items" aggregated="true"></Child></Children></Rule><Rule name="SplitPanel" parents="com.bstek.dorado.view.widget.Control" label="SplitPanel" type="com.bstek.dorado.view.widget.base.SplitPanel" sortFactor="2024" category="General" icon="/com/bstek/dorado/view/widget/base/SplitPanel.png" clientTypes="desktop"><Props>
+<Prop name="showMenuOnHover" defaultValue="false" type="boolean"/></Props><Children><Child rule="Separator" name="Separator" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.base.toolbar.Label" name="ToolBarLabel" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.base.toolbar.Button" name="ToolBarButton" aggregated="true"></Child><Child rule="Fill" name="Fill" aggregated="true"></Child><Child rule="MenuButton" name="MenuButton" aggregated="true"></Child><Child rule="com.bstek.dorado.view.widget.Control" name="Items" aggregated="true"></Child></Children></Rule><Rule name="SplitPanel" parents="com.bstek.dorado.view.widget.Control" label="SplitPanel" type="com.bstek.dorado.view.widget.base.SplitPanel" sortFactor="2024" category="General" icon="/com/bstek/dorado/view/widget/base/SplitPanel.png" clientTypes="desktop"><Props>
 <Prop name="animate" type="java.lang.Boolean"/>
 <Prop name="collapseBothSide" defaultValue="false" type="boolean"/>
 <Prop name="collapseable" defaultValue="true" type="boolean"/>
@@ -930,7 +931,7 @@
 <ClientEvent name="onTabContextMenu" parameters="self,arg"/>
 <ClientEvent name="onTabRemove" parameters="self,arg"/>
 <ClientEvent name="beforeTabChange" parameters="self,arg"/>
-<ClientEvent name="onTabChange" parameters="self,arg"/></ClientEvents></Rule><Rule name="com.bstek.dorado.view.widget.base.toolbar.Label" parents="com.bstek.dorado.view.widget.Control" label="Label" nodeName="ToolBarLabel" type="com.bstek.dorado.view.widget.base.toolbar.Label" scope="protected" category="ToolBar" icon="/com/bstek/dorado/view/widget/base/toolbar/Label.png" clientTypes="desktop"><Props>
+<ClientEvent name="onTabChange" parameters="self,arg"/></ClientEvents></Rule><Rule name="Separator" parents="com.bstek.dorado.view.widget.Control" label="Separator" type="com.bstek.dorado.view.widget.base.toolbar.Separator" scope="protected" category="ToolBar" icon="/com/bstek/dorado/view/widget/base/toolbar/Separator.png" clientTypes="desktop"></Rule><Rule name="com.bstek.dorado.view.widget.base.toolbar.Label" parents="com.bstek.dorado.view.widget.Control" label="Label" nodeName="ToolBarLabel" type="com.bstek.dorado.view.widget.base.toolbar.Label" scope="protected" category="ToolBar" icon="/com/bstek/dorado/view/widget/base/toolbar/Label.png" clientTypes="desktop"><Props>
 <Prop name="text"/></Props></Rule><Rule name="com.bstek.dorado.view.widget.base.toolbar.Button" parents="Button" label="ToolBarButton" nodeName="ToolBarButton" type="com.bstek.dorado.view.widget.base.toolbar.Button" scope="protected" category="ToolBar" icon="/com/bstek/dorado/view/widget/base/toolbar/Button.png" clientTypes="desktop"><Props>
 <Prop name="hideMenuOnMouseLeave" type="boolean"/>
 <Prop name="hideMenuOnMouseLeaveDelay" defaultValue="300" type="int"/>
@@ -945,14 +946,17 @@
 <Prop name="name"/><Prop name="style" type="java.util.Map" compositeType="Open"></Prop>
 <Prop name="tip"/>
 <Prop name="visible" defaultValue="true" type="boolean"/>
-<Prop name="width"/></Props></Rule><Rule name="ControlMenuItem" parents="TextMenuItem" label="ControlMenuItem" type="com.bstek.dorado.view.widget.base.menu.ControlMenuItem" icon="/com/bstek/dorado/view/widget/base/menu/ControlMenuItem.png" clientTypes="desktop"><Children><Child rule="FloatControl" name="Control"></Child></Children></Rule><Rule name="TextMenuItem" parents="BaseMenuItem" abstract="true" type="com.bstek.dorado.view.widget.base.menu.TextMenuItem"><Props>
+<Prop name="width"/></Props></Rule><Rule name="MenuItem" parents="TextMenuItem" label="MenuItem" type="com.bstek.dorado.view.widget.base.menu.MenuItem" icon="/com/bstek/dorado/view/widget/base/menu/MenuItem.png" clientTypes="desktop"><Children><Child rule="BaseMenuItem" name="Items" aggregated="true"></Child></Children></Rule><Rule name="TextMenuItem" parents="BaseMenuItem" abstract="true" type="com.bstek.dorado.view.widget.base.menu.TextMenuItem"><Props>
 <Prop name="action" reference="Action:id"/>
 <Prop name="caption"/>
 <Prop name="disabled" type="boolean"/>
 <Prop name="hideOnClick" defaultValue="true" type="boolean"/>
 <Prop name="icon"/>
 <Prop name="iconClass"/></Props><ClientEvents>
-<ClientEvent name="onClick" parameters="self,arg"/></ClientEvents></Rule><Rule name="FloatControl" abstract="true" type="com.bstek.dorado.view.widget.FloatControl"><Props>
+<ClientEvent name="onClick" parameters="self,arg"/></ClientEvents></Rule><Rule name="CheckableMenuItem" parents="MenuItem" label="CheckableMenuItem" type="com.bstek.dorado.view.widget.base.menu.CheckableMenuItem" icon="/com/bstek/dorado/view/widget/base/menu/CheckableMenuItem.png" clientTypes="desktop"><Props>
+<Prop name="checked" type="boolean"/>
+<Prop name="group"/></Props><ClientEvents>
+<ClientEvent name="onCheckedChange" parameters="self,arg"/></ClientEvents></Rule><Rule name="ControlMenuItem" parents="TextMenuItem" label="ControlMenuItem" type="com.bstek.dorado.view.widget.base.menu.ControlMenuItem" icon="/com/bstek/dorado/view/widget/base/menu/ControlMenuItem.png" clientTypes="desktop"><Children><Child rule="FloatControl" name="Control"></Child></Children></Rule><Rule name="FloatControl" abstract="true" type="com.bstek.dorado.view.widget.FloatControl"><Props>
 <Prop name="align" enumValues="left,innerleft,center,innerright,top" visible="false"/>
 <Prop name="anchorTarget" visible="false"/>
 <Prop name="animateTarget" visible="false"/>
@@ -973,10 +977,7 @@
 <Prop name="shadowMode" enumValues="drop,sides,frame,none"/>
 <Prop name="showAnimateType" enumValues="zoom,modernZoom,flip,slide,safeSlide,modernSlide,fade,none"/>
 <Prop name="top" type="int"/>
-<Prop name="vAlign" enumValues="top,innertop,center,innerbottom,bottom" visible="false"/></Props></Rule><Rule name="MenuItem" parents="TextMenuItem" label="MenuItem" type="com.bstek.dorado.view.widget.base.menu.MenuItem" icon="/com/bstek/dorado/view/widget/base/menu/MenuItem.png" clientTypes="desktop"><Children><Child rule="BaseMenuItem" name="Items" aggregated="true"></Child></Children></Rule><Rule name="Separator" parents="BaseMenuItem" label="Separator" type="com.bstek.dorado.view.widget.base.menu.Separator" icon="/com/bstek/dorado/view/widget/base/menu/Separator.png" clientTypes="desktop,touch"></Rule><Rule name="CheckableMenuItem" parents="MenuItem" label="CheckableMenuItem" type="com.bstek.dorado.view.widget.base.menu.CheckableMenuItem" icon="/com/bstek/dorado/view/widget/base/menu/CheckableMenuItem.png" clientTypes="desktop"><Props>
-<Prop name="checked" type="boolean"/>
-<Prop name="group"/></Props><ClientEvents>
-<ClientEvent name="onCheckedChange" parameters="self,arg"/></ClientEvents></Rule><Rule name="com.bstek.dorado.view.widget.base.toolbar.Separator" parents="com.bstek.dorado.view.widget.Control" label="Separator" type="com.bstek.dorado.view.widget.base.toolbar.Separator" scope="protected" category="ToolBar" icon="/com/bstek/dorado/view/widget/base/toolbar/Separator.png" clientTypes="desktop"></Rule><Rule name="Section" parents="ClientEventSupportedElement" label="Section" type="com.bstek.dorado.view.widget.base.accordion.Section" icon="/com/bstek/dorado/view/widget/base/accordion/Section.png"><Props>
+<Prop name="vAlign" enumValues="top,innertop,center,innerbottom,bottom" visible="false"/></Props></Rule><Rule name="com.bstek.dorado.view.widget.base.menu.Separator" parents="BaseMenuItem" label="Separator" type="com.bstek.dorado.view.widget.base.menu.Separator" icon="/com/bstek/dorado/view/widget/base/menu/Separator.png" clientTypes="desktop,touch"></Rule><Rule name="Section" parents="ClientEventSupportedElement" label="Section" type="com.bstek.dorado.view.widget.base.accordion.Section" icon="/com/bstek/dorado/view/widget/base/accordion/Section.png"><Props>
 <Prop name="caption"/>
 <Prop name="className"/>
 <Prop name="disabled" type="boolean"/>
@@ -1052,15 +1053,15 @@
 <Prop name="visible" defaultValue="true" type="boolean"/></Props><ClientEvents>
 <ClientEvent name="onRenderHeaderCell" parameters="self,arg"/>
 <ClientEvent name="onHeaderClick" parameters="self,arg"/>
-<ClientEvent name="onGetCellEditor" parameters="self,arg"/></ClientEvents></Rule><Rule name="IndicatorColumn" parents="AbstractDataColumn" label="IndicatorColumn" type="com.bstek.dorado.view.widget.grid.IndicatorColumn" icon="/com/bstek/dorado/view/widget/grid/IndicatorColumn.png"></Rule><Rule name="AbstractDataColumn" parents="com.bstek.dorado.view.widget.grid.Column" abstract="true" type="com.bstek.dorado.view.widget.grid.AbstractDataColumn"><Props>
+<ClientEvent name="onGetCellEditor" parameters="self,arg"/></ClientEvents></Rule><Rule name="ColumnGroup" parents="com.bstek.dorado.view.widget.grid.Column" label="ColumnGroup" type="com.bstek.dorado.view.widget.grid.ColumnGroup" icon="/com/bstek/dorado/view/widget/grid/ColumnGroup.png"><Props>
+<Prop name="align" enumValues="left,center,right" visible="false"/></Props><Children><Child rule="com.bstek.dorado.view.widget.grid.Column" name="Columns" aggregated="true"></Child></Children></Rule><Rule name="RowNumColumn" parents="AbstractDataColumn" label="RowNumColumn" type="com.bstek.dorado.view.widget.grid.RowNumColumn" icon="/com/bstek/dorado/view/widget/grid/RowNumColumn.png"></Rule><Rule name="AbstractDataColumn" parents="com.bstek.dorado.view.widget.grid.Column" abstract="true" type="com.bstek.dorado.view.widget.grid.AbstractDataColumn"><Props>
 <Prop name="filterBarRenderer"/>
 <Prop name="footerRenderer"/>
 <Prop name="renderer"/>
 <Prop name="resizeable" defaultValue="true" type="boolean"/>
 <Prop name="width"/></Props><ClientEvents>
 <ClientEvent name="onRenderFooterCell" parameters="self,arg"/>
-<ClientEvent name="onRenderCell" parameters="self,arg"/></ClientEvents></Rule><Rule name="ColumnGroup" parents="com.bstek.dorado.view.widget.grid.Column" label="ColumnGroup" type="com.bstek.dorado.view.widget.grid.ColumnGroup" icon="/com/bstek/dorado/view/widget/grid/ColumnGroup.png"><Props>
-<Prop name="align" enumValues="left,center,right" visible="false"/></Props><Children><Child rule="com.bstek.dorado.view.widget.grid.Column" name="Columns" aggregated="true"></Child></Children></Rule><Rule name="DataColumn" parents="AbstractDataColumn" label="DataColumn" type="com.bstek.dorado.view.widget.grid.DataColumn" icon="/com/bstek/dorado/view/widget/grid/DataColumn.png" labelProperty="name,property"><Props>
+<ClientEvent name="onRenderCell" parameters="self,arg"/></ClientEvents></Rule><Rule name="IndicatorColumn" parents="AbstractDataColumn" label="IndicatorColumn" type="com.bstek.dorado.view.widget.grid.IndicatorColumn" icon="/com/bstek/dorado/view/widget/grid/IndicatorColumn.png"></Rule><Rule name="DataColumn" parents="AbstractDataColumn" label="DataColumn" type="com.bstek.dorado.view.widget.grid.DataColumn" icon="/com/bstek/dorado/view/widget/grid/DataColumn.png" labelProperty="name,property"><Props>
 <Prop name="align" enumValues="left,center,right"/>
 <Prop name="dataType" type="com.bstek.dorado.data.type.DataType"/>
 <Prop name="defaultFilterOperator"/>
@@ -1075,7 +1076,7 @@
 <Prop name="summaryType" enumValues="sum,average,count,max,min"/>
 <Prop name="trigger" enumValues="triggerClear,autoMappingDropDown1,autoMappingDropDown2,autoOpenMappingDropDown1,autoOpenMappingDropDown2,defaultDateDropDown,defaultDateTimeDropDown,defaultYearMonthDropDown,defaultYearDropDown,defaultMonthDropDown" reference="Trigger:id"/>
 <Prop name="typeFormat"/>
-<Prop name="wrappable" type="boolean"/></Props><Children><Child name="Editor" fixed="true"><Rule name="Wrapper.Editor" label="Editor" nodeName="Editor" icon="/com/bstek/dorado/view/widget/grid/Editor.png"><Children><Child rule="com.bstek.dorado.view.widget.Control" name="Editor"></Child></Children></Rule></Child></Children></Rule><Rule name="RowNumColumn" parents="AbstractDataColumn" label="RowNumColumn" type="com.bstek.dorado.view.widget.grid.RowNumColumn" icon="/com/bstek/dorado/view/widget/grid/RowNumColumn.png"></Rule><Rule name="RowSelectorColumn" parents="AbstractDataColumn" label="RowSelectorColumn" type="com.bstek.dorado.view.widget.grid.RowSelectorColumn" icon="/com/bstek/dorado/view/widget/grid/RowSelectorColumn.png"></Rule><Rule name="AbstractList" parents="com.bstek.dorado.view.widget.Control" abstract="true" type="com.bstek.dorado.view.widget.list.AbstractList" scope="protected" clientTypes="desktop"><Props>
+<Prop name="wrappable" type="boolean"/></Props><Children><Child name="Editor" fixed="true"><Rule name="Wrapper.Editor" label="Editor" nodeName="Editor" icon="/com/bstek/dorado/view/widget/grid/Editor.png"><Children><Child rule="com.bstek.dorado.view.widget.Control" name="Editor"></Child></Children></Rule></Child></Children></Rule><Rule name="RowSelectorColumn" parents="AbstractDataColumn" label="RowSelectorColumn" type="com.bstek.dorado.view.widget.grid.RowSelectorColumn" icon="/com/bstek/dorado/view/widget/grid/RowSelectorColumn.png"></Rule><Rule name="AbstractList" parents="com.bstek.dorado.view.widget.Control" abstract="true" type="com.bstek.dorado.view.widget.list.AbstractList" scope="protected" clientTypes="desktop"><Props>
 <Prop name="allowNoCurrent" type="boolean"/>
 <Prop name="dragMode" defaultValue="item" enumValues="item,control,itemOrControl"/>
 <Prop name="dropMode" defaultValue="insertItems" enumValues="onControl,onItem,insertItems,onOrInsertItems,onAnyWhere"/>

@@ -746,7 +746,7 @@
       <ControlTab id="HisTaskTab">
         <Property name="caption">审批历史</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -140px</Property>
-        <DataGrid>
+        <DataGrid id="dataGridHis">
           <Property name="dataSet">dataSetHistoryTask</Property>
           <Property name="readOnly">true</Property>
           <Property name="height">90%</Property>
@@ -871,6 +871,17 @@
             </DataColumn>
           </DataGrid>
         </Container>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="DialogTbsFunApprc">
+      <Property name="height">450</Property>
+      <Property name="width">800</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameTbsFunApprc">
+          <Property name="height">100%</Property>
+        </IFrame>
       </Children>
       <Tools/>
     </Dialog>

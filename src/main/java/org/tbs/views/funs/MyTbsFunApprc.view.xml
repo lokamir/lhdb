@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="datatypeTbsFunApprc" parent="dataTypeTbsFunApprc">
+      <Property name="creationType">org.tbs.entity.TbsFunApprc</Property>
+      <PropertyDef name="taskname">
+        <Property></Property>
+        <Property name="label">任务名称</Property>
+      </PropertyDef>
+      <PropertyDef name="assignee">
+        <Property></Property>
+        <Property name="label">处理人</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Usernames&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="opinion">
+        <Property></Property>
+        <Property name="label">审批意见</Property>
+      </PropertyDef>
+      <PropertyDef name="createdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">发起日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+      <PropertyDef name="enddate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">完成日期</Property>
+        <Property name="displayFormat">Y-m-d H:i:s</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <DataSet id="dataSetHistoryTask">
+      <Property name="dataType">[datatypeTbsFunApprc]</Property>
+      <Property name="dataProvider">getHisTasks#getHisTasksByID</Property>
+      <Property name="readOnly">true</Property>
+    </DataSet>
+    <Container>
+      <FieldSet>
+        <Buttons/>
+        <Children>
+          <AutoForm>
+            <Property name="dataSet">dataSetHistoryTask</Property>
+            <Property name="cols">*,*,*</Property>
+            <AutoFormElement layoutConstraint="colSpan:2">
+              <Property name="name">taskname</Property>
+              <Property name="property">taskname</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">assignee</Property>
+              <Property name="property">assignee</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">createdate</Property>
+              <Property name="property">createdate</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">enddate</Property>
+              <Property name="property">enddate</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement layoutConstraint="rowSpan:5;colSpan:3">
+              <Property name="name">opinion</Property>
+              <Property name="property">opinion</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+        </Children>
+      </FieldSet>
+    </Container>
+  </View>
+</ViewConfig>

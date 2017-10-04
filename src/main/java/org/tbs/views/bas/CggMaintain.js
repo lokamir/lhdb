@@ -7,7 +7,7 @@ var lastContainerObj;
 var currentCustomer;
 var currentDataset;
 var currentUpdateAction;
-
+var xCreatelist = [];
 /** @Bind view.onReady */
 !function(self,arg){
 //	var datasetCggObj;
@@ -96,13 +96,61 @@ var currentUpdateAction;
 
 // set right visible status when the Customer changed
 /** @Bind #teTbsCustomer.onTextEdit */
-!function(self,arg,autoformCondition){
+!function(self,arg,autoformCondition){	
 	var entity = autoformCondition.get("entity");
 	var newCutomer = entity.get("tbsCustomer");
 	if (newCutomer != currentCustomer) {
 		if(lastContainerObj){
 			lastContainerObj.set("visible",false);
 		}
+	}
+};
+
+/** @Bind #teTbsCustomer.onPost */
+!function(self,arg,autoformCondition){
+	var dataSet = view.get("#datasetGetVcggall");
+	var cusid = autoformCondition.get("entity").get("tbsCustomer.id");
+	dataSet.set("parameter",{cusid:cusid}).flushAsync();
+};
+
+/** @Bind #datasetGetVcggall.onLoadData */
+!function(self,arg,autoformCondition){
+	xCreatelist=[];
+	var data = view.get("#datasetGetVcggall").getData();
+	data.each(function(entity){
+		xCreatelist.push(entity.get("sn").get("cat1"));
+		xCreatelist.push(entity.get("sn").get("cat2"));
+		xCreatelist.push(entity.get("sn").get("cat3"));
+	});
+	view.get("#datasetTbsBasCggtyp").flushAsync();
+};
+
+/** @Bind #dataTreeCggtyp.onRenderNode */
+!function(arg) {
+	var node = arg.node, data = node.get("data"), xCreateConfig = [],count=0;
+	if (node.get("bindingConfig.name") == "cggtyp") {
+		xCreateConfig.push({
+			tagName : "SPAN",
+			contentText : node.get("label")
+		});
+		if ($.inArray(data.get("id"), xCreatelist) >= 0) {
+			xCreatelist.each(function(entity){
+				if(entity==data.get("id")){
+					count++;
+				}
+			});
+			xCreateConfig.push({
+				tagName : "SPAN",
+				contentText : "(" + count + ")",
+				style : "margin-left: 2px; color: gray"
+			});
+			count=0;
+		}
+	}
+	if (xCreateConfig.length) {
+		$(arg.dom).empty().xCreate(xCreateConfig);
+	} else {
+		arg.processDefault = true;
 	}
 };
 
@@ -138,10 +186,8 @@ var currentUpdateAction;
 
 /** @Bind #dataTreeCggtyp.onClick */
 !function(self,arg,autoformCondition){
-	
 	var currentEntity = view.get("#dataTreeCggtyp.currentEntity");
 	var objId = currentEntity.get("id");
-	
 	var entity = autoformCondition.get("entity");
 	var datasetCggObj;
 	var containerObj = view.get("#cgg" + objId);
@@ -196,7 +242,6 @@ var currentUpdateAction;
 					saveButtonObj.removeListener("onClick");
 					//add listener for save button
 					saveButtonObj.addListener("onClick", function(self, arg){
-						debugger;
 						var datasetTbsCggDys = currentDataset.get("data");
 						
 						datasetTbsCggDys.each(function(datasetTbsCggDy){
@@ -408,4 +453,8 @@ var currentUpdateAction;
 /**
  * 文件处理  结束
  */
+
+
+
+
 

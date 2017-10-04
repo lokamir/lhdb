@@ -1094,7 +1094,7 @@
       <ControlTab id="tabHistoryTask">
         <Property name="caption">审批记录</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -140px</Property>
-        <DataGrid>
+        <DataGrid id="dataGridHis">
           <Property name="readOnly">true</Property>
           <Property name="dataSet">dataSetHistoryTask</Property>
           <RowNumColumn/>
@@ -1273,6 +1273,17 @@
         <Property name="maxHeight">200</Property>
       </DataSetDropDown>
     </Container>
+    <Dialog id="DialogTbsFunApprc">
+      <Property name="height">450</Property>
+      <Property name="width">800</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameTbsFunApprc">
+          <Property name="height">100%</Property>
+        </IFrame>
+      </Children>
+      <Tools/>
+    </Dialog>
     <Dialog id="dialogCggMaintain">
       <Property name="maximizeable">true</Property>
       <Property name="maximized">false</Property>

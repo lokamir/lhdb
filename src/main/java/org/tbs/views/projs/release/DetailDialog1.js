@@ -268,3 +268,11 @@ var inittotloc;
 	view.get("#dialogCggMaintain").show();
 	view.get("#iFrameCggMaintain").set("path", path);
 };
+
+/** @Bind #dataGridHis.onDataRowDoubleClick */
+!function(self) {
+	var path = "org.tbs.views.funs.MyTbsFunApprc.d?id=";
+	var taskHisId = self.getCurrentItem().get("id");
+	view.get("#DialogTbsFunApprc").show();
+	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
+};

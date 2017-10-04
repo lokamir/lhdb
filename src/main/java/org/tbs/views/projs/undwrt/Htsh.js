@@ -77,3 +77,11 @@ function GetCRStatus(ds){
 	window.parent.closeProcessDialog('${request.getParameter("type")}'); 
 	//dataSetTbsProjHtsh.get("data:#").cancel();
 };
+
+/** @Bind #dataGridHis.onDataRowDoubleClick */
+!function(self) {
+	var path = "org.tbs.views.funs.MyTbsFunApprc.d?id=";
+	var taskHisId = self.getCurrentItem().get("id");
+	view.get("#DialogTbsFunApprc").show();
+	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
+};

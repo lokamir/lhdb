@@ -1533,7 +1533,7 @@
       <ControlTab id="tabHistoryTask">
         <Property name="caption">审批记录</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -140px</Property>
-        <DataGrid>
+        <DataGrid id="dataGridHis">
           <Property name="readOnly">true</Property>
           <Property name="dataSet">dataSetHistoryTask</Property>
           <RowNumColumn/>
@@ -1593,6 +1593,17 @@
       <Buttons/>
       <Children>
         <IFrame id="iFrameCggMaintain"/>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <Dialog id="DialogTbsFunApprc">
+      <Property name="height">450</Property>
+      <Property name="width">800</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameTbsFunApprc">
+          <Property name="height">100%</Property>
+        </IFrame>
       </Children>
       <Tools/>
     </Dialog>

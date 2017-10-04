@@ -1269,6 +1269,46 @@
       </PropertyDef>
       <PropertyDef name="url"/>
     </DataType>
+    <DataType name="dataTypeVcggall">
+      <Property name="creationType">org.tbs.entity.Vcggall</Property>
+      <Property name="defaultDisplayProperty">sn.sn</Property>
+      <PropertyDef name="sn">
+        <Property name="dataType">dataTypeVcggallSn</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeVcggallSn">
+      <Property name="creationType">org.tbs.entity.VcggallSn</Property>
+      <PropertyDef name="tableid">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="cusid">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cusname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="cat1">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cat1name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="cat2">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cat2name">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="cat3">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cat3name">
+        <Property></Property>
+      </PropertyDef>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -1282,6 +1322,12 @@
       <Property name="dataType">[dataTypeTbsFunFul]</Property>
       <Property name="dataProvider">flsmgm#getquery</Property>
       <Property name="pageSize">15</Property>
+    </DataSet>
+    <DataSet id="datasetGetVcggall">
+      <Property name="dataProvider">tbsCggVcggallDao#getAllForVcggall</Property>
+      <Property name="dataType">[dataTypeVcggall]</Property>
+      <Property name="readOnly">true</Property>
+      <Property name="loadMode">lazy</Property>
     </DataSet>
     <Container id="datasetCgg">
       <Container id="datasetCggDy">

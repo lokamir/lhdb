@@ -2350,7 +2350,7 @@
         <Property name="caption">审批记录</Property>
         <Property name="icon">url(>skin>common/icons.gif) -260px -140px</Property>
         <Property name="visible">false</Property>
-        <DataGrid>
+        <DataGrid id="dataGridHis">
           <Property name="dataSet">dataSetHistoryTask</Property>
           <Property name="readOnly">true</Property>
           <DataColumn>
@@ -2708,5 +2708,16 @@
         </UpdateItem>
       </UpdateAction>
     </Container>
+    <Dialog id="DialogTbsFunApprc">
+      <Property name="height">450</Property>
+      <Property name="width">800</Property>
+      <Buttons/>
+      <Children>
+        <IFrame id="iFrameTbsFunApprc">
+          <Property name="height">100%</Property>
+        </IFrame>
+      </Children>
+      <Tools/>
+    </Dialog>
   </View>
 </ViewConfig>
