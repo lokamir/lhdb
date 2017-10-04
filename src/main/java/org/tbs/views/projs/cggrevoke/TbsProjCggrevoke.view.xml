@@ -394,6 +394,11 @@
         <Property name="iconClass">silk silk-flag</Property>
         <Property name="disabled">false</Property>
       </ToolBarButton>
+      <Button id="buttonFlsmgm">
+        <Property name="width">100</Property>
+        <Property name="caption"> 附件管理</Property>
+        <Property name="iconClass">silk silk-application-get</Property>
+      </Button>
     </ToolBar>
     <Container id="UI">
       <Property name="height">82%</Property>
@@ -884,9 +889,10 @@
     <Dialog id="DialogTbsFunApprc">
       <Property name="height">450</Property>
       <Property name="width">800</Property>
+      <Property name="visible">false</Property>
       <Buttons/>
       <Children>
-        <IFrame id="iFrameTbsFunApprc">
+        <IFrame id="iFrameAttach">
           <Property name="height">100%</Property>
         </IFrame>
       </Children>

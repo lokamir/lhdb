@@ -166,3 +166,34 @@ dataSetTbsProj.set("parameter",entity).flushAsync();
 	view.get("#DialogTbsFunApprc").show();
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
 };
+
+/**
+ * 文件处理 开始
+ */
+/** @Bind #buttonFlsmgm.onClick */
+!function(self,arg,DialogTbsFunApprc,iFrameAttach,dataSetTbsProj){
+	var title = "Cggrevoke";
+	var projsn = dataSetTbsProj.getData("#").get("sn");
+	var fid ="反担保解除";
+	var by3 =null;
+	var typid =null;
+	var invisible =true;//全流程上传附件
+	if(projsn){
+	var attachpath="org.tbs.views.funs.MyFile.d?by1=" + title 
+			+ "&by2=" + projsn
+			+ "&by3=" + by3
+			+ "&fid=" + fid
+			+ "&typid=" + typid
+			+ "&uploadbutton=" +invisible
+			+ "&dt=" + new Date();
+			iFrameAttach.set("path",attachpath);
+			DialogTbsFunApprc.show();
+	}else{
+		dorado.MessageBox.alert("请选择关联客户", {
+			title : "趣博信息科技"
+		});
+	}
+};
+/**
+ * 文件处理  结束
+ */

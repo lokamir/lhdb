@@ -240,7 +240,7 @@ var taskId = "${request.getParameter('taskId')}";
 	var fid ="反担保解除";
 	var by3 =null;
 	var typid =null;
-	var invisible ="invisible";//禁上传（invisible）
+	var invisible =true;//全流程上传附件
 	var attachpath="org.tbs.views.funs.MyFile.d?by1=" + title 
 			+ "&by2=" + projsn
 			+ "&by3=" + by3
