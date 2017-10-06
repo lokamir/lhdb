@@ -189,13 +189,15 @@ public class ProjectCfm extends ProjectCreate {
 				String confirmcount = queryconfirmcount.uniqueResult().toString();
 				String sqlconfirm = "select count(*) from tbs_proj_opinion where CFM0_ID = "
 						+ cfm0Id
-						+ "and outcome <> '未知' and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
+						+ " and outcome <> '未知' and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
 				SQLQuery queryconfirm = session.createSQLQuery(sqlconfirm);
 				String confirmresult = queryconfirm.uniqueResult().toString();
 				Integer cfmre = Integer.valueOf(confirmresult);
 				Integer cfmct = Integer.valueOf(confirmcount);
 				if(cfmre==cfmct){
 					confirm=1;
+				}else{
+					confirm=0;
 				}
 				
 				

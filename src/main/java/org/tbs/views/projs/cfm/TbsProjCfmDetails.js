@@ -226,7 +226,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 						view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
 					}
 				});
-			} else if(psid == 8) {
+			} else if(psid == 8&&taskName == "评审会秘书录入会议决议单") {
 					if(view.get("#autoformCfm1").get("entity")){
 						view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}else if(view.get("#autoformCfm2").get("entity")){
@@ -252,7 +252,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    groupboxCfm0Appr.set("visible", false);
 				    groupboxAppr.set("visible", false);
 				    listDdlOutcome.set("items",["确认修改"]);
-				}else if(taskName == "主任委员审批"){
+				}else if(psid == 8&&taskName == "主任委员审批"){
 					var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");

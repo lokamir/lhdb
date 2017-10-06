@@ -172,14 +172,14 @@ var downloadbutton;//附件组件参数
 				listDdlOutcome.set("items",["确认修改"]);
 			}
 //			 alert(window.location);
-		}else{
+		}/*else{
 			if(view.get("#datasetTbsProj").getData("#.totloc")){
 				if(view.get("#datasetTbsProj").getData("#.totloc")!=0){
 				//view.get("#btnSave").set("disabled",false);
 				view.get("#btnSave").set("disabled",true);
 				}
 			}
-		}
+		}*/
 	}
 
 };
