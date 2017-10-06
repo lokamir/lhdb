@@ -88,6 +88,9 @@ public class ActCfmGrntProjCfm0 implements ActionHandler {
 	    // get department head uid
 	    String sqlDHUid = "select b.UID from bdf2_user_dept a, tbs_approver b where a.dept_id_=b.deptid and" +
 	    		" b.title like '%部门经理%' and a.username_='" + promoter + "' ";
+	    String sqlUid1 = "select UID from tbs_approver where title like '总经理' and deptname = '总经理办公室' ";
+	    String sqlUid2 = "select UID from tbs_approver where trim(title) in ('分管风管总经理') ";
+	    String sqlUid3 = "select UID from tbs_approver where trim(title) in ('风管经理','风险管理部门经理[副]') ";
 //	    SQLQuery sqlquery = session.createSQLQuery(sql);
 //	    String dhID = sqlquery.uniqueResult().toString();
 	    
@@ -96,9 +99,28 @@ public class ActCfmGrntProjCfm0 implements ActionHandler {
 	    		" where PROJ_ID = " + businessId +  
 	    		" and CFM0_ID = " + projcfm0Id +
 	    		" and UID in (" + sqlDHUid + ")";
-	    
 	    SQLQuery queryUpdate = session.createSQLQuery(sqlUpdate);
 	    queryUpdate.executeUpdate();
+	    
+	    
+	    String sqlUpdate1 = "update tbs_proj_opinion set TITLE = '总经理'" +
+	    		" where PROJ_ID = " + businessId +  
+	    		" and CFM0_ID = " + projcfm0Id +
+	    		" and UID in (" + sqlUid1 + ")";
+	    SQLQuery queryUpdate1 = session.createSQLQuery(sqlUpdate1);
+	    queryUpdate1.executeUpdate();
+	    String sqlUpdate2 = "update tbs_proj_opinion set TITLE = '分管风管总经理'" +
+	    		" where PROJ_ID = " + businessId +  
+	    		" and CFM0_ID = " + projcfm0Id +
+	    		" and UID in (" + sqlUid2 + ")";
+	    SQLQuery queryUpdate2 = session.createSQLQuery(sqlUpdate2);
+	    queryUpdate2.executeUpdate();
+	    String sqlUpdate3 = "update tbs_proj_opinion set TITLE = '风管经理'" +
+	    		" where PROJ_ID = " + businessId +  
+	    		" and CFM0_ID = " + projcfm0Id +
+	    		" and UID in (" + sqlUid3 + ")";
+	    SQLQuery queryUpdate3 = session.createSQLQuery(sqlUpdate3);
+	    queryUpdate3.executeUpdate();
 	    
 	    /* 20160203 add for TbsProjOpinion --- End **/
 	} finally {

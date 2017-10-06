@@ -1,19 +1,18 @@
 var businessId = "${request.getParameter('businessId')}";
 var processInstanceId = "${request.getParameter('processInstanceId')}";
+var nodename = "${request.getParameter('nodeName')}";
 var initfaloc;
 var initnfaloc;
 var initotloc;
 
 /** @Bind #dataSetTbsProj.onLoadData */
 !function(self, arg,dataSetTbsProj,dataSetTbsCggChg) {
-var taskId = "${request.getParameter('taskId')}";
-		var params = { taskid : taskId,	};
-		view.get("#ajaxactionGetUfloNode").set("parameter",params).execute(
-				function(nodename){
-					nodeName = nodename;
 				if (nodename == "驳回修正"){
 					view.get("#listDdlOutcome").set("items",["修改确认"]);
 					view.get("#RowSelectColumn").set("visible",true);
+				}else if (nodename == "风管经理决定是否调整授信额度"){
+					view.get("#outcome").set("label","是否调整授信额度");
+					view.get("#listDdlOutcome").set("items",["是","否"]);
 				}else if (nodename == "风管经理调整授信额度"){
 					view.get("#listDdlOutcome").set("items",["确认"]);
 					view.get("#tabTbsCggChg").set("visible", true);
@@ -50,7 +49,7 @@ var taskId = "${request.getParameter('taskId')}";
 						view.get("#autoformTbsCggChg").getElement("deOtloc").set("visible",true);
 						view.get("#autoformTbsCggChg").getElement("deTotloc").set("visible",true);
 					}
-					if(nodeName ==  "风管负责人审批"|| nodeName == "总经理审核"){
+					if(nodename ==  "风管负责人审批"|| nodename == "总经理审核"){
 						view.get("#tabTbsCggChg").set("visible",true);
 						dataSetTbsCggChg.set("parameter", processInstanceId).flushAsync();
 						view.get("#autoformTbsCggChg").getElement("xdeFaloc").set("visible",true);
@@ -69,7 +68,6 @@ var taskId = "${request.getParameter('taskId')}";
 					}		
 					view.get("#listDdlOutcome").set("items",["通过","驳回"]);
 				}	
-				});
 };
 		
 /*========== 页面计算===========*/
@@ -154,25 +152,25 @@ var taskId = "${request.getParameter('taskId')}";
 		});
 		return;
 	}
-	if (nodeName == "风管经理调整授信额度"
+	if (nodename == "风管经理调整授信额度"
 		&& ((!xdeFaloc&&xdeFaloc!=0)||(!xdeNfaloc&&xdeNfaloc!=0)||(!xdeOtloc&&xdeOtloc!=0))){
 		dorado.MessageBox.alert("对不起，【减少金额】必填！", {
 			title : "趣博信息科技"
 		});
 		return;
-		}else if(nodeName == "风管经理调整授信额度"){
+		}else if(nodename == "风管经理调整授信额度"){
 			SaveTbsCggChg.execute();
 	}
-	if(nodeName == "评委会秘书录入"&&outcome == "驳回"){
+	if(nodename == "评委会秘书录入"&&outcome == "驳回"){
 		a=1;
-		}else if((nodeName == "评委会秘书录入")
+		}else if((nodename == "评委会秘书录入")
 				&&((!deFaloc&&deFaloc!=0)||(!deNfaloc&&deNfaloc!=0)||(!deOtloc&&deOtloc!=0)||!deTotloc&&deTotloc!=0)) {
 			
 			dorado.MessageBox.alert("对不起，【减少金额】必填！", {
 			title : "趣博信息科技"
 				});	
 			return;
-		}else if(nodeName == "评委会秘书录入"){
+		}else if(nodename == "评委会秘书录入"){
 			SaveTbsCggChg.execute(
 					{callback : function(result){
 						if (!result) {

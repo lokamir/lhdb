@@ -302,7 +302,8 @@ var processInstanceId = current.get(&quot;processInstanceId&quot;);&#xD;
 var processId = current.get(&quot;processId&quot;);&#xD;
 var businessId = current.get(&quot;businessId&quot;);&#xD;
 var taskName = current.get(&quot;taskName&quot;);&#xD;
-view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +  &quot;&amp;taskName=&quot; + taskName + &quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
+var nodeName = current.get(&quot;nodeName&quot;);&#xD;
+view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId + &quot;&amp;nodeName=&quot; + nodeName+ &quot;&amp;taskName=&quot; + taskName + &quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
 view.id(&quot;dialogCompleteTask&quot;).show();</ClientEvent>
               <Property name="caption">处理任务</Property>
               <Property name="icon">url(skin>common/icons.gif) -20px 0px</Property>

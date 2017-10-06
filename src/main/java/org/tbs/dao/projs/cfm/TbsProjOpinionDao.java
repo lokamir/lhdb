@@ -45,6 +45,7 @@ public class TbsProjOpinionDao extends HibernateDao {
 		if (state.equals(EntityState.NEW)) {
 		    tbsProjOpinion.setTimestampUpdate(now);
 		    tbsProjOpinion.setTimestampInput(now);
+		    tbsProjOpinion.setTitle("new");
 		    session.save(tbsProjOpinion);
 		}
 		if (state.equals(EntityState.MODIFIED)) {

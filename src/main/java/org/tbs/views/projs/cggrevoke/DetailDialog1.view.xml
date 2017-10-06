@@ -528,7 +528,7 @@
                 <Property name="cols">*,*,*</Property>
                 <Property name="createPrivateDataSet">true</Property>
                 <Property name="labelWidth">130</Property>
-                <AutoFormElement>
+                <AutoFormElement id="outcome">
                   <Property name="name">outcome</Property>
                   <Property name="label">审批结果</Property>
                   <Property name="trigger">listDdlOutcome</Property>
@@ -737,6 +737,7 @@
                     <Property name="itemCodes">+,-,x</Property>
                     <Property name="dataPath">#.tbsProjBizvtSet</Property>
                     <Property name="hideMode">display</Property>
+                    <Property name="visible">false</Property>
                   </DataPilot>
                   <DataGrid id="datagridTbsProjBizvt">
                     <Property name="dataSet">dataSetTbsProj</Property>
@@ -744,6 +745,7 @@
                     <Property name="width">80%</Property>
                     <Property name="showFooter">false</Property>
                     <Property name="showGroupFooter">false</Property>
+                    <Property name="readOnly">true</Property>
                     <RowNumColumn/>
                     <DataColumn id="tbsBasBiztype" name="tbsBasBiztype">
                       <Property name="property">tbsBasBiztype</Property>

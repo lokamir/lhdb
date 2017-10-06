@@ -33,6 +33,7 @@ public class ProjectCfm extends ProjectCreate {
     private ProcessClient processClient;
 
     private int pass = 0;
+    private int confirm = 0;//三位领导必须签批（0没有完成，1完成签批）
     private int cmpt = 0; // 表示通过
 
     @Expose
@@ -156,63 +157,93 @@ public class ProjectCfm extends ProjectCreate {
 	    // counter sign case
 	    Session session = this.getSessionFactory().openSession();
 	    
-	    try {
-		// total approver count except those ones who choose "avoid"
-		String sqlTotal = "select count(*) from tbs_proj_opinion where CFM0_ID = " + cfm0Id +
-				" and CFMTYPE = 2 and del = 0 and (outcome <> '回避' ) and (outcome <> '缺席' )";
-		SQLQuery queryTotal = session.createSQLQuery(sqlTotal);
-		String total = queryTotal.uniqueResult().toString();
-		float tt = Float.valueOf(total);
-		
-		// total approver count who choose "agree"
-		String sqlAgrees = "select count(*) from tbs_proj_opinion where CFM0_ID = " + cfm0Id +
-			" and CFMTYPE = 2 and del = 0 and outcome = '同意'";
-            	SQLQuery querysqlAgrees = session.createSQLQuery(sqlAgrees);
-            	String agrees = querysqlAgrees.uniqueResult().toString();
-            	float ag = Float.valueOf(agrees);
-            	
-            	// total approver count who choose "agree"
-		String sqlDisagrees = "select count(*) from tbs_proj_opinion where CFM0_ID = " + cfm0Id +
-			" and CFMTYPE = 2 and del = 0 and outcome = '反对'";
-	        SQLQuery queryDisagrees = session.createSQLQuery(sqlDisagrees);
-	        String disagrees = queryDisagrees.uniqueResult().toString();
-		// count how many approvers left
-	        String sqlTaskAssignees = "select count(*) from uflo_task where PROCESS_INSTANCE_ID_ = " + processInstanceId;
-	        SQLQuery queryTaskAssignees = session.createSQLQuery(sqlTaskAssignees);
-	        String taskAssignees = queryTaskAssignees.uniqueResult().toString();
-	        
-			int countTA = Integer.valueOf(taskAssignees);
-	        float da = Float.valueOf(disagrees);
-			double twoThird = 0.59; // 2/3审批通过 
-	        double oneThird = 0.29; // 1/3驳回通过
+			try {
+				// total approver count except those ones who choose "avoid"
+				String sqlTotal = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and (outcome <> '回避' ) and (outcome <> '缺席' )";
+				SQLQuery queryTotal = session.createSQLQuery(sqlTotal);
+				String total = queryTotal.uniqueResult().toString();
+				float tt = Float.valueOf(total);
 
-				if(outcome.equals("同意")) {
-            	    if (ag/tt >= twoThird ) {
-            		this.pass = 1;
-            		this.cmpt = 1;
-            		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 1);
-            	    }
-            	} else if(outcome.equals("反对")) {
-            	    if (da/tt >= oneThird ) {
-					this.pass = 0;
-            		this.cmpt = 1;
-        		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 1);
-            	    }
-            	} else {
-            	    if (da/tt >= oneThird ) {
-					this.pass = 0;
-            		this.cmpt = 1;
-        		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 1);
-        	    } else if (ag/tt >= twoThird ) {
-					this.pass = 1;
-            		this.cmpt = 1;
-            		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 1);
-				} else if (countTA == 1){
-					this.pass = 0;
-            		this.cmpt = 1;
-        		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 1);
-        	    }
-            	}
+				// total approver count who choose "agree"
+				String sqlAgrees = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and outcome = '同意'";
+				SQLQuery querysqlAgrees = session.createSQLQuery(sqlAgrees);
+				String agrees = querysqlAgrees.uniqueResult().toString();
+				float ag = Float.valueOf(agrees);
+				// total approver count who choose "agree"
+				
+				
+				String sqlDisagrees = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and outcome = '反对'";
+				SQLQuery queryDisagrees = session.createSQLQuery(sqlDisagrees);
+				String disagrees = queryDisagrees.uniqueResult().toString();
+				
+				String sqlconfirmcount = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
+				SQLQuery queryconfirmcount = session.createSQLQuery(sqlconfirmcount);
+				String confirmcount = queryconfirmcount.uniqueResult().toString();
+				String sqlconfirm = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ "and outcome <> '未知' and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
+				SQLQuery queryconfirm = session.createSQLQuery(sqlconfirm);
+				String confirmresult = queryconfirm.uniqueResult().toString();
+				Integer cfmre = Integer.valueOf(confirmresult);
+				Integer cfmct = Integer.valueOf(confirmcount);
+				if(cfmre==cfmct){
+					confirm=1;
+				}
+				
+				
+				// count how many approvers left
+				String sqlTaskAssignees = "select count(*) from uflo_task where PROCESS_INSTANCE_ID_ = "
+						+ processInstanceId;
+				SQLQuery queryTaskAssignees = session
+						.createSQLQuery(sqlTaskAssignees);
+				String taskAssignees = queryTaskAssignees.uniqueResult()
+						.toString();
+
+				int countTA = Integer.valueOf(taskAssignees);
+				float da = Float.valueOf(disagrees);
+				double twoThird = 0.59; // 2/3审批通过
+				double oneThird = 0.29; // 1/3驳回通过
+
+				if (outcome.equals("同意")) {
+					if (ag / tt >= twoThird && confirm == 1) {
+						this.pass = 1;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					}
+				} else if (outcome.equals("反对") && confirm == 1) {
+					if (da / tt >= oneThird) {
+						this.pass = 0;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					}
+				} else {
+					if (da / tt >= oneThird && confirm == 1) {
+						this.pass = 0;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					} else if (ag / tt >= twoThird && confirm == 1) {
+						this.pass = 1;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					} else if (countTA == 1) {
+						this.pass = 0;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					}
+				}
 	    } finally {
 		session.flush();
 		session.close();

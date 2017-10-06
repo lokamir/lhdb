@@ -5,6 +5,7 @@ var fromAppr = 1;
 var uploadbutton = "disable";
 var downloadbutton = "disable";
 var taskName = "${param.taskName}";
+var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 
 /** @Bind view.onReady */
 !function(self, arg, autoformTbsProj_main) {
@@ -216,13 +217,15 @@ var taskName = "${param.taskName}";
 				groupboxCfm0.set("visible", false);
 				groupboxCfm0Appr.set("visible", true);
 				listDdlOutcome.set("items",["同意","反对","回避","缺席","弃权"]);
-				//var targetDatas = datasetTbsProjOpinion1r2.getData();
+				targetDatas = datasetTbsProjOpinion1r2.getData();
 				// set promoter DH's outcome to "回避"
-				//targetDatas.each(function(targetData){
-				//	if (targetData.get("title") == "发起人部门经理") {
-				//		targetData.set("outcome","回避");
-				//	}
-				//});
+				targetDatas.each(function(targetData){
+					if (targetData.get("title") == "发起人部门经理"&&targetData.get("bdf2User.id")==uid) {
+						debugger;
+						view.get("#autoformCfm0Opinion").get("entity").set("outcome","回避");
+						view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
+					}
+				});
 			} else if(psid == 8) {
 					if(view.get("#autoformCfm1").get("entity")){
 						view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
@@ -249,6 +252,28 @@ var taskName = "${param.taskName}";
 				    groupboxCfm0Appr.set("visible", false);
 				    groupboxAppr.set("visible", false);
 				    listDdlOutcome.set("items",["确认修改"]);
+				}else if(taskName == "主任委员审批"){
+					var autoformCfm1 = view.get("#autoformCfm1");
+				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
+				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
+				    var autoformCfm2 = view.get("#autoformCfm2");
+				    var dataPilotTbsProjCfm2 = view.get("#dataPilotTbsProjCfm2");
+				    var DialogTbsProjCfm2 = view.get("#DialogTbsProjCfm2");
+				    DialogTbsProjCfm1.set("readOnly", true);
+				    dataPilotTbsProjCfm1.set("visible", true);
+				    autoformCfm1.set("readOnly", true);
+				    DialogTbsProjCfm2.set("readOnly", true);
+				    dataPilotTbsProjCfm2.set("visible", true);
+				    autoformCfm2.set("readOnly", true);
+				    tabCfm0.set("visible", true);
+				    tabInAppr.set("visible", true);
+				    groupboxCfm0.set("visible", false);
+				    groupboxCfm1r2ProjOpin.set("visible", true);
+				    groupboxCfm1r2Appr.set("visible", true);
+				    groupboxCfm0Appr.set("visible", false);
+				    groupboxAppr.set("visible", false);
+					listDdlOutcome.set("items",["通过","驳回"]);
+				
 			} else if(psid == 26) {
 				var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				var dataPilotTbsProjCfm2 = view.get("#dataPilotTbsProjCfm2");
@@ -555,6 +580,12 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	tbsBasBizvar.set("readOnly", true);
 };
 
+/** @Bind #by2.onPost */
+!function(self,arg){
+	var entity = view.get("#autoformCfm1").get("entity.by2");
+	view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn")+entity);
+};
+
 /** @Bind #bizvtloc.onTextEdit */
 !function(self,arg,datasetTbsProj,faloc,nfaloc,otloc,bizvtloc,tbsBasBizvar){
 	var newloc = bizvtloc.get("text");
@@ -720,6 +751,17 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 /** @Bind #btnSubmit.onClick */
 !function(self, arg, datasetTbsProj, ajaxactionStartProcess) {
 	var data = datasetTbsProj.getData("#");
+	if(data.isDirty()){
+		dorado.MessageBox.alert("请先保存", {
+			title : "趣博信息科技"
+		});
+		return;
+	}else if(!data.get("tbsBasCurrency")){
+		dorado.MessageBox.alert("申请币种必填", {
+			title : "趣博信息科技"
+		});
+		return;
+	}
 	var param = {
 		entity : data
 	};

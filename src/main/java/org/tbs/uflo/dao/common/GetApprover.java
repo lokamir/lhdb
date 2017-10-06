@@ -92,16 +92,17 @@ public class GetApprover implements AssignmentHandler {
 					processInstance);
 			String sql = "select b.USERNAME_ from tbs_proj_opinion a, "
 					+ "bdf2_user b where a.uid=b.ID and a.CFM0_ID = " + cfm0Id
-					+ " and a.CFMTYPE = 0 and a.del = 0";
+					+ " and a.CFMTYPE = 0 and a.del = 0 ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
-		/*
-		 * if (cn.equals("主任委员审批") && pname.equals("projcfm")) { String sql =
-		 * "select account from tbs_approver where title like '%业管会主任委员%' ";
-		 * SQLQuery sqlquery = session.createSQLQuery(sql); users =
-		 * sqlquery.list(); }
-		 */
+
+		if (cn.equals("主任委员审批") && pname.equals("projcfm")) {
+			String sql = "select account from tbs_approver where title like '%主任委员%' ";
+			SQLQuery sqlquery = session.createSQLQuery(sql);
+			users = sqlquery.list();
+		}
+		 
 		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于决策审批和项目三要素变更流程
 		// 2017年3月15日陈雯雯要求改2000万
 		if (cn.equals("决策人审批")
