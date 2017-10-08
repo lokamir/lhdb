@@ -378,17 +378,12 @@
             <AutoFormElement>
               <Property name="name">tbsBasBank</Property>
               <Property name="property">tbsBasBank</Property>
-              <Property name="trigger">customDropDownTbsBasBank</Property>
+              <Property name="trigger">DropdownTbsBankM</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">bzhtfs</Property>
               <Property name="property">bzhtfs</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">hbsfs</Property>
-              <Property name="property">hbsfs</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
@@ -402,7 +397,6 @@
               <Property name="property">date</Property>
               <Editor/>
             </AutoFormElement>
-            <Label/>
             <AutoFormElement>
               <Property name="name">timestampInput</Property>
               <Property name="property">timestampInput</Property>

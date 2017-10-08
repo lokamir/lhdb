@@ -214,11 +214,6 @@
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
-                    <Property name="name">hbsfs</Property>
-                    <Property name="property">hbsfs</Property>
-                    <Editor/>
-                  </AutoFormElement>
-                  <AutoFormElement>
                     <Property name="name">bdf2User</Property>
                     <Property name="property">bdf2User</Property>
                     <Property name="trigger">DropDownBdf2User</Property>
@@ -229,7 +224,6 @@
                     <Property name="property">date</Property>
                     <Editor/>
                   </AutoFormElement>
-                  <Label/>
                   <AutoFormElement>
                     <Property name="name">timestampInput</Property>
                     <Property name="property">timestampInput</Property>

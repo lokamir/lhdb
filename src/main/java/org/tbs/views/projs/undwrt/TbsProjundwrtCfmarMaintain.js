@@ -77,7 +77,7 @@ function GetCRStatus(ds){
 /*========审批历史创建时刷新=========*/
 /** @Bind #dataSetHistoryTask.onCreate */
 !function(self,arg){ 
-self.flushAsync();
+	self.flushAsync();
 };
 
 /*=======================dialog确认按钮及下拉框空值解决方案===================*/
@@ -121,8 +121,11 @@ dataSettbsProjundwrtCfmar.set("parameter",entity).flushAsync();
 
 /*=======================主表单修改按钮===================*/
 /** @Bind #buttonEdit.onClick */
-!function(self,arg,dialogEdit){
+!function(self,arg,dialogEdit,ddlAutoform){
 	dialogEdit.show();
+	if(!ddlAutoform.get("entity.sn")&&ddlAutoform.get("entity.tbsProj.tbsBasPs.id")==16){
+		ddlAutoform.get("entity").set("sn","锡联担保2017-B-WT");
+	}
 };
 
 /*========保存后刷新，执行query相同的方法=========*/

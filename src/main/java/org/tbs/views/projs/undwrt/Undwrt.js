@@ -70,13 +70,33 @@ function GetCRStatus(ds){
 
 /*============Execute approving=============*/
 /** @Bind #ajaxActionAppr.beforeExecute */
-!function(self,arg,updateActionSave){
+!function(self,arg,updateActionSave,dataSetTbsProjundwrt,ddlAutoform){
 	var opinion=view.id("OpinionAutoform").get("entity").opinion;
 	if (!opinion){
 		opinion="无意见";
 	};
 	if (psid == 19 || psid == 9 ){
-		self.set("confirmMessage","您确定再次发送审批？");
+		//self.set("confirmMessage","您确定再次发送审批？");
+		
+		var entity = ddlAutoform.get("entity");
+		var repay = entity.get("repay");
+		var repayinper = entity.get("repayinper");
+		var loantype = entity.get("loantype");
+		var by3 = entity.get("by3");
+		if((!repay||!loantype||!by3||by3==0)||(repay!="到期一次性结清"&&!repayinper)){
+			arg.processDefault=false;
+			dorado.MessageBox.alert("\v\v\v承保期限、放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
+			return false;
+		}
+		var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
+		bizvtDS.each(function(data){
+			if ((data.get("tbsBasBiztype.name") == "融资性担保")&&!dataSetTbsProjundwrt.getData("#.tbsProjundwrtBankSet.tbsBasBank_M")) {		
+				arg.processDefault=false;
+				dorado.MessageBox.alert("含有融资性担保，需要选择银行",{title:"趣博信息科技"});
+				return false;
+				};	
+			});
+		
 		updateActionSave.execute();
 		self.set("parameter",{docid:docid,projid:projid,psid:psid,taskid:taskid,outcome:outcome,opinion:opinion});
 	}else {
@@ -246,4 +266,99 @@ function GetCRStatus(ds){
 	var taskHisId = self.getCurrentItem().get("id");
 	view.get("#DialogTbsFunApprc").show();
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
+};
+
+/*==========bizvtloc===============*/
+/** @Bind #biztype.onTextEdit */
+!function(self,arg,tbsBasBizvar,dataSetTbsProjundwrt){
+	var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
+	tbsBasBizvar.set("readOnly", false);
+	bizvtDS.current.set("tbsBasBizvar","");
+	bizvtDS.current.set("loc",0);
+};
+/** @Bind #ddlTbsBasBizvar.beforeExecute */
+!function(self,arg,tbsBasBizvar,datasetTbsBasBizvar,DialogDataGridTbsProjundwrtBizvt){
+	var bizid = DialogDataGridTbsProjundwrtBizvt.getCurrentEntity().get("tbsBasBiztype").get("id");
+	datasetTbsBasBizvar.set("parameter",bizid).flushAsync();
+	//tbsBasBizvar.set("readOnly", true);
+};
+
+
+
+/** @Bind #bizvtloc.onTextEdit */
+!function(self,arg,dataSetTbsProjundwrt,appfaloc,appnfaloc,appotloc,bizvtloc,tbsBasBizvar){
+	var newloc = bizvtloc.get("text");
+	var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
+	if (newloc){
+	bizvtDS.current.set("loc",newloc);
+	}else{
+		bizvtDS.current.set("loc",0);  //一定要设置0，否则删除后计算会不对
+	};
+	BizvtCountting(dataSetTbsProjundwrt,appfaloc,appnfaloc,appotloc,bizvtloc);
+};
+
+/** @Bind #DialogDataPilot_1.onSubControlAction */
+!function(self,arg,dataSetTbsProjundwrt,datapilotTbsProjBizvt,appfaloc,appnfaloc,appotloc,bizvtloc){
+	var code=arg.code;
+	var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
+	debugger;
+	switch (code) {
+	case "-":
+		arg.processDefault = false;
+		dorado.MessageBox.confirm("您真的要删除此项目吗？",
+				{title:"趣博信息科技",
+				 detailCallback:function(btnID, text)
+				 { if (btnID == "yes")
+				 	{bizvtDS.current.set("loc",0);    
+				 	 bizvtDS.remove();
+				 	 BizvtCountting(dataSetTbsProjundwrt,appfaloc,appnfaloc,appotloc);	                                                    
+				 	}
+				 } 	
+				}
+		);
+		break;
+	}
+};
+
+function BizvtCountting(ds,appfaloc,appnfaloc,appotloc,bizvtloc){
+	var bizvtDS = ds.getData("#.tbsProjundwrtBizvtSet");
+	var projDS = ds.getData("#");
+	var sum1 = 0; 
+	var sum2 = 0; 
+	var sum3 = 0;
+	var del1 = 1; var del2 = 1; var del3 = 1; //表示全部删光
+	bizvtDS.each(function(data){
+			if (data.get("tbsBasBiztype.name") == "融资性担保") {		
+				sum1 += data.get("loc")-0;
+				projDS.set("appfaloc",sum1);
+				del1 = 0;
+			};
+			if (data.get("tbsBasBiztype.name") == "非融资性担保") {		
+				sum2 += data.get("loc")-0;
+				projDS.set("appnfaloc",sum2);
+				del2 = 0;
+			};
+			if (data.get("tbsBasBiztype.name") == "其他") {
+				sum3 += data.get("loc")-0;
+				projDS.set("appotloc",sum3);
+				del3 = 0;
+			}
+	});
+	projDS.set("apptotloc",sum1+sum2+sum3);
+	//全部删除的处理
+	if(del1 == 1){
+		projDS.set("appfaloc",0);
+	}
+	if (del2 == 1) {
+		projDS.set("appnfaloc",0);
+	}
+	if (del3 == 1) {
+		projDS.set("appotloc",0);
+	}
+	/*if((sum1+sum2+sum3)!=0){
+		view.get("#btnSave").set("disabled",false);
+	}else{
+		view.get("#btnSave").set("disabled",true);
+	}*/
+	return null;
 };

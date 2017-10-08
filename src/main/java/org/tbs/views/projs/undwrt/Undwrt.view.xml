@@ -636,10 +636,6 @@
                       <Property name="property">tbsBasBank_M</Property>
                       <Property name="trigger">DropdownTbsBankM</Property>
                     </DataColumn>
-                    <DataColumn name="tbsBasBank_S">
-                      <Property name="property">tbsBasBank_S</Property>
-                      <Property name="trigger">DropdownTbsBankS</Property>
-                    </DataColumn>
                   </DataGrid>
                 </Container>
               </ControlTab>
@@ -647,7 +643,7 @@
                 <Property name="caption">业务类品金</Property>
                 <Property name="height">100%</Property>
                 <Container id="DialogTbsProjundwrtBizvt">
-                  <DataPilot id="dataPilot1">
+                  <DataPilot id="DialogDataPilot_1">
                     <Property name="dataSet">dataSetTbsProjundwrt</Property>
                     <Property name="itemCodes">+,-,x</Property>
                     <Property name="dataPath">#.tbsProjundwrtBizvtSet</Property>
@@ -658,18 +654,31 @@
                     <Property name="dataPath">#.tbsProjundwrtBizvtSet</Property>
                     <Property name="width">600</Property>
                     <RowNumColumn/>
-                    <DataColumn name="tbsBasBiztype">
+                    <DataColumn id="tbsBasBiztype" name="tbsBasBiztype">
                       <Property name="property">tbsBasBiztype</Property>
                       <Property name="trigger">DropDownTbsBasBiztype</Property>
                       <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="biztype">
+                          <Property name="trigger">ddlTbsBasBiztype</Property>
+                        </TextEditor>
+                      </Editor>
                     </DataColumn>
-                    <DataColumn name="tbsBasBizvar">
+                    <DataColumn id="tbsBasBizvar" name="tbsBasBizvar">
                       <Property name="property">tbsBasBizvar</Property>
                       <Property name="trigger">DropDownTbsBasBizvar</Property>
-                      <Property name="readOnly">true</Property>
+                      <Property name="readOnly">false</Property>
+                      <Editor>
+                        <TextEditor id="bizvar">
+                          <Property name="trigger">ddlTbsBasBizvar</Property>
+                        </TextEditor>
+                      </Editor>
                     </DataColumn>
                     <DataColumn name="loc">
                       <Property name="property">loc</Property>
+                      <Editor>
+                        <TextEditor id="bizvtloc"/>
+                      </Editor>
                     </DataColumn>
                   </DataGrid>
                 </Container>
@@ -1137,6 +1146,11 @@
       <Tools/>
     </Dialog>
     <Container id="DdlContainer">
+      <DataSet id="datasetTbsBasBizvar">
+        <Property name="dataProvider">tbsBasBizvarDao#getAll</Property>
+        <Property name="dataType">[dataTypeTbsBasBizvar]</Property>
+        <Property name="cacheable">true</Property>
+      </DataSet>
       <Import id="DropDownBdf2Dept" src="org.tbs.views.funs.Dropdown#Bdf2Dept"/>
       <Import id="DropDownBdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
       <Import id="DropDownTbsBasBiztype" src="org.tbs.views.funs.Dropdown#TbsBasBiztype"/>
@@ -1152,6 +1166,12 @@
       </ListDropDown>
       <DataSetDropDown id="ddlTbsFunFulTyp">
         <Property name="dataSet">dataSetTbsFunFulTyp</Property>
+      </DataSetDropDown>
+      <DataSetDropDown id="ddlTbsBasBizvar">
+        <Property name="dataSet">datasetTbsBasBizvar</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="useEmptyItem">false</Property>
       </DataSetDropDown>
     </Container>
     <Panel id="ButtonPanel">

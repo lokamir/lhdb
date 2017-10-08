@@ -216,6 +216,7 @@
       <Property name="autoAdjustPosition">true</Property>
       <Property name="iconClass">silk silk-application-edit</Property>
       <Property name="showAnimateType">zoom</Property>
+      <Property name="closeable">false</Property>
       <Buttons>
         <Button id="buttonSave">
           <Property name="caption"> 确  认</Property>
@@ -281,6 +282,7 @@
         <Property name="editable">false</Property>
         <Property name="filterOnTyping">true</Property>
         <Property name="filterOnOpen">false</Property>
+        <Property name="minFilterInterval">600</Property>
       </DataSetDropDown>
     </Container>
     <UpdateAction id="updateAction">

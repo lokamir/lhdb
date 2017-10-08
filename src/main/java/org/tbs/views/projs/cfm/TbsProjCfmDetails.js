@@ -240,7 +240,13 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    var DialogTbsProjCfm2 = view.get("#DialogTbsProjCfm2");
 				    DialogTbsProjCfm1.set("readOnly", false);
 				    dataPilotTbsProjCfm1.set("visible", true);
-				    autoformCfm1.set("readOnly", false);
+				    autoformCfm1.set({
+				    	"readOnly":false,
+				    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+				    	"elements.by2.labelWidth":270,
+				    	"elements.by2.labelSpacing":0,
+				    	"elements.by2.labelAlign":"right"
+				    	});
 				    DialogTbsProjCfm2.set("readOnly", false);
 				    dataPilotTbsProjCfm2.set("visible", true);
 				    autoformCfm2.set("readOnly", false);
@@ -499,6 +505,20 @@ function closeApprForm(self, arg) {
 !function(self, arg, autoformTbsProj_role, autoformCfm1r2Opinion,
 		ajaxactionApprSubmit, datasetTbsProj, updateactionCfm1, updateactionCfm2) {
 	// 保存projCfm1 & projCfm2数据
+	if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
+		var by2 =view.get("#autoformCfm1").get("entity.by2");
+		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
+			view.get("#autoformCfm1").set("entity.by2",by2);
+			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
+		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);//禁用当前数据对象所有的数据校验
+		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14)+by2);
+		
+	}
+	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
 	updateactionCfm1.execute();
 	updateactionCfm2.execute();
 	
@@ -580,11 +600,7 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	tbsBasBizvar.set("readOnly", true);
 };
 
-/** @Bind #by2.onPost */
-!function(self,arg){
-	var entity = view.get("#autoformCfm1").get("entity.by2");
-	view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn")+entity);
-};
+
 
 /** @Bind #bizvtloc.onTextEdit */
 !function(self,arg,datasetTbsProj,faloc,nfaloc,otloc,bizvtloc,tbsBasBizvar){

@@ -41,7 +41,7 @@
         <Property></Property>
         <Property name="label">委托担保合同号</Property>
         <Property name="readOnly">false</Property>
-        <Property name="defaultValue">  </Property>
+        <Property name="defaultValue">锡联担保2017-B-WT</Property>
       </PropertyDef>
       <PropertyDef name="zht">
         <Property></Property>

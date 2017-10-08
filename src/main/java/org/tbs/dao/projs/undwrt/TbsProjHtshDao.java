@@ -57,14 +57,14 @@ public class TbsProjHtshDao extends HibernateDao {
 	@DataProvider  
 	//下拉框带筛选
     public Collection<TbsProj> getProjByNameForHtsh(String name){
-	if(StringHelper.isNotEmpty(name)){
+	if(StringHelper.isNotEmpty(name)&&!name.contains("'")){
 		return this.query("from " + TbsProj.class.getName() 
-			+ " where del = 0 and valid = 1 and ps_id = 10 " 
+			+ " where del = 0 and valid = 1 and ps_id in(10,11,12) " 
 			+ "and projName like '%" + name + "%'"
-			+ "order by id desc");
+			+ " order by id desc");
 		} else {
 			return this.query("from " + TbsProj.class.getName() 
-					+ " where del = 0 and valid = 1 and ps_id = 10 " 
+					+ " where del = 0 and valid = 1 and ps_id in(10,11,12) " 
 					+ "order by id desc" );
 		}
     }

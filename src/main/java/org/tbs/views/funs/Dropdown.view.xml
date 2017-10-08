@@ -467,7 +467,7 @@ dropDown.close(node.get(&quot;data&quot;));&#xD;
     <Container id="Container_ddl_repay">
       <GroupStart id="ddlrepay"/>
       <ListDropDown id="ddl_repay">
-        <Property name="items">一次性还款,按月还部分,到期一次性结清,按季度还部分,到期一次性结清,其他</Property>
+        <Property name="items">按月还部分,到期一次性结清,按季度还部分,其他</Property>
         <Property name="autoOpen">true</Property>
       </ListDropDown>
       <GroupEnd/>
