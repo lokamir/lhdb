@@ -6,7 +6,7 @@ var projsn ;//项目编号
 var projName ;//项目名称
 var menu;//表示来自哪一个页面
 var chktype;//1表示不定期检查、 2表示定期检查
-var projchenkby2;//表示是否生成过决议单
+var projcheckby2;//表示是否生成过决议单
 
 /** @Bind view.onReady */
 !function(self, arg) {
@@ -106,11 +106,12 @@ var projchenkby2;//表示是否生成过决议单
 		view.get("#outcome").set("label","是否上会");
 		listDdlOutcome.set("items", [ "是","否" ]);
 		tabInAppr.set("visible", true);
+		view.get("#dataSetTbsProjCheck").getData("#").set("valid",3);
 	}
 	if (valiables.node == "风管委员会秘书录入“风管委员会决议单”") {
 		listDdlOutcome.set("items", [ "确认" ]);
 		tabInAppr.set("visible", true);
-		dataSetTbsProj.set("readOnly", false);
+		dataSetTbsProj.set("readOnly", false);;
 	}
 	if (valiables.menu == "PerInsp") { //控制TAB显示	
 		tabRiskProjcfm.set("visible", false);
@@ -213,7 +214,7 @@ var projchenkby2;//表示是否生成过决议单
 			var userid = "${dorado.getDataProvider('el#Uid').getResult()}";
 			var dataSetTbsProj = view.get("#dataSetTbsProj");
 			var entity = dataSetTbsProj.getData("#.#tbsRiskProjcfmSet");
-			entity.set("valid",1);
+			entity.set("valid",3);
 			entity.set("keyinId",userid);
 			view.get("#saveTbsRiskProjcfm").execute(function(){
 				ajaxactionApprSubmit.set("parameter", params).execute();

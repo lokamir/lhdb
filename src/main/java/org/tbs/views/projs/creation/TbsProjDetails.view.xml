@@ -726,6 +726,7 @@
                     <DataColumn name="initloc">
                       <Property name="property">initloc</Property>
                       <Property name="readOnly">true</Property>
+                      <Property name="visible">false</Property>
                     </DataColumn>
                     <DataColumn id="tbsBasCourt">
                       <Property name="property">tbsBasCourt</Property>

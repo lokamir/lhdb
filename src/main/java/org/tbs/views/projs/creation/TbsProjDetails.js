@@ -315,10 +315,10 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 !function(self,arg,autoformProjeaa,eaatotloc,dataSetTbsProjeaa){
 	var crs = autoformProjeaa.get("entity"); 
 	var dataSet = dataSetTbsProjeaa.getData("#");
-	var eaafaloc = crs.get("eaafaloc"); 
-	var eaanfaloc = crs.get("eaanfaloc"); 
-	var eaaotloc = crs.get("eaaotloc");
-	dataSet.set("eaatotloc",eaafaloc+eaanfaloc+eaaotloc);
+	var eaafaloc = crs.get("faloc"); 
+	var eaanfaloc = crs.get("nfaloc"); 
+	var eaaotloc = crs.get("otloc");
+	dataSet.set("totloc",eaafaloc+eaanfaloc+eaaotloc);
 };
 /** 
  * ==============Page Countting END===============
@@ -327,12 +327,13 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 //******* 1.14 add  ******* start
 //base on psid, set views' readOnly & visible property
 /** @Bind #dataSetTbsProjeaa.onLoadData */
-!function(self, arg, tabProjeaa){
+!function(self, arg, tabProjeaa,datapilotTbsProjBank,datapilotTbsProjBizvt,datapilotTbsProjCgg){
 	var autoformTbsProj_main = view.get("#autoformTbsProj_main");
 	var autoformProjeaa = view.get("#autoformProjeaa");
 	var tabTbsProj = view.get("#tabTbsProj");
 	var groupboxProjeaaAppr = view.get("#groupboxProjeaaAppr");
-	
+	autoformProjeaa.get("entity.VOcname");
+	autoformProjeaa.set("entity.VOcname","${loginUser.getCname()}");
 	tabProjeaa.set("visible", true);
 	
 	if (fromAppr) {

@@ -1332,9 +1332,11 @@
           <SideControl>
             <Container>
               <Property name="containerUi">default</Property>
+              <Property name="contentOverflow">visible</Property>
               <GroupBox>
                 <Property name="collapseable">true</Property>
                 <Property name="caption">项目明细</Property>
+                <Property name="contentOverflow">visible</Property>
                 <Buttons/>
                 <Children>
                   <Container id="mainform">

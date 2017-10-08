@@ -364,7 +364,7 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 	ajaxAction1.set("parameter",maParamers).execute( function(result) {
 		dorado.MessageBox.alert(result,{title:"趣博信息科技"});
 	});
-	dataSetTbsProjundwrt.flushAsync();
+	//dataSetTbsProjundwrt.flushAsync();
 }; 
 
 

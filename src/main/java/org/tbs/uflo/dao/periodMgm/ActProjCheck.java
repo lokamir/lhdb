@@ -56,7 +56,7 @@ public class ActProjCheck implements ActionHandler {
 					processInstanceId);
 			// ====定期检查更新valid===
 			if(menu.equals("PerInsp")){
-				String sql2 = "update tbs.tbs_proj_check set valid = 1"
+				String sql2 = "update tbs.tbs_proj_check set valid = 3"
 						+ " where del = 0 and id=" + docid + " ";
 				SQLQuery sqlquery2 = session.createSQLQuery(sql2);
 				sqlquery2.executeUpdate();

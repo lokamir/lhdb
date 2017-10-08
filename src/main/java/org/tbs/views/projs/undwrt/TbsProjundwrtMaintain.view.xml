@@ -104,6 +104,14 @@
       <PropertyDef name="psid">
         <Property name="dataType">dataTypeTbsProj</Property>
       </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
       <Reference name="tbsProjundwrtBankSet">
         <Property name="dataType">[dataTypeTbsProjundwrtBank]</Property>
         <Property name="parameter">$${this.id}</Property>
@@ -1026,11 +1034,13 @@
                     <AutoFormElement>
                       <Property name="property">sn</Property>
                       <Property name="labelWidth">100</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="property">tbsProj.sn</Property>
                       <Property name="labelWidth">100</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor/>
                     </AutoFormElement>
                     <Label/>
@@ -1245,8 +1255,13 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">qtfy</Property>
-                      <Property name="property">qtfy</Property>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">zxfy</Property>
+                      <Property name="property">zxfy</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>

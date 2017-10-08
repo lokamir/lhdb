@@ -70,9 +70,9 @@
 };
 
 /*============如果是risk项目就禁止再次检查============*/
-/** @Bind #DataGridTbsProj.onDataRowClick */
-/** @Bind #dataSetTbsProj.onLoadData */
-!function(self,arg,dataSetTbsProj,btnAdd){
+///** @Bind #DataGridTbsProj.onDataRowClick */
+///** @Bind #dataSetTbsProj.onLoadData */
+/*!function(self,arg,dataSetTbsProj,btnAdd){
 	var dataSet = dataSetTbsProj.getData("#");
 	var risk = dataSet.get("risk");
 	if (risk == true){
@@ -80,8 +80,29 @@
 	}else{
 		btnAdd.set("disabled",false);
 	};
+};*/
+
+/** @Bind #DataGridTbsProj.onRenderRow */
+!function(self, arg) {
+	var risk = arg.data.get("risk");
+	if (risk == 1) {
+		arg.dom.style.background = "#EE0000";
+		arg.dom.style.color = "#0A0A0A";
+	}else if(risk == 0){
+		arg.dom.style.background = "#FFFFFF";
+		arg.dom.style.color = "#0A0A0A";
+	};
 };
 
+/** @Bind #risk.onRenderCell */
+!function(self, arg) {
+	if(arg.data.get("risk")==true){
+		arg.dom.innerText = "不正常";
+	}else if(arg.data.get("risk")==false){
+		arg.dom.innerText = "正常";
+	}
+	
+};
 
 /** @Bind #dialogProjDetails.onHide */
 !function(dataSetTbsProj){

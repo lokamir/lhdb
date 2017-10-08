@@ -901,8 +901,13 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">qtfy</Property>
-              <Property name="property">qtfy</Property>
+              <Property name="name">financial</Property>
+              <Property name="property">financial</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">zxfy</Property>
+              <Property name="property">zxfy</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

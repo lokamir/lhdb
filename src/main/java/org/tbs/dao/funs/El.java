@@ -192,7 +192,7 @@ public class El extends HibernateDao {
 		mapValue.put("0", "未审批");
 		mapValue.put("1", "审批通过");
 		mapValue.put("2", "审批中");
-		mapValue.put("3", "审批驳回中");
+		mapValue.put("3", "审批驳回");
 		return mapValue;
 	}
 

@@ -645,7 +645,7 @@
                 <Container id="DialogTbsProjundwrtBizvt">
                   <DataPilot id="DialogDataPilot_1">
                     <Property name="dataSet">dataSetTbsProjundwrt</Property>
-                    <Property name="itemCodes">+,-,x</Property>
+                    <Property name="itemCodes">-,x</Property>
                     <Property name="dataPath">#.tbsProjundwrtBizvtSet</Property>
                     <Property name="hideMode">visibility</Property>
                   </DataPilot>
@@ -976,15 +976,13 @@
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
-                  <Property name="name">qtfy</Property>
-                  <Property name="property">qtfy</Property>
-                  <Property name="readOnly">false</Property>
+                  <Property name="name">financial</Property>
+                  <Property name="property">financial</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
-                  <Property name="name">gatmem</Property>
-                  <Property name="property">gatmem</Property>
-                  <Property name="readOnly">true</Property>
+                  <Property name="name">zxfy</Property>
+                  <Property name="property">zxfy</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>

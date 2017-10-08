@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.tbs.entity.TbsProj;
+import org.tbs.entity.TbsProjCheck;
 
 import com.bstek.bdf2.core.business.IUser;
 import com.bstek.bdf2.core.context.ContextHolder;
@@ -122,9 +124,20 @@ public class WfProjCheck extends HibernateDao {
 				processInstanceId);
 		String projid = (String) processClient.getProcessVariable("projid",
 			processInstanceId);
-	//	String keyinid = (String) processClient.getProcessVariable("keyinid",processInstanceId);
-		if (outcome.equals("正常")||outcome.equals("确认")) {
+		TbsProjCheck tbsProjCheck = (TbsProjCheck) session.get(TbsProjCheck.class,
+				Integer.valueOf(businessId));
+		TbsProj tbsProj = tbsProjCheck.getTbsProj();
+		if (outcome.equals("正常")){
+			String sqlrisk = "UPDATE `tbs`.`tbs_proj` SET `risk` = '0' WHERE `ID`="
+					+ tbsProj.getId() + "";
+			SQLQuery sqlquery1 = session.createSQLQuery(sqlrisk);
+			sqlquery1.executeUpdate();
 			String sql = "update tbs.tbs_proj_check set valid = 1"
+					+ " where del = 0 and id=" + businessId + " ";
+			SQLQuery sqlquery = session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
+		}else if (outcome.equals("确认")){
+			String sql = "update tbs.tbs_proj_check set valid = 3"
 					+ " where del = 0 and id=" + businessId + " ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			sqlquery.executeUpdate();

@@ -983,10 +983,12 @@
         <Property name="caption">审批处理</Property>
         <Property name="icon">url(>skin>common/icons.gif) -100px -120px</Property>
         <Container>
+          <Property name="contentOverflow">visible</Property>
           <GroupBox id="groupboxAppr">
             <Property name="caption">审批界面</Property>
             <Property name="visible">true</Property>
             <Property name="hideMode">display</Property>
+            <Property name="contentOverflow">visible</Property>
             <Buttons>
               <Button id="btnApprSubmit">
                 <Property name="caption">提 交</Property>
