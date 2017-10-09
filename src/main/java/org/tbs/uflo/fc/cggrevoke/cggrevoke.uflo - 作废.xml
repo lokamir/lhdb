@@ -25,12 +25,23 @@
       <description>${projName}</description>
       <sequence-flow g="-5,-22" name="确认" to="评委会秘书录入"/>
    </task>
-   <decision expression="${bzjzy!=100?&quot;通知&quot;:&quot;否&quot;}" g="430,373,74,62" name="保证金判断" decision-type="Expression">
-      <sequence-flow g="-5,-22" name="通知" to="Action"/>
+   <decision expression="${bzjzy==1?&quot;是&quot;:&quot;否&quot;}" g="384,373,74,62" name="保证金判断" decision-type="Expression">
+      <sequence-flow g="10,-10" name="是" to="财务部门经理审批"/>
+      <sequence-flow g="-17,-15" name="否" to="Action"/>
    </decision>
    <action handler-bean="actCggrevoke" g="622,378,115,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
+   <task assignment-handler-bean="getApprover" g="350,475,139,50" label="反担保解除-财务部门经理审批" assignment-type="Handler" url="org.tbs.views.projs.cggrevoke.DetailDialog1.d" task-type="Normal" name="财务部门经理审批" allow-specify-assignee="false">
+      <description>${projName}</description>
+      <sequence-flow g="-9,-24" name="通过" to="出纳费用确认"/>
+      <sequence-flow g="160,499;120,347:72,52" name="驳回" to="更改反担保物状态"/>
+   </task>
+   <task assignment-handler-bean="getApprover" g="619,476,120,50" label="反担保解除-出纳费用确认" assignment-type="Handler" url="org.tbs.views.projs.cggrevoke.DetailDialog1.d" task-type="Normal" name="出纳费用确认" allow-specify-assignee="false">
+      <description>${projName}</description>
+      <sequence-flow g="164,609;86,343:52,99" name="驳回" to="更改反担保物状态"/>
+      <sequence-flow g="-38,-7" name="通过" to="Action"/>
+   </task>
    <task assignment-handler-bean="getApprover" g="17,174,115,50" label="反担保解除-驳回修正" assignment-type="ProcessPromoter" url="org.tbs.views.projs.cggrevoke.DetailDialog1.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projName}</description>
       <sequence-flow g="-54,-9" name="修改确认" to="部门经理审批"/>
@@ -56,6 +67,6 @@
    <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="544,159,297,50" label="反担保解除-风管经理是否调整授信额度" assignment-type="Handler" url="org.tbs.views.projs.cggrevoke.DetailDialog1.d" task-type="Countersign" name="风管经理决定是否调整授信额度" allow-specify-assignee="false">
       <description>${projName}</description>
       <sequence-flow g="-23,-9" name="是" to="风管经理调整授信额度"/>
-      <sequence-flow g="815,253;815,342:9,20" name="否" to="保证金判断"/>
+      <sequence-flow g="815,253;815,342:9,20" name="否" to="Action"/>
    </task>
 </uflo-process>

@@ -416,6 +416,14 @@
                 <Property name="value">评审费</Property>
               </Entity>
               <Entity>
+                <Property name="key">业务咨询费</Property>
+                <Property name="value">业务咨询费</Property>
+              </Entity>
+              <Entity>
+                <Property name="key">财务顾问费</Property>
+                <Property name="value">财务顾问费</Property>
+              </Entity>
+              <Entity>
                 <Property name="key">其他费用</Property>
                 <Property name="value">其他费用</Property>
               </Entity>
@@ -629,6 +637,14 @@
       <PropertyDef name="qtfy">
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">其他费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="gatmem">
@@ -875,7 +891,7 @@
                   <DataGrid id="datagridTbsProjBizvt">
                     <Property name="dataSet">dataSetTbsProj</Property>
                     <Property name="dataPath">#.tbsProjBizvtSet</Property>
-                    <Property name="width">80%</Property>
+                    <Property name="width">60%</Property>
                     <Property name="readOnly">true</Property>
                     <Property name="showFooter">false</Property>
                     <Property name="showGroupFooter">false</Property>
@@ -913,6 +929,7 @@
                     </DataColumn>
                     <DataColumn name="initloc">
                       <Property name="property">initloc</Property>
+                      <Property name="visible">false</Property>
                     </DataColumn>
                   </DataGrid>
                 </Container>
@@ -1475,6 +1492,7 @@
             <AutoFormElement>
               <Property name="name">gatrate</Property>
               <Property name="property">gatrate</Property>
+              <Property name="readOnly">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
@@ -1495,11 +1513,17 @@
             <AutoFormElement>
               <Property name="name">psfy</Property>
               <Property name="property">psfy</Property>
+              <Property name="readOnly">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">qtfy</Property>
-              <Property name="property">qtfy</Property>
+              <Property name="name">financial</Property>
+              <Property name="property">financial</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">zxfy</Property>
+              <Property name="property">zxfy</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

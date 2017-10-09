@@ -182,6 +182,11 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
+		if (cn.equals("风管经理决定是否调整授信额度")) {
+			String sql = "select account from tbs_approver where trim(title)='风管经理' ";
+			SQLQuery sqlquery = session.createSQLQuery(sql);
+			users = sqlquery.list();
+		}
 		if (cn.equals("风管部门经理审批")) {
 			String sql = "select account from tbs_approver where trim(title)='风险管理部门经理[副]' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);

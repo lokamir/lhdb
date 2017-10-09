@@ -689,6 +689,7 @@
             <DataColumn>
               <Property name="property">val</Property>
               <Property name="name">val</Property>
+              <Property name="visible">false</Property>
             </DataColumn>
           </DataGrid>
         </Container>

@@ -46,6 +46,9 @@ public class ActCggrevoke implements ActionHandler {
 			ArrayList<String> revokecggSn = (ArrayList<String>) processClient
 					.getProcessVariable("revokecggSn",
 							Long.valueOf(processInstanceId));
+			String bzjzy = (String)processClient
+					.getProcessVariable("bzjzy",
+							Long.valueOf(processInstanceId));
 			Date now = new Date();
 			SimpleDateFormat dateFormat = new SimpleDateFormat(
 					"yyyy-MM-dd HH:mm:ss");
@@ -129,6 +132,16 @@ public class ActCggrevoke implements ActionHandler {
 				DefaultUser receiverFW = (DefaultUser) session.get(
 						DefaultUser.class, temp);
 				receivers.add(receiverFW);// 法务
+			}
+			if (bzjzy.equals("1")) {
+				String sql_cwid = "select account from tbs.tbs_approver where title like '%财务部门经理%' or title like '%出纳%'";
+				SQLQuery query_cwid = session.createSQLQuery(sql_cwid);
+				List<String> str_cwid = query_cwid.list();
+				for (String temp : str_cwid) {
+					DefaultUser receiverCW = (DefaultUser) session.get(
+							DefaultUser.class, temp);
+					receivers.add(receiverCW);// 财务、出纳
+				}
 			}
 			DefaultUser sender = (DefaultUser) session.get(DefaultUser.class,
 					"SystemSender"); // 获得消息的发送人，默认为“系统发信人”

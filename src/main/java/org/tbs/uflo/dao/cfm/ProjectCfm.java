@@ -214,9 +214,14 @@ public class ProjectCfm extends ProjectCreate {
 				double twoThird = 0.59; // 2/3审批通过
 				double oneThird = 0.29; // 1/3驳回通过
 
-				if (outcome.equals("同意")) {
-					if (ag / tt >= twoThird && confirm == 1) {
+				if (outcome.equals("同意")&& confirm == 1) {
+					if (ag / tt >= twoThird ) {
 						this.pass = 1;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					}else if (da / tt >= oneThird) {
+						this.pass = 0;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
@@ -224,6 +229,11 @@ public class ProjectCfm extends ProjectCreate {
 				} else if (outcome.equals("反对") && confirm == 1) {
 					if (da / tt >= oneThird) {
 						this.pass = 0;
+						this.cmpt = 1;
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "cmpt", 1);
+					}else if (ag / tt >= twoThird ) {
+						this.pass = 1;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);

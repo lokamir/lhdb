@@ -492,6 +492,7 @@
                   </DataColumn>
                   <DataColumn name="initloc">
                     <Property name="property">initloc</Property>
+                    <Property name="visible">false</Property>
                   </DataColumn>
                 </DataGrid>
               </Container>

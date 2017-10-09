@@ -240,6 +240,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    var DialogTbsProjCfm2 = view.get("#DialogTbsProjCfm2");
 				    DialogTbsProjCfm1.set("readOnly", false);
 				    dataPilotTbsProjCfm1.set("visible", true);
+				    if(autoformCfm1.get("entity")){
 				    autoformCfm1.set({
 				    	"readOnly":false,
 				    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
@@ -247,6 +248,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    	"elements.by2.labelSpacing":0,
 				    	"elements.by2.labelAlign":"right"
 				    	});
+				    }
 				    DialogTbsProjCfm2.set("readOnly", false);
 				    dataPilotTbsProjCfm2.set("visible", true);
 				    autoformCfm2.set("readOnly", false);
@@ -502,10 +504,12 @@ function closeApprForm(self, arg) {
 };
 
 /** @Bind #btnCfm1r2ApprSubmit.onClick */
-!function(self, arg, autoformTbsProj_role, autoformCfm1r2Opinion,
+!function(self, arg, autoformTbsProj_role, autoformCfm1r2Opinion,dataSetTbsProjcfm0,
 		ajaxactionApprSubmit, datasetTbsProj, updateactionCfm1, updateactionCfm2) {
 	// 保存projCfm1 & projCfm2数据
-	if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
+	var type = dataSetTbsProjcfm0.getData("#.type");
+	if(type == "会议"){
+		if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
 		var by2 =view.get("#autoformCfm1").get("entity.by2");
 		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm1").set("entity.by2",by2);
@@ -514,14 +518,16 @@ function closeApprForm(self, arg) {
 			});
 			return false;
 		}
-		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);//禁用当前数据对象所有的数据校验
+		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
 		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14)+by2);
 		
 	}
 	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
 	updateactionCfm1.execute();
-	updateactionCfm2.execute();
-	
+	}
+	if(type == "签批"){
+		updateactionCfm2.execute();
+	}
 	// 提交表单
 	apprSubmit(psid, autoformCfm1r2Opinion, ajaxactionApprSubmit);
 };

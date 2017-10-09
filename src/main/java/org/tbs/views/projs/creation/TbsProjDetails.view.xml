@@ -958,6 +958,7 @@
                 <AutoFormElement>
                   <Property name="name">financial</Property>
                   <Property name="property">financial</Property>
+                  <Property name="visible">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
