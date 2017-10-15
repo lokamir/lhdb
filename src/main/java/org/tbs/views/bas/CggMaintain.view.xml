@@ -755,9 +755,17 @@
         <Property name="label">票面金额(元)</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="mc">
+        <Property></Property>
+        <Property name="label">出票人</Property>
+      </PropertyDef>
       <PropertyDef name="hm">
         <Property></Property>
         <Property name="label">票据编号</Property>
+      </PropertyDef>
+      <PropertyDef name="dfdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">到期日</Property>
       </PropertyDef>
       <PropertyDef name="valid">
         <Property name="dataType">boolean</Property>
@@ -2907,12 +2915,20 @@
                   <Property name="trigger">listddlZllx19</Property>
                   <Property name="width">120</Property>
                 </DataColumn>
+                <DataColumn name="mc">
+                  <Property name="property">mc</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
                 <DataColumn name="jz">
                   <Property name="property">jz</Property>
                   <Property name="width">120</Property>
                 </DataColumn>
                 <DataColumn name="hm">
                   <Property name="property">hm</Property>
+                  <Property name="width">120</Property>
+                </DataColumn>
+                <DataColumn name="dfdate">
+                  <Property name="property">dfdate</Property>
                   <Property name="width">120</Property>
                 </DataColumn>
                 <DataColumn name="mbdate">

@@ -63,6 +63,7 @@ public class ProjectCreate extends HibernateDao {
 	    Map<String, Object> variables = new HashMap<String, Object>();
 	    // variables for parallel approve
 		variables.put("projSn", tbsProj.getSn());
+		variables.put("projName", tbsProj.getTbsCustomer().getName());
 	    info.setVariables(variables);
 	    
 	    ProcessInstance pi = processClient.startProcessByName("projCreate",

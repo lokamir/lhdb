@@ -56,6 +56,7 @@ public class ProjectCfm extends ProjectCreate {
 	    Map<String, Object> variables = new HashMap<String, Object>();
 	    // variables for parallel approve
 		variables.put("projSn", tbsProj.getSn());
+		variables.put("projName", tbsProj.getTbsCustomer().getName());
 	    variables.put("cmpt", false);
 	    variables.put("passCount", 0);
 	    variables.put("approverCount", 0);

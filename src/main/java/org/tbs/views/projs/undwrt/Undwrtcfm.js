@@ -167,7 +167,7 @@ function GetCRStatus(ds){
 	var cat1name;
 	var cat2name;
 	var cat3name;
-	var customerId = view.get("#dataSettbsProjundwrtCfmar").getData("#.tbsProj").get("tbsCustomer").get("id");;
+	var customerId = view.get("#dataSettbsProjundwrtCfmar").getData("#.tbsProj").get("tbsCustomer").get("id");
 	if(entity[0]){
 	cat1name = entity[0].cat1name;
 	cat2name = entity[0].cat2name;

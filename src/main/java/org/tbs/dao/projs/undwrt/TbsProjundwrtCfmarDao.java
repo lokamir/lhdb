@@ -152,6 +152,7 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 				info.setTag("undwrtcfm"); // 对流程实例打个标记，以备后续使用
 				Map<String,Object> variables = new HashMap<String,Object>();  
 				variables.put("projSn", undwrtCfmar.getProjSn());
+				variables.put("projName", undwrtCfmar.getTbsProj().getTbsCustomer().getName());
 				info.setVariables(variables);
 				ProcessInstance pi = processClient.startProcessByName("undwrtcfm", info);
 				Long processInstanceId = pi.getId(); 

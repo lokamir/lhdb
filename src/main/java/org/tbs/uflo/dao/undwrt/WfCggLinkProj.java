@@ -70,6 +70,7 @@ public class WfCggLinkProj extends HibernateDao {
 			Map<String, Object> variables = new HashMap<String, Object>();
 			variables.put("bzjzy", value); 
 			variables.put("projSn", cgg.getSn());
+			variables.put("projName", cgg.getTbsCustomer().getName());
 			info.setVariables(variables); 
 			ProcessInstance pi = processClient.startProcessByName("projcgg", info);
 			Long processInstanceId = pi.getId();

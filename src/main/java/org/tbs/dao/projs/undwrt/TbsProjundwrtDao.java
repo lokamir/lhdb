@@ -323,6 +323,7 @@ public class TbsProjundwrtDao extends HibernateDao {
 				Map<String,Object> variables = new HashMap<String,Object>();
 				variables.put("reject",0);
 				variables.put("projSn", undwrt.getProjSn());
+				variables.put("projName", undwrt.getTbsCustomer().getName());
 				info.setVariables(variables);
 				ProcessInstance pi = processClient.startProcessByName("undwrt", info);
 				Long processInstanceId = pi.getId();

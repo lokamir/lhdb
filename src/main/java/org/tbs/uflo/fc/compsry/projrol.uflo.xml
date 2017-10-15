@@ -5,25 +5,25 @@
       <description>风险解除(追偿)-开始</description>
       <sequence-flow to="分支"/>
    </start>
-   <task g="61,117,148,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog3.d" assignment-type="Handler" name="风管部经理审批">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="61,117,148,50" assignment-type="Handler" url="org.tbs.views.projs.compsry.DetailDialog3.d" task-type="Countersign" name="风管部经理审批" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="通过" g="-88,-78" name="通过"/>
-      <sequence-flow to="驳回" g="11,-23" name="驳回"/>
+      <sequence-flow g="-88,-78" name="通过" to="通过"/>
+      <sequence-flow g="11,-23" name="驳回" to="驳回"/>
    </task>
-   <task g="419,118,145,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog3.d" assignment-type="Handler" name="出纳确认金额">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="419,118,145,50" assignment-type="Handler" url="org.tbs.views.projs.compsry.DetailDialog3.d" task-type="Countersign" name="出纳确认金额" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="驳回" g="76,-81" name="驳回"/>
-      <sequence-flow to="财务部门经理审批" g="8,-9" name="通过"/>
+      <sequence-flow g="76,-81" name="驳回" to="驳回"/>
+      <sequence-flow g="8,-9" name="通过" to="财务部门经理审批"/>
    </task>
-   <task g="413,229,157,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.compsry.DetailDialog3.d" assignment-type="Handler" name="财务部门经理审批">
+   <task assignment-handler-bean="getApprover" g="413,229,157,50" assignment-type="Handler" url="org.tbs.views.projs.compsry.DetailDialog3.d" task-type="Normal" name="财务部门经理审批" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="通过" g="8,-19" name="通过"/>
-      <sequence-flow to="驳回" g="103,-60" name="驳回"/>
+      <sequence-flow g="8,-19" name="通过" to="通过"/>
+      <sequence-flow g="103,-60" name="驳回" to="驳回"/>
    </task>
-   <action g="240,572,115,50" handler-bean="actProjrol1" name="Aciton">
+   <action handler-bean="actProjrol1" g="240,572,115,50" name="Aciton">
       <sequence-flow to="结束"/>
    </action>
-   <end g="283,660,32,62" terminate="true" name="结束"/>
+   <end g="283,660,32,62" name="结束" terminate="true"/>
    <fork g="292,113,32,62" name="分支">
       <sequence-flow to="风管部经理审批"/>
       <sequence-flow to="出纳确认金额"/>
@@ -31,15 +31,15 @@
    <join g="476,345,32,62" name="通过">
       <sequence-flow to="决策"/>
    </join>
-   <join g="121,342,32,62" name="驳回" multiplicity="1">
+   <join multiplicity="1" g="121,342,32,62" name="驳回">
       <sequence-flow to="决策"/>
    </join>
    <decision expression="${reject&gt;0?&quot;驳回&quot;:&quot;通过&quot;}" g="282,476,32,62" name="决策" decision-type="Expression">
-      <sequence-flow to="Aciton" g="8,-12" name="通过"/>
-      <sequence-flow to="驳回修改" g="-69,-22" name="驳回"/>
+      <sequence-flow g="8,-12" name="通过" to="Aciton"/>
+      <sequence-flow g="-69,-22" name="驳回" to="驳回修改"/>
    </decision>
-   <task g="596,481,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.compsry.DetailDialog3.d" assignment-type="ProcessPromoter" name="驳回修改">
+   <task g="596,481,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.compsry.DetailDialog3.d" task-type="Normal" name="驳回修改" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="分支" g="649,90;308,89:-4,-23" name="修改确认"/>
+      <sequence-flow g="649,90;308,89:-4,-23" name="修改确认" to="分支"/>
    </task>
 </uflo-process>

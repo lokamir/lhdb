@@ -6,20 +6,20 @@
       <sequence-flow to="是否来自其他部门"/>
    </start>
    <decision expression="${othdept==1?&quot;是&quot;:&quot;否&quot;}" g="253,205,103,62" name="是否来自其他部门" decision-type="Expression">
-      <sequence-flow to="业务总监审批" g="-16,-11" name="是"/>
-      <sequence-flow to="Action" g="509,235;509,513:-18,-134" name="否"/>
+      <sequence-flow g="-16,-11" name="是" to="分管业务总经理"/>
+      <sequence-flow g="509,235;509,513:-18,-134" name="否" to="Action"/>
    </decision>
-   <task g="217,341,180,50" allow-specify-assignee="false" task-type="Normal" label="项目经理变更-业务总监审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog2.d" assignment-type="Handler" name="业务总监审批">
+   <task assignment-handler-bean="getApprover" g="217,341,180,50" label="分管业务领导" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog2.d" task-type="Normal" name="分管业务总经理" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="Action" g="-33,-19" name="通过"/>
-      <sequence-flow to="驳回修正" g="99,365:5,-19" name="驳回"/>
+      <sequence-flow g="-33,-19" name="通过" to="Action"/>
+      <sequence-flow g="99,365:5,-19" name="驳回" to="驳回修正"/>
    </task>
-   <action g="243,489,128,50" handler-bean="actChangeRole" name="Action">
+   <action handler-bean="actChangeRole" g="243,489,128,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <end g="280,609,53,56" terminate="true" name="结束"/>
-   <task g="26,211,147,47" allow-specify-assignee="false" task-type="Normal" label="项目经理变更-驳回修正" assignment-handler-bean="getApprover" url="org.tbs.views.projs.change.DetailDialog2.d" assignment-type="ProcessPromoter" name="驳回修正">
+   <end g="280,609,53,56" name="结束" terminate="true"/>
+   <task assignment-handler-bean="getApprover" g="26,211,147,47" label="项目经理变更-驳回修正" assignment-type="ProcessPromoter" url="org.tbs.views.projs.change.DetailDialog2.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="是否来自其他部门" g="-22,-21" name="修改确认"/>
+      <sequence-flow g="-22,-21" name="修改确认" to="是否来自其他部门"/>
    </task>
 </uflo-process>

@@ -5,27 +5,27 @@
       <description>${projName}</description>
       <sequence-flow to="A角部门经理审批"/>
    </start>
-   <task g="132,138,162,50" allow-specify-assignee="false" task-type="Normal" label="费用收取-A角部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="A角部门经理审批">
+   <task assignment-handler-bean="getApprover" g="132,138,162,50" label="费用收取-A角部门经理审批" assignment-type="Handler" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" task-type="Normal" name="A角部门经理审批" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="出纳审核" g="-31,-13" name="通过"/>
-      <sequence-flow to="驳回修正" g="382,162:-69,-22" name="驳回"/>
+      <sequence-flow g="-31,-13" name="通过" to="出纳审核"/>
+      <sequence-flow g="382,162:-69,-22" name="驳回" to="驳回修正"/>
    </task>
-   <task g="155,227,115,50" allow-specify-assignee="false" task-type="Normal" label="费用收取-出纳审核" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="出纳审核">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="155,227,115,50" label="费用收取-出纳审核" assignment-type="Handler" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" task-type="Countersign" name="出纳审核" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="财务部门经理审核" g="-37,-6" name="通过"/>
-      <sequence-flow to="驳回修正" g="-69,-22" name="驳回"/>
+      <sequence-flow g="-37,-6" name="通过" to="财务部门经理审核"/>
+      <sequence-flow g="-69,-22" name="驳回" to="驳回修正"/>
    </task>
-   <task g="131,318,166,50" allow-specify-assignee="false" task-type="Normal" label="费用收取-财务部门经理审批" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="Handler" name="财务部门经理审核">
+   <task assignment-handler-bean="getApprover" g="131,318,166,50" label="费用收取-财务部门经理审批" assignment-type="Handler" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" task-type="Normal" name="财务部门经理审核" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="通知A、B，分管总经理（财务）" g="-42,-5" name="通过"/>
-      <sequence-flow to="驳回修正" g="385,340:-69,-22" name="驳回"/>
+      <sequence-flow g="-42,-5" name="通过" to="通知A、B，分管总经理（财务）"/>
+      <sequence-flow g="385,340:-69,-22" name="驳回" to="驳回修正"/>
    </task>
-   <task g="425,226,115,50" allow-specify-assignee="false" task-type="Normal" label="费用收取-驳回修正" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" assignment-type="ProcessPromoter" name="驳回修正">
+   <task g="425,226,115,50" label="费用收取-驳回修正" assignment-type="ProcessPromoter" url="org.tbs.views.projs.periodMgm.DetailDialog34.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
       <description>${projName}</description>
-      <sequence-flow to="A角部门经理审批" g="483,71;272,71:-45,-22" name="确认修改"/>
+      <sequence-flow g="483,71;272,71:-45,-22" name="确认修改" to="A角部门经理审批"/>
    </task>
-   <action g="103,422,221,50" handler-bean="actPtyexpI" name="通知A、B，分管总经理（财务）">
+   <action handler-bean="actPtyexpI" g="103,422,221,50" name="通知A、B，分管总经理（财务）">
       <sequence-flow to="结束"/>
    </action>
-   <end g="191,520,45,62" terminate="true" name="结束"/>
+   <end g="191,520,45,62" name="结束" terminate="true"/>
 </uflo-process>

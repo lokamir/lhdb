@@ -188,7 +188,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("风管部门经理审批")) {
-			String sql = "select account from tbs_approver where trim(title)='风险管理部门经理[副]' ";
+			String sql = "select account from tbs_approver where trim(title) like '%风险管理部门经理%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -208,7 +208,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("业务审核委员会审批")) {
-			String sql = "select account from tbs_approver where title like '%业务审核委员会%' ";
+			String sql = "select account from tbs_approver where title like '%业务审核委员会成员%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -250,7 +250,8 @@ public class GetApprover implements AssignmentHandler {
 			}
 		}
 		if (cn.equals("请印审批")) {
-			String sql = "select account from tbs_approver where trim(title) in ('行政经理') ";
+			//String adsign = (String)processClient.getProcessVariable("adsign", processInstance);
+			String sql = "select account from tbs_approver where title in  ('行政经理') or title in  ('综合管理部门经理')" ;
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -259,7 +260,7 @@ public class GetApprover implements AssignmentHandler {
 		// =====期间管理 开始========
 		if (cn.equals("风管部门经理检查")
 				&& (pname.equals("ireginsp") || pname.equals("perinsp"))) {
-			String sql = "select account from tbs_approver where trim(title)='风险管理部门经理[副]' ";
+			String sql = "select account from tbs_approver where trim(title) like '%风险管理部门经理%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -271,8 +272,7 @@ public class GetApprover implements AssignmentHandler {
 		}
 		if (cn.equals("风管委员会秘书录入“风管委员会决议单”")
 				&& (pname.equals("ireginsp") || pname.equals("perinsp"))) {
-			String sql = "select account from tbs_approver where title like '%业务审核委员会%' ";// 3月15日
-																							// 风管委员会取消，由业委会代执行
+			String sql = "select account from tbs_approver where title = '风险管理委员会秘书' ";// 3月15日																					
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -367,17 +367,17 @@ public class GetApprover implements AssignmentHandler {
 		}
 		if (cn.equals("风管部门经理审批")
 				&& (pname.equals("compsry") || pname.equals("compsrypay"))) {
-			String sql = "select account from tbs_approver where trim(title)='风险管理部门经理[副]' ";
+			String sql = "select account from tbs_approver where trim(title) like '%风险管理部门经理%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
 		if (cn.equals("业务审核委员会秘书录入会议决议") && pname.equals("compsry")) {
-			String sql = "select account from tbs_approver where title like '%业务审核委员会%' ";
+			String sql = "select account from tbs_approver where title = '业务审核委员会秘书' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
 		if (cn.equals("风险管理审核委员会秘书录入会议决议") && pname.equals("compsry")) {
-			String sql = "select account from tbs_approver where title like '%评审会秘书%' ";
+			String sql = "select account from tbs_approver where title = '风险管理委员会秘书' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -408,7 +408,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("风管部经理审批") && (pname.equals("projrol"))) {
-			String sql = "select account from tbs_approver where trim(title)='风险管理部门经理[副]' ";
+			String sql = "select account from tbs_approver where trim(title) like '%风险管理部门经理%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -422,7 +422,7 @@ public class GetApprover implements AssignmentHandler {
 		// =======反担保物解除开始=========
 		if ((cn.equals("风管部负责人审批") || cn.equals("风管负责人审批"))
 				&& (pname.equals("cggrevoke"))) {
-			String sql = "select account from tbs_approver where trim(title) in ('风险管理部门经理[副]') ";
+			String sql = "select account from tbs_approver where trim(title) like ('%风险管理部门经理%') ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}

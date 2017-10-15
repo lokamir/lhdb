@@ -129,6 +129,10 @@
       <PropertyDef name="tbsBasPs">
         <Property name="dataType">dataTypeTbsBasPs</Property>
       </PropertyDef>
+      <PropertyDef name="tbsCustomer">
+        <Property name="label">客户名称</Property>
+        <Property name="dataType">datatypeTbsCustomer</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrt" parent="global:dataTypeTbsProjundwrt">
       <Property name="defaultDisplayProperty">sn</Property>
@@ -293,6 +297,10 @@
         <Property name="label">完成日期</Property>
         <Property name="displayFormat">Y-m-d H:i:s</Property>
       </PropertyDef>
+    </DataType>
+    <DataType name="datatypeTbsCustomer" parent="global:dataTypeTbsCustomer">
+      <Property name="defaultDisplayProperty">name</Property>
+      <Reference name="tbsProjundwrtSet"/>
     </DataType>
   </Model>
   <View>

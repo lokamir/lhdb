@@ -135,6 +135,7 @@ public class TbsProjHtshDao extends HibernateDao {
 			info.setTag("htsh"); //对流程实例打个标记，以备后续使用
 			Map<String,Object> variables = new HashMap<String,Object>();  
 			variables.put("projSn", htsh.getProjSn());
+			variables.put("projName", htsh.getTbsProj().getTbsCustomer().getName());
 			info.setVariables(variables);
 			ProcessInstance pi = processClient.startProcessByName("htsh", info); //取processInstanceId
 			Long processInstanceId = pi.getId();

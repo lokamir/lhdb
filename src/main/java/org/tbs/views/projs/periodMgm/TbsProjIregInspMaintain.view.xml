@@ -248,7 +248,7 @@
         <Property name="dataType">int</Property>
         <Property name="label">审批状态</Property>
         <Property name="mapping">
-          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapValidFor2&quot;).getResult()}</Property>
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapValidForIreginsp&quot;).getResult()}</Property>
         </Property>
       </PropertyDef>
     </DataType>

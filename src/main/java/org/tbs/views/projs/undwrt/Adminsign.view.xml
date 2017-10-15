@@ -44,7 +44,7 @@
       </PropertyDef>
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
-        <Property name="label">经办人</Property>
+        <Property name="label">施印人</Property>
         <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
       </PropertyDef>
       <PropertyDef name="tbsProj">

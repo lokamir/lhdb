@@ -731,6 +731,7 @@
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">评审费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
       </PropertyDef>
       <PropertyDef name="financial">
         <Property name="label">财务顾问费用</Property>

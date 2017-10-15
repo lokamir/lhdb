@@ -5,17 +5,17 @@
       <description>承保审批-补录审批-开始 PSID=16</description>
       <sequence-flow to="部门经理审批"/>
    </start>
-   <end g="433,293,32,62" terminate="true" name="结束"/>
-   <task g="165,52,131,50" allow-specify-assignee="false" task-type="Normal" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Undwrtcfm.d" assignment-type="Handler" name="部门经理审批">
-      <description>${projSn}-承保补录审批-部门经理审批 PSID=17</description>
-      <sequence-flow to="Action" g="-57,-22" name="通过"/>
-      <sequence-flow to="驳回修正" g="333,226;368,228:-69,-22" name="驳回"/>
+   <end g="433,293,32,62" name="结束" terminate="true"/>
+   <task assignment-handler-bean="getApprover" g="165,52,131,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrtcfm.d" task-type="Normal" name="部门经理审批" allow-specify-assignee="false">
+      <description>${projName} -${projSn}-承保补录审批  PSID=17</description>
+      <sequence-flow g="-57,-22" name="通过" to="Action"/>
+      <sequence-flow g="333,226;368,228:-69,-22" name="驳回" to="驳回修正"/>
    </task>
-   <action g="160,298,143,50" handler-bean="actUndwrtcfm" name="Action">
+   <action handler-bean="actUndwrtcfm" g="160,298,143,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <task g="384,204,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.Undwrtcfm.d" assignment-type="ProcessPromoter" name="驳回修正">
-      <description>${projSn}-承保补录审批-驳回修正 PSID=33</description>
-      <sequence-flow to="部门经理审批" g="440,77:-93,-22" name="修改确认"/>
+   <task g="384,204,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Undwrtcfm.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
+      <description>${projName} -${projSn}-承保补录审批   PSID=33</description>
+      <sequence-flow g="440,77:-93,-22" name="修改确认" to="部门经理审批"/>
    </task>
 </uflo-process>

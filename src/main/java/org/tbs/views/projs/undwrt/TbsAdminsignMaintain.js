@@ -112,6 +112,14 @@ self.flushAsync();
 		var entity = dataSetTbsAdminsign.getData("#");
 		var id_value = entity.get("id");
 		var maParamers = {docid:id_value}; 
+		/*if(!entity.get("bdf2User")){
+			dorado.MessageBox.alert("请先选施印人",{title:"趣博信息科技"});
+			return;
+		}
+		if(entity.isDirty()){
+			dorado.MessageBox.alert("请先选保存",{title:"趣博信息科技"});
+			return;
+		}*/
 		ajaxAction1.set("parameter",maParamers).execute(function(result){
 			dorado.MessageBox.alert(result,{title:"趣博信息科技"});
 		});

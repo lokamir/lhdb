@@ -195,6 +195,18 @@ public class El extends HibernateDao {
 		mapValue.put("3", "审批驳回");
 		return mapValue;
 	}
+	
+	// 二期审批状态，用valid来判断 不定期检查用
+		// ${dorado.getDataProvider("el#mapValidForIreginsp").getResult()}
+		@DataProvider
+		public Map<String, String> mapValidForIreginsp() {
+			Map<String, String> mapValue = new LinkedHashMap<String, String>();
+			mapValue.put("0", "未审批");
+			mapValue.put("1", "审批通过");
+			mapValue.put("2", "审批中");
+			mapValue.put("3", "审批通过");
+			return mapValue;
+		}
 
 	// 二期反担保解除用State判断反担保物状态
 	// ${dorado.getDataProvider("el#mapCggRevokeState").getResult()}

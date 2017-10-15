@@ -37,13 +37,19 @@ function GetCRStatus(ds){
 /*=======================发送审批===================*/
 /** @Bind #buttonStartAppr.onClick */ 
 !function(self,arg,dataSetTbsProjHtsh,Main,ajaxAction1){
-	var entity = Main.getCurrentEntity("entity");
-	var id_value = entity.get("id");
-	var maParamers = {docid:id_value}; 
-	ajaxAction1.set("parameter",maParamers).execute(function(result){
-		dorado.MessageBox.alert(result,{title:"趣博信息科技"});
-	});
-	dataSetTbsProjHtsh.flushAsync();
+	if(dataSetTbsProjHtsh.getData("#.id")){
+		debugger;
+		var entity = dataSetTbsProjHtsh.getData("#");
+	
+		var id_value = entity.get("id");
+		var maParamers = {docid:id_value}; 
+		ajaxAction1.set("parameter",maParamers).execute(function(result){
+			dorado.MessageBox.alert(result,{title:"趣博信息科技"});
+		});
+		dataSetTbsProjHtsh.flushAsync();
+	}else{
+		dorado.MessageBox.alert("请先保存",{title:"趣博信息科技"});
+	}
 };
 
 

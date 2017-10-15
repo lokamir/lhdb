@@ -43,7 +43,7 @@
       </PropertyDef>
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
-        <Property name="label">经办人</Property>
+        <Property name="label">施印人</Property>
       </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="label">项目名称</Property>

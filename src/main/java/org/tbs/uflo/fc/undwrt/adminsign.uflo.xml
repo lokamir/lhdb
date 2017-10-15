@@ -5,19 +5,23 @@
       <description>项目发起请印-开始 PSID=28</description>
       <sequence-flow to="请印审批"/>
    </start>
-   <end g="428,297,32,62" terminate="true" name="结束">
+   <end g="428,297,32,62" name="结束" terminate="true">
       <description>PSID=16</description>
    </end>
-   <task g="165,52,125,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" assignment-handler-bean="getApprover" url="org.tbs.views.projs.undwrt.Adminsign.d" assignment-type="Handler" name="请印审批">
-      <description>${projSn}-承保请印申请 PSID=34</description>
-      <sequence-flow to="Action" g="-31,-16" name="通过"/>
-      <sequence-flow to="驳回修正" g="272,210:-22,6" name="驳回"/>
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="165,52,125,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Adminsign.d" task-type="Countersign" name="请印审批" allow-specify-assignee="false">
+      <description>${projName} -${projSn}  
+
+PSID=34</description>
+      <sequence-flow g="-31,-16" name="通过" to="Action"/>
+      <sequence-flow g="272,210:-22,6" name="驳回" to="驳回修正"/>
    </task>
-   <action g="158,302,136,50" handler-bean="actAdminsign" name="Action">
+   <action handler-bean="actAdminsign" g="158,302,136,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <task g="333,190,115,50" allow-specify-assignee="false" task-type="Normal" url="org.tbs.views.projs.undwrt.Adminsign.d" assignment-type="ProcessPromoter" name="驳回修正">
-      <description>${projSn}-承保请印申请-驳回修正 PSID=32</description>
-      <sequence-flow to="请印审批" g="496,217;499,77;498,77:-67,-20" name="修改确认"/>
+   <task g="333,190,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Adminsign.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
+      <description>${projName} -${projSn}-承保请印申请
+
+ PSID=32</description>
+      <sequence-flow g="496,217;499,77;498,77:-67,-20" name="修改确认" to="请印审批"/>
    </task>
 </uflo-process>

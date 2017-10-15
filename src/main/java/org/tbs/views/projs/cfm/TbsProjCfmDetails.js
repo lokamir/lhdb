@@ -783,6 +783,11 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 			title : "趣博信息科技"
 		});
 		return;
+	}else if(!data.get("tbsProjBizvtSet.current.tbsBasBiztype")){
+		dorado.MessageBox.alert("业务类品金必填", {
+			title : "趣博信息科技"
+		});
+		return;
 	}
 	var param = {
 		entity : data

@@ -488,6 +488,7 @@
                   <DataColumn>
                     <Property name="property">initloc</Property>
                     <Property name="name">initloc</Property>
+                    <Property name="visible">false</Property>
                   </DataColumn>
                   <DataColumn name="vloc">
                     <Property name="property">vloc</Property>

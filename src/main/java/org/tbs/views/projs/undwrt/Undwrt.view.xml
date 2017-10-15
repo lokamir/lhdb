@@ -562,8 +562,8 @@
     </DataSet>
     <DataSet id="dataSetHistoryTask">
       <Property name="dataType">[datatypeTbsFunApprc]</Property>
-      <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
-      <Property name="parameter">${request.getParameter(&quot;processInstanceId&quot;)}</Property>
+      <Property name="dataProvider">getHisTasks#getHisTasksByProcessId</Property>
+      <Property name="parameter">${request.getParameter(&quot;processId&quot;)}</Property>
     </DataSet>
     <DataSet id="dataSetTbsFunFulTyp">
       <Property name="dataType">[dataTypeTbsFunFulTyp]</Property>

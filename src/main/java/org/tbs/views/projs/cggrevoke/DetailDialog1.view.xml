@@ -359,7 +359,7 @@
       </PropertyDef>
       <PropertyDef name="xdeFaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少融资担保授信额度(风管建议)</Property>
+        <Property name="label">减少融资担保授信额度(元)(风管建议)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -369,7 +369,7 @@
       </PropertyDef>
       <PropertyDef name="xdeNfaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少非融资担保授信额度(风管建议)</Property>
+        <Property name="label">减少非融资担保授信额度(元)(风管建议)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -379,7 +379,7 @@
       </PropertyDef>
       <PropertyDef name="xdeOtloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少其他类担保授信额度(风管建议)</Property>
+        <Property name="label">减少其他类担保授信额度(元)(风管建议)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -389,7 +389,7 @@
       </PropertyDef>
       <PropertyDef name="deFaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少融资担保授信额度(评委会秘书录入)</Property>
+        <Property name="label">减少融资担保授信额度(元)(评委会秘书录入)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -399,7 +399,7 @@
       </PropertyDef>
       <PropertyDef name="deNfaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少非融资担保授信额度(评委会秘书录入)</Property>
+        <Property name="label">减少非融资担保授信额度(元)(评委会秘书录入)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -409,7 +409,7 @@
       </PropertyDef>
       <PropertyDef name="deOtloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少其他类担保授信额度(评委会秘书录入)</Property>
+        <Property name="label">减少其他类担保授信额度(元)(评委会秘书录入)</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
         <Validator name="validator1" type="required">
@@ -419,7 +419,7 @@
       </PropertyDef>
       <PropertyDef name="deTotloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">减少总担保授信额度(评委会秘书录入)</Property>
+        <Property name="label">减少总担保授信额度(元)(评委会秘书录入)</Property>
         <Property name="readOnly">true</Property>
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="defaultValue">0</Property>
