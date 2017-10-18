@@ -4,7 +4,7 @@ var projid;
 var projsn;
 var spcbtn; // 给"评审会秘书录入决议"专用的判断条件,special button
 var loginusername = "${loginUsername}";
-
+var taskNode = "${param.taskNode}";
 /** @Bind view.onReady */
 !function(self, arg) {
 	if ("${request.getParameter('aprv')}"){
@@ -53,6 +53,9 @@ var loginusername = "${loginUsername}";
 		autoform.set("entity.newbdate", bdate);
 		autoform.set("entity.newedate", edate);	
 	} else if (aprv == 0) {
+		if(taskNode == "评审会秘书录入决议"){
+			view.get("#tabControlMain").set("currentIndex",2);
+		}
 		var projchangeid = "${request.getParameter('projchangeid')}";
 		var projchangevalid = "${request.getParameter('projchangevalid')}";
 		var autoform = view.get("#AutoFormChangeMajcont");

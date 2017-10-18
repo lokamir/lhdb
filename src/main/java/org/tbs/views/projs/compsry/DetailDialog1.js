@@ -82,6 +82,7 @@ var inittotloc;
 					view.get("#bizmemo").set("readOnly",true);
 				}	
 				if (nodename =="业务审核委员会秘书录入会议决议"){
+					view.get("#tabControlMain").set("currentIndex",1);
 					view.get("#dataSetTbsProjCompsry").set("readOnly",false);
 					view.get("#listDdlOutcome").set("items",["确认"]);
 					view.get("#date").set("readOnly",true);
@@ -90,6 +91,7 @@ var inittotloc;
 					view.get("#riskmemo").set("visible",false);
 				}	
 				if (nodename == "风险管理审核委员会秘书录入会议决议"){
+					view.get("#tabControlMain").set("currentIndex",1);
 					view.get("#dataSetTbsProjCompsry").set("readOnly",false);
 					view.get("#listDdlOutcome").set("items",["确认"]);
 					view.get("#date").set("readOnly",true);

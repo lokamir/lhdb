@@ -95,6 +95,10 @@ function GetCRStatus(ds){
 				dorado.MessageBox.alert("含有融资性担保，需要选择银行",{title:"趣博信息科技"});
 				return false;
 				};	
+			if(!data.get("loc") || !data.get("tbsBasBizvar.name")){
+				dorado.MessageBox.alert("承保业务品种和金额必填",{title:"趣博信息科技"});
+				return false;
+				};
 			});
 		
 		updateActionSave.execute();

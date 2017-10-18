@@ -103,10 +103,10 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		 
-		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于决策审批和项目三要素变更流程
+		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于决策审批和项目三要素变更流程和代偿审议
 		// 2017年3月15日陈雯雯要求改2000万
 		if (cn.equals("决策人审批")
-				&& (pname.equals("projcfm") || pname.equals("changemajcont"))) {
+				&& (pname.equals("projcfm") || pname.equals("changemajcont")||pname.equals("compsry"))) {
 			String sqlAmount = "select TOTLOC from tbs_proj where id = "
 					+ docid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);

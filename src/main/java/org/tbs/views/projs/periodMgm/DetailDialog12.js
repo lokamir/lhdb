@@ -109,6 +109,7 @@ var projcheckby2;//表示是否生成过决议单
 		view.get("#dataSetTbsProjCheck").getData("#").set("valid",3);
 	}
 	if (valiables.node == "风管委员会秘书录入“风管委员会决议单”") {
+		view.get("#tabControlMain").set("currentIndex",2);
 		listDdlOutcome.set("items", [ "确认" ]);
 		tabInAppr.set("visible", true);
 		dataSetTbsProj.set("readOnly", false);;
