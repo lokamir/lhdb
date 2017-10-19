@@ -232,7 +232,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					}else if(view.get("#autoformCfm2").get("entity")){
 						view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}
-					view.get("#tabControlMain").set("currentIndex",3);
+					//view.get("#tabControlMain").set("currentIndex",3);
 				 	var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
@@ -250,6 +250,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    	"elements.by2.labelAlign":"right"
 				    	});
 				    }
+				    view.get("#tabControlMain").set("currentIndex",3);
 				    DialogTbsProjCfm2.set("readOnly", false);
 				    dataPilotTbsProjCfm2.set("visible", true);
 				    autoformCfm2.set("readOnly", false);
@@ -415,7 +416,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		}
 		;
 		targetData2.each(function(entity2) {
-					if (entity.get("tbsBasBizvar.id") == entity2.get("tbsBasBizvar.id")) {
+					if (entity.get("tbsBasBizvar.id")&&(entity.get("tbsBasBizvar.id") == entity2.get("tbsBasBizvar.id"))) {
 						i++;
 					}
 				});
@@ -755,7 +756,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		}
 		;
 		targetData2.each(function(entity2) {
-					if (entity.get("tbsBasBizvar.id") == entity2.get("tbsBasBizvar.id")) {
+					if (entity.get("tbsBasBizvar.id")&&(entity.get("tbsBasBizvar.id") == entity2.get("tbsBasBizvar.id"))) {
 						i++;
 					}
 				});
@@ -774,7 +775,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 /** @Bind #btnSubmit.onClick */
 !function(self, arg, datasetTbsProj, ajaxactionStartProcess) {
 	var data = datasetTbsProj.getData("#");
-	if(data.isDirty()){
+	if(data.isCascadeDirty()){
 		dorado.MessageBox.alert("请先保存", {
 			title : "趣博信息科技"
 		});
