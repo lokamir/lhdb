@@ -96,6 +96,7 @@ function GetCRStatus(ds){
 				return false;
 				};	
 			if(!data.get("loc") || !data.get("tbsBasBizvar.name")){
+				arg.processDefault=false;
 				dorado.MessageBox.alert("承保业务品种和金额必填",{title:"趣博信息科技"});
 				return false;
 				};

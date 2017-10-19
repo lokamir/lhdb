@@ -43,7 +43,7 @@
    <action handler-bean="actCompsry2" g="330,608,115,50" name="Action2">
       <sequence-flow to="风险管理审核委员会秘书录入会议决议"/>
    </action>
-   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="281,517,213,50" label="代偿审议-风险管理审核委员会决定是否召开会议" assignment-type="Handler" url="org.tbs.views.projs.compsry.DetailDialog1.d" task-type="Countersign" name="决定是否召开风险管理会议" allow-specify-assignee="false">
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="281,517,213,50" label="代偿审议-风险管理审核委员会秘书决定是否召开会议" assignment-type="Handler" url="org.tbs.views.projs.compsry.DetailDialog1.d" task-type="Countersign" name="决定是否召开风险管理会议" allow-specify-assignee="false">
       <description>${projName}-代偿审议</description>
       <sequence-flow g="177,542;177,1045:6,-23" name="否" to="Action3"/>
       <sequence-flow g="-17,-8" name="是" to="Action2"/>

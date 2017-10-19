@@ -203,6 +203,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				groupboxAppr.set("visible", false);
 				groupboxCfm0Appr.set("visible", true);
 				listDdlOutcome.set("items",["通过","驳回"]);
+				view.get("#tabControlMain").set("currentIndex",2);
 				//var targetDatas = datasetTbsProjOpinion1r2.getData();
 				// set promoter DH's outcome to "回避"
 				//targetDatas.each(function(targetData){
@@ -785,7 +786,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 			title : "趣博信息科技"
 		});
 		return;
-	}else if(!data.get("tbsProjBizvtSet.current.tbsBasBiztype")){
+	}else if(!data.get("tbsProjBizvtSet.current.tbsBasBiztype.id")){
 		dorado.MessageBox.alert("业务类品金必填", {
 			title : "趣博信息科技"
 		});

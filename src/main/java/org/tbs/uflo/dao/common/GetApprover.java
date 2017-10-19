@@ -382,7 +382,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("决定是否召开风险管理会议") && pname.equals("compsry")) {
-			String sql = "select account from tbs_approver where title like '%评审会秘书%' ";
+			String sql = "select account from tbs_approver where title = '风险管理委员会秘书' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}

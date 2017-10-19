@@ -1,5 +1,6 @@
 package org.tbs.uflo.dao.compsry;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -59,6 +60,17 @@ public class ActProjrol1 implements ActionHandler {
 			String sql_p_compsry = "call p_compsry( " + cusid + " )";
 			SQLQuery sqlquery_p_compsry = session.createSQLQuery(sql_p_compsry);
 			sqlquery_p_compsry.executeUpdate();
+			
+			
+			//获取客户表单代偿余额
+			String sql_cusCompsry = "select compsry from tbs_customer where id =" +cusid;
+			SQLQuery sqlquery_cusCompsry = session.createSQLQuery(sql_cusCompsry);
+			BigDecimal cusCompsryBig = (BigDecimal)sqlquery_cusCompsry.uniqueResult();
+			
+			//更新代偿请款单代偿余额
+			String sql_compsrypay_dcye = "update tbs_projcompsry_pay set DCYE="+cusCompsryBig+" where id="+docid+" and proj_id="+projid;;
+			SQLQuery sqlquery_compsrypay_dcye = session.createSQLQuery(sql_compsrypay_dcye);
+			sqlquery_compsrypay_dcye.executeUpdate();
 					
 			//===发送全部审批通过的消息===
 			String promoter=processInstance.getPromoter(); //获取promoter

@@ -38,7 +38,6 @@ function GetCRStatus(ds){
 /** @Bind #buttonStartAppr.onClick */ 
 !function(self,arg,dataSetTbsProjHtsh,Main,ajaxAction1){
 	if(dataSetTbsProjHtsh.getData("#.id")){
-		debugger;
 		var entity = dataSetTbsProjHtsh.getData("#");
 	
 		var id_value = entity.get("id");

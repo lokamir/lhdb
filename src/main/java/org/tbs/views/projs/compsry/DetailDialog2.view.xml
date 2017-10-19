@@ -211,6 +211,11 @@
     </DataType>
     <DataType name="dataTypeTbsCustomer" parent="global:dataTypeTbsCustomer">
       <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="compsry">
+        <Property name="label">代偿余额</Property>
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="tags">自动计算</Property>
+      </PropertyDef>
       <Reference name="tbsProjundwrtSet"/>
     </DataType>
     <DataType name="dataTypeTbsBasConsway" parent="global:dataTypeTbsBasConsway">
@@ -1168,13 +1173,16 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">zbe</Property>
-              <Property name="property">zbe</Property>
+              <Property name="name">tbsCustomer.compsry</Property>
+              <Property name="property">tbsCustomer.compsry</Property>
+              <Property name="readOnly">true</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">dcye</Property>
-              <Property name="property">dcye</Property>
+              <Property name="name">zbe</Property>
+              <Property name="property">zbe</Property>
+              <Property name="visible">false</Property>
+              <Property name="hideMode">visibility</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement id="customername">
