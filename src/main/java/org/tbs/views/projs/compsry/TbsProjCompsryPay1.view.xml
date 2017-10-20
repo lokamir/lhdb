@@ -370,6 +370,15 @@
     </DataType>
     <DataType name="datatypeTbsCustomer" parent="global:dataTypeTbsCustomer">
       <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="projrol">
+        <Property name="label">追偿收入</Property>
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
+      <PropertyDef name="compsry">
+        <Property name="label">代偿余额</Property>
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="tags">自动计算</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="datatypeTbsBasConsway" parent="global:dataTypeTbsBasConsway">
       <Property name="defaultDisplayProperty">name</Property>
@@ -641,8 +650,8 @@
                 </DataColumn>
               </ColumnGroup>
               <DataColumn>
-                <Property name="property">dcye</Property>
-                <Property name="name">dcye</Property>
+                <Property name="property">tbsCustomer.compsry</Property>
+                <Property name="name">tbsCustomer.compsry</Property>
               </DataColumn>
               <DataColumn name="valid">
                 <Property name="property">valid</Property>
