@@ -262,6 +262,7 @@ public class TbsCustomer implements Serializable {
 	 * 二期改库 2016-06-01
 	 * */
 	private BigDecimal compsry;
+	private BigDecimal projrol;
 	private Set<TbsProjcompsryPay> tbsProjcompsryPaySet = new HashSet<TbsProjcompsryPay>(0);
 	
 	
@@ -285,7 +286,7 @@ public class TbsCustomer implements Serializable {
 			Set<TbsCggQybz> tbsCggQybzSet, Set<TbsCggZy> tbsCggZySet,
 			Set<TbsCustomerEnttype> tbsCustomerEnttypeSet,
 			Set<TbsCustomerIdnum> tbsCustomerIdnumSet, Set<TbsProj> tbsProjSet,
-			Set<TbsProjundwrt> tbsProjundwrtSet, BigDecimal compsry,
+			Set<TbsProjundwrt> tbsProjundwrtSet, BigDecimal compsry,BigDecimal projrol,
 			Set<TbsProjcompsryPay> tbsProjcompsryPaySet) {
 		super();
 		this.id = id;
@@ -337,6 +338,7 @@ public class TbsCustomer implements Serializable {
 		this.tbsProjSet = tbsProjSet;
 		this.tbsProjundwrtSet = tbsProjundwrtSet;
 		this.compsry = compsry;
+		this.projrol = projrol;
 		this.tbsProjcompsryPaySet = tbsProjcompsryPaySet;
 	}
 
@@ -795,6 +797,15 @@ public class TbsCustomer implements Serializable {
 		return compsry;
 	}
 	
+	public void setProjrol(BigDecimal projrol) {
+		this.projrol = projrol;
+	}
+	
+	@Column(name = "PROJROL")
+	public BigDecimal getProjrol() {
+		return projrol;
+	}
+	
 	public void setTbsProjcompsryPaySet (Set<TbsProjcompsryPay> tbsProjcompsryPaySet) {
 		this.tbsProjcompsryPaySet = tbsProjcompsryPaySet;
 	}
@@ -828,7 +839,7 @@ public class TbsCustomer implements Serializable {
 				+ tbsCustomerEnttypeSet + ",tbsCustomerIdnumSet="
 				+ tbsCustomerIdnumSet + ",tbsProjSet=" + tbsProjSet
 				+ ",tbsProjundwrtSet=" + tbsProjundwrtSet 
-				+ ",compsry=" + compsry + ",tbsProjcompsryPaySet=" + tbsProjcompsryPaySet
+				+ ",compsry=" + compsry + ",projrol=" + projrol + ",tbsProjcompsryPaySet=" + tbsProjcompsryPaySet
 				+ "]";
 	}
 
