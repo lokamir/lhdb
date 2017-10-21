@@ -106,9 +106,31 @@ public class GetApprover implements AssignmentHandler {
 		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于决策审批和项目三要素变更流程和代偿审议
 		// 2017年3月15日陈雯雯要求改2000万
 		if (cn.equals("决策人审批")
-				&& (pname.equals("projcfm") || pname.equals("changemajcont")||pname.equals("compsry"))) {
+				&& (pname.equals("projcfm") || pname.equals("changemajcont"))) {
 			String sqlAmount = "select TOTLOC from tbs_proj where id = "
 					+ docid;
+			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
+			String amount = queryAmount.uniqueResult().toString();
+			float tm = Float.valueOf(amount);
+			if (tm > 20000000.0) {
+				// 董事长审批
+				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
+				SQLQuery sqlquery = session.createSQLQuery(sql);
+				users = sqlquery.list();
+			} else {
+				// 总经理审批
+				String sql = "select account from tbs_approver where title like '总经理' and deptname = '总经理办公室' ";
+				SQLQuery sqlquery = session.createSQLQuery(sql);
+				users = sqlquery.list();
+			}
+		}
+		if (cn.equals("决策人审批")&& pname.equals("compsry")) {
+			String sqlProjid = "select distinct proj_id from tbs_projcompsry where id = "
+					+ docid;
+			SQLQuery queryProjid = session.createSQLQuery(sqlProjid);
+			String projid = queryProjid.uniqueResult().toString();
+			String sqlAmount = "select TOTLOC from tbs_proj where id = "
+					+ projid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
@@ -270,9 +292,9 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
-		if (cn.equals("风管委员会秘书录入“风管委员会决议单”")
+		if (cn.equals("评审会秘书录入“会议决议单”")
 				&& (pname.equals("ireginsp") || pname.equals("perinsp"))) {
-			String sql = "select account from tbs_approver where title = '风险管理委员会秘书' ";// 3月15日																					
+			String sql = "select account from tbs_approver where title = '评审会秘书' ";// 3月15日																					
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
@@ -372,7 +394,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("业务审核委员会秘书录入会议决议") && pname.equals("compsry")) {
-			String sql = "select account from tbs_approver where title = '业务审核委员会秘书' ";
+			String sql = "select account from tbs_approver where title = '评审会秘书' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}

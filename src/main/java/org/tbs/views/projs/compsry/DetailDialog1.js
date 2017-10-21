@@ -81,6 +81,7 @@ var inittotloc;
 					view.get("#bizmemo").set("visible",true);
 					view.get("#bizmemo").set("readOnly",true);
 				}	
+				
 				if (nodename =="业务审核委员会秘书录入会议决议"){
 					view.get("#tabControlMain").set("currentIndex",1);
 					view.get("#dataSetTbsProjCompsry").set("readOnly",false);

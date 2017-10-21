@@ -1449,21 +1449,25 @@
                   <Property name="trigger">ddlTbsCustomer</Property>
                   <Editor/>
                 </AutoFormElement>
-                <Label/>
+                <AutoFormElement>
+                  <Property name="name">fundproj</Property>
+                  <Property name="property">fundproj</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <Label>
+                  <Property name="visible">false</Property>
+                </Label>
                 <AutoFormElement>
                   <Property name="name">tbsBasConsway</Property>
                   <Property name="property">tbsBasConsway</Property>
                   <Property name="trigger">ddlTbsBasConsway</Property>
+                  <Property name="visible">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">acptdate</Property>
                   <Property name="property">acptdate</Property>
-                  <Editor/>
-                </AutoFormElement>
-                <AutoFormElement>
-                  <Property name="name">fundproj</Property>
-                  <Property name="property">fundproj</Property>
+                  <Property name="visible">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement layoutConstraint="colSpan:2">

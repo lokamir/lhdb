@@ -364,6 +364,11 @@
     </DataType>
     <DataType name="datatypeTbsCustomer" parent="global:dataTypeTbsCustomer">
       <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="projrol">
+        <Property name="label">追偿收入（元）</Property>
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="datatypeTbsBasConsway" parent="global:dataTypeTbsBasConsway">
       <Property name="defaultDisplayProperty">name</Property>
@@ -614,6 +619,11 @@
               <DataColumn>
                 <Property name="property">tbsCustomer</Property>
                 <Property name="name">tbsCustomer</Property>
+                <Property name="width">180</Property>
+              </DataColumn>
+              <DataColumn>
+                <Property name="property">tbsCustomer.projrol</Property>
+                <Property name="name">tbsCustomer.projrol</Property>
                 <Property name="width">180</Property>
               </DataColumn>
               <DataColumn name="date">

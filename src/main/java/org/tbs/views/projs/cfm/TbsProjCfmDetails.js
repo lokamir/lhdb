@@ -35,6 +35,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 	if (fromAppr && !id) {
 		datasetTbsProj.flushAsync();
 	}
+	
 
 };
 
@@ -233,7 +234,6 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					}else if(view.get("#autoformCfm2").get("entity")){
 						view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}
-					//view.get("#tabControlMain").set("currentIndex",3);
 				 	var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
@@ -251,6 +251,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    	"elements.by2.labelAlign":"right"
 				    	});
 				    }
+				    //getSum();
 				    view.get("#tabControlMain").set("currentIndex",3);
 				    DialogTbsProjCfm2.set("readOnly", false);
 				    dataPilotTbsProjCfm2.set("visible", true);
@@ -314,6 +315,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
  */
 //2017-06-23 新增 决议审批autoformCfm自动统计票数
 /** @Bind #tabCfm1r2.onClick */
+/** @Bind #dataSetTbsProjcfm1.onLoadData */
 !function(self){
 	if(taskName == '评审会秘书录入会议决议单'){
 	var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
@@ -1036,3 +1038,47 @@ function GetUrlParam(name) {
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
 };
 
+
+function getSum(){
+var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
+var type = view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype");
+var agree = 0;
+var opoose = 0;
+var waiver = 0;
+var debarb = 0;
+var tobe = 0;
+var actbe = 0;
+var nobe = 0;
+datasetTbsProjOpinion1r2.each(function(entity){
+	if(entity.get("outcome") == "同意"){
+		agree++;
+		tobe++;
+	}else if(entity.get("outcome") == "反对"){
+		opoose++;
+		tobe++;
+	}else if(entity.get("outcome") == "弃权"){
+		waiver++;
+		tobe++;
+	}else if(entity.get("outcome") == "回避"){
+		debarb++;
+		tobe++;
+	}else if(entity.get("outcome") == "缺席"){
+		nobe++;
+		tobe++;
+	}else{
+		waiver++;
+		tobe++;
+	}
+});
+actbe = tobe - nobe;
+if(type == 1){
+	var autoformCfm1 = view.get("#autoformCfm1");
+	autoformCfm1.get("entity").set("tobe",tobe);
+	autoformCfm1.get("entity").set("actbe",actbe);
+	autoformCfm1.get("entity").set("nobe",nobe);
+	autoformCfm1.get("entity").set("debarb",debarb);
+	autoformCfm1.get("entity").set("waiver",waiver);
+	autoformCfm1.get("entity").set("opoose",opoose);
+	autoformCfm1.get("entity").set("agree",agree);
+	}
+};

@@ -922,12 +922,12 @@
       <PropertyDef name="bdf2Dept">
         <Property name="dataType">dataTypeBdf2Dept</Property>
         <Property name="label">业务部门</Property>
-        <Property name="readOnly">true</Property>
+        <Property name="readOnly">false</Property>
       </PropertyDef>
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
         <Property name="label">部门经理</Property>
-        <Property name="readOnly">true</Property>
+        <Property name="readOnly">false</Property>
       </PropertyDef>
     </DataType>
   </Model>
@@ -1035,7 +1035,7 @@
             <AutoFormElement>
               <Property name="name">sn</Property>
               <Property name="property">sn</Property>
-              <Property name="readOnly">true</Property>
+              <Property name="readOnly">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
@@ -1075,7 +1075,7 @@
       </ControlTab>
       <ControlTab id="tabRiskProjcfm">
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
-        <Property name="caption">风控会议决议单</Property>
+        <Property name="caption">会议决议单</Property>
         <Property name="visible">false</Property>
         <Container id="ContainerAutoformTbsRiskProjcfm">
           <AutoForm id="autoformTbsRiskProjcfm">
@@ -1086,6 +1086,7 @@
             <AutoFormElement>
               <Property name="name">sn</Property>
               <Property name="property">sn</Property>
+              <Property name="readOnly">true</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement layoutConstraint="colSpan:2">
@@ -1120,11 +1121,13 @@
             <AutoFormElement>
               <Property name="name">bdf2Dept</Property>
               <Property name="property">bdf2Dept</Property>
+              <Property name="trigger">DropDownBdf2Dept</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">bdf2User</Property>
               <Property name="property">bdf2User</Property>
+              <Property name="trigger">DropDownBdf2User</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement layoutConstraint="colSpan:3">

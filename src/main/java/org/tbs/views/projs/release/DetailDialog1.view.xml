@@ -798,7 +798,7 @@
       </PropertyDef>
       <PropertyDef name="rlsdate">
         <Property name="dataType">Date</Property>
-        <Property name="label">发生日期</Property>
+        <Property name="label">解保日期</Property>
       </PropertyDef>
       <PropertyDef name="faloc">
         <Property name="dataType">BigDecimal</Property>
@@ -982,6 +982,13 @@
               <Editor>
                 <TextEditor id="rlstotloc"/>
               </Editor>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">rlsdate</Property>
+              <Property name="property">rlsdate</Property>
+              <Property name="labelWidth">150</Property>
+              <Property name="labelPosition">top</Property>
+              <Editor/>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">lnrp</Property>

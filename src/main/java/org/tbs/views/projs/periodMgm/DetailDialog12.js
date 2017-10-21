@@ -89,7 +89,7 @@ var projcheckby2;//表示是否生成过决议单
 };
 
 /** @Bind #ajaxActionGetMenu.onSuccess */ 
-!function(self, dataSetTbsProj,listDdlOutcome,tabRiskProjcfm){
+!function(self, dataSetTbsProj,listDdlOutcome,tabRiskProjcfm,autoformTbsRiskProjcfm){
 	var tabInAppr = view.get("#tabInAppr");
 	var projid = view.get("#dataSetTbsProjCheck").getData("#").get("tbsProj.id"); 
 	view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
@@ -108,7 +108,8 @@ var projcheckby2;//表示是否生成过决议单
 		tabInAppr.set("visible", true);
 		view.get("#dataSetTbsProjCheck").getData("#").set("valid",3);
 	}
-	if (valiables.node == "风管委员会秘书录入“风管委员会决议单”") {
+	if (valiables.node == "评审会秘书录入“会议决议单”") {
+		
 		view.get("#tabControlMain").set("currentIndex",2);
 		listDdlOutcome.set("items", [ "确认" ]);
 		tabInAppr.set("visible", true);
@@ -153,6 +154,21 @@ var projcheckby2;//表示是否生成过决议单
 /** @Bind #buttonClose.onClick */
 !function(self){
 	view.get("#dialogTbsProjundwrt").hide();
+};
+
+/** @Bind #dataSetTbsProjCheck.onLoadData */
+!function(self, arg, autoformTbsRiskProjcfm){
+debugger;
+if(autoformTbsRiskProjcfm.get("entity")){
+	autoformTbsRiskProjcfm.set({
+    	"elements.by3.readOnly":false,
+    	"elements.by3.label":"会议审议单编号           "+view.get("#dataSetTbsProj").getData("#.tbsRiskProjcfmSet.sn").substring(0,15),
+    	"elements.by3.labelWidth":270,
+    	"elements.by3.labelSpacing":0,
+    	//"elements.by3.width":30,
+    	"elements.by3.labelAlign":"right"
+    	});
+    }
 };
 
 /*=======================发起流程===================*/

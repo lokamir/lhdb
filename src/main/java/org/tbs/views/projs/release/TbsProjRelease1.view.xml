@@ -449,6 +449,7 @@
       </PropertyDef>
       <PropertyDef name="rlsdate">
         <Property name="dataType">Date</Property>
+        <Property name="label">解保日期</Property>
       </PropertyDef>
     </DataType>
   </Model>
@@ -531,6 +532,9 @@
               </ColumnGroup>
               <DataColumn name="lnrp">
                 <Property name="property">lnrp</Property>
+              </DataColumn>
+              <DataColumn name="rlsdate">
+                <Property name="property">rlsdate</Property>
               </DataColumn>
               <DataColumn name="valid">
                 <Property name="property">valid</Property>

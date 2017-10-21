@@ -22,13 +22,13 @@
       <sequence-flow to="是否上会"/>
    </action>
    <end g="223,749,32,62" terminate="true" name="结束"/>
-   <task g="74,604,328,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="不定期检查-风管委员会秘书录入“风管委员会议决议单”" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="风管委员会秘书录入“风管委员会决议单”">
+   <task g="74,604,328,50" allow-specify-assignee="false" task-type="Countersign" countersign-multiplicity="1" label="不定期检查-评审会秘书录入“会议决议单”" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="评审会秘书录入“会议决议单”">
       <description>${projName}</description>
       <sequence-flow to="结束" g="-36,-20" name="确认"/>
    </task>
    <task g="179,504,115,50" allow-specify-assignee="false" task-type="Normal" label="不定期检查-风管总经理决定是否上会" assignment-handler-bean="getApprover" url="org.tbs.views.projs.periodMgm.DetailDialog12.d" assignment-type="Handler" name="是否上会">
       <description>${projName}</description>
-      <sequence-flow to="风管委员会秘书录入“风管委员会决议单”" g="-26,-5" name="是"/>
+      <sequence-flow to="评审会秘书录入“会议决议单”" g="-26,-5" name="是"/>
       <sequence-flow to="结束" g="72,528;73,780:10,-121" name="否"/>
    </task>
 </uflo-process>
