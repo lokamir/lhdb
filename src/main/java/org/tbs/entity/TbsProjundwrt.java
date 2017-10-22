@@ -69,6 +69,12 @@ public class TbsProjundwrt implements Serializable {
 	 */
 	
 	private BigDecimal appotloc;
+	
+	/**
+	 * 在保额（元）在保额=承保发生额-本承保单累计还款额
+	 */
+	
+	private BigDecimal zbe;
 
 	/**
 	 * 放款方式。【一次性放款，多次放款】.来自tbs_proj:放款方式。【一次性放款，多次放款】.来自tbs_proj
@@ -226,6 +232,7 @@ public class TbsProjundwrt implements Serializable {
 			BigDecimal appnfaloc,
 			BigDecimal appotloc,
 			BigDecimal apptotloc,
+			BigDecimal zbe,
 			Date bdate,Date edate,Date undbdate,Date undedate,
 			String loantype, String loanmem, String repay,
 			BigDecimal repayinper, String repaymem, int periodCfm,
@@ -262,6 +269,7 @@ public class TbsProjundwrt implements Serializable {
 		this.appnfaloc = appnfaloc;
 		this.appotloc = appotloc;
 		this.apptotloc = apptotloc;
+		this.zbe = zbe;
 		this.loantype = loantype;
 		this.loanmem = loanmem;
 		this.repay = repay;
@@ -398,6 +406,15 @@ public class TbsProjundwrt implements Serializable {
 	@Column(name = "APPOTLOC")
 	public BigDecimal getAppotloc() {
 		return appotloc;
+	}
+	
+	public void setZbe(BigDecimal zbe) {
+		this.zbe = zbe;
+	}
+	
+	@Column(name = "ZBE")
+	public BigDecimal getZbe() {
+		return zbe;
 	}
 
 	public void setLoantype(String loantype) {
@@ -803,7 +820,7 @@ public class TbsProjundwrt implements Serializable {
 				+ ",timestampInput=" + timestampInput + ",timestampUpdate="
 				+ timestampUpdate + ",keyinId=" + keyinId + ",projSn=" + projSn
 				+ ",appfaloc=" + appfaloc
-				+ ",appnfaloc=" + appnfaloc + ",appotloc=" + appotloc + ",loantype=" + loantype
+				+ ",appnfaloc=" + appnfaloc + ",appotloc=" + appotloc + ",zbe=" + zbe + ",loantype=" + loantype
 				+ ",loanmem=" + loanmem + ",repay=" + repay + ",repayinper="
 				+ repayinper + ",repaymem=" + repaymem + ",periodCfm="
 				+ periodCfm + ",gatrate=" + gatrate + ",psfy=" + psfy + ",zxfy=" + zxfy + ",financial=" + financial + ",gatreckon=" + gatreckon

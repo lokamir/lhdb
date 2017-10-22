@@ -200,6 +200,9 @@
         <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
         <Property name="parameter">$${this.id}</Property>
       </Reference>
+      <PropertyDef name="zbe">
+        <Property name="label">在保额</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
       <Property name="defaultDisplayProperty">name</Property>
@@ -1001,6 +1004,11 @@
                   <Property name="name">valid</Property>
                   <Property name="property">valid</Property>
                   <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="property">zbe</Property>
+                  <Property name="name">zbe</Property>
                   <Editor/>
                 </AutoFormElement>
               </AutoForm>

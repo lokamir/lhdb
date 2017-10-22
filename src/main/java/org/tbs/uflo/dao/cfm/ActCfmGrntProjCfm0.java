@@ -81,7 +81,7 @@ public class ActCfmGrntProjCfm0 implements ActionHandler {
 	    // insert attendees for cfm0
 	    String sqlInsert = "insert into tbs_proj_opinion(PROJ_ID,CFM0_ID,CFMTYPE,TIMESTAMP_INPUT,UID)" +
 	    		" select " + businessId + ", " + projcfm0Id + "," + 0 + ", '" + fNow + "'," +
-		    "brb.uid from (select uid from tbs_approver " + "where title like '%业务审核委员会%') brb;";
+		    "brb.uid from (select uid from tbs_approver " + "where title like '%业务审核委员会成员%') brb;";
 	    SQLQuery queryInsert = session.createSQLQuery(sqlInsert);
 	    queryInsert.executeUpdate();
 	    
@@ -90,7 +90,7 @@ public class ActCfmGrntProjCfm0 implements ActionHandler {
 	    		" b.title like '%部门经理%' and a.username_='" + promoter + "' ";
 	    String sqlUid1 = "select UID from tbs_approver where title like '总经理' and deptname = '总经理办公室' ";
 	    String sqlUid2 = "select UID from tbs_approver where trim(title) in ('分管风管总经理') ";
-	    String sqlUid3 = "select UID from tbs_approver where trim(title) in ('风管经理','风险管理部门经理[副]') ";
+	    String sqlUid3 = "select UID from tbs_approver where trim(title) in ('风管经理','风险管理部门经理[副]','风险管理部门经理') ";
 //	    SQLQuery sqlquery = session.createSQLQuery(sql);
 //	    String dhID = sqlquery.uniqueResult().toString();
 	    
