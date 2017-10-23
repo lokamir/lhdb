@@ -153,6 +153,18 @@ if(currentTab.get(&quot;name&quot;) == &quot;todo&quot;){&#xD;
       <PropertyDef name="businessId">
         <Property name="dataType">String</Property>
       </PropertyDef>
+      <PropertyDef name="progress">
+        <Property name="dataType">Integer</Property>
+      </PropertyDef>
+      <PropertyDef name="rootProcessInstanceId">
+        <Property name="dataType">long</Property>
+      </PropertyDef>
+      <PropertyDef name="opinion">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="dueActionDate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="HistoryTask">
       <Property name="creationType">com.bstek.uflo.model.HistoryTask</Property>
@@ -296,7 +308,6 @@ if(name == &quot;todo&quot;){&#xD;
             </ToolBarButton>
             <ToolBarButton id="buttonProcess">
               <ClientEvent name="onClick">var current = view.id(&quot;dataSetTodoTask&quot;).getData(&quot;#&quot;);&#xD;
-var histask = view.id(&quot;dataSetHistoryTask&quot;).getData(&quot;#&quot;);&#xD;
 if(!current){&#xD;
 	dorado.MessageBox.alert(&quot;没有任务可处理！&quot;);&#xD;
 }&#xD;
@@ -307,7 +318,7 @@ var processId = current.get(&quot;processId&quot;);&#xD;
 var businessId = current.get(&quot;businessId&quot;);&#xD;
 var taskName = current.get(&quot;taskName&quot;);&#xD;
 var nodeName = current.get(&quot;nodeName&quot;);&#xD;
-var rootId = histask.get(&quot;rootProcessInstanceId&quot;);&#xD;
+var rootId = current.get(&quot;rootProcessInstanceId&quot;);&#xD;
 view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName + &quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;rootId=&quot; + rootId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
 view.id(&quot;dialogCompleteTask&quot;).show();</ClientEvent>
               <Property name="caption">处理任务</Property>

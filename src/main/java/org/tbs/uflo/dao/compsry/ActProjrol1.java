@@ -81,17 +81,10 @@ public class ActProjrol1 implements ActionHandler {
 			//更新代偿请款单追偿收入金额
 			BigDecimal sub = comproj_zcsr_Big.subtract(compsrypay_dcje_Big);
 			if(sub.signum() >0){
-				String sql_compsry_pay = "update tbs_projcompsry_pay set BCDCZSR="+comproj_zcsr_Big+" where valid = 1 and del = 0 and proj_id="+projid;
+				String sql_compsry_pay = "update tbs_projcompsry_pay set BCDCZSR="+sub+" where valid = 1 and del = 0 and proj_id="+projid;
 				SQLQuery sqlquery_compsry_pay = session.createSQLQuery(sql_compsry_pay);
 				sqlquery_compsry_pay.executeUpdate();
 				String sql_compsry_pay_zero = "update tbs_projcompsry_pay set dcye="+0+" where valid = 1 and del = 0 and proj_id="+projid;
-				SQLQuery sqlquery_compsry_pay_zero = session.createSQLQuery(sql_compsry_pay_zero);
-				sqlquery_compsry_pay_zero.executeUpdate();
-			}else{
-				String sql_compsry_pay = "update tbs_projcompsry_pay set dcye="+comproj_zcsr_Big+" where valid = 1 and del = 0 and proj_id="+projid;
-				SQLQuery sqlquery_compsry_pay = session.createSQLQuery(sql_compsry_pay);
-				sqlquery_compsry_pay.executeUpdate();
-				String sql_compsry_pay_zero = "update tbs_projcompsry_pay set BCDCZSR="+0+" where valid = 1 and del = 0 and proj_id="+projid;
 				SQLQuery sqlquery_compsry_pay_zero = session.createSQLQuery(sql_compsry_pay_zero);
 				sqlquery_compsry_pay_zero.executeUpdate();
 			}
