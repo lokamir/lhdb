@@ -181,6 +181,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				listDdlOutcome.set("items",["会议","签批"]);
 				tabInAppr.set("visible", true);
 				groupboxCfm0Appr.set("visible", true);
+				view.get("#tabControlMain").set("currentIndex",2);
 				uploadbutton="";
 			} else if(psid == 36) {
 				tabInAppr.set("visible", true);

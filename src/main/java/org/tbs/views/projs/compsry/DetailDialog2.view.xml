@@ -1096,8 +1096,8 @@
     </DataSet>
     <DataSet id="dataSetHistoryTask">
       <Property name="dataType">[dataTypeTbsFunApprc]</Property>
-      <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
-      <Property name="parameter">${request.getParameter(&quot;processInstanceId&quot;)}</Property>
+      <Property name="dataProvider">getHisTasks#getHisTasksByRootId</Property>
+      <Property name="parameter">${request.getParameter(&quot;rootId&quot;)}</Property>
     </DataSet>
     <VerticalTabControl id="tabControlMain">
       <Property name="verticalText">true</Property>

@@ -292,6 +292,7 @@ if(name == &quot;todo&quot;){&#xD;
             </ToolBarButton>
             <ToolBarButton id="buttonProcess">
               <ClientEvent name="onClick">var current = view.id(&quot;dataSetTodoTask&quot;).getData(&quot;#&quot;);&#xD;
+var histask = view.id(&quot;dataSetHistoryTask&quot;).getData(&quot;#&quot;);&#xD;
 if(!current){&#xD;
 	dorado.MessageBox.alert(&quot;没有任务可处理！&quot;);&#xD;
 }&#xD;
@@ -302,8 +303,9 @@ var processId = current.get(&quot;processId&quot;);&#xD;
 var businessId = current.get(&quot;businessId&quot;);&#xD;
 var taskName = current.get(&quot;taskName&quot;);&#xD;
 var nodeName = current.get(&quot;nodeName&quot;);&#xD;
+var rootId = histask.get(&quot;rootProcessInstanceId&quot;);&#xD;
 view.id(&quot;dialogCompleteTask&quot;).show();&#xD;
-view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName +&quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
+view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName +&quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;rootId=&quot; + rootId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
 </ClientEvent>
               <Property name="caption">处理任务</Property>
               <Property name="icon">url(skin>common/icons.gif) -20px 0px</Property>

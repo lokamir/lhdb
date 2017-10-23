@@ -334,19 +334,19 @@
       </PropertyDef>
       <PropertyDef name="cfmfaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmnfaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmotloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmtotloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="sn">
         <Property></Property>

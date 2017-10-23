@@ -50,6 +50,32 @@ function GetCRStatus(ds){
 		readonly = "true";
 		self.set("readOnly",false);  
 		view.get("#tabCN").set("visible",true);
+		if(taskName =='出纳费用确认'){
+			//var cns = view.get("#cnAutoform").get("entity"); 
+			var cns = view.get("#dataSetTbsProjundwrt").getData("#"); 
+			var month = view.get("#dataSetTbsProjundwrt").getData("#.by3");
+			var apptotloc = view.get("#dataSetTbsProjundwrt").getData("#.apptotloc");
+			var gatrateu = cns.get("gatrateu");
+			switch(gatrateu)
+			{
+			case "‰/月":
+				var gatrate = cns.get("gatrate");
+				var gatreckon = gatrate*apptotloc*month/1000;
+				cns.set("gatreckon",gatreckon);
+				break;
+			case "‰/笔":
+				var gatrate = cns.get("gatrate");
+				var gatreckon = gatrate*apptotloc/1000;
+				cns.set("gatreckon",gatreckon);
+				break;
+			case "%/年":
+				var gatrate = cns.get("gatrate");
+				var gatreckon = gatrate*apptotloc*month/1200;
+				cns.set("gatreckon",gatreckon);
+				break;
+			}
+		}
+		view.get("#tabMain").set("currentIndex",2);
 	}else{
 		tabMain.set("currentIndex", 0);
 		tabInAppr.set("visible",true);
@@ -95,11 +121,16 @@ function GetCRStatus(ds){
 				dorado.MessageBox.alert("含有融资性担保，需要选择银行",{title:"趣博信息科技"});
 				return false;
 				};	
-			if(!data.get("loc") || !data.get("tbsBasBizvar.name")){
+			if(!data.get("tbsBasBizvar.name") ){
 				arg.processDefault=false;
-				dorado.MessageBox.alert("承保业务品种和金额必填",{title:"趣博信息科技"});
+				dorado.MessageBox.alert("承保业务品种必填",{title:"趣博信息科技"});
 				return false;
-				};
+				};	
+			if(!data.get("loc") ){
+				arg.processDefault=false;
+				dorado.MessageBox.alert("承保金额不能为0，如果不需要此业务大类，可以点击删除按钮",{title:"趣博信息科技"});
+				return false;
+				};	
 			});
 		
 		updateActionSave.execute();
@@ -136,8 +167,8 @@ function GetCRStatus(ds){
 	var appfaloc = crs.get("appfaloc"); var appnfaloc = crs.get("appnfaloc"); var appotloc = crs.get("appotloc"); 
 	var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");
 	if (appfaloc == 0 && appnfaloc == 0 && appotloc == 0 ) {
-		buttonResend.set("disabled",true);
-		buttonAppr.set("disabled",true);
+		//buttonResend.set("disabled",true);
+		//buttonAppr.set("disabled",true);
 		dorado.MessageBox.alert("对不起，【本次承保金额】不能都为 【0.00】 ",{title:"趣博信息科技"});
 	}else if (appfaloc > vfaloc || appnfaloc > vnfaloc || appotloc > votloc ){
 		buttonResend.set("disabled",true);	

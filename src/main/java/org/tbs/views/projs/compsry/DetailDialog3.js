@@ -34,6 +34,7 @@ var undwrtid ;
 		view.get("#tbsCustomer").set("visible",false);
 		view.get("#projname").set("visible",true);
 		view.get("#customername").set("visible",true);
+		autoform.getElement("tbsCustomer.projrol").set("visible",false);
 		dataSet.insert();
 		autoform.set("entity.projname",projname);
 		autoform.set("entity.customername",customername);
@@ -51,6 +52,10 @@ var undwrtid ;
 			view.get("#dataSetTbsProjrol").set("readOnly",true);
 			view.get("#btnSubmit").set("visible", false);
 			view.get("#btnSave").set("visible",false);
+		};
+		if (projrolvalid == "1"){
+			var autoform = view.get("#AutoFormProjrol");
+			autoform.getElement("tbsCustomer.projrol").set("visible",true);
 		};
 		view.get("#tabInAppr").set("visible",false);
 		view.get("#btnSave").set("action","saveProjrol");

@@ -73,6 +73,14 @@ public class GetHisTasks extends HibernateDao {
     			+ processId + "' order by id desc";
     	return this.query(hql);
     }
+    @DataProvider
+    public Collection<TbsFunApprc> getHisTasksByRootId(String rootId)
+    		throws Exception {
+    	String hql = "";
+    	hql = "from " + TbsFunApprc.class.getName() + " where rootpId='"
+    			+ rootId + "' order by id desc";
+    	return this.query(hql);
+    }
     
     @DataProvider
     public Collection<TbsFunApprc> getHisTasksByID(String Id)

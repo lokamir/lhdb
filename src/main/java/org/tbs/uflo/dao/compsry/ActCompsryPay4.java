@@ -60,7 +60,7 @@ public class ActCompsryPay4 implements ActionHandler {
 			SQLQuery sqlquery_compsrypay_zbe = session.createSQLQuery(sql_compsrypay_zbe);
 			sqlquery_compsrypay_zbe.executeUpdate();
 			//更新承保单在保额
-			String sql_projundwrt_zbe = "update tbs_projundwrt set valid =1 where id="+undwrtid;;
+			String sql_projundwrt_zbe = "update tbs_projundwrt set by4 =1 where id="+undwrtid;;
 			SQLQuery sqlquery_projundwrt_zbe = session.createSQLQuery(sql_projundwrt_zbe);
 			sqlquery_projundwrt_zbe.executeUpdate();
 					

@@ -211,6 +211,10 @@
     </DataType>
     <DataType name="dataTypeTbsCustomer" parent="global:dataTypeTbsCustomer">
       <Property name="defaultDisplayProperty">name</Property>
+      <PropertyDef name="projrol">
+        <Property name="label">追偿收入(元)</Property>
+        <Property name="dataType">BigDecimal</Property>
+      </PropertyDef>
       <Reference name="tbsProjundwrtSet"/>
     </DataType>
     <DataType name="dataTypeTbsBasConsway" parent="global:dataTypeTbsBasConsway">
@@ -1013,8 +1017,8 @@
     </DataSet>
     <DataSet id="dataSetHistoryTask">
       <Property name="dataType">[dataTypeTbsFunApprc]</Property>
-      <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
-      <Property name="parameter">${request.getParameter(&quot;processInstanceId&quot;)}</Property>
+      <Property name="dataProvider">getHisTasks#getHisTasksByRootId</Property>
+      <Property name="parameter">${request.getParameter(&quot;rootId&quot;)}</Property>
     </DataSet>
     <VerticalTabControl id="tabControlMain">
       <Property name="verticalText">true</Property>
@@ -1088,6 +1092,14 @@
               <Property name="name">projname</Property>
               <Property name="property">projname</Property>
               <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsCustomer.projrol</Property>
+              <Property name="property">tbsCustomer.projrol</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="visible">false</Property>
               <Property name="hideMode">display</Property>
               <Editor/>
             </AutoFormElement>

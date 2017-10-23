@@ -183,7 +183,7 @@ function BizvtCountting(ds,appfaloc,appnfaloc,appotloc,bizvtloc){
 	var appfaloc = crs.get("appfaloc"); var appnfaloc = crs.get("appnfaloc"); var appotloc = crs.get("appotloc");
 	var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");
 	if (appfaloc == 0 && appnfaloc == 0 && appotloc == 0 ) {
-		buttonSave.set("disabled",true);
+		//buttonSave.set("disabled",true);
 		dorado.MessageBox.alert("对不起，【本次承保金额】不能都为 【0.00】 ",{title:"趣博信息科技"});
 	} else if (appfaloc > vfaloc || appnfaloc > vnfaloc || appotloc > votloc){
 		dorado.MessageBox.alert("对不起，您输入的【本次承保金额】 大于【当前可用授信额度】，请重新录入！",{title:"趣博信息科技"});
@@ -389,9 +389,14 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 			dorado.MessageBox.alert("含有融资性担保，需要选择银行",{title:"趣博信息科技"});
 			return false;
 			};	
-		if(!data.get("loc") || !data.get("tbsBasBizvar.name")){
+		if(!data.get("tbsBasBizvar.name") ){
 			arg.processDefault=false;
-			dorado.MessageBox.alert("承保业务品种和金额必填",{title:"趣博信息科技"});
+			dorado.MessageBox.alert("承保业务品种必填",{title:"趣博信息科技"});
+			return false;
+			};	
+		if(!data.get("loc") ){
+			arg.processDefault=false;
+			dorado.MessageBox.alert("承保金额不能为0，如果不需要此业务大类，可以点击删除按钮",{title:"趣博信息科技"});
 			return false;
 			};	
 		});
