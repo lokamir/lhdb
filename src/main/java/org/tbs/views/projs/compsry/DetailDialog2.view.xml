@@ -1456,24 +1456,28 @@
                 </AutoFormElement>
                 <Label>
                   <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                 </Label>
                 <AutoFormElement>
                   <Property name="name">tbsBasConsway</Property>
                   <Property name="property">tbsBasConsway</Property>
                   <Property name="trigger">ddlTbsBasConsway</Property>
                   <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">acptdate</Property>
                   <Property name="property">acptdate</Property>
                   <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement layoutConstraint="colSpan:2">
                   <Property name="name">tbsBasGovfund</Property>
                   <Property name="property">tbsBasGovfund</Property>
                   <Property name="trigger">ddlTbsBasGovfund</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -1734,6 +1738,7 @@
                     <DataColumn name="tbsBasBank_S">
                       <Property name="property">tbsBasBank_S</Property>
                       <Property name="trigger">DropdownTbsBankS</Property>
+                      <Property name="visible">false</Property>
                     </DataColumn>
                   </DataGrid>
                 </Container>

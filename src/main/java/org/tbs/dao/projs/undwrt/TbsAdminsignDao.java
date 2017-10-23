@@ -130,7 +130,7 @@ public class TbsAdminsignDao extends HibernateDao {
 			Map<String,Object> variables = new HashMap<String,Object>();
 			variables.put("reject",0);
 			variables.put("projSn", adminsign.getProjSn());
-			variables.put("adsign", adminsign.getBdf2User().getUsername());
+			//variables.put("adsign", adminsign.getBdf2User().getUsername());
 			variables.put("projName", adminsign.getTbsProj().getTbsCustomer().getName());
 			info.setVariables(variables);
 			ProcessInstance pi = processClient.startProcessByName("adminsign", info);

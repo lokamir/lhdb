@@ -28,14 +28,21 @@ public class ActCompsryPay4 implements ActionHandler {
 			//====全部审批通过
 			TbsProjcompsryPay tprls = (TbsProjcompsryPay) session.get(TbsProjcompsryPay.class, Integer.valueOf(docid));
 			int projid = tprls.getTbsProj().getId();
-			int cusid = tprls.getTbsProj().getTbsCustomer().getId();
+			int undwrtid = tprls.getTbsProjundwrt().getId();
+			//int cusid = tprls.getTbsProj().getTbsCustomer().getId();
 
 			//获取客户表单代偿余额
-			String sql_cusCompsry = "select compsry from tbs_customer where id =" +cusid;
+			/*String sql_cusCompsry = "select compsry from tbs_customer where id =" +cusid;
 			SQLQuery sqlquery_cusCompsry = session.createSQLQuery(sql_cusCompsry);
-			BigDecimal cusCompsryBig = (BigDecimal)sqlquery_cusCompsry.uniqueResult();
+			BigDecimal cusCompsryBig = (BigDecimal)sqlquery_cusCompsry.uniqueResult();*/
+			
+			//获取代偿请款单单代偿总金额
+			String sql_compsrypay_dcje = "SELECT BCDCZJE FROM tbs.tbs_projcompsry_pay where id="+docid+" and proj_id="+projid;
+			SQLQuery sqlquery_compsrypay_dcje = session.createSQLQuery(sql_compsrypay_dcje);
+			BigDecimal compsrypay_dcje_Big = (BigDecimal)sqlquery_compsrypay_dcje.uniqueResult();
+			
 			//更新代偿请款单代偿余额
-			String sql_compsrypay_dcye = "update tbs_projcompsry_pay set DCYE="+cusCompsryBig+" where id="+docid+" and proj_id="+projid;;
+			String sql_compsrypay_dcye = "update tbs_projcompsry_pay set DCYE="+compsrypay_dcje_Big+" where id="+docid+" and proj_id="+projid;;
 			SQLQuery sqlquery_compsrypay_dcye = session.createSQLQuery(sql_compsrypay_dcye);
 			sqlquery_compsrypay_dcye.executeUpdate();
 			
@@ -48,10 +55,14 @@ public class ActCompsryPay4 implements ActionHandler {
 			SQLQuery sqlquery_vtotloc = session.createSQLQuery(sql_vtotloc);
 			BigDecimal vtotlocBig = (BigDecimal)sqlquery_vtotloc.uniqueResult();
 			BigDecimal zbe = inittotlocBig.subtract(vtotlocBig);
-			//更新代偿请款单代偿余额
+			//更新代偿请款单在保额
 			String sql_compsrypay_zbe = "update tbs_projcompsry_pay set ZBE="+zbe+" where id="+docid+" and proj_id="+projid;;
 			SQLQuery sqlquery_compsrypay_zbe = session.createSQLQuery(sql_compsrypay_zbe);
 			sqlquery_compsrypay_zbe.executeUpdate();
+			//更新承保单在保额
+			String sql_projundwrt_zbe = "update tbs_projundwrt set valid =1 where id="+undwrtid;;
+			SQLQuery sqlquery_projundwrt_zbe = session.createSQLQuery(sql_projundwrt_zbe);
+			sqlquery_projundwrt_zbe.executeUpdate();
 					
 			
 		}

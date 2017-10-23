@@ -1617,6 +1617,7 @@
                     <DataColumn name="tbsBasBank_S">
                       <Property name="property">tbsBasBank_S</Property>
                       <Property name="trigger">DropdownTbsBankS</Property>
+                      <Property name="visible">false</Property>
                     </DataColumn>
                   </DataGrid>
                 </Container>
