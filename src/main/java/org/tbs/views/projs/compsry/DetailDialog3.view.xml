@@ -974,6 +974,56 @@
         <Property name="label">代偿请款单</Property>
       </PropertyDef>
     </DataType>
+    <DataType name="dataTypeTbsProjcompsryPay" parent="global:dataTypeTbsProjcompsryPay">
+      <PropertyDef name="zbe">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">在保额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="dcye">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">代偿余额</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bcdczje">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">本次代偿总金额（总）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bcdczbj">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">本次代偿总本金</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bcdczlx">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">本次代偿总利息</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bcdczsr">
+        <Property name="label">代偿总收入（元）</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+        <Property name="label">单据编号</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">int</Property>
+        <Property name="label">审批状态</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapValidFor2&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProjundwrt">
+        <Property name="dataType">dataTypeTbsProjundwrt</Property>
+      </PropertyDef>
+      <Reference name="tbsProjrolSet">
+        <Property name="dataProvider">tbsProjrolDao#loadByCompsryPayid</Property>
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataType">[dataTypeTbsProjrol]</Property>
+        <Property name="pageSize">15</Property>
+      </Reference>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -1096,8 +1146,8 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
-              <Property name="name">tbsCustomer.projrol</Property>
-              <Property name="property">tbsCustomer.projrol</Property>
+              <Property name="name">tbsProjcompsryPay.bcdczsr</Property>
+              <Property name="property">tbsProjcompsryPay.bcdczsr</Property>
               <Property name="readOnly">true</Property>
               <Property name="visible">false</Property>
               <Property name="hideMode">display</Property>

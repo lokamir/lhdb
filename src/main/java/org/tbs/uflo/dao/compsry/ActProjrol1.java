@@ -52,6 +52,7 @@ public class ActProjrol1 implements ActionHandler {
 			String arolename = tprls.getTbsProj().getBdf2User_A().getUsername();
 			String brolename = tprls.getTbsProj().getBdf2User_B().getUsername();
 			int undwrtid = tprls.getTbsProjundwrt().getId();
+			int projcompsry_pay_id = tprls.getTbsProjcompsryPay().getId();
 			
 			//更新状态
 			String sql="update tbs_projrol set valid=1 where id="+docid+" and proj_id="+projid;
@@ -64,29 +65,33 @@ public class ActProjrol1 implements ActionHandler {
 			
 			
 			//获取代偿请款单单代偿总金额
-			String sql_compsrypay_dcje = "SELECT sum(BCDCZJE) FROM tbs.tbs_projcompsry_pay where valid = 1 and del = 0 and proj_id="+projid;
+			String sql_compsrypay_dcje = "SELECT BCDCZJE FROM tbs.tbs_projcompsry_pay where valid = 1 and del = 0 and proj_id="+projid+" and ID ="+projcompsry_pay_id;
 			SQLQuery sqlquery_compsrypay_dcje = session.createSQLQuery(sql_compsrypay_dcje);
 			BigDecimal compsrypay_dcje_Big = (BigDecimal)sqlquery_compsrypay_dcje.uniqueResult();
 			
-			//更新代偿请款单代偿余额
-			String sql_compsrypay_dcye = "update tbs_projcompsry_pay set DCYE="+compsrypay_dcje_Big+" where valid = 1 and del = 0 and proj_id="+projid;
-			SQLQuery sqlquery_compsrypay_dcye = session.createSQLQuery(sql_compsrypay_dcye);
-			sqlquery_compsrypay_dcye.executeUpdate();
-			
 			//获取所有子表追偿申请单追偿收入总额
-			String sql_comprojrol_zcsr = "SELECT sum(BCZCZJE) FROM tbs.tbs_projrol  where valid = 1 and del = 0 and ID ="+docid+" and proj_id="+projid ;
+			String sql_comprojrol_zcsr = "SELECT sum(BCZCZJE) FROM tbs.tbs_projrol  where valid = 1 and del = 0 and projcompsry_pay_id ="+projcompsry_pay_id+" and proj_id="+projid ;
 			SQLQuery sqlquery_comprojrol_zcsr = session.createSQLQuery(sql_comprojrol_zcsr);
 			BigDecimal comproj_zcsr_Big = (BigDecimal)sqlquery_comprojrol_zcsr.uniqueResult();
-			
-			//更新代偿请款单追偿收入金额
-			BigDecimal sub = comproj_zcsr_Big.subtract(compsrypay_dcje_Big);
-			if(sub.signum() >0){
-				String sql_compsry_pay = "update tbs_projcompsry_pay set BCDCZSR="+sub+" where valid = 1 and del = 0 and proj_id="+projid;
+			BigDecimal dcye = compsrypay_dcje_Big.subtract(comproj_zcsr_Big);
+			//更新代偿请款单代偿余额
+			if (dcye.signum() > 0) {
+				String sql_compsrypay_dcye = "update tbs_projcompsry_pay set DCYE="
+						+ dcye
+						+ " where valid = 1 and del = 0 and proj_id="
+						+ projid
+						+ " and ID ="
+						+ projcompsry_pay_id;
+				SQLQuery sqlquery_compsrypay_dcye = session.createSQLQuery(sql_compsrypay_dcye);
+				sqlquery_compsrypay_dcye.executeUpdate();
+			}else{
+				//更新代偿请款单追偿收入金额
+				String sql_compsry_pay = "update tbs_projcompsry_pay set BCDCZSR="+dcye.multiply(new BigDecimal(-1))+" where valid = 1 and del = 0 and proj_id="+projid+" and ID ="+projcompsry_pay_id;
 				SQLQuery sqlquery_compsry_pay = session.createSQLQuery(sql_compsry_pay);
 				sqlquery_compsry_pay.executeUpdate();
-				String sql_compsry_pay_zero = "update tbs_projcompsry_pay set dcye="+0+" where valid = 1 and del = 0 and proj_id="+projid;
+				String sql_compsry_pay_zero = "update tbs_projcompsry_pay set dcye="+0+" where valid = 1 and del = 0 and proj_id="+projid+" and ID ="+projcompsry_pay_id;
 				SQLQuery sqlquery_compsry_pay_zero = session.createSQLQuery(sql_compsry_pay_zero);
-				sqlquery_compsry_pay_zero.executeUpdate();
+				sqlquery_compsry_pay_zero.executeUpdate();				
 			}
 			
 			//更新承保单在保额

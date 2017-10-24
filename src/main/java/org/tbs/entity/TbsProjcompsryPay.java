@@ -61,6 +61,9 @@ public class TbsProjcompsryPay implements Serializable {
 
 	
 	private BigDecimal bcdczlx;
+	
+	
+	private BigDecimal bcdczsr;
 
 	/**
 	 * 代偿日期:代偿日期
@@ -121,7 +124,7 @@ public class TbsProjcompsryPay implements Serializable {
 
 	public TbsProjcompsryPay(int id, String sn, int valid,
 			Date timestampInput, Date timestampUpdate, int keyinId,
-			BigDecimal zbe, BigDecimal dcye, BigDecimal bcdczje, BigDecimal bcdczbj, BigDecimal bcdczlx, Date date,
+			BigDecimal zbe, BigDecimal dcye, BigDecimal bcdczje, BigDecimal bcdczbj, BigDecimal bcdczlx, BigDecimal bcdczsr,Date date,
 			String memo, String by1, String by2, String by3, TbsProj tbsProj,
 			TbsProjcompsry tbsProjcompsry, TbsCustomer tbsCustomer,
 			Set<TbsProjrol> tbsProjrolSet, boolean del, TbsProjundwrt tbsProjundwrt,int cusId,
@@ -138,6 +141,7 @@ public class TbsProjcompsryPay implements Serializable {
 		this.bcdczje = bcdczje;
 		this.bcdczbj = bcdczbj;
 		this.bcdczlx = bcdczlx;
+		this.bcdczsr = bcdczsr;
 		this.date = date;
 		this.memo = memo;
 		this.by1 = by1;
@@ -259,6 +263,15 @@ public class TbsProjcompsryPay implements Serializable {
 	@Column(name = "BCDCZLX")
 	public BigDecimal getBcdczlx() {
 		return bcdczlx;
+	}
+	
+	public void setBcdczsr(BigDecimal bcdczsr) {
+		this.bcdczsr = bcdczsr;
+	}
+	
+	@Column(name = "BCDCZSR")
+	public BigDecimal getBcdczsr() {
+		return bcdczsr;
 	}
 
 	public void setDate(Date date) {
@@ -426,7 +439,7 @@ public class TbsProjcompsryPay implements Serializable {
 				+ ",timestampInput=" + timestampInput + ",timestampUpdate="
 				+ timestampUpdate + ",keyinId=" + keyinId + ",zbe=" + zbe + ",dcye=" + dcye
 				+ ",bcdczje=" + bcdczje + ",bcdczbj=" + bcdczbj + ",bcdczlx="
-				+ bcdczlx + ",date=" + date + ",memo=" + memo + ",by1=" + by1
+				+ bcdczlx + ",bcdczsr=" + bcdczsr + ",date=" + date + ",memo=" + memo + ",by1=" + by1
 				+ ",by2=" + by2 + ",by3=" + by3 + ",tbsProj=" + tbsProj
 				+ ",tbsProjcompsry=" + tbsProjcompsry + ",tbsProjrolSet=" + tbsProjrolSet
 				+ ",tbsProjundwrt=" + tbsProjundwrt 

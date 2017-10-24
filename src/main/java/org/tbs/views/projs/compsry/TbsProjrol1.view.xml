@@ -405,6 +405,9 @@
         <Property name="label">本次代偿总利息</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
+      <PropertyDef name="bcdczsr">
+        <Property name="label">代偿总收入（元）</Property>
+      </PropertyDef>
       <PropertyDef name="sn">
         <Property></Property>
         <Property name="label">单据编号</Property>
@@ -622,8 +625,8 @@
                 <Property name="width">180</Property>
               </DataColumn>
               <DataColumn>
-                <Property name="property">tbsCustomer.projrol</Property>
-                <Property name="name">tbsCustomer.projrol</Property>
+                <Property name="property">tbsProjcompsryPay.bcdczsr</Property>
+                <Property name="name">tbsProjcompsryPay.bcdczsr</Property>
                 <Property name="width">180</Property>
               </DataColumn>
               <DataColumn name="date">
