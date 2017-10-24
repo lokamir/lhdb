@@ -15,7 +15,7 @@ public class Bdf2DeptDao extends HibernateDao {
 		return this.query("from " + Bdf2Dept.class.getName());
 	}
 	
-	@DataProvider  //下拉框带筛选
+	@DataProvider  //下拉框带筛选的。
 	  public Collection<Bdf2Dept> getAllByName(String name) throws Exception {
 		if(StringHelper.isNotEmpty(name)){
 		    return this.query("from " + Bdf2Dept.class.getName() + " where name_ like '%" + name + "%'");
