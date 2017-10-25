@@ -11,7 +11,7 @@
         <Property name="background-color">${configure.getString(&quot;bdf2.mainFrameBackgroundColor&quot;)}</Property>
       </Property>
       <Property name="height">${configure.getString(&quot;bdf2.mainFrameBannerHeight&quot;)}</Property>
-      <Property name="width">100%</Property>
+      <Property name="width">90%</Property>
       <Container layout="hbox align:top" listener="spring:bdf2.frameTopListener#onInit" layoutConstraint="right">
         <Property name="contentOverflow">hidden</Property>
       </Container>
