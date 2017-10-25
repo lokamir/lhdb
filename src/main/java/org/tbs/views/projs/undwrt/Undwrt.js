@@ -203,7 +203,6 @@ function GetCRStatus(ds){
 /** @Bind #gatrateu.onPost */
 /** @Bind #gatrate.onPost */
 /** @Bind #appotloc.onPost */
-/** @Bind #tabCN.onClick */
 !function(self,arg,dataSetTbsProjundwrt){
 	var cns = view.get("#cnAutoform").get("entity"); 
 	var month = dataSetTbsProjundwrt.getData("#.by3");
