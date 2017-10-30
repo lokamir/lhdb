@@ -105,4 +105,15 @@ function GetCRStatus(ds){
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
 };
 
-	
+/*=======================请印审批经办人下拉框===================*/
+/** @Bind #DropDownBdf2User.onReady */
+!function(self){
+	var list=[] ;
+	var approver = view.get("#dataSetTbsApprover").getData();
+	approver.each(function(entity){
+		if(entity.get("title") =="行政经理" || entity.get("title") =="综合管理部门经理" ){
+			list.push(entity.get("cname"));
+		}
+	});
+	view.get("#dataSetBdf2User").set("parameter",list);
+};	

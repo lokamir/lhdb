@@ -110,6 +110,46 @@
         <Property name="displayFormat">Y-m-d H:i:s</Property>
       </PropertyDef>
     </DataType>
+    <DataType name="dataTypeTbsApprover" parent="global:dataTypeTbsApprover">
+      <PropertyDef name="bdf2User">
+        <Property name="dataType">dataTypeBdf2User</Property>
+        <Property name="label">审批人</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="account">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptid">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="deptname">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by4">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2Dept">
+        <Property name="dataType">dataTypeBdf2Dept</Property>
+        <Property name="label">部门</Property>
+      </PropertyDef>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -123,6 +163,16 @@
       <Property name="dataType">[datatypeTbsFunApprc]</Property>
       <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
       <Property name="parameter">${request.getParameter(&quot;processInstanceId&quot;)}</Property>
+    </DataSet>
+    <DataSet id="dataSetBdf2User">
+      <Property name="dataType">[dataTypeBdf2User]</Property>
+      <Property name="dataProvider">bdf2UserDao#getCName</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsApprover">
+      <Property name="dataType">[dataTypeTbsApprover]</Property>
+      <Property name="dataProvider">tbsApproverDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+      <Property name="pageSize">999</Property>
     </DataSet>
     <VerticalTabControl id="tabMain">
       <Property name="height">92%</Property>
@@ -233,7 +283,6 @@
                   <AutoFormElement>
                     <Property name="name">by2</Property>
                     <Property name="property">by2</Property>
-                    <Property name="label">请印人</Property>
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>
@@ -309,9 +358,14 @@
       <Tools/>
     </Dialog>
     <Container id="Ddl">
-      <Import id="DropDownBdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
       <Import id="TbsBasBank" src="org.tbs.views.funs.Dropdown#TbsBasBank"/>
       <Import id="ddlTbsProj" src="org.tbs.views.funs.Dropdown#TbsProj"/>
+      <DataSetDropDown id="DropDownBdf2User">
+        <Property name="dataSet">dataSetBdf2User</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="filterOnTyping">false</Property>
+        <Property name="dynaFilter">false</Property>
+      </DataSetDropDown>
     </Container>
     <AjaxAction id="ajaxActionAppr">
       <Property name="service">tbsAdminsignDao#ApprWF</Property>
