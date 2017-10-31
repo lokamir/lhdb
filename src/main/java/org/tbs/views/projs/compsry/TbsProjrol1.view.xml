@@ -628,6 +628,7 @@
                 <Property name="property">tbsProjcompsryPay.bcdczsr</Property>
                 <Property name="name">tbsProjcompsryPay.bcdczsr</Property>
                 <Property name="width">180</Property>
+                <Property name="visible">false</Property>
               </DataColumn>
               <DataColumn name="date">
                 <Property name="property">date</Property>
@@ -678,6 +679,11 @@
                     <DataColumn>
                       <Property name="property">dcye</Property>
                       <Property name="name">dcye</Property>
+                      <Property name="width">150</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="property">bcdczsr</Property>
+                      <Property name="name">bcdczsr</Property>
                       <Property name="width">150</Property>
                     </DataColumn>
                   </ColumnGroup>

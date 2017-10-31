@@ -37,6 +37,9 @@ function GetCRStatus(ds){
 		//self.set("readOnly",false);  
 		OpinionGroupBox.set("visible",false);
 		DocGroupBox.set("height","80%");
+		if(!self.getData("#").get("sn")){
+			self.getData("#").set("sn","锡联担保2017-B-WT");
+		}
 		uploadbutton ="";
 	}else{
 		tabMain.set("currentIndex", 0);

@@ -322,15 +322,15 @@
       </PropertyDef>
       <PropertyDef name="rlsnfaloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlsotloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlstotloc">
         <Property name="dataType">BigDecimal</Property>
-        <Property name="label">#,##0.00</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmfaloc">
         <Property name="dataType">BigDecimal</Property>
@@ -530,6 +530,33 @@
                   <Property name="dataSet">dataSetTbsProj</Property>
                   <Property name="readOnly">true</Property>
                   <Property name="dataPath">#.tbsProjundwrtSet</Property>
+                  <ColumnGroup>
+                    <Property name="caption">在保金额（元）</Property>
+                    <DataColumn>
+                      <Property name="property">rlsfaloc</Property>
+                      <Property name="caption">融资担保</Property>
+                      <Property name="width">100</Property>
+                      <Property name="name">rlsfaloc</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="property">rlsnfaloc</Property>
+                      <Property name="caption">非融资担保</Property>
+                      <Property name="width">100</Property>
+                      <Property name="name">rlsnfaloc</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="property">rlsotloc</Property>
+                      <Property name="caption">其他类担保</Property>
+                      <Property name="width">100</Property>
+                      <Property name="name">rlsotloc</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="caption">总在保金额</Property>
+                      <Property name="name">rlstotloc</Property>
+                      <Property name="property">rlstotloc</Property>
+                      <Property name="width">100</Property>
+                    </DataColumn>
+                  </ColumnGroup>
                   <ColumnGroup>
                     <Property name="caption">本次承保金额（元）</Property>
                     <DataColumn>

@@ -559,7 +559,7 @@
                   <Property name="readOnly">true</Property>
                   <Property name="dataPath">#.tbsProjundwrtSet</Property>
                   <ColumnGroup>
-                    <Property name="caption">可解保金额（元）</Property>
+                    <Property name="caption">在保金额（元）</Property>
                     <DataColumn>
                       <Property name="property">rlsfaloc</Property>
                       <Property name="caption">融资担保</Property>

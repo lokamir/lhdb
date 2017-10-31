@@ -203,6 +203,11 @@
       <PropertyDef name="zbe">
         <Property name="label">在保额</Property>
       </PropertyDef>
+      <PropertyDef name="rlstotloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="label">在保额（元）</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
       <Property name="defaultDisplayProperty">name</Property>
@@ -783,11 +788,18 @@
                   <Property name="labelWidth">100</Property>
                   <Editor/>
                 </AutoFormElement>
-                <Label/>
+                <AutoFormElement>
+                  <Property name="name">rlstotloc</Property>
+                  <Property name="property">rlstotloc</Property>
+                  <Property name="labelPosition">left</Property>
+                  <Property name="labelWidth">100</Property>
+                  <Property name="readOnly">true</Property>
+                </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">appfaloc</Property>
                   <Property name="property">appfaloc</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">false</Property>
                   <Editor>
                     <TextEditor id="appfaloc"/>
                   </Editor>
@@ -1004,11 +1016,6 @@
                   <Property name="name">valid</Property>
                   <Property name="property">valid</Property>
                   <Property name="readOnly">true</Property>
-                  <Editor/>
-                </AutoFormElement>
-                <AutoFormElement>
-                  <Property name="property">zbe</Property>
-                  <Property name="name">zbe</Property>
                   <Editor/>
                 </AutoFormElement>
               </AutoForm>

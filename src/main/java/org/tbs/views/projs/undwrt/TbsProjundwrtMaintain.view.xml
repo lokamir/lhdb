@@ -158,6 +158,11 @@
         <Property></Property>
         <Property name="label">担保费率单位</Property>
       </PropertyDef>
+      <PropertyDef name="rlstotloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="label">在保额（元）</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
       <Property name="defaultDisplayProperty">name</Property>
@@ -845,6 +850,11 @@
                 <Property name="width">100</Property>
               </DataColumn>
             </ColumnGroup>
+            <DataColumn>
+              <Property name="property">rlstotloc</Property>
+              <Property name="width">100</Property>
+              <Property name="name">rlstotloc</Property>
+            </DataColumn>
             <DataColumn name="valid">
               <Property name="property">valid</Property>
               <Property name="width">100</Property>
@@ -1061,7 +1071,13 @@
                       <Property name="labelWidth">100</Property>
                       <Editor/>
                     </AutoFormElement>
-                    <Label/>
+                    <AutoFormElement>
+                      <Property name="name">rlstotloc</Property>
+                      <Property name="property">rlstotloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">100</Property>
+                      <Property name="readOnly">true</Property>
+                    </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">appfaloc</Property>
                       <Property name="property">appfaloc</Property>
