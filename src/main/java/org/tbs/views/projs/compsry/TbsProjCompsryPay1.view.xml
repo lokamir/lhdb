@@ -650,8 +650,8 @@
                 </DataColumn>
               </ColumnGroup>
               <DataColumn>
-                <Property name="property">tbsCustomer.compsry</Property>
-                <Property name="name">tbsCustomer.compsry</Property>
+                <Property name="property">dcye</Property>
+                <Property name="name">dcye</Property>
               </DataColumn>
               <DataColumn name="valid">
                 <Property name="property">valid</Property>

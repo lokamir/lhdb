@@ -407,6 +407,7 @@
       </PropertyDef>
       <PropertyDef name="bcdczsr">
         <Property name="label">代偿总收入（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="sn">
         <Property></Property>

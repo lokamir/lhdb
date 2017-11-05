@@ -586,15 +586,19 @@
       </PropertyDef>
       <PropertyDef name="rlsfaloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlsnfaloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlsotloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlstotloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmfaloc">
         <Property name="dataType">BigDecimal</Property>
@@ -1143,6 +1147,42 @@
               <Property name="property">projname</Property>
               <Property name="readOnly">true</Property>
               <Property name="hideMode">display</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsfaloc</Property>
+              <Property name="property">tbsProjundwrt.rlsfaloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">融资在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsnfaloc</Property>
+              <Property name="property">tbsProjundwrt.rlsnfaloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">非融资在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsotloc</Property>
+              <Property name="property">tbsProjundwrt.rlsotloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">其他类在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlstotloc</Property>
+              <Property name="property">tbsProjundwrt.rlstotloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">总在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

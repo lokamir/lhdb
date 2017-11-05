@@ -31,9 +31,15 @@
 	var dataSet = dataSetTbsProj.getData("#");
 	var projid = dataSet.get("id");
 	var projname = dataSet.get("projName");
+	var rlsfaloc = dataSet.get("tbsProjundwrtSet").current.get("rlsfaloc");	
+	var rlsnfaloc = dataSet.get("tbsProjundwrtSet").current.get("rlsnfaloc");	
+	var rlsotloc = dataSet.get("tbsProjundwrtSet").current.get("rlsotloc");	
+	var rlstotloc = dataSet.get("tbsProjundwrtSet").current.get("rlstotloc");	
 	var undwrtid = dataSet.get("tbsProjundwrtSet").current.get("id");	
 	var detailpath="org.tbs.views.projs.compsry.DetailDialog1.d?aprv=2&projid=" 
 			+ projid + "&undwrtid=" + undwrtid + "&projname=" + projname
+			+ "&rlsfaloc=" + rlsfaloc  + "&rlsnfaloc=" + rlsnfaloc
+			+ "&rlsotloc=" + rlsotloc  + "&rlstotloc=" + rlstotloc
 			+ "&dt=" + new Date();
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();

@@ -124,6 +124,21 @@ var undwrtid ;
 /** @Bind #btnSave.onClick */
 !function(self, arg, saveCompsryPay) {
 	if(aprv==2||saveCompsryPay.get("hasUpdateData")){
+		var rlsfaloc = "${request.getParameter('rlsfaloc')}"-0;
+		var rlsnfaloc = "${request.getParameter('rlsnfaloc')}"-0;
+		var rlsotloc = "${request.getParameter('rlsotloc')}"-0;
+		if(view.get("#AutoFormCompsryPay").get("entity.faloc")>rlsfaloc 
+				|| view.get("#AutoFormCompsryPay").get("entity.nfaloc")>rlsnfaloc 
+				||view.get("#AutoFormCompsryPay").get("entity.otloc")>rlsotloc ){
+			dorado.MessageBox.alert(
+					"输入金额过大\n"+
+					"当前融资在保额："+rlsfaloc+"\n"+
+					"当前非融在保额："+rlsnfaloc+"\n"+
+					"当前其他在额："+rlsotloc+"\n", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
 		saveCompsryPay.execute();
 	}
 	var autoformCondition = window.parent.$id("autoformCondition").objects[0];

@@ -35,12 +35,18 @@
 	var projname = dataSet.get("projName");
 	var compsryPayid = dataSet.get("tbsProjCompsryPaySet").current.get("id");	
 	var undwrtid = dataSet.get("tbsProjCompsryPaySet").current.get("tbsProjundwrt").get("id");	
+	var rlsfaloc = dataSet.get("tbsProjCompsryPaySet").current.get("tbsProjundwrt").get("rlsfaloc");	
+	var rlsnfaloc = dataSet.get("tbsProjCompsryPaySet").current.get("tbsProjundwrt").get("rlsnfaloc");	
+	var rlsotloc = dataSet.get("tbsProjCompsryPaySet").current.get("tbsProjundwrt").get("rlsotloc");	
+	var rlstotloc = dataSet.get("tbsProjCompsryPaySet").current.get("tbsProjundwrt").get("rlstotloc");	
 	var customerid = dataSet.get("tbsCustomer").get("id");	
 	var customername = dataSet.get("tbsCustomer").get("name");	
 	var detailpath="org.tbs.views.projs.compsry.DetailDialog3.d?aprv=2&projid=" 
 			+ projid + "&undwrtid=" + undwrtid + "&projname=" + projname
 			+ "&customerid=" + customerid + "&customername=" + customername
 			+ "&compsryPayid=" + compsryPayid 
+			+ "&rlsfaloc=" + rlsfaloc  + "&rlsnfaloc=" + rlsnfaloc
+			+ "&rlsotloc=" + rlsotloc  + "&rlstotloc=" + rlstotloc
 			+ "&dt=" + new Date();
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();

@@ -582,15 +582,19 @@
       </PropertyDef>
       <PropertyDef name="rlsfaloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlsnfaloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlsotloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="rlstotloc">
         <Property name="dataType">BigDecimal</Property>
+        <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="cfmfaloc">
         <Property name="dataType">BigDecimal</Property>
@@ -940,7 +944,7 @@
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
         <Container>
           <AutoForm id="AutoFormCompsry">
-            <Property name="cols">*,*,*</Property>
+            <Property name="cols">*,*,*,*</Property>
             <Property name="dataSet">dataSetTbsProjCompsry</Property>
             <AutoFormElement>
               <Property name="name">sn</Property>
@@ -948,14 +952,14 @@
               <Property name="readOnly">true</Property>
               <Editor/>
             </AutoFormElement>
-            <AutoFormElement id="tbsProj" layoutConstraint="colSpan:2">
+            <AutoFormElement id="tbsProj" layoutConstraint="colSpan:3">
               <Property name="name">tbsProj</Property>
               <Property name="property">tbsProj</Property>
               <Property name="readOnly">true</Property>
               <Property name="hideMode">display</Property>
               <Editor/>
             </AutoFormElement>
-            <AutoFormElement id="projname" layoutConstraint="colSpan:2">
+            <AutoFormElement id="projname" layoutConstraint="colSpan:3">
               <Property name="name">projname</Property>
               <Property name="property">projname</Property>
               <Property name="readOnly">true</Property>
@@ -963,24 +967,67 @@
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsfaloc</Property>
+              <Property name="property">tbsProjundwrt.rlsfaloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">融资在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Property name="labelWidth">110</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsnfaloc</Property>
+              <Property name="property">tbsProjundwrt.rlsnfaloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">非融资在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Property name="labelWidth">110</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlsotloc</Property>
+              <Property name="property">tbsProjundwrt.rlsotloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">其他类在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Property name="labelWidth">110</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">tbsProjundwrt.rlstotloc</Property>
+              <Property name="property">tbsProjundwrt.rlstotloc</Property>
+              <Property name="readOnly">true</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="label">总在保额(元)</Property>
+              <Property name="labelPosition">left</Property>
+              <Property name="labelWidth">110</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
               <Property name="name">valid</Property>
               <Property name="property">valid</Property>
               <Property name="readOnly">true</Property>
+              <Property name="labelWidth">110</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement id="date">
               <Property name="name">date</Property>
               <Property name="property">date</Property>
               <Property name="readOnly">false</Property>
+              <Property name="labelWidth">110</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">keyinId</Property>
               <Property name="property">keyinId</Property>
               <Property name="readOnly">true</Property>
+              <Property name="labelWidth">110</Property>
               <Editor/>
             </AutoFormElement>
-            <Label layoutConstraint="colSpan:2"/>
+            <Label layoutConstraint="colSpan:1"/>
             <AutoFormElement id="bizmemo" layoutConstraint="colSpan:4">
               <Property name="name">bizmemo</Property>
               <Property name="property">bizmemo</Property>

@@ -14,12 +14,18 @@
 	var dataSet = dataSetTbsProj.getData("#");
 	var projname = dataSet.get("projName");
 	var projid = dataSet.get("id");
+	var rlsfaloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsfaloc");	
+	var rlsnfaloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsnfaloc");	
+	var rlsotloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsotloc");	
+	var rlstotloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlstotloc");
 	var compsrypayid = dataSet.get("tbsProjcompsrySet").current.get("tbsProjcompsryPaySet").current.get("id");
 	var compsrypayvalid = dataSet.get("tbsProjcompsrySet").current.get("tbsProjcompsryPaySet").current.get("valid");
 	var processInstanceId = dataSet.get("tbsProjcompsrySet").current.get("tbsProjcompsryPaySet").current.get("by1");
 	var detailpath="org.tbs.views.projs.compsry.DetailDialog2.d?aprv=0&projid=" + projid 
 	         + "&compsrypayid=" + compsrypayid + "&compsrypayvalid=" + compsrypayvalid 
 	         + "&processInstanceId=" + processInstanceId + "&projname=" + projname
+	         + "&rlsfaloc=" + rlsfaloc  + "&rlsnfaloc=" + rlsnfaloc
+			 + "&rlsotloc=" + rlsotloc  + "&rlstotloc=" + rlstotloc
 	         + "&dt=" + new Date();
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();
@@ -33,17 +39,23 @@
 	if (compsryvalid == 1) {
 	var projid = dataSet.get("id");
 	var projname = dataSet.get("projName");
+	var rlsfaloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsfaloc");	
+	var rlsnfaloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsnfaloc");	
+	var rlsotloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlsotloc");	
+	var rlstotloc = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.rlstotloc");	
 	var compsryid = dataSet.get("tbsProjcompsrySet").current.get("id");	
 	var undwrtid = dataSet.get("tbsProjcompsrySet").current.get("tbsProjundwrt.id");	
 	var cfmtotloc = dataSet.get("tbsProjundwrtSet").current.get("cfmtotloc");	//累计承保金额
-	var rlstotloc = dataSet.get("tbsProjundwrtSet").current.get("rlstotloc");	//累计解保金额
+	//var rlstotloc = dataSet.get("tbsProjundwrtSet").current.get("rlstotloc");	//累计解保金额
 	var customerid = dataSet.get("tbsCustomer").get("id");	
 	var customername = dataSet.get("tbsCustomer").get("name");	
 	var detailpath="org.tbs.views.projs.compsry.DetailDialog2.d?aprv=2&projid=" 
 			+ projid + "&undwrtid=" + undwrtid + "&projname=" + projname
 			+ "&customerid=" + customerid + "&customername=" + customername
 			+ "&compsryid=" + compsryid
-			+ "&cfmtotloc=" + cfmtotloc + "&rlstotloc=" + rlstotloc
+			+ "&cfmtotloc=" + cfmtotloc 
+			+ "&rlsfaloc=" + rlsfaloc  + "&rlsnfaloc=" + rlsnfaloc
+			+ "&rlsotloc=" + rlsotloc  + "&rlstotloc=" + rlstotloc
 			+ "&dt=" + new Date();
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();
