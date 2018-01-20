@@ -1481,6 +1481,10 @@
     <Panel id="panel">
       <Property name="height">5</Property>
       <Buttons>
+        <Button id="btnPrint">
+          <Property name="caption">打印</Property>
+          <Property name="iconClass">silk silk-flag</Property>
+        </Button>
         <Button id="btnSave">
           <Property name="caption"> 确  认</Property>
           <Property name="iconClass">silk silk-accept</Property>

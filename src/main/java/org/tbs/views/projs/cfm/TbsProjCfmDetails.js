@@ -1083,3 +1083,35 @@ if(type == 1){
 	autoformCfm1.get("entity").set("agree",agree);
 	}
 };
+
+/** @Bind #btnPrint.onClick */
+!function(self){
+	var id = view.get("#datasetTbsProj").getData("#").get("id");
+	var psid = view.get("#datasetTbsProj").getData("#").get("tbsBasPs.id");
+	var str ="";
+	var a = "通过";
+	if(view.get("#datasetTbsProjOpinion1r2").getData("#")){
+		if(view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype") ==1){
+			str = "会议";
+		}else if (view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype") ==2){
+			str = "签批";
+		}
+	}else {
+		str = "会议";
+	}
+	if(psid ==36){
+		a = "驳回";
+	}
+	var type = str +a;
+	//获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp      
+    var curWwwPath=window.document.location.href;      
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp      
+    var pathName=window.document.location.pathname;      
+    var pos=curWwwPath.indexOf(pathName);      
+    //获取主机地址，如： http://localhost:8083      
+    var localhostPaht=curWwwPath.substring(0,pos);      
+    //获取带"/"的项目名，如：/uimcardprj      
+    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
+    var pref = localhostPaht+projectName;
+    window.open(pref+"/ureport/preview?_t=1,2,3,4,9&_u=file:业务审批表.ureport.xml&id="+id+"&type="+type);
+};

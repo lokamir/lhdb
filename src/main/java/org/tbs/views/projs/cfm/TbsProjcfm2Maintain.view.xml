@@ -695,6 +695,10 @@
           <Property name="caption"> 确  认</Property>
           <Property name="iconClass">silk silk-accept</Property>
         </Button>
+        <Button id="btnPrint">
+          <Property name="caption">打印</Property>
+          <Property name="iconClass">silk silk-flag</Property>
+        </Button>
         <Button id="buttonCancel">
           <Property name="caption"> 取  消</Property>
           <Property name="iconClass">silk silk-delete</Property>

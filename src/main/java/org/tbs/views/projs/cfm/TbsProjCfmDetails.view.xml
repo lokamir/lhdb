@@ -2638,6 +2638,10 @@
     </Container>
     <Panel>
       <Buttons>
+        <Button id="btnPrint">
+          <Property name="caption">打印</Property>
+          <Property name="iconClass">silk silk-flag</Property>
+        </Button>
         <Button id="btnSave">
           <Property name="caption">保存</Property>
           <Property name="iconClass">silk silk-accept</Property>

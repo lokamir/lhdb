@@ -397,3 +397,5 @@ function BizvtCountting(ds,appfaloc,appnfaloc,appotloc,bizvtloc){
 	}*/
 	return null;
 };
+
+
