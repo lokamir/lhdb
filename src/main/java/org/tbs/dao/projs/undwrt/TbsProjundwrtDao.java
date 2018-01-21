@@ -65,6 +65,7 @@ public class TbsProjundwrtDao extends HibernateDao {
 		if (null != params) {
 			String whereCase = "";
 			String valid = (String) params.get("valid");
+			String sn = (String) params.get("sn");
 			String appfalocMin = (String) params.get("appfalocMin");
 			String appfalocMax = (String) params.get("appfalocMax");
 			String appnfalocMin = (String) params.get("appnfalocMin");
@@ -93,6 +94,9 @@ public class TbsProjundwrtDao extends HibernateDao {
 				if (valid.equals("1") || valid.equals("0")) {
 					whereCase += " AND valid =" + valid;
 				}
+			}
+			if (StringHelper.isNotEmpty(sn)) {
+				whereCase += " AND sn like '%" + sn + "%'";
 			}
 			if (params.get("tbsCustomer") instanceof TbsCustomer) {
 				TbsCustomer tbsCustomer = (TbsCustomer) params

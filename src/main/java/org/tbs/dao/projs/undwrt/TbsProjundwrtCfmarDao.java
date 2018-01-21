@@ -67,6 +67,7 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 	public void loadAll(Page<TbsProjundwrtCfmar> page,Map<String, Object> params) throws Exception {
 		if (null != params) {
 			String whereCase="";
+			String sn = (String) params.get("sn");
 			String udtfalocMin = (String)params.get("udtfalocMin");
 			String udtfalocMax = (String)params.get("udtfalocMax");
 			String udtnfalocMin = (String)params.get("udtnfalocMin");
@@ -90,6 +91,9 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 			}
 			if (StringHelper.isNotEmpty(udtotlocMax)) {
 				whereCase += " AND udtotloc <=" + udtotlocMax ;
+			}
+			if (StringHelper.isNotEmpty(sn)) {
+				whereCase += " AND PROJUNDWRT_SN like '%" + sn + "%'";
 			}
 			if (params.get("tbsProjundwrt") instanceof TbsProjundwrt) {
 				TbsProjundwrt tbsProjundwrt = (TbsProjundwrt) params

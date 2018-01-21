@@ -5,6 +5,7 @@ var currentUpdateAction;
 var objId;
 var datasetCggObj;
 
+
 /** @Bind view.onReady */
 !function(self,arg,getCggTypIdAction){
 	var catname = "${request.getParameter('cat')}";

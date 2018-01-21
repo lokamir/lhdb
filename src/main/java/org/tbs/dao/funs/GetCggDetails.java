@@ -5,6 +5,7 @@
 
 package org.tbs.dao.funs;
 
+import java.net.URLDecoder;
 import java.util.Map;
 import javax.annotation.Resource;
 import org.hibernate.SQLQuery;
@@ -22,6 +23,9 @@ public class GetCggDetails {
 	public Integer getNodeTreeId(Map<String, Object> params) throws Exception {
 		String catname = (String) params.get("catname");
 		Session session = tbsBasCggtypDao.getSessionFactory().openSession();
+		if(catname.indexOf("%")!=-1){
+			catname = URLDecoder.decode(catname,"utf-8");
+		}
 		try {
 			String Sql = "select id from tbs.tbs_bas_cggtyp where NAME_='"
 					+ catname + "'";

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeformCondition">
+      <PropertyDef name="beginDate">
+        <Property name="label">开始日期</Property>
+        <Property name="displayFormat">Y年m月d日</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="endDate">
+        <Property name="label">结束日期</Property>
+        <Property name="displayFormat">Y年m月d日</Property>
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="deptid">
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Depts&quot;).getResult()}</Property>
+        </Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="specimen">
+        <Property name="dataType">String</Property>
+        <Property name="label">样品名称</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property name="dataType">Date</Property>
+        <Property name="displayFormat">Y年m月d日</Property>
+        <Property name="label">日期</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <AutoForm id="formCondition">
+      <Property name="cols">*,*,*,*</Property>
+      <Property name="createPrivateDataSet">true</Property>
+      <Property name="dataType">dataTypeformCondition</Property>
+      <AutoFormElement>
+        <Property name="name">beginDate</Property>
+        <Property name="property">beginDate</Property>
+        <Property name="trigger">defaultDateDropDown</Property>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">endDate</Property>
+        <Property name="property">endDate</Property>
+      </AutoFormElement>
+      <Button id="preview">
+        <Property name="caption">预览</Property>
+      </Button>
+      <Button>
+        <Property name="caption">java</Property>
+        <Property name="visible">false</Property>
+      </Button>
+    </AutoForm>
+    <IFrame id="subViewHolderExport"/>
+  </View>
+</ViewConfig>

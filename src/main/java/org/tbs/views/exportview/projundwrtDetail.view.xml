@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <Property name="title">报表</Property>
+    <IFrame id="subViewHolderExport">
+      <ClientEvent name="onReady">var subViewHolderExport = view.get(&quot;#subViewHolderExport&quot;);&#xD;
+var type = [1,6];&#xD;
+var ureportFileName = '承保项目信息明细.ureport.xml';&#xD;
+var exportFileName = '承保项目信息明细';&#xD;
+var beginDateProperty = true;&#xD;
+var endDateProperty = true;&#xD;
+&#xD;
+subViewHolderExport.set(&quot;path&quot;,&#xD;
+	&quot;org.tbs.views.exportview.exportMain.d?type=&quot;+type&#xD;
+	+&quot;&amp;ureportFileName=&quot;+ureportFileName&#xD;
+	+&quot;&amp;exportFileName=&quot;+exportFileName&#xD;
+	+&quot;&amp;beginDateProperty=&quot;+beginDateProperty&#xD;
+	+&quot;&amp;endDateProperty=&quot;+endDateProperty);</ClientEvent>
+    </IFrame>
+  </View>
+</ViewConfig>

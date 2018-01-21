@@ -133,6 +133,9 @@
       </PropertyDef>
     </DataType>
     <DataType name="dataTypeConditions">
+      <PropertyDef name="sn">
+        <Property name="label">承保单编号</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProjundwrt">
         <Property></Property>
         <Property name="label">承保单编号</Property>
@@ -355,9 +358,8 @@
         <Property name="dataType">dataTypeConditions</Property>
         <Property name="colPadding">1</Property>
         <AutoFormElement>
-          <Property name="name">tbsProjundwrt</Property>
-          <Property name="property">tbsProjundwrt</Property>
-          <Property name="trigger">dataSetDropDownProjundwrt</Property>
+          <Property name="name">sn</Property>
+          <Property name="property">sn</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement layoutConstraint="colSpan:3">
