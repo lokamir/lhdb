@@ -103,10 +103,30 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		 
-		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于决策审批和项目三要素变更流程和代偿审议
+		// 决策审批1500w的限制金额判断是tbsproj.totloc,适用于项目三要素变更流程
 		// 2017年3月15日陈雯雯要求改2000万
 		if (cn.equals("决策人审批")
-				&& (pname.equals("projcfm") || pname.equals("changemajcont"))) {
+				&& pname.equals("changemajcont")) {
+			String sqlAmount = "SELECT NEWTOTLOC FROM tbs.tbs_projchange_majcont where id = "
+					+ docid;
+			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
+			String amount = queryAmount.uniqueResult().toString();
+			float tm = Float.valueOf(amount);
+			if (tm > 20000000.0) {
+				// 董事长审批
+				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
+				SQLQuery sqlquery = session.createSQLQuery(sql);
+				users = sqlquery.list();
+			} else {
+				// 总经理审批
+				String sql = "select account from tbs_approver where title like '总经理' and deptname = '总经理办公室' ";
+				SQLQuery sqlquery = session.createSQLQuery(sql);
+				users = sqlquery.list();
+			}
+		}
+		// 决策审批2000w的限制金额判断是tbsproj.totloc,适用于决策审批
+		if (cn.equals("决策人审批")
+				&& pname.equals("projcfm")) {
 			String sqlAmount = "select TOTLOC from tbs_proj where id = "
 					+ docid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
