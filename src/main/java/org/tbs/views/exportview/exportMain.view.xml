@@ -20,9 +20,9 @@
         </Property>
         <Property name="readOnly">true</Property>
       </PropertyDef>
-      <PropertyDef name="specimen">
+      <PropertyDef name="projname">
         <Property name="dataType">String</Property>
-        <Property name="label">样品名称</Property>
+        <Property name="label">项目名称</Property>
       </PropertyDef>
       <PropertyDef name="date">
         <Property name="dataType">Date</Property>
@@ -37,13 +37,20 @@
       <Property name="createPrivateDataSet">true</Property>
       <Property name="dataType">dataTypeformCondition</Property>
       <AutoFormElement>
+        <Property name="name">projname</Property>
+        <Property name="property">projname</Property>
+        <Property name="hideMode">display</Property>
+      </AutoFormElement>
+      <AutoFormElement>
         <Property name="name">beginDate</Property>
         <Property name="property">beginDate</Property>
         <Property name="trigger">defaultDateDropDown</Property>
+        <Property name="hideMode">display</Property>
       </AutoFormElement>
       <AutoFormElement>
         <Property name="name">endDate</Property>
         <Property name="property">endDate</Property>
+        <Property name="hideMode">display</Property>
       </AutoFormElement>
       <Button id="preview">
         <Property name="caption">预览</Property>
