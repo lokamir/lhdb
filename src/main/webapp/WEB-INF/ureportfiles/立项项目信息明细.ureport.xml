@@ -3,7 +3,7 @@
     f.ENTTYPE_ID,a.GOVFUND_ID,b.ENTPROPERTY_ID,b.ENTSCALE_ID,b.INDUTYPE_ID,a.TOTLOC,a.ACPTDATE,g.VALID
 FROM tbs.tbs_proj a 
 left join tbs.tbs_customer b  on b.id = a.CUS_ID and b.DEL = 0
-left join tbs.tbs_projeaa c on c.PROJ_ID = a.id and c.DEL =0
+left join tbs.tbs_projeaa c on c.PROJ_ID = a.id and c.DEL =0 and c.valid = 1
 left join tbs.tbs_proj_bizvt d on d.PROJ_ID=a.ID and d.DEL =0
 left join tbs.tbs_customer_idnum e on e.CUS_ID = b.ID 
 left join tbs.tbs_customer_enttype f on f.CUS_ID = b.ID

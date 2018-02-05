@@ -1231,6 +1231,27 @@
           </DataColumn>
         </DataGrid>
       </ControlTab>
+      <ControlTab>
+        <Property name="caption">项目简介</Property>
+        <Container id="ContainerProjDetail">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="projdetail">
+            <Property name="dataSet">datasetTbsProj</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelWidth">130</Property>
+            <AutoFormElement layoutConstraint="colSpan:5;rowSpan:10">
+              <Property name="name">by4</Property>
+              <Property name="property">by4</Property>
+              <Property name="label">项目简介</Property>
+              <Property name="height">500</Property>
+              <Property name="labelPosition">top</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+      </ControlTab>
     </VerticalTabControl>
     <Dialog id="DialogTbsjCgg">
       <Property name="visible">false</Property>
