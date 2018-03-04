@@ -2344,6 +2344,30 @@
           </Container>
         </Container>
       </ControlTab>
+      <ControlTab id="tabDetail">
+        <Property name="caption">项目简介</Property>
+        <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
+        <Container id="ContainerProjDetail">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="projDetail">
+            <Property name="dataSet">datasetTbsProj</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelWidth">130</Property>
+            <Property name="readOnly">true</Property>
+            <AutoFormElement layoutConstraint="colSpan:5;rowSpan:10">
+              <Property name="name">by5</Property>
+              <Property name="property">by5</Property>
+              <Property name="label">项目简介</Property>
+              <Property name="height">500</Property>
+              <Property name="labelPosition">top</Property>
+              <Property name="readOnly">false</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+      </ControlTab>
       <ControlTab id="tabAttach">
         <Property name="caption">附件管理</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -80px</Property>

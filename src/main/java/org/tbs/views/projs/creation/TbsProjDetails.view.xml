@@ -1196,6 +1196,27 @@
           </GroupBox>
         </Container>
       </ControlTab>
+      <ControlTab id="tabDetail">
+        <Property name="caption">项目简介</Property>
+        <Container id="ContainerProjDetail">
+          <Property name="containerUi">default</Property>
+          <AutoForm id="projDetail">
+            <Property name="dataSet">datasetTbsProj</Property>
+            <Property name="cols">*,*,*</Property>
+            <Property name="labelWidth">130</Property>
+            <AutoFormElement layoutConstraint="colSpan:5;rowSpan:10">
+              <Property name="name">by5</Property>
+              <Property name="property">by5</Property>
+              <Property name="label">项目简介</Property>
+              <Property name="height">500</Property>
+              <Property name="labelPosition">top</Property>
+              <Editor>
+                <TextArea/>
+              </Editor>
+            </AutoFormElement>
+          </AutoForm>
+        </Container>
+      </ControlTab>
       <ControlTab id="tabAttach">
         <Property name="caption">附件管理</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -80px</Property>
@@ -1230,27 +1251,6 @@
             <Property name="name">enddate</Property>
           </DataColumn>
         </DataGrid>
-      </ControlTab>
-      <ControlTab>
-        <Property name="caption">项目简介</Property>
-        <Container id="ContainerProjDetail">
-          <Property name="containerUi">default</Property>
-          <AutoForm id="projdetail">
-            <Property name="dataSet">datasetTbsProj</Property>
-            <Property name="cols">*,*,*</Property>
-            <Property name="labelWidth">130</Property>
-            <AutoFormElement layoutConstraint="colSpan:5;rowSpan:10">
-              <Property name="name">by4</Property>
-              <Property name="property">by4</Property>
-              <Property name="label">项目简介</Property>
-              <Property name="height">500</Property>
-              <Property name="labelPosition">top</Property>
-              <Editor>
-                <TextArea/>
-              </Editor>
-            </AutoFormElement>
-          </AutoForm>
-        </Container>
       </ControlTab>
     </VerticalTabControl>
     <Dialog id="DialogTbsjCgg">

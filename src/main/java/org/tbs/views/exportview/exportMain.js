@@ -45,6 +45,7 @@ if(ed){
 }else{
 	endDate = '2999-12-31';
 }
+debugger;
 var subViewHolderExport = view.get("#subViewHolderExport");
 //subViewHolderExport.set("path","./Export_Daily.jsp?bdate="+beginDate+"&edate="+endDate);
 subViewHolderExport.set("path",

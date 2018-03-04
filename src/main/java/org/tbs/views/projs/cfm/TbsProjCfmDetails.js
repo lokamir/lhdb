@@ -52,6 +52,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 	var datagridCfm0ProjOpin = view.get("#datagridCfm0ProjOpin");
 	var datagridCfm1r2ProjOpin = view.get("#datagridCfm1r2ProjOpin");
 	var autoformTbsProj_main = view.get("#autoformTbsProj_main");
+	var projDetail = view.get("#projDetail");
 	var autoformTbsProjCfm0 = view.get("#autoformTbsProjCfm0");
 //	var groupboxAB = view.get("#groupboxAB");
 	var groupboxCfm0 = view.get("#groupboxCfm0");
@@ -83,6 +84,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		if (psid == 5) {
 			btnSubmit.set("visible", true);
 			autoformTbsProj_main.set("readOnly", false);
+			projDetail.set("readOnly", false);
 			view.get("#datapilotTbsProjBank").set("visible", true);
 			view.get("#datapilotTbsProjBizvt").set("visible", true);
 			view.get("#datapilotTbsProjCgg").set("visible", true);
@@ -102,7 +104,6 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 			if(!fromAppr){
 //				autoformTbsProj_main.set("readOnly", true);
 				tabControlMain.set("currentIndex", 1);
-				//upbutton.set("disabled",false);
 				uploadbutton="";
 			}
 		}
@@ -186,6 +187,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 			} else if(psid == 36) {
 				tabInAppr.set("visible", true);
 				autoformTbsProj_main.set("readOnly", false);
+				projDetail.set("readOnly", false);
 				view.get("#datapilotTbsProjBank").set("visible", true);
 				view.get("#datapilotTbsProjBizvt").set("visible", true);
 				view.get("#datapilotTbsProjCgg").set("visible", true);
@@ -1113,5 +1115,5 @@ if(type == 1){
     //获取带"/"的项目名，如：/uimcardprj      
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
     var pref = localhostPaht+projectName;
-    window.open(pref+"/ureport/preview?_t=1,2,3,4,9&_u=file:业务审批表.ureport.xml&id="+id+"&type="+type);
+    window.open(pref+"/ureport/preview?_t=1,5&_n=业务审批表&_u=file:业务审批表.ureport.xml&id="+id+"&type="+type);
 };

@@ -502,6 +502,22 @@ public class GetApprover implements AssignmentHandler {
 				users.add("admin");
 			}
 		}
+		if (promoter.equals("admin2")) {
+			System.out.println(users);
+			users.clear();
+			users.add("admin2");
+			if (cn.equals("评委审批") && pname.equals("projCfm")) {
+				String cfm0Id = (String) processClient.getProcessVariable(
+						"cfm0Id", processInstance);
+				String sql = "select b.USERNAME_ from tbs_proj_opinion a, "
+						+ "bdf2_user b where a.uid=b.ID and a.CFM0_ID = "
+						+ cfm0Id + " and a.CFMTYPE = 0 and a.del = 0";
+				SQLQuery sqlquery = session.createSQLQuery(sql);
+				users = sqlquery.list();
+			} else {
+				users.add("admin2");
+			}
+		}
 				
 		return users;
 	}

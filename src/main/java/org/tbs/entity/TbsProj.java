@@ -1259,7 +1259,7 @@ public class TbsProj implements Serializable {
 		this.by5 = by5;
 	}
 
-	@Column(name = "BY5", length = 300)
+	@Column(name = "BY5", length = 6000)
 	public String getBy5() {
 		return by5;
 	}

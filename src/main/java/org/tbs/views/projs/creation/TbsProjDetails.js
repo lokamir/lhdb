@@ -49,6 +49,7 @@ var downloadbutton;//附件组件参数
 	var dataSetTbsProjeaa = view.get("#dataSetTbsProjeaa");
 	//******* 1.14 add  ********* end
 	var autoformTbsProj_main = view.get("#autoformTbsProj_main");
+	var projDetail = view.get("#projDetail");
 	var groupboxAB = view.get("#groupboxAB");
 	var groupboxAppr = view.get("#groupboxAppr");
 	var groupboxEaaAppr = view.get("#groupboxProjeaaAppr");
@@ -81,6 +82,7 @@ var downloadbutton;//附件组件参数
 			datapilotTbsProjCgg.set("visible", false);
 			if(!fromAppr){
 				autoformTbsProj_main.set("readOnly", true);
+				projDetail.set("readOnly", true);
 				//upbutton.set("disabled",true);	
 				//btnsaveAll.set("disabled",true);
 				uploadbutton="disable";
@@ -102,6 +104,7 @@ var downloadbutton;//附件组件参数
 			view.get("#nfaloc").set("readOnly", true);
 			view.get("#otloc").set("readOnly", true);
 			view.get("#tbsCustomer").set("readOnly", true);
+			view.get("#projDetail").set("readOnly", true);
 			view.get("#datagridTbsProjBizvt").getColumn("initloc").set("readOnly",false);
 		}	
 		
@@ -145,6 +148,7 @@ var downloadbutton;//附件组件参数
 			if (psid == 2) {//简化立项审批原来psid=29改成psid=2
 				// main form read only
 				autoformTbsProj_main.set("readOnly", true);
+				projDetail.set("readOnly", true);
 				// initialize outcome options
 				listDdlOutcome.set("items",["通过","驳回"]);
 				groupboxEaaAppr.set("visible", false);
@@ -867,5 +871,5 @@ function GetUrlParam(name) {
     //获取带"/"的项目名，如：/uimcardprj      
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
     var pref = localhostPaht+projectName;
-    window.open(pref+"/ureport/preview?_t=1,2,3,4,9&_u=file:立项申请表.ureport.xml&id="+id);
+    window.open(pref+"/ureport/preview?_t=1,5&_n=立项申请表&_u=file:立项申请表.ureport.xml&id="+id);
 };
