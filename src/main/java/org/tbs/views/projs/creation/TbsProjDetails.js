@@ -425,6 +425,18 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 /** @Bind #btnProjeaaApprSubmit.onClick */
 !function(self, arg, autoformTbsProj_role, autoformProjeaaOpinion,
 		ajaxactionApprSubmit, dataSetTbsProjeaa, updateactionProjeaa) {
+	if(dataSetTbsProjeaa.getData("#").getValidateState("bdf2Dept")!="ok"){
+		dorado.MessageBox.alert("请填写申报部门", {
+			title : "趣博信息科技"
+		});
+		return false;
+	}
+	if(dataSetTbsProjeaa.getData("#").getValidateState("bdf2User")!="ok"){
+		dorado.MessageBox.alert("请填写经办部门负责人", {
+			title : "趣博信息科技"
+		});
+		return false;
+	}
 	// 保存AB角数据
 	updateactionProjeaa.execute();
 	// 提交表单
@@ -492,12 +504,23 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	var param = {
 		entity : data
 	};
+	if(data.getValidateState("by5")!="ok"){
+		dorado.MessageBox.alert("请填写企业简介", {
+			title : "趣博信息科技"
+		});
+		return false;
+	};
 	ajaxactionStartProcess.set("parameter", param).execute(function(result) {
 		dorado.MessageBox.alert(result, {
 			title : "趣博信息科技"
 		});
 	});
 	datasetTbsProj.flushAsync();
+};
+
+/** @Bind #ajaxactionStartProcess.beforeExecute */
+!function(self,datasetTbsProj){
+	
 };
 
 /* =======================dialog取消按钮-清空当前数据操作=================== */

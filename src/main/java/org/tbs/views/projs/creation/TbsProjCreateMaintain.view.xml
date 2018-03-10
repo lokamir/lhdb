@@ -349,13 +349,15 @@
     </DataSet>
     <AutoForm id="autoformCondition">
       <Property name="createPrivateDataSet">true</Property>
-      <Property name="cols">*,*,*</Property>
+      <Property name="cols">*,*,*,*</Property>
       <Property name="dataType">tempConditions</Property>
       <AutoFormElement>
         <Property name="name">projName</Property>
         <Property name="property">projName</Property>
         <Property name="label">项目名称</Property>
         <Property name="width">100%</Property>
+        <Property name="visible">false</Property>
+        <Property name="hideMode">display</Property>
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>
@@ -373,6 +375,8 @@
         <Property name="label">咨询方式</Property>
         <Property name="trigger">ddlTbsBasConsway</Property>
         <Property name="width">100%</Property>
+        <Property name="hideMode">display</Property>
+        <Property name="visible">false</Property>
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>

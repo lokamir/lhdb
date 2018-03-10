@@ -306,6 +306,8 @@
           <Property name="name">regaddr</Property>
           <Property name="property">regaddr</Property>
           <Property name="label">注册地</Property>
+          <Property name="hideMode">display</Property>
+          <Property name="visible">false</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -313,6 +315,8 @@
           <Property name="property">operaddr</Property>
           <Property name="label">实际经营地</Property>
           <Property name="labelWidth">85</Property>
+          <Property name="hideMode">display</Property>
+          <Property name="visible">false</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -321,6 +325,8 @@
           <Property name="editable">false</Property>
           <Property name="trigger">DropDownTbsBasArea</Property>
           <Property name="label">区域</Property>
+          <Property name="hideMode">display</Property>
+          <Property name="visible">false</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -328,6 +334,8 @@
           <Property name="property">tbsBasEntproperty</Property>
           <Property name="trigger">DropDownTbsBasEntproperty</Property>
           <Property name="label">企业性质</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -336,6 +344,8 @@
           <Property name="trigger">DropDownTbsBasEntscale</Property>
           <Property name="label">企业规模</Property>
           <Property name="labelWidth">85</Property>
+          <Property name="hideMode">display</Property>
+          <Property name="visible">false</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -344,6 +354,8 @@
           <Property name="trigger">DropDownTbsBasIndutype</Property>
           <Property name="editable">false</Property>
           <Property name="label">行业类型</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement id="valid">
