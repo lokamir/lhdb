@@ -28,7 +28,7 @@ function GetCRStatus(ds){
 /** @Bind #dataSetTbsProjundwrt.onLoadData */
 !function(self,arg,dataSetTbsProjundwrt,buttonDel,buttonUflo,buttonAdminsign,buttonUfloN,upbutton,dataSetHistoryTask){
 	GetCRStatus(dataSetTbsProjundwrt);
-    if (valid == 0 && psid == 23 ){
+    if (valid == 0 && psid == 10 ){
     	buttonDel.set("disabled",false);
     	buttonUflo.set("disabled",false);
     	dataSetTbsProjundwrt.set("readOnly",false); 

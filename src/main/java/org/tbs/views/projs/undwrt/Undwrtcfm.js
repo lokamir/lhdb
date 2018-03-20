@@ -91,7 +91,7 @@ function GetCRStatus(ds){
 /** @Bind #udtnfaloc.onPost */
 /** @Bind #udtotloc.onPost */
 !function(self,arg,ddlAutoform,buttonResend,udttotloc,dataSettbsProjundwrtCfmar){
-	var crs = ddlAutoform.get("entity"); 
+	/*var crs = ddlAutoform.get("entity"); 
 	var dataSet = dataSettbsProjundwrtCfmar.getData("#");
 	var udtfaloc = crs.get("udtfaloc"); var udtnfaloc = crs.get("udtnfaloc"); var udtotloc = crs.get("udtotloc");
 	var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");	
@@ -104,7 +104,7 @@ function GetCRStatus(ds){
 	}else{
 		buttonResend.set("disabled",false);
 	    dataSet.set("udttotloc",udtfaloc+udtnfaloc+udtotloc);
-	};
+	};*/
 };
 
 /** @Bind #undbdate.onPost */

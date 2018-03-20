@@ -6,11 +6,18 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.tbs.entity.Bdf2User;
+import org.tbs.entity.TbsProj;
+import org.tbs.entity.TbsProjOpinion;
+import org.tbs.entity.TbsProjcfm0;
 import org.tbs.entity.TbsProjchangeMajcont;
+
 import com.bstek.bdf2.core.business.IUser;
 import com.bstek.bdf2.core.context.ContextHolder;
 import com.bstek.bdf2.core.message.MessagePacket;
@@ -35,18 +42,20 @@ public class WfChangeMajcont extends HibernateDao {
 	@Autowired
 	@Qualifier(TaskClient.BEAN_ID)
 	private TaskClient taskClient;
-
 	@Autowired
 	@Qualifier(InternalMessageSender.BEAN_ID)
 	private InternalMessageSender SendMsg;
-		
+	
+    private int pass = 0;
+    private int confirm = 0;//三位领导必须签批（0没有完成，1完成签批）
+    private int cmpt = 0; // 表示通过	
 	
 	@Expose
 	public String StartWF(Map<String, Object> params) throws Exception {
 		String result = "";
 		if (null != params) {
 			Session session = this.getSessionFactory().openSession();
-			String projid = Integer.toString((int) params.get("projid"));
+			Integer projid = Integer.valueOf((int) params.get("projid"));
 			String docid = Integer.toString((int) params.get("projchangeid")); 
 			TbsProjchangeMajcont tpcm = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class, Integer.valueOf(docid));
 			StartProcessInfo info = new StartProcessInfo();
@@ -58,8 +67,15 @@ public class WfChangeMajcont extends HibernateDao {
 			variables.put("projSn", tpcm.getProjSn());
 			variables.put("projName", tpcm.getTbsProj().getProjName());
 			variables.put("projId", projid);
+			variables.put("cmpt", false);
+		    variables.put("passCount", 0);
+		    variables.put("approverCount", 0);
+		    variables.put("cfm0Id", 0);
+		    variables.put("cfmFlag", 0);
+		    variables.put("cfm1r2Id", 0);
 			info.setVariables(variables); 
-			ProcessInstance pi = processClient.startProcessByName("changemajcont", info);
+			//ProcessInstance pi = processClient.startProcessByName("changemajcont", info);
+			ProcessInstance pi = processClient.startProcessByName("changenormal", info);
 			Long processInstanceId = pi.getId();
 			result = "提交审批成功！";
 			try {
@@ -89,51 +105,165 @@ public class WfChangeMajcont extends HibernateDao {
 		String docid = (String) params.get("docid");  
 		String outcome = (String) params.get("outcome");
 		String comment = (String) params.get("comment");
+		String uid = (String) params.get("uid");
 		String opinion = outcome + ": " + comment;
+		
+		String nodename;
+		Long processInstanceId;
+		ProcessInstance pi;
 		TaskOpinion taskOpinion = new TaskOpinion(opinion); //获取结束
 		taskClient.start(Long.valueOf(taskid));  //开始审批，审批时一定要先开始任务，然后是下一步完成任务 //taskClient.saveTaskAppointor(arg0, arg1, arg2)  //指定下节点任务人 10 class13min
 		Session session = this.getSessionFactory().openSession();
 		try {
-			// ===获取流程内的一些值===
 			TbsProjchangeMajcont tpcm = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class, Integer.valueOf(docid));
-			String projname = tpcm.getTbsProj().getProjName();
 			Task uflotask = (Task) session.get(Task.class, Long.valueOf(taskid));
-			String nodename = uflotask.getNodeName();
-			Long piid = uflotask.getProcessInstanceId(); // 获取processinstanceId
-			ProcessInstance pi = (ProcessInstance) session.get(ProcessInstance.class, piid);
-			String promoter = pi.getPromoter(); // 获取promoter
-			
-			//===消息处理===
-			DefaultUser receiver = (DefaultUser)session.get(DefaultUser.class,promoter );  //获得消息的接收人
-			DefaultUser sender = (DefaultUser)session.get(DefaultUser.class,"SystemSender" );  //获得消息的发送人，默认为“系统发信人”
-			Collection<IUser> receivers = new ArrayList<IUser>();
-			receivers.add(receiver);
-			MessagePacket Msgpkt= new MessagePacket();
-			Msgpkt.setTo(receivers);	
-			Msgpkt.setSender(sender);	
-		
-			//===审批处理===
-			if (outcome.equals("通过")){			
-				Msgpkt.setTitle("【项目三要素变更】审批已通过！");
-				Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projname+"】\n已经通过【"+nodename+"】审批！\n审批意见: " + comment+"\n日期："+today);
-				SendMsg.send(Msgpkt);
-			}else if (outcome.equals("驳回")) { 
-				tpcm.setValid(3);
-				session.update(tpcm);
-				Msgpkt.setTitle("【项目三要素变更】审批已驳回！");
-				Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projname+"】\n已经被驳回,驳回节点为【"+nodename+"】\n审批意见: " + comment+"\n日期："+today);
-				SendMsg.send(Msgpkt);				
-			}else if(outcome.equals("修改确认")){
-				tpcm.setValid(2);
-				session.update(tpcm);
-				Msgpkt.setTitle("【项目三要素变更】单据已完成修改！");
-				Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projname+"】\n已经被【"+nodename+"】\n审批意见: " + comment+"\n日期："+today);
-				SendMsg.send(Msgpkt);
+			nodename = uflotask.getNodeName();
+			processInstanceId = uflotask.getProcessInstanceId(); // 获取processinstanceId
+			pi = (ProcessInstance) session.get(ProcessInstance.class, processInstanceId);
+			String projName = (String)processClient.getProcessVariable("projName", processInstanceId);
+			Integer cfm0Id = (Integer)processClient.getProcessVariable("cfm0Id", processInstanceId);
+			Integer projId = (Integer)processClient.getProcessVariable("projId",processInstanceId);	
+		if(nodename.equals("评审会秘书录入会议信息")){
+				// ===获取流程内的一些值===
+			String cfmType = new String();
+			if(outcome.equals("会议")){
+				processClient.saveProcessVariable(processInstanceId,"cfmFlag", 1);
+				cfmType = "1";
+			}else if(outcome.equals("签批")) {
+				processClient.saveProcessVariable(processInstanceId,"cfmFlag", 2);
+				cfmType = "2";
+				// reset counter sign flags
+				this.cmpt = 0;
+				processClient.saveProcessVariable(processInstanceId,"cmpt", 0);
+				}
+			TbsProj tbsproj = (TbsProj) session.get(TbsProj.class, Integer.valueOf(projId));
+			TbsProjcfm0 projCfm0 = (TbsProjcfm0) session.get(TbsProjcfm0.class, cfm0Id);
+			Bdf2User user = (Bdf2User) session.get(Bdf2User.class, Integer.valueOf(uid));
+			TbsProjOpinion tbsProjOpinion = new TbsProjOpinion();
+			tbsProjOpinion.setTbsProj(tbsproj);
+			tbsProjOpinion.setTbsProjcfm0(projCfm0);
+			tbsProjOpinion.setCfmtype(Integer.valueOf(cfmType));
+			tbsProjOpinion.setTimestampInput(now);
+			tbsProjOpinion.setBdf2User(user);
+			tbsProjOpinion.setTimestampUpdate(now);
+			session.save(tbsProjOpinion);
+		}		
+		if(nodename.equals("评委审批")){	  
+			// total approver count except those ones who choose "avoid"
+			String sqlTotal = "select count(*) from tbs_proj_opinion where CFM0_ID = "+ cfm0Id
+					+ " and CFMTYPE = 2 and del = 0 and (outcome <> '回避' ) and (outcome <> '缺席' )";
+			SQLQuery queryTotal = session.createSQLQuery(sqlTotal);
+			String total = queryTotal.uniqueResult().toString();
+			float tt = Float.valueOf(total);
+
+			// total approver count who choose "agree"
+			String sqlAgrees = "select count(*) from tbs_proj_opinion where CFM0_ID = "+ cfm0Id
+					+ " and CFMTYPE = 2 and del = 0 and outcome = '同意'";
+			SQLQuery querysqlAgrees = session.createSQLQuery(sqlAgrees);
+			String agrees = querysqlAgrees.uniqueResult().toString();
+			float ag = Float.valueOf(agrees);
+			// total approver count who choose "agree"
+				
+				
+			String sqlDisagrees = "select count(*) from tbs_proj_opinion where CFM0_ID = "+ cfm0Id
+					+ " and CFMTYPE = 2 and del = 0 and outcome = '反对'";
+			SQLQuery queryDisagrees = session.createSQLQuery(sqlDisagrees);
+			String disagrees = queryDisagrees.uniqueResult().toString();
+				
+			String sqlconfirmcount = "select count(*) from tbs_proj_opinion where CFM0_ID = "+ cfm0Id
+					+ " and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
+			SQLQuery queryconfirmcount = session.createSQLQuery(sqlconfirmcount);
+			String confirmcount = queryconfirmcount.uniqueResult().toString();
+			String sqlconfirm = "select count(*) from tbs_proj_opinion where CFM0_ID = "+ cfm0Id
+					+ " and outcome <> '未知' and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
+			SQLQuery queryconfirm = session.createSQLQuery(sqlconfirm);
+			String confirmresult = queryconfirm.uniqueResult().toString();
+			Integer cfmre = Integer.valueOf(confirmresult);
+			Integer cfmct = Integer.valueOf(confirmcount);
+			if(cfmre==cfmct){
+				confirm=1;
+			}else{
+				confirm=0;
 			}
+			
+				
+			// count how many approvers left
+			String sqlTaskAssignees = "select count(*) from uflo_task where PROCESS_INSTANCE_ID_ = "+ processInstanceId;
+			SQLQuery queryTaskAssignees = session.createSQLQuery(sqlTaskAssignees);
+			String taskAssignees = queryTaskAssignees.uniqueResult().toString();
+
+			int countTA = Integer.valueOf(taskAssignees);
+			float da = Float.valueOf(disagrees);
+			double twoThird = 0.59; // 2/3审批通过
+			double oneThird = 0.29; // 1/3驳回通过
+
+			if (outcome.equals("同意")&& confirm == 1) {
+				if (ag / tt >= twoThird ) {
+					this.pass = 1;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				}else if (da / tt >= oneThird) {
+					this.pass = 0;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				}
+			} else if (outcome.equals("反对") && confirm == 1) {
+				if (da / tt >= oneThird) {
+					this.pass = 0;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				}else if (ag / tt >= twoThird ) {
+					this.pass = 1;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				}
+			} else {
+				if (da / tt >= oneThird && confirm == 1) {
+					this.pass = 0;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				} else if (ag / tt >= twoThird && confirm == 1) {
+					this.pass = 1;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				} else if (countTA == 1) {
+					this.pass = 0;
+					this.cmpt = 1;
+					processClient.saveProcessVariable(Long.valueOf(processInstanceId), "cmpt", 1);
+				}
+			}
+	    }
+		taskClient.complete(Long.valueOf(taskid), outcome, taskOpinion); // 在中间可以加入路径名称“通过”等字样，流程图里面的路径需要写明。complete只能放在这里才可以确保后续的路程运行顺利
+		String promoter = pi.getPromoter(); // 获取promoter
+		DefaultUser receiver = (DefaultUser)session.get(DefaultUser.class,promoter );  //获得消息的接收人
+		DefaultUser sender = (DefaultUser)session.get(DefaultUser.class,"SystemSender" );  //获得消息的发送人，默认为“系统发信人”
+		Collection<IUser> receivers = new ArrayList<IUser>();
+		receivers.add(receiver);
+		MessagePacket Msgpkt= new MessagePacket();
+		Msgpkt.setTo(receivers);	
+		Msgpkt.setSender(sender);	
+		
+		//===审批处理===
+		if (outcome.equals("通过")){			
+			Msgpkt.setTitle("【项目三要素变更】审批已通过！");
+			Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projName+"】\n已经通过【"+nodename+"】审批！\n审批意见: " + comment+"\n日期："+today);
+			SendMsg.send(Msgpkt);
+		}else if (outcome.equals("驳回")) { 
+			tpcm.setValid(3);
+			session.update(tpcm);
+			Msgpkt.setTitle("【项目三要素变更】审批已驳回！");
+			Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projName+"】\n已经被驳回,驳回节点为【"+nodename+"】\n审批意见: " + comment+"\n日期："+today);
+			SendMsg.send(Msgpkt);				
+		}else if(outcome.equals("确认修改")){
+			tpcm.setValid(2);
+			session.update(tpcm);
+			Msgpkt.setTitle("【项目三要素变更】单据已完成修改！");
+			Msgpkt.setContent("您发送的【项目三要素变更】\n【项目名称："+projName+"】\n已经被【"+nodename+"】\n审批意见: " + comment+"\n日期："+today);
+			SendMsg.send(Msgpkt);
+		}
 		} finally {
 			session.flush();
 			session.close();
-			taskClient.complete(Long.valueOf(taskid), outcome, taskOpinion); // 在中间可以加入路径名称“通过”等字样，流程图里面的路径需要写明。complete只能放在这里才可以确保后续的路程运行顺利
-		}		
+		}
 	}
 }

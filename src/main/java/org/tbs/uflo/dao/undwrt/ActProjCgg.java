@@ -40,9 +40,9 @@ public class ActProjCgg implements ActionHandler {
 			//====全部审批通过,更新psid和valid===
 			TbsProj cgg=(TbsProj)session.get(TbsProj.class, Integer.valueOf(docid) ); 
 			int projid=cgg.getId();
-			String sql_a="call p_hisstatus("+projid+",23,14)";
-			SQLQuery sqlquery_a=session.createSQLQuery(sql_a);
-			sqlquery_a.executeUpdate();
+			//String sql_a="call p_hisstatus("+projid+",23,14)";
+			//SQLQuery sqlquery_a=session.createSQLQuery(sql_a);
+			//sqlquery_a.executeUpdate();
 			String sqlupdate="update tbs.tbs_proj_cgg set valid=1 where proj_id="+projid;							
 			SQLQuery sqlqueryupdate=session.createSQLQuery(sqlupdate);
 			sqlqueryupdate.executeUpdate();
@@ -65,13 +65,13 @@ public class ActProjCgg implements ActionHandler {
 			Msgpkt.setSender(sender);	
 			SendMsg.send(Msgpkt);
 			//====生成承保审批单
-			String sql_uid="select id from bdf2_user where username_='"+arole+"'";
+			/*String sql_uid="select id from bdf2_user where username_='"+arole+"'";
 			SQLQuery query_uid=session.createSQLQuery(sql_uid);		
 			String str_uid = query_uid.uniqueResult().toString();
 			int uid=Integer.parseInt(str_uid);
     		String sql_undwrt="CALL P_UNDWRT(1,"+projid+","+uid+")";
     		SQLQuery query_undwrt=session.createSQLQuery(sql_undwrt);
-    		query_undwrt.executeUpdate();
+    		query_undwrt.executeUpdate();*/
 		}
 	}
 

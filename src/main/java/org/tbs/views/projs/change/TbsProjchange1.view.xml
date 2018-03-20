@@ -534,7 +534,7 @@
       <Property name="closeAction">hide</Property>
       <Property name="closeable">false</Property>
       <Property name="maximizeable">true</Property>
-      <Property name="maximized">false</Property>
+      <Property name="maximized">true</Property>
       <Property name="minimized">false</Property>
       <Property name="minimizeable">false</Property>
       <Buttons/>

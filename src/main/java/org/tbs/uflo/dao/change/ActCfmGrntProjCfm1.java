@@ -1,4 +1,4 @@
-package org.tbs.uflo.dao.cfm;
+package org.tbs.uflo.dao.change;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,7 +24,7 @@ import com.bstek.uflo.process.handler.ActionHandler;
  * 
  */
 
-@Component
+@Component("ActChangeMajcontCfmGrntProjCfm1")
 public class ActCfmGrntProjCfm1 implements ActionHandler {
 
     @Autowired
@@ -73,8 +73,8 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 		
 	    } else {
 	    String sql = "update tbs_projcfm0 set valid=1 where del=0 and id= "+ cfm0Id;
-	    SQLQuery sqlquery = session.createSQLQuery(sql);
-	    sqlquery.executeUpdate();
+		SQLQuery sqlquery = session.createSQLQuery(sql);
+		sqlquery.executeUpdate();
 		// call procedure and get SN created
 		String sqlProcedure = "call p_cfm2(1," + businessId + "," + aRoleId + ")";
 		SQLQuery query = session.createSQLQuery(sqlProcedure);

@@ -40,9 +40,9 @@ public class ActHtsh implements ActionHandler {
 			//====全部审批通过,更新psid和valid===
 			TbsProjHtsh htsh=(TbsProjHtsh)session.get(TbsProjHtsh.class, Integer.valueOf(docid) ); 
 			int projid=htsh.getTbsProj().getId();
-			String sql_a="call p_hisstatus("+projid+",13,11)";
-			SQLQuery sqlquery_a=session.createSQLQuery(sql_a);
-			sqlquery_a.executeUpdate();
+			//String sql_a="call p_hisstatus("+projid+",13,11)";
+			//SQLQuery sqlquery_a=session.createSQLQuery(sql_a);
+			//sqlquery_a.executeUpdate();
 			String sql="update tbs_proj_htsh set valid=1 where id="+docid+"";
 			SQLQuery sqlquery=session.createSQLQuery(sql);
 			sqlquery.executeUpdate();

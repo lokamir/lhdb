@@ -74,7 +74,7 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
-		if (cn.equals("B角确认") && pname.equals("projcfm")) {
+		if (cn.equals("B角确认") && (pname.equals("projcfm") || pname.equals("changemajcont"))) {
 			String sql = "select b.USERNAME_ from tbs_proj a, bdf2_user b where b.id=a.B_ROLE_ID and a.id="
 					+ docid;
 			SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -87,7 +87,7 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
 		}
-		if (cn.equals("评委审批") && pname.equals("projcfm")) {
+		if (cn.equals("评委审批") && (pname.equals("projcfm") || pname.equals("changemajcont"))) {
 			String cfm0Id = (String) processClient.getProcessVariable("cfm0Id",
 					processInstance);
 			String sql = "select b.USERNAME_ from tbs_proj_opinion a, "
@@ -97,7 +97,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 
-		if (cn.equals("主任委员审批") && pname.equals("projcfm")) {
+		if (cn.equals("主任委员审批") && (pname.equals("projcfm") || pname.equals("changemajcont"))) {
 			String sql = "select account from tbs_approver where title like '%主任委员%' ";
 			SQLQuery sqlquery = session.createSQLQuery(sql);
 			users = sqlquery.list();
@@ -126,7 +126,7 @@ public class GetApprover implements AssignmentHandler {
 		}
 		// 决策审批2000w的限制金额判断是tbsproj.totloc,适用于决策审批
 		if (cn.equals("决策人审批")
-				&& pname.equals("projcfm")) {
+				&& (pname.equals("projcfm") || pname.equals("changemajcont"))) {
 			String sqlAmount = "select TOTLOC from tbs_proj where id = "
 					+ docid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);

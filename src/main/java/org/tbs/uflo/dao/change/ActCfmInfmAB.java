@@ -1,4 +1,4 @@
-package org.tbs.uflo.dao.cfm;
+package org.tbs.uflo.dao.change;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import org.tbs.entity.Bdf2User;
 import org.tbs.entity.TbsProj;
 import org.tbs.entity.TbsProjcfm1;
 import org.tbs.entity.TbsProjcfm2;
+import org.tbs.entity.TbsProjchangeMajcont;
 
 import com.bstek.bdf2.core.business.IUser;
 import com.bstek.bdf2.core.message.MessagePacket;
@@ -29,7 +30,7 @@ import com.bstek.uflo.process.handler.ActionHandler;
  * 
  */
 
-@Component
+@Component("ActChangeMajcontCfmInfmAB")
 public class ActCfmInfmAB implements ActionHandler {
 
     @Autowired
@@ -46,10 +47,12 @@ public class ActCfmInfmAB implements ActionHandler {
 	String businessId = processInstance.getBusinessId();
 	String cfm1r2Id = (String)processClient.getProcessVariable("cfm1r2Id", processInstance);
 	int cfmFlag = (int) processClient.getProcessVariable("cfmFlag", processInstance);
-	TbsProj tbsProj = (TbsProj) session.get(TbsProj.class, Integer.valueOf(businessId));
-	int cusid = tbsProj.getTbsCustomer().getId();
-	int projid = tbsProj.getId();
-	int uid = tbsProj.getBdf2User_A().getId();
+	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProj.class,Integer.valueOf(businessId));
+	String projname = tbsProjchangeMajcont.getTbsProj().getProjName();
+	String projid = Integer.toString(tbsProjchangeMajcont.getTbsProj().getId());
+	String cusid = Integer.toString(tbsProjchangeMajcont.getTbsProj().getTbsCustomer().getId());
+	String docsn = tbsProjchangeMajcont.getSn();
+	TbsProj tbsProj = tbsProjchangeMajcont.getTbsProj();
 	
 	if (cfmFlag == 1) {
 	    TbsProjcfm1 cfm1 = (TbsProjcfm1) session.get(TbsProjcfm1.class, Integer.valueOf(cfm1r2Id));
@@ -93,16 +96,16 @@ public class ActCfmInfmAB implements ActionHandler {
 	receivers.add(receiverB);
 
 	MessagePacket Msgpkt = new MessagePacket();
-	Msgpkt.setTitle("【" + tbsProj.getProjName() + "】决议审批通过！并已产生授信额度！");
-	Msgpkt.setContent("【项目名称：" + tbsProj.getProjName()
-		+ "】\n已通过决议审批！并已产生授信额度！\n"+"日期："+today);
+	Msgpkt.setTitle("【项目三要素变更】审批已全部通过！");
+	Msgpkt.setContent("【项目三要素变更】\n【项目名称："+projname+"】\n已经全部通过审批！\n" +
+			 			"日期：" + today);
 	Msgpkt.setTo(receivers);
 	Msgpkt.setSender(sender);
 	SendMsg.send(Msgpkt);
-	//====生成承保审批单
-	String sql_undwrt="CALL P_UNDWRT(1,"+projid+","+uid+")";
-	SQLQuery query_undwrt=session.createSQLQuery(sql_undwrt);
-	query_undwrt.executeUpdate();
+	//更新金额
+	String sql_hisloc = "call p_hisloc(6" + "," + projid + "," + cusid + ",'" + docsn + "')";
+	SQLQuery sqlquery_hisloc = session.createSQLQuery(sql_hisloc);
+	sqlquery_hisloc.executeUpdate();
     }
 
 }

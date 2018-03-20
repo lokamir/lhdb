@@ -3,6 +3,7 @@ package org.tbs.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+
 //让springMVC自动扫描和对应到数据库的view
 @Entity  
 @Table(name = "v_cfmall")  

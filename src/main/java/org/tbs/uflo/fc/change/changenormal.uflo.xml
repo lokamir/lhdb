@@ -1,79 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uflo-process name="undwrt">
-   <description>承保审批</description>
-   <start g="74,36,32,62" name="开始" url="org.tbs.uflo.views.Undwrt.d">
-      <description>承保审批-开始 PSID=23</description>
+<uflo-process name="changenormal">
+
+   <description>项目三要素变更</description>
+
+   <start g="77,55,32,62" name="开始">
+
+      <description>PSID=5</description>
+
       <sequence-flow to="B角确认"/>
+
    </start>
-   <task assignment-handler-bean="getApprover" g="177,40,115,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="B角确认" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批   PSID=15</description>
-      <sequence-flow g="320,65:-5,-22" name="通过" to="部门经理审批"/>
-      <sequence-flow g="364,132;204,229:66,-69" name="驳回" to="驳回修正"/>
+
+   <task assignment-handler-bean="getApprover" g="216,60,157,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="B角确认" task-name="三要素变更-B角确认" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-30,-11" name="通过" to="部门经理审批"/>
+
+      <sequence-flow g="428,180:-43,-49" name="驳回" to="退回A角修正"/>
+
    </task>
-   <task assignment-handler-bean="getApprover" g="404,40,146,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="部门经理审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="3,-17" name="通过" to="分支"/>
-      <sequence-flow g="203,229:-20,-18" name="驳回" to="驳回修正"/>
+
+   <end g="252,1396,73,62" name="结束" terminate="true"/>
+
+   <task assignment-handler-bean="getApprover" g="216,156,157,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="部门经理审批" task-name="三要素变更-部门经理审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-30,-11" name="通过" to="风管经理审批"/>
+
+      <sequence-flow g="407,275:-26,-41" name="驳回" to="退回A角修正"/>
+
    </task>
-   <task assignment-handler-bean="getApprover" g="585,401,152,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="财务部门经理审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批   PSID=15</description>
-      <sequence-flow g="175,425:11,-19" name="驳回" to="驳回"/>
-      <sequence-flow g="662,483:-43,-20" name="通过" to="通过"/>
+
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="216,252,157,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Countersign" name="风管经理审批" task-name="三要素变更-风管经理审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-30,-9" name="通过" to="风管部门经理审批"/>
+
+      <sequence-flow g="-32,-38" name="驳回" to="退回A角修正"/>
+
    </task>
-   <task assignment-handler-bean="getApprover" g="404,590,156,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="风管部门经理审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="79,614:5,-17" name="驳回" to="驳回修正"/>
-      <sequence-flow g="4,-16" name="通过" to="分管风管总经理"/>
+
+   <task assignment-handler-bean="getApprover" g="216,348,157,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="风管部门经理审批" task-name="三要素变更-风管部门经理审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-32,-27" name="驳回" to="退回A角修正"/>
+
+      <sequence-flow g="-29,-11" name="通过" to="分管风险领导"/>
+
    </task>
-   <task assignment-handler-bean="getApprover" g="421,756,127,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="决策人审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="2,-25" name="通过" to="Action"/>
-      <sequence-flow g="80,776:1,-16" name="驳回" to="驳回修正"/>
-   </task>
-   <action handler-bean="actUndwrt" g="427,863,115,50" name="Action">
-      <sequence-flow to="结束"/>
+
+   <action handler-bean="ActChangeMajcontCfmGrntProjCfm0" g="216,504,157,50" name="生成上会通知单">
+
+      <sequence-flow to="评审会秘书录入会议信息"/>
+
    </action>
-   <end g="461,952,47,62" name="结束" terminate="true">
-      <description>PSID=28</description>
-   </end>
-   <task g="19,207,115,50" assignment-type="ProcessPromoter" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批   PSID=19or9</description>
-      <sequence-flow g="166,144;236,143:-17,-19" name="修改确认" to="B角确认"/>
+
+   <task g="552,432,157,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="退回A角修正" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}
+</description>
+
+      <sequence-flow g="631,85:-5,-20" name="确认修改" to="B角确认"/>
+
    </task>
-   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="217,292,163,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Countersign" name="法务经理审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="201,317:-7,-19" name="驳回" to="驳回"/>
-      <sequence-flow g="300,483:7,-20" name="通过" to="通过"/>
+
+   <task assignment-handler-bean="getApprover" g="216,432,157,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="分管风险领导" task-name="三要素变更-分管风险领导" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-32,-14" name="通过" to="生成上会通知单"/>
+
+      <sequence-flow g="-35,-19" name="驳回" to="退回A角修正"/>
+
    </task>
-   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="398,293,159,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Countersign" name="风管经理审批" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批   PSID=15</description>
-      <sequence-flow g="379,366;190,365:-87,-19" name="驳回" to="驳回"/>
-      <sequence-flow g="7,-53" name="通过" to="通过"/>
+
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="192,588,205,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Countersign" name="评审会秘书录入会议信息" task-name="三要素变更-评审会秘书录入会议信息" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-27,-15" name="会议" to="通知参会人员"/>
+
+      <sequence-flow g="13,-13" name="签批" to="评委审批"/>
+
    </task>
-   <fork g="461,168,32,62" name="分支">
-      <sequence-flow g="402,197;299,197:-47,2" name="法务确认" to="法务经理审批"/>
-      <sequence-flow g="-50,-18" name="风管确认" to="风管经理审批"/>
-      <sequence-flow g="660,199:-51,3" name="财务确认" to="出纳费用确认"/>
-   </fork>
-   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="582,295,152,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Countersign" name="出纳费用确认" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="-34,-10" name="通过" to="财务部门经理审批"/>
-      <sequence-flow g="559,393;185,394:-180,-17" name="驳回" to="驳回"/>
+
+   <action handler-bean="ActChangeMajcontCfmInfmAtts" g="36,672,169,50" name="通知参会人员">
+
+      <sequence-flow to="评审会秘书确认"/>
+
+   </action>
+
+   <task assignment-handler-bean="getApprover" g="360,672,133,50" assignment-type="Handler" url="org.tbs.views.projs.cfm.TbsProjCfmDetails.d" task-type="Countersign" countersign-expression="${cmpt&gt;0?true:false} " name="评委审批" task-name="三要素变更-评委审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="503,765:-22,-34" name="驳回" to="删除上会通知单"/>
+
+      <sequence-flow g="15,-90" name="通过" to="生成会议决议单"/>
+
    </task>
-   <join multiplicity="1" g="150,448,32,62" name="驳回">
-      <sequence-flow g="-2,15" name="驳回" to="决策"/>
-   </join>
-   <decision expression="${reject&gt;0?&quot;驳回&quot;:&quot;通过&quot;}" g="272,535,32,62" name="决策" decision-type="Expression">
-      <description>判断聚合后是走驳回还是通过路径</description>
-      <sequence-flow g="480,565:-93,-22" name="通过" to="风管部门经理审批"/>
-      <sequence-flow g="79,565:6,-19" name="驳回" to="驳回修正"/>
-   </decision>
-   <join g="461,453,32,62" name="通过">
-      <sequence-flow g="-59,0" name="通过" to="决策"/>
-   </join>
-   <task assignment-handler-bean="getApprover" g="396,672,170,50" assignment-type="Handler" url="org.tbs.uflo.views.Undwrt.d" task-type="Normal" name="分管风管总经理" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-承保审批-分管总经理（风险） PSID=15</description>
-      <sequence-flow g="6,-16" name="通过" to="决策人审批"/>
-      <sequence-flow g="80,697:4,-19" name="驳回" to="驳回修正"/>
+
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="36,766,169,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Countersign" name="评审会秘书确认" task-name="三要素变更-评审会秘书确认" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-24,-41" name="通过" to="生成会议决议单"/>
+
+      <sequence-flow g="-161,-21" name="驳回" to="删除上会通知单"/>
+
    </task>
+
+   <action handler-bean="ActChangeMajcontCfmDelCfm0" g="192,924,193,50" name="生成会议决议单">
+
+      <sequence-flow to="评审会秘书录入会议决议单"/>
+
+   </action>
+
+   <task countersign-multiplicity="1" assignment-handler-bean="getApprover" g="180,1008,217,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Countersign" name="评审会秘书录入会议决议单" task-name="三要素变更-评审会秘书录入会议决议单" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-51,-12" name="确认修改" to="主任委员审批"/>
+
+   </task>
+
+   <task assignment-handler-bean="getApprover" g="120,1227,337,56" label="决策人审批（小于等于2000万:总经理; 大于2000万:董事长)" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="决策人审批" task-name="三要素变更-决策人审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-28,-15" name="通过" to="通知项目经理AB"/>
+
+      <sequence-flow g="-46,-17" name="驳回" to="删除会议决议单"/>
+
+   </task>
+
+   <action handler-bean="ActChangeMajcontCfmInfmAB" g="204,1312,169,50" name="通知项目经理AB">
+
+      <sequence-flow to="结束"/>
+
+   </action>
+
+   <action handler-bean="ActChangeMajcontCfmDelCfm0" g="552,768,157,50" name="删除上会通知单">
+
+      <sequence-flow to="退回A角修正"/>
+
+   </action>
+
+   <action handler-bean="ActChangeMajcontCfmDelCfm1" g="552,1228,157,50" name="删除会议决议单">
+
+      <sequence-flow to="删除上会通知单"/>
+
+   </action>
+
+   <task assignment-handler-bean="getApprover" g="208,1122,161,50" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="主任委员审批" task-name="三要素变更-主任委员审批" allow-specify-assignee="false">
+
+      <description>${projName} -${projSn}-三要素变更</description>
+
+      <sequence-flow g="-29,-11" name="通过" to="决策人审批"/>
+
+      <sequence-flow g="-7,-29" name="驳回" to="删除会议决议单"/>
+
+   </task>
+
 </uflo-process>

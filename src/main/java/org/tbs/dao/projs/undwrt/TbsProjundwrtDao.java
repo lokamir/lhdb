@@ -335,8 +335,8 @@ public class TbsProjundwrtDao extends HibernateDao {
 				try {
 					int projid = undwrt.getTbsProj().getId();
 					int psid = undwrt.getTbsProj().getTbsBasPs().getId();
-					if (psid == 23) { // 原始状态发起审批
-						String sql = "call p_hisstatus(" + projid + ",15,23)";
+					if (psid == 10) { // 决策审批完成状态发起审批
+						String sql = "call p_hisstatus(" + projid + ",15,10)";
 						SQLQuery sqlquery = session.createSQLQuery(sql);
 						sqlquery.executeUpdate();
 					}else if (psid == 38) { //  再次承保
