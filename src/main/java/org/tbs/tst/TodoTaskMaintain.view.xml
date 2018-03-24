@@ -160,7 +160,7 @@ if(currentTab.get(&quot;name&quot;) == &quot;todo&quot;){&#xD;
         <Property name="dataType">long</Property>
       </PropertyDef>
       <PropertyDef name="opinion">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="dueActionDate">
         <Property name="dataType">Date</Property>
@@ -315,8 +315,9 @@ var businessId = current.get(&quot;businessId&quot;);&#xD;
 var taskName = current.get(&quot;taskName&quot;);&#xD;
 var nodeName = current.get(&quot;nodeName&quot;);&#xD;
 var rootId = current.get(&quot;rootProcessInstanceId&quot;);&#xD;
-view.id(&quot;dialogCompleteTask&quot;).show();&#xD;
-view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName +&quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;rootId=&quot; + rootId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
+//view.id(&quot;dialogCompleteTask&quot;).show();&#xD;
+//view.id(&quot;iFrameProcessTask&quot;).set(&quot;path&quot;,url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName +&quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;rootId=&quot; + rootId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
+window.open(url + &quot;?taskId=&quot; + taskId +&quot;&amp;nodeName=&quot;+nodeName+ &quot;&amp;taskName=&quot; + taskName +&quot;&amp;processInstanceId=&quot; + processInstanceId + &quot;&amp;processId=&quot; + processId + &quot;&amp;rootId=&quot; + rootId + &quot;&amp;businessId=&quot; + businessId + &quot;&amp;type=&quot; + 1);&#xD;
 </ClientEvent>
               <Property name="caption">处理任务</Property>
               <Property name="icon">url(skin>common/icons.gif) -20px 0px</Property>
@@ -461,7 +462,7 @@ if(message != &quot;&quot;){&#xD;
             <Property name="caption">处理任务</Property>
             <Property name="width">600</Property>
             <Property name="modal">true</Property>
-            <Property name="height">400</Property>
+            <Property name="height">100%</Property>
             <Property name="maximizeable">true</Property>
             <Buttons/>
             <Children>

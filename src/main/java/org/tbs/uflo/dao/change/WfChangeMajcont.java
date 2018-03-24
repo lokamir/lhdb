@@ -29,6 +29,7 @@ import com.bstek.uflo.client.service.ProcessClient;
 import com.bstek.uflo.client.service.TaskClient;
 import com.bstek.uflo.model.ProcessInstance;
 import com.bstek.uflo.model.task.Task;
+import com.bstek.uflo.model.task.TaskState;
 import com.bstek.uflo.service.StartProcessInfo;
 import com.bstek.uflo.service.TaskOpinion;
 
@@ -112,7 +113,10 @@ public class WfChangeMajcont extends HibernateDao {
 		Long processInstanceId;
 		ProcessInstance pi;
 		TaskOpinion taskOpinion = new TaskOpinion(opinion); //获取结束
-		taskClient.start(Long.valueOf(taskid));  //开始审批，审批时一定要先开始任务，然后是下一步完成任务 //taskClient.saveTaskAppointor(arg0, arg1, arg2)  //指定下节点任务人 10 class13min
+		TaskState state = taskClient.getTask(Long.valueOf(taskid)).getState();
+		if(state==state.Created){
+			taskClient.start(Long.valueOf(taskid)); 
+		}
 		Session session = this.getSessionFactory().openSession();
 		try {
 			TbsProjchangeMajcont tpcm = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class, Integer.valueOf(docid));
@@ -121,8 +125,8 @@ public class WfChangeMajcont extends HibernateDao {
 			processInstanceId = uflotask.getProcessInstanceId(); // 获取processinstanceId
 			pi = (ProcessInstance) session.get(ProcessInstance.class, processInstanceId);
 			String projName = (String)processClient.getProcessVariable("projName", processInstanceId);
-			Integer cfm0Id = (Integer)processClient.getProcessVariable("cfm0Id", processInstanceId);
-			Integer projId = (Integer)processClient.getProcessVariable("projId",processInstanceId);	
+			Integer cfm0Id = Integer.parseInt(processClient.getProcessVariable("cfm0Id", processInstanceId).toString());
+			Integer projId = Integer.parseInt(processClient.getProcessVariable("projId",processInstanceId).toString());	
 		if(nodename.equals("评审会秘书录入会议信息")){
 				// ===获取流程内的一些值===
 			String cfmType = new String();
@@ -138,15 +142,21 @@ public class WfChangeMajcont extends HibernateDao {
 				}
 			TbsProj tbsproj = (TbsProj) session.get(TbsProj.class, Integer.valueOf(projId));
 			TbsProjcfm0 projCfm0 = (TbsProjcfm0) session.get(TbsProjcfm0.class, cfm0Id);
-			Bdf2User user = (Bdf2User) session.get(Bdf2User.class, Integer.valueOf(uid));
+			//Bdf2User user = (Bdf2User) session.get(Bdf2User.class, Integer.valueOf(uid));
+			String sql = "from " + TbsProjOpinion.class.getName()
+					+ " where tbsProj.id = " + projId + " and tbsProjcfm0.id = "
+					+ cfm0Id + " and cfmtype = 0 and del = 0";
+			Collection<TbsProjOpinion> tbsProjOpinionOlds = this.query(sql);
 			TbsProjOpinion tbsProjOpinion = new TbsProjOpinion();
+			for(TbsProjOpinion tbsProjOpinionOld:tbsProjOpinionOlds){
 			tbsProjOpinion.setTbsProj(tbsproj);
 			tbsProjOpinion.setTbsProjcfm0(projCfm0);
-			tbsProjOpinion.setCfmtype(Integer.valueOf(cfmType));
+			tbsProjOpinion.setCfmtype(Integer.parseInt(cfmType));
 			tbsProjOpinion.setTimestampInput(now);
-			tbsProjOpinion.setBdf2User(user);
+			tbsProjOpinion.setBdf2User(tbsProjOpinionOld.getBdf2User());
 			tbsProjOpinion.setTimestampUpdate(now);
 			session.save(tbsProjOpinion);
+			}
 		}		
 		if(nodename.equals("评委审批")){	  
 			// total approver count except those ones who choose "avoid"

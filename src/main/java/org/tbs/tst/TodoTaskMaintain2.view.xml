@@ -160,7 +160,7 @@ if(currentTab.get(&quot;name&quot;) == &quot;todo&quot;){&#xD;
         <Property name="dataType">long</Property>
       </PropertyDef>
       <PropertyDef name="opinion">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="dueActionDate">
         <Property name="dataType">Date</Property>
@@ -464,7 +464,7 @@ if(message != &quot;&quot;){&#xD;
             <Property name="caption">处理任务</Property>
             <Property name="width">600</Property>
             <Property name="modal">true</Property>
-            <Property name="height">400</Property>
+            <Property name="height">100%</Property>
             <Property name="maximizeable">true</Property>
             <Buttons/>
             <Children>

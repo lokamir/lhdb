@@ -43,7 +43,7 @@ public class ActCfmInfmAtts extends HibernateDao implements ActionHandler {
     public void handle(ProcessInstance processInstance, Context context) {
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
-	String cfm0Id = (String)processClient.getProcessVariable("cfm0Id", processInstance);
+	Integer cfm0Id = Integer.parseInt(processClient.getProcessVariable("cfm0Id", processInstance).toString());
 	Date now = new Date(); 
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String today = dateFormat.format(now);

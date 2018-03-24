@@ -1332,11 +1332,14 @@
     <VerticalTabControl id="tabControlMain">
       <Property name="verticalText">true</Property>
       <Property name="tabColumnWidth">50</Property>
-      <Property name="height">92%</Property>
+      <Property name="height">100%</Property>
+      <Property name="alwaysShowNavButtons">false</Property>
+      <Property name="width">100%</Property>
       <ControlTab id="tabInAppr">
         <Property name="caption">审批处理</Property>
         <Property name="icon">url(>skin>common/icons.gif) -100px -120px</Property>
         <Container>
+          <Property name="height">100%</Property>
           <GroupBox id="groupboxAppr">
             <Property name="caption">审批界面</Property>
             <Property name="visible">true</Property>
@@ -1944,27 +1947,6 @@
               <Editor/>
             </AutoFormElement>
           </AutoForm>
-          <Container>
-            <Property name="height">40%</Property>
-            <Property name="width">50%</Property>
-            <DataPilot id="ChangeCfmDataPilot">
-              <Property name="dataPath">#.#tbsProjchangeMajcontCfmSet.tbsProjchangeMajcontCfmattendSet</Property>
-              <Property name="dataSet">dataSetTbsProjchangeMajcont</Property>
-              <Property name="hideMode">display</Property>
-              <Property name="itemCodes">+,-,x</Property>
-            </DataPilot>
-            <DataGrid id="DataGridChangeMajcontCfmattend">
-              <Property name="dataSet">dataSetTbsProjchangeMajcont</Property>
-              <Property name="dataPath">#.#tbsProjchangeMajcontCfmSet.tbsProjchangeMajcontCfmattendSet</Property>
-              <DataColumn name="bdf2User">
-                <Property name="property">bdf2User</Property>
-                <Property name="trigger">ddlBdf2User</Property>
-              </DataColumn>
-              <DataColumn name="by1">
-                <Property name="property">by1</Property>
-              </DataColumn>
-            </DataGrid>
-          </Container>
         </Container>
       </ControlTab>
       <ControlTab id="tabTbsProj">
@@ -3044,6 +3026,11 @@
         <Property name="useEmptyItem">false</Property>
         <Property name="maxHeight">200</Property>
       </DataSetDropDown>
+      <ListDropDown id="listDdlCfmOutcome">
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="items">同意,反对,回避,缺席,弃权</Property>
+      </ListDropDown>
     </Container>
     <Panel id="btnPanel">
       <Property name="height">5</Property>
@@ -3083,5 +3070,21 @@
       <Property name="service">tbsProjchangeMajcontCfmDao#ChangeCfmAll</Property>
       <Property name="caption">对项目变更决议表做处理</Property>
     </AjaxAction>
+    <UpdateAction id="updateactionProjOpin1r2">
+      <Property name="dataResolver">tbsProjOpinionDao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">datasetTbsProjOpinion1r2</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateactionCfm0">
+      <Property name="dataResolver">tbsProjcfm0Dao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsProjcfm0</Property>
+      </UpdateItem>
+    </UpdateAction>
   </View>
 </ViewConfig>

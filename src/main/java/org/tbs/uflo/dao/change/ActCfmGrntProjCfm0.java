@@ -43,7 +43,8 @@ public class ActCfmGrntProjCfm0 extends HibernateDao implements ActionHandler  {
 
     @Override
     public void handle(ProcessInstance processInstance, Context context) {
-	Session session = context.getSession();
+	//Session session = context.getSession();
+    Session session = this.getSessionFactory().openSession();
 	String businessId = processInstance.getBusinessId();
 
 	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class,Integer.valueOf(businessId));
@@ -68,7 +69,6 @@ public class ActCfmGrntProjCfm0 extends HibernateDao implements ActionHandler  {
 		tbsProjcfm0.setTimestampInput(now);
 		tbsProjcfm0.setTimestampUpdate(now);
 		session.save(tbsProjcfm0);
-		
 		// get cfm0 ID
 		int projcfm0Id = tbsProjcfm0.getId();
 		projcfm0_sn = tbsProjcfm0.getSn();

@@ -4,8 +4,7 @@ var projid;
 var projsn;
 var spcbtn; // 给"评审会秘书录入决议"专用的判断条件,special button
 var loginusername = "${loginUsername}";
-var taskNode = "${param.taskNode}";
-var nodename = "${request.getParameter('nodeName')}";
+var nodeName = "${param.nodeName}";
 var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 /** @Bind view.onReady */
 !function(self, arg) {
@@ -56,7 +55,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		autoform.set("entity.newbdate", bdate);
 		autoform.set("entity.newedate", edate);	
 	} else if (aprv == 0) {
-		if(taskNode == "评审会秘书录入决议"){
+		if(nodeName == "评审会秘书录入决议"){
 			view.get("#tabControlMain").set("currentIndex",2);
 		}
 		var projchangeid = "${request.getParameter('projchangeid')}";
@@ -76,11 +75,10 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		var newfaloc = autoform.get("entity.newfaloc");
 		autoform.set("entity.newfaloc", newfaloc);		
 	} else {
-		if(nodename == "评审会秘书录入会议信息"){
+		if(nodeName == "评审会秘书录入会议信息"){
 			view.get("#tabCfm0").set("visible",true);
 			view.get("#groupboxCfm0").set("visible",true);
 			view.get("#groupboxCfm0ProjOpin").set("visible",true);
-			view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
 			view.get("#datapilotCfm0ProjOpin").set("visible",true);
 			view.get("#autoformTbsProjCfm0").set("readOnly",false);
 			view.get("#datagridCfm0ProjOpin").set("readOnly",false);
@@ -94,35 +92,42 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#"); 
 		var projid = dataSet.get("tbsProj.id"); 
 		var projchangevalid = dataSet.get("valid");
-		if (projchangevalid !=3&&nodename != "评审会秘书录入会议信息" ) {	
+		if (projchangevalid !=3&&nodeName != "评审会秘书录入会议信息"&&nodeName!= "评审会秘书确认" ) {	
 			view.get("#listDdlOutcome").set("items",["通过","驳回"]);
 			view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
-		} else if(nodename == "退回A角修正"||nodename == "评审会秘书录入会议决议单") {
-			view.get("#listDdlOutcome").set("items",["修改确认"]);
+		} else if(nodeName == "评审会秘书确认") {
+			view.get("#groupboxCfm1r2ProjOpin").set("visible", true);
+			view.get("#datagridCfm1r2ProjOpin").set("readOnly", false);
+			view.get("#groupboxCfm0").set("visible", true);
+			//view.get("#groupboxCfm0ProjOpin").set("visible", false);
+			view.get("#tabCfm0").set("visible", true);
+		} else if(nodeName == "退回A角修正"||nodeName == "评审会秘书录入会议决议单") {
+		view.get("#listDdlOutcome").set("items",["修改确认"]);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
 		}
 		view.get("#tabChangeMajcontCfm").set("visible",true);
 		view.get("#btnPanel").set("visible",false);
 		view.get("#tabControlMain").set("height","99%");
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
-		view.get("#ajaxactionGetUfloNode").set("parameter",params).execute(
-				function(nodename){
-				if (nodename == "评审会秘书录入决议"){
+		/*view.get("#ajaxactionGetUfloNode").set("parameter",params).execute(
+				function(nodeName){
+				if (nodeName == "评审会秘书录入决议"){
 					spcbtn = 1; // 到这个审批节点dataset为可写
 					view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
 				}	
-				});
+				});*/
 		var newfaloc = autoform.get("entity.newfaloc");
 		autoform.set("entity.newfaloc", newfaloc);	
 		
 		//通过主表查子表set内的id未用
 		//cfmid = dataSet.get("tbsProjchangeMajcontCfmSet").current.get("id"); 
-		//var nodename = dataSet.get("tbsProjchangeMajcontCfmSet").current.get("by1");
+		//var nodeName = dataSet.get("tbsProjchangeMajcontCfmSet").current.get("by1");
 		
 	}
 };
 /** @Bind #tabCfm0.onClick */
-!function(self,dataSetTbsProjchangeMajcont,dataSetTbsProjcfm0,datasetTbsProjOpinion){
+!function(self,dataSetTbsProjchangeMajcont,dataSetTbsProjcfm0,datasetTbsProjOpinion1r2){
 	var processInstanceId = dataSetTbsProjchangeMajcont.getData("#.by1");
 	var projid = dataSetTbsProjchangeMajcont.getData("#.tbsProj.id");
 	var cfm0Para = {
@@ -135,7 +140,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 			projId: projid,
 			cfm0Id: dataCfm0.get("id")
 	};
-	datasetTbsProjOpinion.set("parameter", opinPara).flushAsync();
+	datasetTbsProjOpinion1r2.set("parameter", opinPara).flushAsync();
 };
 
 
@@ -243,6 +248,14 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					}
 				}
 			});
+		}else if(nodeName == "评审会秘书录入会议信息"){
+			view.get("#updateactionCfm0").execute({
+				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+					if (result == true){
+						ajaxactionApprSubmit.set("parameter", params).execute();
+					}
+				}
+			})
 		}else{
 			ajaxactionApprSubmit.set("parameter", params).execute();
 		};

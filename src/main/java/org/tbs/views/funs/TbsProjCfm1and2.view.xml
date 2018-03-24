@@ -668,7 +668,7 @@
       <Property name="dragOutside">false</Property>
       <Buttons/>
       <Children>
-        <VerticalTabControl>
+        <TabControl>
           <ControlTab id="tabCfm1">
             <Property name="caption">会议决议单</Property>
             <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
@@ -1175,7 +1175,7 @@
             </IFrame>
           </ControlTab>
           <ControlTab id="tabHis">
-            <Property name="caption">审批记录</Property>
+            <Property name="caption">历史审批记录</Property>
             <Property name="icon">url(>skin>common/icons.gif) -260px -140px</Property>
             <Property name="visible">true</Property>
             <DataGrid id="dataGridHis">
@@ -1223,7 +1223,7 @@
               </AutoFormElement>
             </AutoForm>
           </ControlTab>
-        </VerticalTabControl>
+        </TabControl>
       </Children>
       <Tools/>
     </Dialog>
