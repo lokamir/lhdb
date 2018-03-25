@@ -45,9 +45,9 @@ public class ActCfmInfmAB implements ActionHandler {
     public void handle(ProcessInstance processInstance, Context context) {
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
-	String cfm1r2Id = (String)processClient.getProcessVariable("cfm1r2Id", processInstance);
+	Integer cfm1r2Id = (Integer)processClient.getProcessVariable("cfm1r2Id", processInstance);
 	int cfmFlag = (int) processClient.getProcessVariable("cfmFlag", processInstance);
-	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProj.class,Integer.valueOf(businessId));
+	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class,Integer.valueOf(businessId));
 	String projname = tbsProjchangeMajcont.getTbsProj().getProjName();
 	String projid = Integer.toString(tbsProjchangeMajcont.getTbsProj().getId());
 	String cusid = Integer.toString(tbsProjchangeMajcont.getTbsProj().getTbsCustomer().getId());

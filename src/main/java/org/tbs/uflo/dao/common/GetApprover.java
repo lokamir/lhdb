@@ -88,7 +88,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("评委审批") && (pname.equals("projcfm") || pname.equals("changemajcont"))) {
-			String cfm0Id = (String) processClient.getProcessVariable("cfm0Id",
+			Integer cfm0Id = (Integer) processClient.getProcessVariable("cfm0Id",
 					processInstance);
 			String sql = "select b.USERNAME_ from tbs_proj_opinion a, "
 					+ "bdf2_user b where a.uid=b.ID and a.CFM0_ID = " + cfm0Id

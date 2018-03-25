@@ -356,7 +356,7 @@ public class TbsProjcfm1 implements Serializable {
 		this.sn = sn;
 	}
 
-	@Column(name = "SN", length = 50)
+	@Column(name = "SN", length = 50,nullable=true)
 	public String getSn() {
 		return sn;
 	}

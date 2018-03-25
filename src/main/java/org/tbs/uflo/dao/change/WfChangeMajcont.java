@@ -12,9 +12,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.tbs.entity.Bdf2User;
 import org.tbs.entity.TbsProj;
-import org.tbs.entity.TbsProjOpinion;
 import org.tbs.entity.TbsProjcfm0;
 import org.tbs.entity.TbsProjchangeMajcont;
 
@@ -76,7 +74,7 @@ public class WfChangeMajcont extends HibernateDao {
 		    variables.put("cfm1r2Id", 0);
 			info.setVariables(variables); 
 			//ProcessInstance pi = processClient.startProcessByName("changemajcont", info);
-			ProcessInstance pi = processClient.startProcessByName("changenormal", info);
+			ProcessInstance pi = processClient.startProcessByName("changemajcont", info);
 			Long processInstanceId = pi.getId();
 			result = "提交审批成功！";
 			try {
@@ -143,20 +141,15 @@ public class WfChangeMajcont extends HibernateDao {
 			TbsProj tbsproj = (TbsProj) session.get(TbsProj.class, Integer.valueOf(projId));
 			TbsProjcfm0 projCfm0 = (TbsProjcfm0) session.get(TbsProjcfm0.class, cfm0Id);
 			//Bdf2User user = (Bdf2User) session.get(Bdf2User.class, Integer.valueOf(uid));
-			String sql = "from " + TbsProjOpinion.class.getName()
-					+ " where tbsProj.id = " + projId + " and tbsProjcfm0.id = "
-					+ cfm0Id + " and cfmtype = 0 and del = 0";
-			Collection<TbsProjOpinion> tbsProjOpinionOlds = this.query(sql);
-			TbsProjOpinion tbsProjOpinion = new TbsProjOpinion();
-			for(TbsProjOpinion tbsProjOpinionOld:tbsProjOpinionOlds){
-			tbsProjOpinion.setTbsProj(tbsproj);
-			tbsProjOpinion.setTbsProjcfm0(projCfm0);
-			tbsProjOpinion.setCfmtype(Integer.parseInt(cfmType));
-			tbsProjOpinion.setTimestampInput(now);
-			tbsProjOpinion.setBdf2User(tbsProjOpinionOld.getBdf2User());
-			tbsProjOpinion.setTimestampUpdate(now);
-			session.save(tbsProjOpinion);
-			}
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String sqlInsert = "insert into tbs_proj_opinion(PROJ_ID,CFM0_ID,CFMTYPE,TIMESTAMP_INPUT,UID,TITLE)"
+					+ " select " + projId + ", " + cfm0Id + "," + cfmType + ", '" + sdf.format(now) + "',"
+					+ "cfm0.UID, cfm0.TITLE from (select UID, TITLE from tbs_proj_opinion "
+					+ "where PROJ_ID = " + projId + " and CFM0_ID = "
+					+ cfm0Id + " and CFMTYPE = 0 and del = 0) cfm0";
+				SQLQuery queryInsert = session.createSQLQuery(sqlInsert);
+				queryInsert.executeUpdate();  
+			
 		}		
 		if(nodename.equals("评委审批")){	  
 			// total approver count except those ones who choose "avoid"
@@ -243,6 +236,16 @@ public class WfChangeMajcont extends HibernateDao {
 				}
 			}
 	    }
+		if(nodename.equals("决策人审批")){	 
+			String sql="update tbs_projchange_majcont set valid=1 where ID = "+docid;
+		    SQLQuery sqlquery=session.createSQLQuery(sql);
+		    sqlquery.executeUpdate();
+		}
+		if(cmpt==1&&pass==1){
+			outcome="通过";
+		}else if(cmpt==1&&pass==0){
+			outcome="驳回";
+		}
 		taskClient.complete(Long.valueOf(taskid), outcome, taskOpinion); // 在中间可以加入路径名称“通过”等字样，流程图里面的路径需要写明。complete只能放在这里才可以确保后续的路程运行顺利
 		String promoter = pi.getPromoter(); // 获取promoter
 		DefaultUser receiver = (DefaultUser)session.get(DefaultUser.class,promoter );  //获得消息的接收人

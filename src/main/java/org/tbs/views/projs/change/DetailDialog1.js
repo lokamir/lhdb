@@ -6,6 +6,36 @@ var spcbtn; // 给"评审会秘书录入决议"专用的判断条件,special but
 var loginusername = "${loginUsername}";
 var nodeName = "${param.nodeName}";
 var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
+
+function getCfmOpinion(id,by1){
+	var cfm0Para = {
+			BusinessId: id,
+			processInstanceId: by1
+	};
+	view.get("#dataSetTbsProjcfm0").set("parameter", cfm0Para).flush();
+	var dataCfm0 = view.get("#dataSetTbsProjcfm0").getData("#");
+	var opinPara = {
+			projId: id,
+			cfm0Id: dataCfm0.get("id")
+	};
+	view.get("#datasetTbsProjOpinion").set("parameter", opinPara).flush();
+	if(["评审会秘书录入会议决议单","评审会秘书确认","主任委员审批","决策人审批","评委审批"].indexOf(nodeName)>=0){
+			view.get("#datasetTbsProjOpinion1r2").set("parameter", opinPara).flush();
+	};
+}
+
+function getCfm1or2(id,by1,type){
+	var cfmPara = {
+			BusinessId: id,
+			processInstanceId: by1
+	};
+	if(type=="会议"){
+		view.get("#dataSetTbsProjcfm1").set("parameter",cfmPara).flush();
+	}else if((type=="签批")){
+		view.get("#dataSetTbsProjcfm2").set("parameter",cfmPara).flush();
+	}
+}
+
 /** @Bind view.onReady */
 !function(self, arg) {
 	if ("${request.getParameter('aprv')}"){
@@ -54,94 +84,190 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		autoform.set("entity.newperiodcfm", periodcfm);
 		autoform.set("entity.newbdate", bdate);
 		autoform.set("entity.newedate", edate);	
-	} else if (aprv == 0) {
-		if(nodeName == "评审会秘书录入决议"){
-			view.get("#tabControlMain").set("currentIndex",2);
-		}
+		view.get("#btnPanel").set("visible",true);
+	} else if(aprv == 0){
+		//刷新projchange数据
 		var projchangeid = "${request.getParameter('projchangeid')}";
 		var projchangevalid = "${request.getParameter('projchangevalid')}";
 		var autoform = view.get("#AutoFormChangeMajcont");
+		view.get("#btnPanel").set("visible",true);
+		view.get("#tabInAppr").set("visible", false);
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", projchangeid).flush();
+		view.get("#btnSave").set("action","saveChangeMajcont");
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		if(view.get("#dataSetTbsProjcfm0").getData("#")){
+			view.get("#groupboxCfm0").set("visible", true);
+		}
+		if(view.get("#datasetTbsProjOpinion").getData("#")){
+			view.get("#groupboxCfm0ProjOpin").set("visible", true);			
+		}
+		if(view.get("#datasetTbsProjOpinion1r2").getData("#")){
+			view.get("#datagridCfm1r2ProjOpin").set("visible", true);			
+		}
+		if(view.get("#dataSetTbsProjcfm1").getData("#")){
+			view.get("#tabChangeMajcontCfm").set("visible",true);			
+			view.get("#groupboxCfm1").set("visible",true);			
+		}
+		if(view.get("#dataSetTbsProjcfm2").getData("#")){
+			view.get("#tabChangeMajcontCfm").set("visible",true);			
+			view.get("#groupboxCfm2").set("visible",true);				
+		}
+		//如果发起审批表单不可以修改
 		if (projchangevalid != "0"){
 			view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
 			view.get("#btnSubmit").set("visible", false);
 			view.get("#btnSave").set("visible",false);
-			view.get("#tabChangeMajcontCfm").set("visible",true);
+			view.get("#dataSetTbsProjcfm0").set("readOnly",true);
+			view.get("#datasetTbsProjOpinion").set("readOnly",true);
+			view.get("#datasetTbsProjOpinion1r2").set("readOnly",true);
+			view.get("#dataSetTbsProjcfm1").set("readOnly",true);
+			view.get("#dataSetTbsProjcfm2").set("readOnly",true);
 		};
-		view.get("#dataSetTbsProjchangeMajcont").set("parameter", projchangeid).flush();
-		view.get("#tabInAppr").set("visible",false);
-		view.get("#btnSave").set("action","saveChangeMajcont");
-		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();
-		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		//取巧 避免没做改动时保存失败
 		var newfaloc = autoform.get("entity.newfaloc");
-		autoform.set("entity.newfaloc", newfaloc);		
-	} else {
-		if(nodeName == "评审会秘书录入会议信息"){
-			view.get("#tabCfm0").set("visible",true);
-			view.get("#groupboxCfm0").set("visible",true);
-			view.get("#groupboxCfm0ProjOpin").set("visible",true);
-			view.get("#datapilotCfm0ProjOpin").set("visible",true);
-			view.get("#autoformTbsProjCfm0").set("readOnly",false);
-			view.get("#datagridCfm0ProjOpin").set("readOnly",false);
-			view.get("#listDdlOutcome").set("items",["会议","签批"]);
-		}
-		var autoform = view.get("#AutoFormChangeMajcont");
+		autoform.set("entity.newfaloc", newfaloc);	
+	}
+	if(["B角确认","部门经理审批","风管经理审批","风管部门经理审批","分管风险领导"].indexOf(nodeName)>=0){
+		view.get("#tabChangeMajcontCfm").set("visible",false);
+		view.get("#listDdlOutcome").set("items",["通过","驳回"]);
+		view.get("#dataSetTbsProjcfm0").set("readOnly",true);
+		view.get("#datasetTbsProjOpinion").set("readOnly",true);
+		view.get("#datasetTbsProjOpinion1r2").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm1").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm2").set("readOnly",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
+		view.get("#btnPanel").set("visible",false);
 		var businessId = "${request.getParameter('businessId')}";  
-		var taskId = "${request.getParameter('taskId')}";
-		var params = { taskid : taskId,	};
 		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
 		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#"); 
 		var projid = dataSet.get("tbsProj.id"); 
-		var projchangevalid = dataSet.get("valid");
-		if (projchangevalid !=3&&nodeName != "评审会秘书录入会议信息"&&nodeName!= "评审会秘书确认" ) {	
-			view.get("#listDdlOutcome").set("items",["通过","驳回"]);
-			view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
-		} else if(nodeName == "评审会秘书确认") {
-			view.get("#groupboxCfm1r2ProjOpin").set("visible", true);
-			view.get("#datagridCfm1r2ProjOpin").set("readOnly", false);
-			view.get("#groupboxCfm0").set("visible", true);
-			//view.get("#groupboxCfm0ProjOpin").set("visible", false);
-			view.get("#tabCfm0").set("visible", true);
-		} else if(nodeName == "退回A角修正"||nodeName == "评审会秘书录入会议决议单") {
-		view.get("#listDdlOutcome").set("items",["修改确认"]);
-		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
-		}
-		view.get("#tabChangeMajcontCfm").set("visible",true);
-		view.get("#btnPanel").set("visible",false);
-		view.get("#tabControlMain").set("height","99%");
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
-		/*view.get("#ajaxactionGetUfloNode").set("parameter",params).execute(
-				function(nodeName){
-				if (nodeName == "评审会秘书录入决议"){
-					spcbtn = 1; // 到这个审批节点dataset为可写
-					view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
-				}	
-				});*/
-		var newfaloc = autoform.get("entity.newfaloc");
-		autoform.set("entity.newfaloc", newfaloc);	
-		
-		//通过主表查子表set内的id未用
-		//cfmid = dataSet.get("tbsProjchangeMajcontCfmSet").current.get("id"); 
-		//var nodeName = dataSet.get("tbsProjchangeMajcontCfmSet").current.get("by1");
-		
 	}
-};
-/** @Bind #tabCfm0.onClick */
-!function(self,dataSetTbsProjchangeMajcont,dataSetTbsProjcfm0,datasetTbsProjOpinion1r2){
-	var processInstanceId = dataSetTbsProjchangeMajcont.getData("#.by1");
-	var projid = dataSetTbsProjchangeMajcont.getData("#.tbsProj.id");
-	var cfm0Para = {
-			BusinessId: projid,
-			processInstanceId: processInstanceId
+	if(nodeName == "评审会秘书录入会议信息"){
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#"); 
+		var projid = dataSet.get("tbsProj.id"); 
+		getCfmOpinion(projid,dataSet.get("by1"));
+		view.get("#btnPanel").set("visible",false);
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		view.get("#tabCfm0").set("visible",true);
+		view.get("#groupboxCfm0").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",true);
+		view.get("#datapilotCfm0ProjOpin").set("visible",true);
+		view.get("#autoformTbsProjCfm0").set("readOnly",false);
+		view.get("#datagridCfm0ProjOpin").set("readOnly",false);
+		view.get("#listDdlOutcome").set("items",["会议","签批"]);
+	}
+	if(nodeName == "评审会秘书确认"){
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#");
+		var projid = dataSet.get("tbsProj.id"); 
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		getCfmOpinion(projid,dataSet.get("by1"));
+		view.get("#tabCfm0").set("visible",true);
+		view.get("#groupboxCfm0").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",true);
+		view.get("#datapilotCfm0ProjOpin").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",false);
+		view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
+		view.get("#datagridCfm1r2ProjOpin").set("readOnly",false);
+		view.get("#autoformTbsProjCfm0").set("readOnly",true);
+		view.get("#datagridCfm0ProjOpin").set("readOnly",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
+		view.get("#listDdlOutcome").set("items",["通过","驳回"]);
+	}
+	if(nodeName == "评审会秘书录入会议决议单"){
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#");
+		var projid = dataSet.get("tbsProj.id"); 
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		getCfm1or2(projid,dataSet.get("by1"));
+		getCfmOpinion(projid,dataSet.get("by1"),"会议");
+		view.get("#tabCfm0").set("visible",true);
+		view.get("#groupboxCfm0").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",true);
+		view.get("#datapilotCfm0ProjOpin").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",false);
+		view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
+		view.get("#tabChangeMajcontCfm").set("visible",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
+		view.get("#autoformTbsProjCfm0").set("readOnly",true);
+		view.get("#datagridCfm0ProjOpin").set("readOnly",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
+		view.get("#listDdlOutcome").set("items",["确认修改"]);
+		if(view.get("#autoformCfm1").get("entity")){
+			view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
+			view.get("#autoformCfm1").set("readOnly",false);
+			view.get("#autoformCfm1").set({
+		    	"readOnly":false,
+		    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+		    	"elements.by2.labelWidth":270,
+		    	"elements.by2.labelSpacing":0,
+		    	"elements.by2.labelAlign":"right"
+		    	});
+		}
+		else if(view.get("#autoformCfm2").get("entity")){
+			view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
+			view.get("#autoformCfm2").set("readOnly",false);
+		}
+	}
+	if(nodeName == "主任委员审批"||nodeName =="决策人审批"){
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#");
+		var projid = dataSet.get("tbsProj.id"); 
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		getCfm1or2(projid,dataSet.get("by1"));
+		getCfmOpinion(projid,dataSet.get("by1"));
+		view.get("#tabCfm0").set("visible",true);
+		view.get("#groupboxCfm0").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",true);
+		view.get("#datapilotCfm0ProjOpin").set("visible",true);
+		view.get("#groupboxCfm0ProjOpin").set("visible",false);
+		view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
+		view.get("#datagridCfm1r2ProjOpin").set("readOnly",true);
+		view.get("#tabChangeMajcontCfm").set("visible",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
+		view.get("#autoformTbsProjCfm0").set("readOnly",true);
+		view.get("#datagridCfm0ProjOpin").set("readOnly",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
+		view.get("#listDdlOutcome").set("items",["通过","驳回"]);
+	}
+	
+	if(nodeName == "评委审批"){
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#");
+		var projid = dataSet.get("tbsProj.id"); 
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		//getCfm1or2(projid,dataSet.get("by1"),"签批");
+		getCfmOpinion(projid,dataSet.get("by1"));
+		view.get("#groupboxCfm1r2ProjOpin").set("visible", true);
+		view.get("#groupboxAppr").set("visible", true);
+		view.get("#groupboxCfm0").set("visible", false);
+		view.get("#groupboxCfm2").set("visible", true);
+		view.get("#listDdlOutcome").set("items",["同意","反对","回避","缺席","弃权"]);
+		targetDatas = view.get("#datasetTbsProjOpinion1r2").getData();
+		// set promoter DH's outcome to "回避"
+		targetDatas.each(function(targetData){
+			if (targetData.get("title") == "发起人部门经理"&&targetData.get("bdf2User.id")==uid) {
+				view.get("#autoformCfm0Opinion").get("entity").set("outcome","回避");
+				view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
+			}
+		});
 	};
-	dataSetTbsProjcfm0.set("parameter", cfm0Para).flush();
-	var dataCfm0 = dataSetTbsProjcfm0.getData("#");
-	var opinPara = {
-			projId: projid,
-			cfm0Id: dataCfm0.get("id")
-	};
-	datasetTbsProjOpinion1r2.set("parameter", opinPara).flushAsync();
 };
+
 
 
 /*========== 页面计算===========*/
@@ -240,7 +366,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				comment : comment,
 				uid:uid
 			};
-		if (outcome == "修改确认" || spcbtn == "1" ) {
+		if (outcome == "确认修改" &&nodeName =="驳回修改" ) {
 			saveChangeMajcont.execute({
 				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
 					if (result == true){
@@ -249,17 +375,132 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				}
 			});
 		}else if(nodeName == "评审会秘书录入会议信息"){
+			view.get("#dataSetTbsProjcfm0").getData("#").set("type",outcome);
 			view.get("#updateactionCfm0").execute({
 				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
 					if (result == true){
 						ajaxactionApprSubmit.set("parameter", params).execute();
 					}
 				}
-			})
+			});
+		}else if(nodeName == "评审会秘书确认"){
+			view.get("#updateactionProjOpin1r2").execute({
+				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+					if (result == true){
+						ajaxactionApprSubmit.set("parameter", params).execute();
+					}
+				}
+			});
+		}else if(nodeName == "评审会秘书录入会议决议单"){
+			var type = view.get("#dataSetTbsProjcfm0").getData("#.type");
+			if(type=="会议"){
+			view.get("#updateactionCfm1").execute({
+				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+					if (result == true){
+						ajaxactionApprSubmit.set("parameter", params).execute();
+					}
+				}
+			});
+		};
+		}else if(nodeName == "评委审批"){
+			debugger;
+			var dataProjOpin1r2s = view.get("#datasetTbsProjOpinion1r2").get("data");
+			var loginUsername="${loginUser.getUsername()}";
+			dataProjOpin1r2s.each(function(dataProjOpin1r2){
+				if (dataProjOpin1r2.get("bdf2User.username") == loginUsername ) {
+					dataProjOpin1r2.set("outcome", outcome);
+				}
+			});
+			view.get("#updateactionProjOpin1r2").execute({
+				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+					if (result == true){
+						ajaxactionApprSubmit.set("parameter", params).execute();
+					}
+				}
+			});
 		}else{
 			ajaxactionApprSubmit.set("parameter", params).execute();
 		};
 	};
+};
+
+/** @Bind #updateactionProjOpin1r2.beforeExecute */
+!function(self){
+	
+};
+
+	
+/** @Bind #updateactionCfm1.beforeExecute */
+!function(self,autoformTbsProj_role, autoformCfm1r2Opinion,dataSetTbsProjcfm0,
+		 datasetTbsProj, updateactionCfm1, updateactionCfm2){
+	var type = dataSetTbsProjcfm0.getData("#.type");
+	if(type == "会议"){
+		if(nodeName== "评审会秘书录入会议决议单"){
+		var by2 =view.get("#autoformCfm1").get("entity.by2");
+		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
+			view.get("#autoformCfm1").set("entity.by2",by2);
+			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
+		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
+		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14)+by2);
+		
+	}
+	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
+	}
+	if(type == "签批"){
+		
+	}
+};
+
+//2017-06-23 新增 决议审批autoformCfm自动统计票数
+/** @Bind #tabChangeMajcontCfm.onClick */
+!function(self){
+	if(nodeName== '评审会秘书录入会议决议单'){
+	var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
+	var type = view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype");
+	var agree = 0;
+	var opoose = 0;
+	var waiver = 0;
+	var debarb = 0;
+	var tobe = 0;
+	var actbe = 0;
+	var nobe = 0;
+	datasetTbsProjOpinion1r2.each(function(entity){
+		if(entity.get("outcome") == "同意"){
+			agree++;
+			tobe++;
+		}else if(entity.get("outcome") == "反对"){
+			opoose++;
+			tobe++;
+		}else if(entity.get("outcome") == "弃权"){
+			waiver++;
+			tobe++;
+		}else if(entity.get("outcome") == "回避"){
+			debarb++;
+			tobe++;
+		}else if(entity.get("outcome") == "缺席"){
+			nobe++;
+			tobe++;
+		}else{
+			waiver++;
+			tobe++;
+		}
+	});
+	actbe = tobe - nobe;
+	if(type == 1){
+		var autoformCfm1 = view.get("#autoformCfm1");
+		autoformCfm1.get("entity").set("tobe",tobe);
+		autoformCfm1.get("entity").set("actbe",actbe);
+		autoformCfm1.get("entity").set("nobe",nobe);
+		autoformCfm1.get("entity").set("debarb",debarb);
+		autoformCfm1.get("entity").set("waiver",waiver);
+		autoformCfm1.get("entity").set("opoose",opoose);
+		autoformCfm1.get("entity").set("agree",agree);
+	}
+	}
 };
 
 /*=========待办任务界面关闭窗口============*/
@@ -293,7 +534,6 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 
 /** @Bind #tabProjAttach.onClick */
 !function(self,arg,iFrameAttach,dataSetTbsProj){
-	debugger;
 	var title = "ProjChangeMajcont";
 	var projsn = dataSetTbsProj.getData("#").get("sn");
 	var fid ="项目三要素变更";

@@ -1254,6 +1254,478 @@
       <PropertyDef name="bdf2User">
         <Property name="dataType">dataTypeBdf2User</Property>
       </PropertyDef>
+      <PropertyDef name="outcome">
+        <Property></Property>
+        <Property name="label">表决结果</Property>
+      </PropertyDef>
+      <PropertyDef name="comment">
+        <Property></Property>
+        <Property name="label">评委意见</Property>
+      </PropertyDef>
+      <PropertyDef name="ocDate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">评审日期</Property>
+      </PropertyDef>
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="cfmtype">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="title">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property/>
+      </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="dataType">dataTypeTbsProj</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProjcfm0">
+        <Property name="dataType">dataTypeTbsProjcfm0</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProjcfm1">
+        <Property name="dataType">dataTypeTbsProjcfm1</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProjcfm2">
+        <Property name="dataType">dataTypeTbsProjcfm2</Property>
+      </PropertyDef>
+    </DataType>
+    <DataType name="dataTypeTbsProjcfm1" parent="global:dataTypeTbsProjcfm1">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+        <Property name="label">会议决议单编号</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+        <Property name="label">录入日期</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">最近一次更新的时间戳</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+        <Property name="label">录入人</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Users&quot;).getResult()}</Property>
+        </Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">删除标记</Property>
+      </PropertyDef>
+      <PropertyDef name="projSn">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2Dept">
+        <Property name="dataType">dataTypeBdf2Dept</Property>
+        <Property name="label">申报部门</Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2User">
+        <Property name="label">经办部门负责人</Property>
+        <Property name="dataType">dataTypeBdf2User</Property>
+      </PropertyDef>
+      <PropertyDef name="arolename">
+        <Property></Property>
+        <Property name="label">项目经理A</Property>
+      </PropertyDef>
+      <PropertyDef name="brolename">
+        <Property></Property>
+        <Property name="label">项目经理B</Property>
+      </PropertyDef>
+      <PropertyDef name="meetingdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">会议日期</Property>
+      </PropertyDef>
+      <PropertyDef name="meetingloc">
+        <Property></Property>
+        <Property name="label">会议地点</Property>
+      </PropertyDef>
+      <PropertyDef name="attend">
+        <Property></Property>
+        <Property name="label">参会评委</Property>
+      </PropertyDef>
+      <PropertyDef name="tobe">
+        <Property name="dataType">int</Property>
+        <Property name="label">应到人数</Property>
+      </PropertyDef>
+      <PropertyDef name="actbe">
+        <Property name="dataType">int</Property>
+        <Property name="label">实到人数</Property>
+      </PropertyDef>
+      <PropertyDef name="nobe">
+        <Property name="dataType">int</Property>
+        <Property name="label">缺席</Property>
+      </PropertyDef>
+      <PropertyDef name="agree">
+        <Property name="dataType">int</Property>
+        <Property name="label">同意票数</Property>
+      </PropertyDef>
+      <PropertyDef name="opoose">
+        <Property name="dataType">int</Property>
+        <Property name="label">反对票数</Property>
+      </PropertyDef>
+      <PropertyDef name="waiver">
+        <Property name="dataType">int</Property>
+        <Property name="label">弃权票数</Property>
+      </PropertyDef>
+      <PropertyDef name="debarb">
+        <Property name="dataType">int</Property>
+        <Property name="label">回避票数</Property>
+      </PropertyDef>
+      <PropertyDef name="meetingtype">
+        <Property></Property>
+        <Property name="label">上会类型</Property>
+      </PropertyDef>
+      <PropertyDef name="vfaloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="vnfaloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理非融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="votloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理其他类担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="vtotloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">总可受理金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信开始日期</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信结束日期</Property>
+      </PropertyDef>
+      <PropertyDef name="periodCfm">
+        <Property name="dataType">int</Property>
+        <Property name="label">授信期限（月）</Property>
+      </PropertyDef>
+      <PropertyDef name="loantype">
+        <Property></Property>
+        <Property name="label">放款方式</Property>
+      </PropertyDef>
+      <PropertyDef name="loanmem">
+        <Property></Property>
+        <Property name="label">放款说明</Property>
+      </PropertyDef>
+      <PropertyDef name="repay">
+        <Property></Property>
+        <Property name="label">还款方式</Property>
+      </PropertyDef>
+      <PropertyDef name="repayinper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">每次还款额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="repaymem">
+        <Property></Property>
+        <Property name="label">还款说明</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrate">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">担保费率</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="psfy">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评审费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+        <Property name="defaultValue">0</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
+      </PropertyDef>
+      <PropertyDef name="gatmem">
+        <Property name="label">担保费率说明</Property>
+      </PropertyDef>
+      <PropertyDef name="riskavoid">
+        <Property></Property>
+        <Property name="label">风险缓释措施</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+        <Property name="label">是否为科技型企业</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapCfm1By1&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+        <Property name="label">会议审议单编号</Property>
+        <Property name="defaultValue">直接输入后缀</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">3</Property>
+          <Property name="minLength">3</Property>
+          <Property name="resultMessage">填写三位有效数字</Property>
+        </Validator>
+        <Validator name="validator2" type="required">
+          <Property name="resultMessage">必填项目</Property>
+        </Validator>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="dataType">dataTypeTbsProj</Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <Reference name="tbsProjcfm1BizvtSet">
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsProjcfm1Dao#loadTbsProjcfm1Bizvt</Property>
+        <Property name="dataType">[dataTypeTbsProjcfm1Bizvt]</Property>
+      </Reference>
+    </DataType>
+    <DataType name="dataTypeTbsProjcfm2" parent="global:dataTypeTbsProjcfm2">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="sn">
+        <Property></Property>
+        <Property name="label">决议单编号</Property>
+        <Property name="defaultValue">保存后自动产生</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否通过审批</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampInput">
+        <Property name="dataType">Date</Property>
+        <Property name="label">录入日期</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="timestampUpdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">最近一次更新的时间戳</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#GetDate&quot;).getResult()}</Property>
+      </PropertyDef>
+      <PropertyDef name="keyinId">
+        <Property name="dataType">int</Property>
+        <Property name="label">录入人</Property>
+        <Property name="defaultValue">${dorado.getDataProvider(&quot;el#Uid&quot;).getResult()}</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapBdf2Users&quot;).getResult()}</Property>
+        </Property>
+        <Property name="readOnly">true</Property>
+      </PropertyDef>
+      <PropertyDef name="memo">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="del">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">删除标记</Property>
+      </PropertyDef>
+      <PropertyDef name="projSn">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2Dept">
+        <Property name="dataType">dataTypeBdf2Dept</Property>
+        <Property name="label">申报部门</Property>
+      </PropertyDef>
+      <PropertyDef name="bdf2User">
+        <Property name="label">经办部门负责人</Property>
+        <Property name="dataType">dataTypeBdf2User</Property>
+      </PropertyDef>
+      <PropertyDef name="arolename">
+        <Property></Property>
+        <Property name="label">项目经理A</Property>
+      </PropertyDef>
+      <PropertyDef name="brolename">
+        <Property></Property>
+        <Property name="label">项目经理B</Property>
+      </PropertyDef>
+      <PropertyDef name="tobe">
+        <Property name="dataType">int</Property>
+        <Property name="label">应签批委员人数</Property>
+      </PropertyDef>
+      <PropertyDef name="actbe">
+        <Property name="dataType">int</Property>
+        <Property name="label">实际签批委员人数</Property>
+      </PropertyDef>
+      <PropertyDef name="nobe">
+        <Property name="dataType">int</Property>
+        <Property name="label">缺席</Property>
+      </PropertyDef>
+      <PropertyDef name="agree">
+        <Property name="dataType">int</Property>
+        <Property name="label">同意票数</Property>
+      </PropertyDef>
+      <PropertyDef name="opoose">
+        <Property name="dataType">int</Property>
+        <Property name="label">反对票数</Property>
+      </PropertyDef>
+      <PropertyDef name="waiver">
+        <Property name="dataType">int</Property>
+        <Property name="label">弃权票数</Property>
+      </PropertyDef>
+      <PropertyDef name="debarb">
+        <Property name="dataType">int</Property>
+        <Property name="label">回避票数</Property>
+      </PropertyDef>
+      <PropertyDef name="meetingtype">
+        <Property></Property>
+        <Property name="label">签批类型</Property>
+      </PropertyDef>
+      <PropertyDef name="vfaloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="vnfaloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理非融资担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="votloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">可受理其他类担保授信金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="vtotloc">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">总可受理金额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="periodCfm">
+        <Property name="dataType">int</Property>
+        <Property name="label">授信期限（月）</Property>
+      </PropertyDef>
+      <PropertyDef name="bdate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信开始日期</Property>
+      </PropertyDef>
+      <PropertyDef name="edate">
+        <Property name="dataType">Date</Property>
+        <Property name="label">授信结束日期</Property>
+      </PropertyDef>
+      <PropertyDef name="loantype">
+        <Property></Property>
+        <Property name="label">放款方式</Property>
+      </PropertyDef>
+      <PropertyDef name="loanmem">
+        <Property></Property>
+        <Property name="label">放款说明。</Property>
+      </PropertyDef>
+      <PropertyDef name="repay">
+        <Property></Property>
+        <Property name="label">还款方式</Property>
+      </PropertyDef>
+      <PropertyDef name="repayinper">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">每次还款额（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="repaymem">
+        <Property></Property>
+        <Property name="label">还款说明</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrate">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">担保费率</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="psfy">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">评审费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="qtfy">
+        <Property name="dataType">BigDecimal</Property>
+        <Property name="label">其他费用（元）</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="financial">
+        <Property name="label">财务顾问费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="zxfy">
+        <Property name="label">咨询费用</Property>
+        <Property name="displayFormat">#,##0.00</Property>
+      </PropertyDef>
+      <PropertyDef name="gatrateu">
+        <Property></Property>
+        <Property name="label">担保费率单位</Property>
+      </PropertyDef>
+      <PropertyDef name="gatmem">
+        <Property name="label">担保费率说明</Property>
+      </PropertyDef>
+      <PropertyDef name="riskavoid">
+        <Property></Property>
+        <Property name="label">风险缓释措施</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="dataType">dataTypeTbsProj</Property>
+        <Property name="label">项目名称</Property>
+      </PropertyDef>
+      <Reference name="tbsProjcfm2BizvtSet">
+        <Property name="parameter">$${this.id}</Property>
+        <Property name="dataProvider">tbsProjcfm2Dao#loadTbsProjcfm2Bizvt</Property>
+        <Property name="dataType">[dataTypeTbsProjcfm2Bizvt]</Property>
+      </Reference>
     </DataType>
   </Model>
   <View>
@@ -1416,6 +1888,7 @@
         <Property name="caption">项目变更单</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
         <Container>
+          <Property name="height">90%</Property>
           <AutoForm id="AutoFormChangeMajcont">
             <Property name="cols">*,*,*</Property>
             <Property name="dataSet">dataSetTbsProjchangeMajcont</Property>
@@ -1573,7 +2046,7 @@
       <ControlTab id="tabCfm0">
         <Property name="caption">上会通知单</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
-        <Property name="visible">false</Property>
+        <Property name="visible">true</Property>
         <Container>
           <Property name="containerUi">default</Property>
           <GroupBox id="groupboxCfm0">
@@ -1613,7 +2086,7 @@
                   </AutoFormElement>
                   <AutoFormElement>
                     <Property name="property">type</Property>
-                    <Property name="readOnly">false</Property>
+                    <Property name="readOnly">true</Property>
                     <Property name="visible">true</Property>
                     <Property name="trigger">ddl_meetingtype</Property>
                     <Editor/>
@@ -1659,7 +2132,7 @@
           <GroupBox id="groupboxCfm1r2ProjOpin">
             <Property name="collapseable">true</Property>
             <Property name="caption">参会/签批结果</Property>
-            <Property name="visible">false</Property>
+            <Property name="visible">true</Property>
             <Buttons/>
             <Children>
               <Container>
@@ -1697,256 +2170,585 @@
         <Property name="visible">false</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
         <Container>
-          <AutoForm id="AutoFormChangeMajcontCfm">
-            <Property name="dataSet">dataSetTbsProjchangeMajcont</Property>
-            <Property name="dataPath">#.tbsProjchangeMajcontCfmSet</Property>
-            <Property name="readOnly">false</Property>
-            <Property name="cols">*,*,*</Property>
-            <Property name="labelWidth">120</Property>
-            <Property name="labelPosition">left</Property>
-            <AutoFormElement>
-              <Property name="property">sn</Property>
-              <Property name="name">sn</Property>
-              <Property name="readOnly">false</Property>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">tbsProjchangeMajcont</Property>
-              <Property name="property">tbsProjchangeMajcont.oldprojname</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">bdf2Dept</Property>
-              <Property name="property">bdf2Dept</Property>
-              <Property name="trigger">DropDownBdf2Dept</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">bdf2User</Property>
-              <Property name="property">bdf2User</Property>
-              <Property name="trigger">DropDownBdf2User</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">arolename</Property>
-              <Property name="property">arolename</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">brolename</Property>
-              <Property name="property">brolename</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">meetingstyle</Property>
-              <Property name="property">meetingstyle</Property>
-              <Property name="trigger">ddl_meetingstyle</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">meetingtype</Property>
-              <Property name="property">meetingtype</Property>
-              <Property name="trigger">ddl_meetingtype</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">meetingdate</Property>
-              <Property name="property">meetingdate</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">meetingloc</Property>
-              <Property name="property">meetingloc</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">tobe</Property>
-              <Property name="property">tobe</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">actbe</Property>
-              <Property name="property">actbe</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">agree</Property>
-              <Property name="property">agree</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">opoose</Property>
-              <Property name="property">opoose</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">waiver</Property>
-              <Property name="property">waiver</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">debarb</Property>
-              <Property name="property">debarb</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">by1</Property>
-              <Property name="property">by1</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">tbsProj_courtid</Property>
-              <Property name="property">tbsProj.tbsBasCourt</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement layoutConstraint="colSpan:2">
-              <Property name="name">vfaloc</Property>
-              <Property name="property">vfaloc</Property>
-              <Property name="labelPosition">left</Property>
-              <Property name="labelWidth">220</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement layoutConstraint="colSpan:2">
-              <Property name="name">vnfaloc</Property>
-              <Property name="property">vnfaloc</Property>
-              <Property name="labelPosition">left</Property>
-              <Property name="labelWidth">220</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement layoutConstraint="colSpan:2">
-              <Property name="name">votloc</Property>
-              <Property name="property">votloc</Property>
-              <Property name="labelPosition">left</Property>
-              <Property name="labelWidth">220</Property>
-              <Editor/>
-            </AutoFormElement>
-            <Label/>
-            <AutoFormElement>
-              <Property name="name">bdate</Property>
-              <Property name="property">bdate</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">edate</Property>
-              <Property name="property">edate</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">periodCfm</Property>
-              <Property name="property">periodCfm</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">loantype</Property>
-              <Property name="property">loantype</Property>
-              <Property name="trigger">ddl_loantype</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">repay</Property>
-              <Property name="property">repay</Property>
-              <Property name="trigger">ddl_repay</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">repayinper</Property>
-              <Property name="property">repayinper</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">loanmem</Property>
-              <Property name="property">loanmem</Property>
-              <Property name="labelPosition">top</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
-              </Editor>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">repaymem</Property>
-              <Property name="property">repaymem</Property>
-              <Property name="labelPosition">top</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
-              </Editor>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">riskavoid</Property>
-              <Property name="property">riskavoid</Property>
-              <Property name="labelPosition">top</Property>
-              <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
-              </Editor>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">gatrate</Property>
-              <Property name="property">gatrate</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">gatrateu</Property>
-              <Property name="property">gatrateu</Property>
-              <Property name="trigger">ddlGatrateu</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">gatmem</Property>
-              <Property name="property">gatmem</Property>
-              <Property name="labelPosition">top</Property>
-              <Property name="visible">false</Property>
-              <Property name="hideMode">display</Property>
-              <Editor>
-                <TextArea/>
-              </Editor>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">psfy</Property>
-              <Property name="property">psfy</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">qtfy</Property>
-              <Property name="property">qtfy</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">memo</Property>
-              <Property name="property">memo</Property>
-              <Property name="labelPosition">top</Property>
-              <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
-              </Editor>
-            </AutoFormElement>
-            <Label/>
-            <Label/>
-            <AutoFormElement>
-              <Property name="name">keyinId</Property>
-              <Property name="property">keyinId</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">timestampInput</Property>
-              <Property name="property">timestampInput</Property>
-              <Editor/>
-            </AutoFormElement>
-            <AutoFormElement>
-              <Property name="name">valid</Property>
-              <Property name="property">valid</Property>
-              <Editor/>
-            </AutoFormElement>
-          </AutoForm>
+          <Property name="containerUi">default</Property>
+          <Container id="groupboxCfm1">
+            <Property name="hideMode">display</Property>
+            <Property name="visible">true</Property>
+            <SplitPanel>
+              <Property name="direction">top</Property>
+              <Property name="position">95%</Property>
+              <MainControl>
+                <Container>
+                  <DataPilot id="dataPilotTbsProjCfm1">
+                    <Property name="dataPath">#.tbsProjcfm1BizvtSet</Property>
+                    <Property name="dataSet">dataSetTbsProjcfm1</Property>
+                    <Property name="hideMode">display</Property>
+                    <Property name="itemCodes">pages</Property>
+                  </DataPilot>
+                  <DataGrid id="DialogTbsProjCfm1">
+                    <Property name="dataSet">dataSetTbsProjcfm1</Property>
+                    <Property name="dataPath">#.tbsProjcfm1BizvtSet</Property>
+                    <Property name="visible">true</Property>
+                    <Property name="readOnly">true</Property>
+                    <Property name="width">80%</Property>
+                    <DataColumn>
+                      <Property name="property">tbsBasBiztype</Property>
+                      <Property name="name">tbsBasBiztype</Property>
+                      <Property name="trigger">ddlTbsBasBiztype</Property>
+                      <Property name="readOnly">true</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="property">tbsBasBizvar</Property>
+                      <Property name="name">tbsBasBizvar</Property>
+                      <Property name="trigger">ddlTbsBasBizvar</Property>
+                      <Property name="readOnly">true</Property>
+                    </DataColumn>
+                    <DataColumn name="vloc">
+                      <Property name="property">vloc</Property>
+                    </DataColumn>
+                  </DataGrid>
+                </Container>
+              </MainControl>
+              <SideControl>
+                <Container>
+                  <Property name="containerUi">default</Property>
+                  <AutoForm id="autoformCfm1">
+                    <Property name="dataSet">dataSetTbsProjcfm1</Property>
+                    <Property name="cols">*,*,*</Property>
+                    <Property name="labelWidth">120</Property>
+                    <Property name="readOnly">true</Property>
+                    <AutoFormElement>
+                      <Property name="property">by2</Property>
+                      <Property name="name">by2</Property>
+                      <Property name="readOnly">false</Property>
+                      <Editor>
+                        <TextEditor id="by2"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">projName</Property>
+                      <Property name="property">tbsProj.projName</Property>
+                      <Property name="readOnly">true</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">bdf2Dept</Property>
+                      <Property name="property">bdf2Dept</Property>
+                      <Property name="trigger">DropDownBdf2Dept</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">bdf2User</Property>
+                      <Property name="property">bdf2User</Property>
+                      <Property name="trigger">DropDownBdf2User</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">arolename</Property>
+                      <Property name="property">arolename</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">brolename</Property>
+                      <Property name="property">brolename</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">meetingdate</Property>
+                      <Property name="property">meetingdate</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">meetingloc</Property>
+                      <Property name="property">meetingloc</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">attend</Property>
+                      <Property name="property">attend</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">tobe</Property>
+                      <Property name="property">tobe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">actbe</Property>
+                      <Property name="property">actbe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">agree</Property>
+                      <Property name="property">agree</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">opoose</Property>
+                      <Property name="property">opoose</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">waiver</Property>
+                      <Property name="property">waiver</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">debarb</Property>
+                      <Property name="property">debarb</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">nobe</Property>
+                      <Property name="property">nobe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">meetingtype</Property>
+                      <Property name="property">meetingtype</Property>
+                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">by1</Property>
+                      <Property name="property">by1</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vfaloc</Property>
+                      <Property name="property">vfaloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vnfaloc</Property>
+                      <Property name="property">vnfaloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">votloc</Property>
+                      <Property name="property">votloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <Label/>
+                    <AutoFormElement>
+                      <Property name="name">bdate</Property>
+                      <Property name="property">bdate</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">edate</Property>
+                      <Property name="property">edate</Property>
+                      <Property name="readOnly">false</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">periodCfm</Property>
+                      <Property name="property">periodCfm</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">loantype</Property>
+                      <Property name="property">loantype</Property>
+                      <Property name="trigger">ddl_loantype</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repay</Property>
+                      <Property name="property">repay</Property>
+                      <Property name="trigger">ddl_repay</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repayinper</Property>
+                      <Property name="property">repayinper</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">loanmem</Property>
+                      <Property name="property">loanmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repaymem</Property>
+                      <Property name="property">repaymem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">riskavoid</Property>
+                      <Property name="property">riskavoid</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">gatrate</Property>
+                      <Property name="property">gatrate</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">gatrateu</Property>
+                      <Property name="property">gatrateu</Property>
+                      <Property name="trigger">ddlGatrateu</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">gatmem</Property>
+                      <Property name="property">gatmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:2"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">psfy</Property>
+                      <Property name="property">psfy</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">zxfy</Property>
+                      <Property name="property">zxfy</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">memo</Property>
+                      <Property name="property">memo</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Editor>
+                        <TextArea/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">timestampInput</Property>
+                      <Property name="property">timestampInput</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">keyinId</Property>
+                      <Property name="property">keyinId</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">valid</Property>
+                      <Property name="property">valid</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                  </AutoForm>
+                </Container>
+              </SideControl>
+            </SplitPanel>
+          </Container>
+          <Container id="groupboxCfm2">
+            <Property name="hideMode">display</Property>
+            <Property name="visible">false</Property>
+            <SplitPanel>
+              <Property name="direction">top</Property>
+              <Property name="position">95%</Property>
+              <MainControl>
+                <Container>
+                  <Property name="visible">false</Property>
+                  <DataPilot id="dataPilotTbsProjCfm2">
+                    <Property name="dataPath">#.tbsProjcfm2BizvtSet</Property>
+                    <Property name="dataSet">dataSetTbsProjcfm2</Property>
+                    <Property name="hideMode">display</Property>
+                    <Property name="itemCodes">pages</Property>
+                  </DataPilot>
+                  <DataGrid id="DialogTbsProjCfm2">
+                    <Property name="dataSet">dataSetTbsProjcfm2</Property>
+                    <Property name="dataPath">#.tbsProjcfm2BizvtSet</Property>
+                    <Property name="readOnly">true</Property>
+                    <Property name="width">80%</Property>
+                    <DataColumn>
+                      <Property name="property">tbsBasBiztype</Property>
+                      <Property name="name">tbsBasBiztype</Property>
+                      <Property name="trigger">ddlTbsBasBiztype</Property>
+                      <Property name="readOnly">true</Property>
+                    </DataColumn>
+                    <DataColumn>
+                      <Property name="property">tbsBasBizvar</Property>
+                      <Property name="name">tbsBasBizvar</Property>
+                      <Property name="trigger">ddlTbsBasBizvar</Property>
+                      <Property name="readOnly">true</Property>
+                    </DataColumn>
+                    <DataColumn name="vloc">
+                      <Property name="property">vloc</Property>
+                    </DataColumn>
+                  </DataGrid>
+                </Container>
+              </MainControl>
+              <SideControl>
+                <Container>
+                  <AutoForm id="autoformCfm2">
+                    <Property name="dataSet">dataSetTbsProjcfm2</Property>
+                    <Property name="cols">*,*,*</Property>
+                    <Property name="labelWidth">120</Property>
+                    <Property name="readOnly">true</Property>
+                    <AutoFormElement>
+                      <Property name="property">sn</Property>
+                      <Property name="name">sn</Property>
+                      <Property name="readOnly">false</Property>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">projName</Property>
+                      <Property name="property">tbsProj.projName</Property>
+                      <Property name="readOnly">true</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">bdf2Dept</Property>
+                      <Property name="property">bdf2Dept</Property>
+                      <Property name="trigger">DropDownBdf2Dept</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">bdf2User</Property>
+                      <Property name="property">bdf2User</Property>
+                      <Property name="trigger">DropDownBdf2User</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">arolename</Property>
+                      <Property name="property">arolename</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">brolename</Property>
+                      <Property name="property">brolename</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">tobe</Property>
+                      <Property name="property">tobe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">actbe</Property>
+                      <Property name="property">actbe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">agree</Property>
+                      <Property name="property">agree</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">opoose</Property>
+                      <Property name="property">opoose</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">waiver</Property>
+                      <Property name="property">waiver</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">debarb</Property>
+                      <Property name="property">debarb</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">nobe</Property>
+                      <Property name="property">nobe</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">meetingtype</Property>
+                      <Property name="property">meetingtype</Property>
+                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vfaloc</Property>
+                      <Property name="property">vfaloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vnfaloc</Property>
+                      <Property name="property">vnfaloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">votloc</Property>
+                      <Property name="property">votloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <Label/>
+                    <AutoFormElement>
+                      <Property name="name">bdate</Property>
+                      <Property name="property">bdate</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">edate</Property>
+                      <Property name="property">edate</Property>
+                      <Property name="readOnly">false</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">periodCfm</Property>
+                      <Property name="property">periodCfm</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">loantype</Property>
+                      <Property name="property">loantype</Property>
+                      <Property name="trigger">ddl_loantype</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repay</Property>
+                      <Property name="property">repay</Property>
+                      <Property name="trigger">ddl_repay</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repayinper</Property>
+                      <Property name="property">repayinper</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">loanmem</Property>
+                      <Property name="property">loanmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">repaymem</Property>
+                      <Property name="property">repaymem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">false</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">riskavoid</Property>
+                      <Property name="property">riskavoid</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:3"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">gatrate</Property>
+                      <Property name="property">gatrate</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">gatrateu</Property>
+                      <Property name="property">gatrateu</Property>
+                      <Property name="trigger">ddlGatrateu</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">gatmem</Property>
+                      <Property name="property">gatmem</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Property name="visible">true</Property>
+                      <Property name="hideMode">display</Property>
+                      <Editor>
+                        <TextArea layoutConstraint="colSpan:2"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">psfy</Property>
+                      <Property name="property">psfy</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">financial</Property>
+                      <Property name="property">financial</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">zxfy</Property>
+                      <Property name="property">zxfy</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:3">
+                      <Property name="name">memo</Property>
+                      <Property name="property">memo</Property>
+                      <Property name="labelPosition">top</Property>
+                      <Editor>
+                        <TextArea/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">timestampInput</Property>
+                      <Property name="property">timestampInput</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">keyinId</Property>
+                      <Property name="property">keyinId</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                    <AutoFormElement>
+                      <Property name="name">valid</Property>
+                      <Property name="property">valid</Property>
+                      <Editor/>
+                    </AutoFormElement>
+                  </AutoForm>
+                </Container>
+              </SideControl>
+            </SplitPanel>
+          </Container>
         </Container>
       </ControlTab>
       <ControlTab id="tabTbsProj">
@@ -2879,6 +3681,8 @@
       <Tools/>
     </Dialog>
     <Container id="ddl">
+      <Property name="visible">false</Property>
+      <Property name="hideMode">display</Property>
       <Container id="ddlDataSet">
         <DataSet id="dataSetTbsCustomer">
           <Property name="dataType">[dataTypeTbsCustomer]</Property>
@@ -3033,7 +3837,8 @@
       </ListDropDown>
     </Container>
     <Panel id="btnPanel">
-      <Property name="height">5</Property>
+      <Property name="height">5%</Property>
+      <Property name="visible">false</Property>
       <Buttons>
         <Button id="btnSave">
           <Property name="caption"> 确  认</Property>
@@ -3063,9 +3868,6 @@
         <Property name="dataSet">dataSetTbsProjchangeMajcont</Property>
       </UpdateItem>
     </UpdateAction>
-    <AjaxAction id="ajaxactionGetUfloNode">
-      <Property name="service">getUfloNode#GetNodeName</Property>
-    </AjaxAction>
     <AjaxAction id="ajaxactionChangeCfmAll">
       <Property name="service">tbsProjchangeMajcontCfmDao#ChangeCfmAll</Property>
       <Property name="caption">对项目变更决议表做处理</Property>
@@ -3084,6 +3886,22 @@
       <Property name="successMessage">保存成功！</Property>
       <UpdateItem>
         <Property name="dataSet">dataSetTbsProjcfm0</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateactionCfm1">
+      <Property name="dataResolver">tbsProjcfm1Dao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsProjcfm1</Property>
+      </UpdateItem>
+    </UpdateAction>
+    <UpdateAction id="updateactionCfm2">
+      <Property name="dataResolver">tbsProjcfm2Dao#save</Property>
+      <Property name="executingMessage">正在保存...</Property>
+      <Property name="successMessage">保存成功！</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsProjcfm2</Property>
       </UpdateItem>
     </UpdateAction>
   </View>
