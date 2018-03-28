@@ -2,7 +2,7 @@
 var aprv = 1; // 表示来自审批界面, 0 表示来自detail按钮 2来自新增按钮
 var projid;
 var projsn;
-var spcbtn; // 给"评审会秘书录入决议"专用的判断条件,special button
+var spcbtn; // 给"评审会秘书录入决议"专用的判断条件
 var loginusername = "${loginUsername}";
 var nodeName = "${param.nodeName}";
 var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
@@ -18,21 +18,24 @@ function getCfmOpinion(id,by1){
 			projId: id,
 			cfm0Id: dataCfm0.get("id")
 	};
+	spcbtn = dataCfm0.get("type");
 	view.get("#datasetTbsProjOpinion").set("parameter", opinPara).flush();
 	if(["评审会秘书录入会议决议单","评审会秘书确认","主任委员审批","决策人审批","评委审批"].indexOf(nodeName)>=0){
 			view.get("#datasetTbsProjOpinion1r2").set("parameter", opinPara).flush();
 	};
 }
 
-function getCfm1or2(id,by1,type){
+function getCfm1or2(id,by1,spcbtn){
 	var cfmPara = {
 			BusinessId: id,
 			processInstanceId: by1
 	};
-	if(type=="会议"){
+	if(spcbtn=="会议"){
 		view.get("#dataSetTbsProjcfm1").set("parameter",cfmPara).flush();
-	}else if((type=="签批")){
+		view.get("#groupboxCfm1").set("visible",true);
+	}else if((spcbtn=="签批")){
 		view.get("#dataSetTbsProjcfm2").set("parameter",cfmPara).flush();
+		view.get("#groupboxCfm2").set("visible",true);
 	}
 }
 
@@ -160,6 +163,7 @@ function getCfm1or2(id,by1,type){
 		view.get("#datapilotCfm0ProjOpin").set("visible",true);
 		view.get("#autoformTbsProjCfm0").set("readOnly",false);
 		view.get("#datagridCfm0ProjOpin").set("readOnly",false);
+		view.get("#autoformTbsProjCfm0").get("entity").set("keyinId",uid);
 		view.get("#listDdlOutcome").set("items",["会议","签批"]);
 	}
 	if(nodeName == "评审会秘书确认"){
@@ -189,8 +193,8 @@ function getCfm1or2(id,by1,type){
 		var projid = dataSet.get("tbsProj.id"); 
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
-		getCfm1or2(projid,dataSet.get("by1"));
-		getCfmOpinion(projid,dataSet.get("by1"),"会议");
+		getCfmOpinion(projid,dataSet.get("by1"));
+		getCfm1or2(projid,dataSet.get("by1"),spcbtn);
 		view.get("#tabCfm0").set("visible",true);
 		view.get("#groupboxCfm0").set("visible",true);
 		view.get("#groupboxCfm0ProjOpin").set("visible",true);
@@ -217,6 +221,13 @@ function getCfm1or2(id,by1,type){
 		else if(view.get("#autoformCfm2").get("entity")){
 			view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 			view.get("#autoformCfm2").set("readOnly",false);
+			view.get("#autoformCfm2").set({
+		    	"readOnly":false,
+		    	"elements.by2.label":"签批审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+		    	"elements.by2.labelWidth":270,
+		    	"elements.by2.labelSpacing":0,
+		    	"elements.by2.labelAlign":"right"
+		    	});
 		}
 	}
 	if(nodeName == "主任委员审批"||nodeName =="决策人审批"){
@@ -226,8 +237,8 @@ function getCfm1or2(id,by1,type){
 		var projid = dataSet.get("tbsProj.id"); 
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
-		getCfm1or2(projid,dataSet.get("by1"));
 		getCfmOpinion(projid,dataSet.get("by1"));
+		getCfm1or2(projid,dataSet.get("by1"),spcbtn);
 		view.get("#tabCfm0").set("visible",true);
 		view.get("#groupboxCfm0").set("visible",true);
 		view.get("#groupboxCfm0ProjOpin").set("visible",true);
@@ -250,21 +261,22 @@ function getCfm1or2(id,by1,type){
 		var projid = dataSet.get("tbsProj.id"); 
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
-		//getCfm1or2(projid,dataSet.get("by1"),"签批");
+		getCfm1or2(projid,dataSet.get("by1"),"签批");
 		getCfmOpinion(projid,dataSet.get("by1"));
 		view.get("#groupboxCfm1r2ProjOpin").set("visible", true);
 		view.get("#groupboxAppr").set("visible", true);
 		view.get("#groupboxCfm0").set("visible", false);
 		view.get("#groupboxCfm2").set("visible", true);
 		view.get("#listDdlOutcome").set("items",["同意","反对","回避","缺席","弃权"]);
-		targetDatas = view.get("#datasetTbsProjOpinion1r2").getData();
+		/*targetDatas = view.get("#datasetTbsProjOpinion1r2").getData();
 		// set promoter DH's outcome to "回避"
 		targetDatas.each(function(targetData){
+			debugger;
 			if (targetData.get("title") == "发起人部门经理"&&targetData.get("bdf2User.id")==uid) {
 				view.get("#autoformCfm0Opinion").get("entity").set("outcome","回避");
 				view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
 			}
-		});
+		});*/
 	};
 };
 
@@ -384,24 +396,44 @@ function getCfm1or2(id,by1,type){
 				}
 			});
 		}else if(nodeName == "评审会秘书确认"){
-			view.get("#updateactionProjOpin1r2").execute({
-				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
-					if (result == true){
-						ajaxactionApprSubmit.set("parameter", params).execute();
+			if(spcbtn=="会议"){
+				view.get("#updateactionProjOpin1r2").execute({
+					callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+						if (result == true){
+							ajaxactionApprSubmit.set("parameter", params).execute();
+						}
 					}
-				}
-			});
+				});
+			}
+			if(spcbtn=="签批"){
+				view.get("#updateactionProjOpin1r2").execute({
+					callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+						if (result == true){
+							ajaxactionApprSubmit.set("parameter", params).execute();
+						}
+					}
+				});
+			}
 		}else if(nodeName == "评审会秘书录入会议决议单"){
 			var type = view.get("#dataSetTbsProjcfm0").getData("#.type");
 			if(type=="会议"){
-			view.get("#updateactionCfm1").execute({
-				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
-					if (result == true){
-						ajaxactionApprSubmit.set("parameter", params).execute();
+				view.get("#updateactionCfm1").execute({
+					callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+						if (result == true){
+							ajaxactionApprSubmit.set("parameter", params).execute();
+						}
 					}
-				}
-			});
-		};
+				});
+			}
+			if(type=="签批"){
+				view.get("#updateactionCfm2").execute({
+					callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+						if (result == true){
+							ajaxactionApprSubmit.set("parameter", params).execute();
+						}
+					}
+				});
+			};
 		}else if(nodeName == "评委审批"){
 			debugger;
 			var dataProjOpin1r2s = view.get("#datasetTbsProjOpinion1r2").get("data");
@@ -432,7 +464,7 @@ function getCfm1or2(id,by1,type){
 	
 /** @Bind #updateactionCfm1.beforeExecute */
 !function(self,autoformTbsProj_role, autoformCfm1r2Opinion,dataSetTbsProjcfm0,
-		 datasetTbsProj, updateactionCfm1, updateactionCfm2){
+		 datasetTbsProj, updateactionCfm1){
 	var type = dataSetTbsProjcfm0.getData("#.type");
 	if(type == "会议"){
 		if(nodeName== "评审会秘书录入会议决议单"){
@@ -450,8 +482,27 @@ function getCfm1or2(id,by1,type){
 	}
 	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
 	}
+};
+
+/** @Bind #updateactionCfm2.beforeExecute */
+!function(self,autoformTbsProj_role, autoformCfm1r2Opinion,dataSetTbsProjcfm0,
+		 datasetTbsProj, updateactionCfm2){
+	var type = dataSetTbsProjcfm0.getData("#.type");
 	if(type == "签批"){
+		if(nodeName== "评审会秘书录入会议决议单"){
+		var by2 =view.get("#autoformCfm2").get("entity.by2");
+		if (view.get("#dataSetTbsProjcfm2").getData("#").validate("by2")!="ok"){
+			view.get("#autoformCfm2").set("entity.by2",by2);
+			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
+		view.get("#dataSetTbsProjcfm2").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
+		view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14)+by2);
 		
+	}
+	view.get("#dataSetTbsProjcfm2").getData("#").isDirty();
 	}
 };
 

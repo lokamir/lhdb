@@ -3,6 +3,7 @@ var projid ;
 
 /** @Bind view.onReady */
 !function(self,arg,dataSetVcfmall){
+	debugger;
 	projid = "${request.getParameter('projid')}";
 	if(projid){
 		dataSetVcfmall.set("parameter", projid).flushAsync();

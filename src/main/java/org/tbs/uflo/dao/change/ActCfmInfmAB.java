@@ -46,6 +46,7 @@ public class ActCfmInfmAB implements ActionHandler {
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
 	Integer cfm1r2Id = (Integer)processClient.getProcessVariable("cfm1r2Id", processInstance);
+	Integer projId = (Integer)processClient.getProcessVariable("projId", processInstance);
 	int cfmFlag = (int) processClient.getProcessVariable("cfmFlag", processInstance);
 	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class,Integer.valueOf(businessId));
 	String projname = tbsProjchangeMajcont.getTbsProj().getProjName();
@@ -62,7 +63,7 @@ public class ActCfmInfmAB implements ActionHandler {
 	    SQLQuery sqlquery=session.createSQLQuery(sql);
 	    sqlquery.executeUpdate();
 	    //Gnrt hisloc & proj.vloc
-	    String sql1="call p_hisloc (1,"+businessId+","+cusid+",'"+docsn1+"')";
+	    String sql1="call p_hisloc (1,"+projId+","+cusid+",'"+docsn1+"')";
 	    SQLQuery sqlquery1=session.createSQLQuery(sql1);
 	    sqlquery1.executeUpdate();
 	} else {
@@ -73,7 +74,7 @@ public class ActCfmInfmAB implements ActionHandler {
 	    SQLQuery sqlquery=session.createSQLQuery(sql);
 	    sqlquery.executeUpdate();
 	    //Gnrt hisloc & proj.vloc
-	    String sql2="call p_hisloc (1,"+businessId+","+cusid+",'"+docsn2+"')";
+	    String sql2="call p_hisloc (1,"+projId+","+cusid+",'"+docsn2+"')";
 	    SQLQuery sqlquery2=session.createSQLQuery(sql2);
 	    sqlquery2.executeUpdate();
 	}

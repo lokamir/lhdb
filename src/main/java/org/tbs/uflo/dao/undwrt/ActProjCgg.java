@@ -37,7 +37,7 @@ public class ActProjCgg implements ActionHandler {
 		if (StringUtils.isNotEmpty(docid)){
 			Session session = context.getSession();
 			
-			//====全部审批通过,更新psid和valid===
+			//====全部审批通过,更新valid===
 			TbsProj cgg=(TbsProj)session.get(TbsProj.class, Integer.valueOf(docid) ); 
 			int projid=cgg.getId();
 			//String sql_a="call p_hisstatus("+projid+",23,14)";

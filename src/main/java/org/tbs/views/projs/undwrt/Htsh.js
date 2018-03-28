@@ -8,6 +8,7 @@ var projid;
 var psid;
 var valid;
 var taskid = "${request.getParameter('taskId')}";
+var taskName = "${request.getParameter('taskName')}";
 var outcome = "修改确认";
 
 /*======Get status from CurrentRecordSets======*/
@@ -27,13 +28,16 @@ function GetCRStatus(ds){
 /** @Bind #dataSetTbsProjHtsh.onLoadData */
 !function(self,arg,buttonAppr,buttonClose,buttonResend,DdlOutcome,OpinionGroupBox,DocGroupBox,tabInAppr,tabMain){
 	GetCRStatus(self);
-	if (psid == 12 ){  //驳回
-		tabMain.set("currentIndex", 1);
+	debugger;
+	if (taskName == "驳回修正" ){  //驳回
+		tabMain.set("currentIndex", 0);
+		tabInAppr.set("visible",true);
 		buttonClose.set("visible",false);
 		buttonAppr.set("visible",false);
 		buttonResend.set("visible",true);
 		self.set("readOnly",true);  //此表单无修改内容
-		OpinionGroupBox.set("visible",false);
+		OpinionGroupBox.set("visible",true);
+		DdlOutcome.set("items",["修改确认"]);
 		DocGroupBox.set("height","40%");
 	}else{
 		tabMain.set("currentIndex", 0);
@@ -54,7 +58,7 @@ function GetCRStatus(ds){
 	if (!opinion){
 		opinion="无意见";
 	};
-	if (psid == 12){
+	if (taskName == "驳回修正"){
 		self.set("confirmMessage","您确定再次发送审批？");
 		self.set("parameter",{docid:docid,projid:projid,psid:psid,taskid:taskid,outcome:outcome,opinion:opinion});
 	}else {

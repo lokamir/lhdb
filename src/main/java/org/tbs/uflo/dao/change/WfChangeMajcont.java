@@ -243,8 +243,11 @@ public class WfChangeMajcont extends HibernateDao {
 		}
 		if(cmpt==1&&pass==1){
 			outcome="通过";
+			cmpt=2;
+			pass=2;
 		}else if(cmpt==1&&pass==0){
 			outcome="驳回";
+			cmpt=0;
 		}
 		taskClient.complete(Long.valueOf(taskid), outcome, taskOpinion); // 在中间可以加入路径名称“通过”等字样，流程图里面的路径需要写明。complete只能放在这里才可以确保后续的路程运行顺利
 		String promoter = pi.getPromoter(); // 获取promoter

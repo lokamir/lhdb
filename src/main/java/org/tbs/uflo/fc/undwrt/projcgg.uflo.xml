@@ -38,10 +38,7 @@
       <sequence-flow g="620,133:-67,-20" name="驳回" to="驳回修正"/>
    </task>
    <task g="512,189,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.projcgg.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-项目与反担保关联
-
-
- PSID=24</description>
+      <description>${projName} -${projSn}-项目与反担保关联</description>
       <sequence-flow g="498,171:-127,-20" name="修改确认" to="是否有保证金反担保"/>
    </task>
 </uflo-process>

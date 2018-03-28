@@ -24,6 +24,10 @@ function GetCRStatus(ds){
     	HisTaskTab.set("visible",false);
     	if (valid == true) {
     		buttonEdit.set("disabled",true);
+    	}else{
+    		buttonDel.set("disabled",false);
+        	buttonUflo.set("disabled",false);
+        	datasetTbsProj.set("readOnly",false);
     	}
     }else if (pageid == 1){   // 菜单4进入
     	buttonUflo.set("visible",true);
@@ -36,7 +40,7 @@ function GetCRStatus(ds){
 /** @Bind #datasetTbsProj.onLoadData */
 !function(self,arg,datasetTbsProj,buttonDel,buttonUflo,dataSetHistoryTask){
 	GetCRStatus(datasetTbsProj);
-    if (valid == 1 && psid == 13 ){ //项目通过审批并且合同审核通过，可以进行反担保审批
+    /*if (valid == 1 && psid == 13 ){ //项目通过审批并且合同审核通过，可以进行反担保审批
     	buttonDel.set("disabled",false);
     	buttonUflo.set("disabled",false);
     	datasetTbsProj.set("readOnly",false);
@@ -48,7 +52,7 @@ function GetCRStatus(ds){
   //page controller
     if (pageid == 0 && (psid == 1 || psid == 2) ){  
     	datasetTbsProj.set("readOnly",false);
-    }
+    }*/
   //histask
     dataSetHistoryTask.set("parameter",processInstanceId).flushAsync();
 };

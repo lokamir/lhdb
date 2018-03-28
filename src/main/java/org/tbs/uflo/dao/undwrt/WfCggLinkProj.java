@@ -83,7 +83,7 @@ public class WfCggLinkProj extends HibernateDao {
 				session.close();
 			}
 			session = this.getSessionFactory().openSession();
-			try {
+			/*try {
 				int projid = cgg.getId();
 				int psid = cgg.getTbsBasPs().getId();
 				if (psid == 13) { // 原始状态发起审批
@@ -94,7 +94,7 @@ public class WfCggLinkProj extends HibernateDao {
 			}finally {
 				session.flush();
 				session.close();
-			}
+			}*/
 		} else {
 			result = "此单据已发起审批，请另外选择！";
 		}
@@ -139,16 +139,16 @@ public class WfCggLinkProj extends HibernateDao {
 				Msgpkt.setContent("您发送的【项目与反担保关联】\n【项目名称："+projname+"】\n已经通过【"+nodename+"】审批！\n日期："+today);
 				SendMsg.send(Msgpkt);
 			}else if (outcome.equals("驳回")) { 
-				String sql="call p_hisstatus("+projid+",24,14)";
+				/*String sql="call p_hisstatus("+projid+",24,14)";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
-				sqlquery.executeUpdate();
+				sqlquery.executeUpdate();*/
 				Msgpkt.setTitle("【项目与反担保关联】审批已驳回！");
 				Msgpkt.setContent("您发送的【项目与反担保关联】\n【项目名称："+projname+"】\n已经被驳回,驳回节点为【"+nodename+"】\n日期："+today);
 				SendMsg.send(Msgpkt);				
 			}else if(outcome.equals("修改确认")){
-				String sql="call p_hisstatus("+projid+",14,24)";
+				/*String sql="call p_hisstatus("+projid+",14,24)";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
-				sqlquery.executeUpdate();
+				sqlquery.executeUpdate();*/
 				Msgpkt.setTitle("【项目与反担保关联】单据已完成修改！");
 				Msgpkt.setContent("您发送的【项目与反担保关联】\n【项目名称："+projname+"】\n已经被【"+nodename+"】\n日期："+today);
 				SendMsg.send(Msgpkt);

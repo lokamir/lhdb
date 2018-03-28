@@ -126,7 +126,7 @@ public class GetApprover implements AssignmentHandler {
 		}
 		// 决策审批2000w的限制金额判断是tbsproj.totloc,适用于决策审批
 		if (cn.equals("决策人审批")
-				&& (pname.equals("projcfm") || pname.equals("changemajcont"))) {
+				&& pname.equals("projcfm") ) {
 			String sqlAmount = "select TOTLOC from tbs_proj where id = "
 					+ docid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);

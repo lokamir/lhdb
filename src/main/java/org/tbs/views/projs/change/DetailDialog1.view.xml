@@ -1282,16 +1282,16 @@
         <Property name="dataType">boolean</Property>
       </PropertyDef>
       <PropertyDef name="title">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="by1">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="by2">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="by3">
-        <Property/>
+        <Property></Property>
       </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="dataType">dataTypeTbsProj</Property>
@@ -1713,6 +1713,16 @@
       </PropertyDef>
       <PropertyDef name="by2">
         <Property></Property>
+        <Property name="label">会议审议单编号</Property>
+        <Property name="defaultValue">直接输入后缀</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">3</Property>
+          <Property name="minLength">3</Property>
+          <Property name="resultMessage">填写三位有效数字</Property>
+        </Validator>
+        <Validator name="validator2" type="required">
+          <Property name="resultMessage">必填项目</Property>
+        </Validator>
       </PropertyDef>
       <PropertyDef name="by3">
         <Property></Property>
@@ -2046,7 +2056,7 @@
       <ControlTab id="tabCfm0">
         <Property name="caption">上会通知单</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
-        <Property name="visible">true</Property>
+        <Property name="visible">false</Property>
         <Container>
           <Property name="containerUi">default</Property>
           <GroupBox id="groupboxCfm0">
@@ -2132,7 +2142,7 @@
           <GroupBox id="groupboxCfm1r2ProjOpin">
             <Property name="collapseable">true</Property>
             <Property name="caption">参会/签批结果</Property>
-            <Property name="visible">true</Property>
+            <Property name="visible">false</Property>
             <Buttons/>
             <Children>
               <Container>
@@ -2173,7 +2183,7 @@
           <Property name="containerUi">default</Property>
           <Container id="groupboxCfm1">
             <Property name="hideMode">display</Property>
-            <Property name="visible">true</Property>
+            <Property name="visible">false</Property>
             <SplitPanel>
               <Property name="direction">top</Property>
               <Property name="position">95%</Property>
@@ -2518,9 +2528,12 @@
                     <Property name="labelWidth">120</Property>
                     <Property name="readOnly">true</Property>
                     <AutoFormElement>
-                      <Property name="property">sn</Property>
-                      <Property name="name">sn</Property>
+                      <Property name="property">by2</Property>
+                      <Property name="name">by2</Property>
                       <Property name="readOnly">false</Property>
+                      <Editor>
+                        <TextEditor id="cfm2by2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">projName</Property>

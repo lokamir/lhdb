@@ -17,10 +17,7 @@
       <sequence-flow to="结束"/>
    </action>
    <task g="374,226,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Htsh.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
-      <description>${projName} -${projSn}-合同审批
-
-
-PSID=12</description>
+      <description>${projName} -${projSn}-合同审批</description>
       <sequence-flow g="513,250;512,73;448,73:-93,-22" name="修改确认" to="部门经理审批"/>
    </task>
    <task assignment-handler-bean="getApprover" g="169,225,140,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Htsh.d" task-type="Normal" name="法务经理审批" allow-specify-assignee="false">

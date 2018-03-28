@@ -11,7 +11,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.annotations.common.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ import com.bstek.uflo.client.service.TaskClient;
 import com.bstek.uflo.model.ProcessInstance;
 import com.bstek.uflo.service.StartProcessInfo;
 import com.bstek.uflo.service.TaskOpinion;
-import com.bstek.uflo.model.task.Task;
+import com.bstek.uflo.model.task.TaskState;
 
 @Component
 public class TbsProjHtshDao extends HibernateDao {
@@ -141,15 +140,15 @@ public class TbsProjHtshDao extends HibernateDao {
 			Long processInstanceId = pi.getId();
 			result = "提交审批成功！";
 			try{
-				int projid=htsh.getTbsProj().getId();
-				int psid=htsh.getTbsProj().getTbsBasPs().getId();
-				if (psid == 10){   // 原始状态发起审批
-				String sql="call p_hisstatus("+projid+",11,10)";
-				SQLQuery sqlquery=session.createSQLQuery(sql);
-				sqlquery.executeUpdate();
 				htsh.setBy3(processInstanceId.toString());  //把processInstanceId放入单据的by3内
 				session.update(htsh);
-				}/*else if (psid == 12){  //被驳回状态再次发起申批
+				//int projid=htsh.getTbsProj().getId();
+				//int psid=htsh.getTbsProj().getTbsBasPs().getId();
+				/*if (psid == 10){   // 原始状态发起审批
+					String sql="call p_hisstatus("+projid+",11,10)";
+				SQLQuery sqlquery=session.createSQLQuery(sql);
+				sqlquery.executeUpdate();
+				}else if (psid == 12){  //被驳回状态再次发起申批
 					String sql="call p_hisstatus("+projid+",11,12)";
 					SQLQuery sqlquery=session.createSQLQuery(sql);
 					sqlquery.executeUpdate();
@@ -181,16 +180,21 @@ public class TbsProjHtshDao extends HibernateDao {
 		String opinion = (String) param.get("opinion");
 		String opinions = (String) outcome + "-- 审批意见："+  opinion;
 		TaskOpinion taskOpinion = new TaskOpinion(opinions); //获取结束
-		taskClient.start(Long.valueOf(taskid));  //开始审批，审批时一定要先开始任务，然后是下一步完成任务 //taskClient.saveTaskAppointor(arg0, arg1, arg2)  //指定下节点任务人 10 class13min
+		
+		//开始审批，审批时一定要先开始任务，然后是下一步完成任务 
+		TaskState state = taskClient.getTask(Long.valueOf(taskid)).getState();
+		if(state==state.Created){
+			taskClient.start(Long.valueOf(taskid)); 
+		}
 		Session session = this.getSessionFactory().openSession();
 		try{
 			//===获取流程内的一些值===
 			TbsProjHtsh htsh = (TbsProjHtsh)session.get(TbsProjHtsh.class, Integer.valueOf(docid) );
 			String projname = htsh.getTbsProj().getProjName();
-			Task uflotask = (Task)session.get(Task.class, Long.valueOf(taskid)); 
-			String nodename = uflotask.getNodeName();
-			Long piid=uflotask.getProcessInstanceId(); //获取processinstanceId
-			ProcessInstance pi = (ProcessInstance)session.get(ProcessInstance.class, piid ); 
+			//Task uflotask = (Task)session.get(Task.class, Long.valueOf(taskid)); 
+			String nodename = taskClient.getTask(Long.valueOf(taskid)).getNodeName();
+			Long piid=taskClient.getTask(Long.valueOf(taskid)).getProcessInstanceId(); //获取processinstanceId
+			ProcessInstance pi = processClient.getProcessInstanceById(piid); 
 			String promoter=pi.getPromoter(); //获取promoter
 			
 			//===消息处理===
@@ -208,16 +212,16 @@ public class TbsProjHtshDao extends HibernateDao {
 				Msgpkt.setContent("您发送的【合同审批】\n【项目名称："+projname+"】\n已经通过【"+nodename+"】审批！\n"+today);
 				SendMsg.send(Msgpkt);
 			}else if (outcome.equals("驳回")) {
-				String sql="call p_hisstatus("+projid+",12,11)";
+				/*String sql="call p_hisstatus("+projid+",12,11)";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
-				sqlquery.executeUpdate();
+				sqlquery.executeUpdate();*/
 				Msgpkt.setTitle("【合同审批】审批已驳回！");
 				Msgpkt.setContent("您发送的【合同审批】\n【项目名称："+projname+"】\n已经被驳回，驳回节点为【"+nodename+"】\n"+today);
 				SendMsg.send(Msgpkt);
 			}else if(outcome.equals("修改确认")){
-				String sql="call p_hisstatus("+projid+",11,12)";
+				/*String sql="call p_hisstatus("+projid+",11,12)";
 				SQLQuery sqlquery=session.createSQLQuery(sql);
-				sqlquery.executeUpdate();
+				sqlquery.executeUpdate();*/
 				Msgpkt.setTitle("【合同审批】单据已完成修改！");
 				Msgpkt.setContent("您发送的【合同审批】\n【项目名称："+projname+"】\n已经被【"+nodename+"】\n"+today);
 				SendMsg.send(Msgpkt);

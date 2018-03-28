@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.tbs.entity.TbsProj;
 import org.tbs.entity.TbsProjcfm0;
 import org.tbs.entity.TbsProjcfm1;
+import org.tbs.entity.TbsProjcfm2;
 import org.tbs.entity.TbsProjchangeMajcont;
 import org.tbs.entity.TbsProjeaa;
 
@@ -106,40 +107,56 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 	    	tbsProjcfm1.setBy3(piId.toString());
 	    	session.save(tbsProjcfm1);
 	    	Integer projcfm1Id = tbsProjcfm1.getId();
-	    	processClient.saveProcessVariable(piId, "cfm1r2Id", projcfm1Id);
-		/*String sqlProcedure = "call p_cfm1(1," + businessId + ","
-			+ aRoleId + "," + cfm0Id + ")";
-		SQLQuery query = session.createSQLQuery(sqlProcedure);
-		projcfm1_sn = query.uniqueResult().toString();
-		// get cfm1 ID
-		String sqlProjcfm1ID = "select ID from tbs_projcfm1 where SN ='"
-			+ projcfm1_sn + "'";
-		SQLQuery queryProjcfm0ID = session.createSQLQuery(sqlProjcfm1ID);
-		String projcfm1Id = queryProjcfm0ID.uniqueResult().toString();
-		Long piId = processInstance.getId();
-		// update process instance id into cfm1
-		String sqlCfm1Update = "update tbs_projcfm1 set BY3 = '"
-			+ piId.toString() + "'" + " where ID = " + projcfm1Id;
-		SQLQuery queryCfm1Update = session.createSQLQuery(sqlCfm1Update);
-		queryCfm1Update.executeUpdate();
-
-		// save cfm1Id into process variables
-		processClient.saveProcessVariable(piId, "cfm1r2Id", projcfm1Id);*/
-		
+	    	processClient.saveProcessVariable(piId, "cfm1r2Id", projcfm1Id);		
 	    } else {
 	    String sql = "update tbs_projcfm0 set valid=1 where del=0 and id= "+ cfm0Id;
 		SQLQuery sqlquery = session.createSQLQuery(sql);
 		sqlquery.executeUpdate();
-		// call procedure and get SN created
-		String sqlProcedure = "call p_cfm2(1," + projid + "," + aRoleId + ")";
+		if(tbsProjcfm0.getJtrq()!=null){
+    		meetingdate = tbsProjcfm0.getJtrq();
+    	}
+		TbsProjcfm2 tbsProjcfm2 = new TbsProjcfm2();
+    	tbsProjcfm2.setTbsProj(tbsProj);
+    	tbsProjcfm2.setProjSn(tbsProj.getSn());
+    	tbsProjcfm2.setBdf2Dept(eaa.getBdf2Dept());
+    	tbsProjcfm2.setBdf2User(eaa.getBdf2User());
+    	tbsProjcfm2.setPeriodCfm(tbsProj.getPeriodCfm());
+    	Calendar calendar = Calendar.getInstance();
+    	tbsProjcfm2.setBdate(meetingdate);
+    	calendar.setTime(meetingdate);
+    	calendar.add(Calendar.MONTH, tbsProj.getPeriodCfm());
+    	Date date =  calendar.getTime();
+    	tbsProjcfm2.setEdate(date);
+    	tbsProjcfm2.setVfaloc(tbsProjchangeMajcont.getNewfaloc());
+    	tbsProjcfm2.setVnfaloc(tbsProjchangeMajcont.getNewnfaloc());
+    	tbsProjcfm2.setVotloc(tbsProjchangeMajcont.getNewotloc());
+    	tbsProjcfm2.setVtotloc(tbsProjchangeMajcont.getNewtotloc());
+    	tbsProjcfm2.setLoantype(tbsProj.getLoantype());
+    	tbsProjcfm2.setRepay(tbsProj.getRepay());
+    	tbsProjcfm2.setRepayinper(tbsProj.getRepayinper());
+    	tbsProjcfm2.setLoanmem(tbsProj.getLoanmem());
+    	tbsProjcfm2.setRepaymem(tbsProj.getRepaymem());
+    	tbsProjcfm2.setGatrate(tbsProj.getGatrate());
+    	tbsProjcfm2.setQtfy(tbsProj.getQtfy());
+    	tbsProjcfm2.setPsfy(tbsProj.getPsfy());
+    	tbsProjcfm2.setGatmem(tbsProj.getGatmem());
+    	tbsProjcfm2.setMemo(tbsProj.getMemo());
+    	tbsProjcfm2.setRiskavoid(tbsProj.getRiskavoid());
+    	tbsProjcfm2.setArolename(tbsProj.getBdf2User_A().getCname());
+    	tbsProjcfm2.setBrolename(tbsProj.getBdf2User_B().getCname());
+    	tbsProjcfm2.setTimestampInput(now);
+    	tbsProjcfm2.setTimestampUpdate(now);
+    	tbsProjcfm2.setBy3(piId.toString());
+    	session.save(tbsProjcfm2);
+    	Integer projcfm2Id = tbsProjcfm2.getId();
+    	processClient.saveProcessVariable(piId, "cfm1r2Id", projcfm2Id);
+		/*String sqlProcedure = "call p_cfm2(1," + projid + "," + aRoleId + ")";
 		SQLQuery query = session.createSQLQuery(sqlProcedure);
 		projcfm2_sn = query.uniqueResult().toString();
-		// get cfm2 ID
 		String sqlProjcfm2ID = "select ID from tbs_projcfm2 where SN ='"
 			+ projcfm2_sn + "'";
 		SQLQuery queryProjcfm2ID = session.createSQLQuery(sqlProjcfm2ID);
-		String projcfm2Id = queryProjcfm2ID.uniqueResult().toString();
-		// update process instance id into cfm2
+		String projcfm2Id = queryProjcfm2ID.uniqueResult().toString();*/
 		String sqlCfm2Update = "update tbs_projcfm2 set BY3 = '" + piId.toString() + "'" +
 			" , tobe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + projid + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 2)" +
 			" , actbe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + projid + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 2 and outcome <> '未知')" +
