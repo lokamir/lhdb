@@ -686,11 +686,11 @@
       </PropertyDef>
       <PropertyDef name="mc">
         <Property></Property>
-        <Property name="label">著作权名称</Property>
+        <Property name="label">商标名称</Property>
       </PropertyDef>
       <PropertyDef name="hm">
         <Property></Property>
-        <Property name="label">著作权登记号</Property>
+        <Property name="label">商标登记号</Property>
       </PropertyDef>
       <PropertyDef name="sbyxq">
         <Property name="dataType">Date</Property>

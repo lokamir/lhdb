@@ -40,7 +40,7 @@ public class TbsProjeaaDao extends HibernateDao {
 	@DataProvider  
 	//下拉框带筛选,只给开始立项审批用 ,显示申请中和驳回的-- htsh不用了
     public Collection<TbsProj> getAllProjnameByName(String name){
-	if(StringHelper.isNotEmpty(name)){
+	if(StringHelper.isNotEmpty(name)&&!name.contains("'")){
 		return this.query("from " + TbsProj.class.getName() 
 			+ " where del=0 and projName like '%" + name + "%'");
 		} else {

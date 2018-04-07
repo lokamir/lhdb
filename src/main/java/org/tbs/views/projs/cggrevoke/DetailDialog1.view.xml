@@ -698,6 +698,7 @@
         <Property name="caption">项目明细</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
         <Property name="disabled">false</Property>
+        <Property name="visible">false</Property>
         <SplitPanel>
           <Property name="direction">top</Property>
           <Property name="position">65%</Property>
@@ -820,12 +821,16 @@
                   <Property name="property">tbsBasConsway</Property>
                   <Property name="trigger">ddlTbsBasConsway</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="hideMode">display</Property>
+                  <Property name="visible">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">acptdate</Property>
                   <Property name="property">acptdate</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -855,7 +860,6 @@
                   <Property name="readOnly">true</Property>
                   <Editor/>
                 </AutoFormElement>
-                <Label/>
                 <Label/>
                 <AutoFormElement>
                   <Property name="name">bdate</Property>

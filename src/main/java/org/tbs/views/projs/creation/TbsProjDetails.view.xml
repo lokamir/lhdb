@@ -79,6 +79,7 @@
         <Property name="displayFormat">#,##0.00</Property>
         <Property name="dataType">BigDecimal</Property>
         <Property name="readOnly">false</Property>
+        <Property name="defaultValue">0</Property>
       </PropertyDef>
       <PropertyDef name="vfaloc">
         <Property name="label">可用融资担保授信金额（元）</Property>
@@ -849,11 +850,13 @@
                 <AutoFormElement>
                   <Property name="name">bdate</Property>
                   <Property name="property">bdate</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">edate</Property>
                   <Property name="property">edate</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -866,6 +869,7 @@
                   <Property name="property">faloc</Property>
                   <Property name="labelWidth">180</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="faloc"/>
                   </Editor>
@@ -888,6 +892,7 @@
                   <Property name="property">nfaloc</Property>
                   <Property name="labelWidth">180</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="nfaloc"/>
                   </Editor>
@@ -910,8 +915,8 @@
                   <Property name="property">otloc</Property>
                   <Property name="labelWidth">180</Property>
                   <Property name="labelPosition">top</Property>
-                  <Property name="visible">false</Property>
                   <Property name="hideMode">display</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="otloc"/>
                   </Editor>
@@ -921,7 +926,6 @@
                   <Property name="property">votloc</Property>
                   <Property name="labelWidth">180</Property>
                   <Property name="labelPosition">top</Property>
-                  <Property name="visible">false</Property>
                   <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
@@ -929,7 +933,6 @@
                   <Property name="name">initotloc</Property>
                   <Property name="property">initotloc</Property>
                   <Property name="labelPosition">top</Property>
-                  <Property name="visible">false</Property>
                   <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
@@ -959,6 +962,7 @@
                   <Property name="name">financial</Property>
                   <Property name="property">financial</Property>
                   <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -1501,10 +1505,12 @@
     </Container>
     <Panel id="panel">
       <Property name="height">5</Property>
+      <Property name="hideMode">display</Property>
       <Buttons>
         <Button id="btnPrint">
           <Property name="caption">打印</Property>
           <Property name="iconClass">silk silk-flag</Property>
+          <Property name="hideMode">display</Property>
         </Button>
         <Button id="btnSave">
           <Property name="caption"> 确  认</Property>

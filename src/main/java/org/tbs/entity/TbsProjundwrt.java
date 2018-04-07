@@ -160,7 +160,7 @@ public class TbsProjundwrt implements Serializable {
 	 * BY3:
 	 */
 	private String by3;
-
+	
 	/**
 	 * tbs_customer:客户基本信息
 	 */
@@ -218,7 +218,12 @@ public class TbsProjundwrt implements Serializable {
 	private BigDecimal cfmfaloc;
 	private BigDecimal cfmnfaloc;
 	private BigDecimal cfmotloc;
-	private BigDecimal cfmtotloc;         
+	private BigDecimal cfmtotloc;     
+	
+	/**
+	 * 承保说明 2018-04-06
+	 */
+	private String detailtext;
 	
 	
 	
@@ -239,6 +244,7 @@ public class TbsProjundwrt implements Serializable {
 			BigDecimal gatrate, BigDecimal psfy, BigDecimal qtfy,BigDecimal zxfy,BigDecimal financial,BigDecimal gatreckon,
 			String gatmem, boolean del, String by1, String by2, String by3, String pid,
 			String gatrateu,
+			String detailtext,
 			TbsCustomer tbsCustomer, TbsProj tbsProj,
 			Set<TbsProjundwrtBank> tbsProjundwrtBankSet,
 			Set<TbsProjundwrtBizvt> tbsProjundwrtBizvtSet,
@@ -298,6 +304,7 @@ public class TbsProjundwrt implements Serializable {
 		this.undedate = undedate;
 		this.validdate = validdate;
 		this.gatrateu = gatrateu;
+		this.detailtext = detailtext;
 		this.pid = pid;
 		this.tbsPtyexpSet = tbsPtyexpSet;
 		this.tbsProjcompsrySet = tbsProjcompsrySet;
@@ -689,6 +696,15 @@ public class TbsProjundwrt implements Serializable {
 		return gatrateu;
 	}
 	
+	public void setDetailtext(String detailtext) {
+		this.detailtext = detailtext;
+	}
+	
+	@Column(name = "DETAILTEXT" )
+	public String getDetailtext() {
+		return detailtext;
+	}
+	
 	public void setPid(String pid) {
 		this.pid = pid;
 	}
@@ -833,7 +849,7 @@ public class TbsProjundwrt implements Serializable {
 				+ ",apptotloc=" + apptotloc + ",bdate=" + bdate + ",edate=" + edate + ",undbdate=" 
 				+ undbdate + ",undedate=" + undedate 
 				+ ",validdate=" + validdate
-				+ ",gatrateu=" + gatrateu 
+				+ ",gatrateu=" + gatrateu + ",detailtext=" + detailtext
 				+ ",pid=" + pid + ",tbsPtyexpSet=" + tbsPtyexpSet + ",tbsProjcompsrySet=" + tbsProjcompsrySet 
 				+ ",tbsProjcompsryPaySet=" + tbsProjcompsryPaySet 
 				+ ",tbsProjrolSet=" + tbsProjrolSet

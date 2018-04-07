@@ -15,6 +15,12 @@
 	!function(self,arg,autoformCondition,dataSetTbsProjcfm0){
 		//获取autoformCondition绑定的实体对象
 		var entity = autoformCondition.get("entity");
+		var projid = 0;
+		if(entity.get("tbsProj.id")){
+			projid = entity.get("tbsProj.id");
+		}
+		entity.remove("tbsProj");
+		entity.set("projid",projid);
 		//将实体对象作为参数传入，并异步刷新
 		dataSetTbsProjcfm0.set("parameter",entity).flushAsync();
 	};

@@ -75,7 +75,7 @@ function GetCRStatus(ds){
 				break;
 			}
 		}
-		view.get("#tabMain").set("currentIndex",2);
+		view.get("#tabMain").set("currentIndex",3);
 	}else{
 		tabMain.set("currentIndex", 0);
 		tabInAppr.set("visible",true);

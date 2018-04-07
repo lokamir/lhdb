@@ -3186,6 +3186,9 @@
     <PropertyDef name="cfmtotloc">
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>
+    <PropertyDef name="detailtext">
+      <Property name="label">承保说明</Property>
+    </PropertyDef>
   </DataType>
   <DataType name="dataTypeTbsProjundwrtBank">
     <Property name="creationType">org.tbs.entity.TbsProjundwrtBank</Property>
@@ -4300,6 +4303,21 @@
     <PropertyDef name="by3">
       <Property></Property>
       <Property name="label">BY3</Property>
+    </PropertyDef>
+  </DataType>
+  <DataType name="dataTypeTbsBasMeetingtype">
+    <Property name="creationType">org.tbs.entity.TbsBasMeetingtype</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+      <Property name="label">编号</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+      <Property name="label">会议类型</Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+      <Property name="label">是否有效</Property>
     </PropertyDef>
   </DataType>
 </Model>

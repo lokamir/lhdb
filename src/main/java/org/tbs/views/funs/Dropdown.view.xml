@@ -136,6 +136,9 @@
       <Reference name="tbsProjcompsryPayczzSet"/>
       <Reference name="tbsProjrmsumAttendSet"/>
     </DataType>
+    <DataType name="dataTypeTbsBasMeetingtype" parent="global:dataTypeTbsBasMeetingtype">
+      <Property name="defaultDisplayProperty">name</Property>
+    </DataType>
   </Model>
   <View>
     <AutoForm id="Show">
@@ -217,11 +220,24 @@
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>
-        <Property name="trigger">dataSetTbsBankS</Property>
+        <Property name="trigger">DropdownTbsBankM</Property>
+        <Property name="label">分行</Property>
+        <Property name="property">TbsBankM</Property>
+        <Property name="name">TbsBankM</Property>
         <Editor/>
       </AutoFormElement>
       <AutoFormElement>
-        <Property name="trigger">dataSetTbsBankM</Property>
+        <Property name="trigger">DropdownTbsBankS</Property>
+        <Property name="label">支行</Property>
+        <Property name="property">TbsBankS</Property>
+        <Property name="name">TbsBankS</Property>
+        <Editor/>
+      </AutoFormElement>
+      <AutoFormElement>
+        <Property name="name">Meetingtype</Property>
+        <Property name="property">Meetingtype</Property>
+        <Property name="trigger">DropDownTbsBasMeetingtype</Property>
+        <Property name="label">会议类型</Property>
         <Editor/>
       </AutoFormElement>
     </AutoForm>
@@ -491,7 +507,7 @@ dropDown.close(node.get(&quot;data&quot;));&#xD;
     <Container id="ContainerTbsCustomer">
       <GroupStart id="TbsCustomer"/>
       <DataSet id="datasetTbsCustomer">
-        <Property name="dataType">[datatypeTbsCustomer]</Property>
+        <Property name="dataType">[dataTypeTbsCustomer]</Property>
         <Property name="dataProvider">tbsCustomerDao#getAllByName</Property>
       </DataSet>
       <DataSetDropDown id="ddlTbsCustomer">
@@ -501,6 +517,21 @@ dropDown.close(node.get(&quot;data&quot;));&#xD;
         <Property name="dynaFilter">true</Property>
         <Property name="editable">false</Property>
         <Property name="useEmptyItem">true</Property>
+      </DataSetDropDown>
+      <GroupEnd/>
+    </Container>
+    <Container id="ContainerTbsBasMeetingtype">
+      <GroupStart id="TbsBasMeetingtype"/>
+      <DataSet id="dataSetTbsBasMeetingtype">
+        <Property name="dataProvider">tbsBasMeetingtypeDao#loadAll</Property>
+        <Property name="dataType">[dataTypeTbsBasMeetingtype]</Property>
+      </DataSet>
+      <DataSetDropDown id="DropDownTbsBasMeetingtype">
+        <Property name="dataSet">dataSetTbsBasMeetingtype</Property>
+        <Property name="useEmptyItem">true</Property>
+        <Property name="editable">false</Property>
+        <Property name="autoOpen">true</Property>
+        <Property name="property">name</Property>
       </DataSetDropDown>
       <GroupEnd/>
     </Container>

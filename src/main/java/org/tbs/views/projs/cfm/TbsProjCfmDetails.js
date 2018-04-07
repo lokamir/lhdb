@@ -156,6 +156,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		// In Approval：mainform -> readonly, show AB_role_form, hide btnSave &
 		// btnSubmit
 		if (fromAppr) {
+			view.get("#panel").set("visible",false);
 			// hide all original buttons
 			tabInAppr.set("visible", true);
 			btnSave.set("visible", false);
@@ -319,7 +320,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 //2017-06-23 新增 决议审批autoformCfm自动统计票数
 /** @Bind #tabCfm1r2.onClick */
 /** @Bind #dataSetTbsProjcfm1.onLoadData */
-!function(self){
+!function count(self){
 	if(taskName == '评审会秘书录入会议决议单'){
 	var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
 	var type = view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype");
@@ -475,7 +476,9 @@ function closeApprForm(self, arg) {
 
 		}
 	});
-	
+	if(taskName == "评审会秘书确认"){
+		
+	}
 	
 	if (psid == 37) {
 		var r=confirm("请确认是否已经上传附件");
@@ -497,7 +500,16 @@ function closeApprForm(self, arg) {
 				}
 			});
 		}
-		updateactionProjOpin1r2.execute();  //tbsProjOpinionDao#save
+		if (psid == 21) {
+			dataProjOpin1r2s.each(function(entity){
+				if(entity.get("outcome")=="未知"){
+					dorado.MessageBox.alert("审批结果不能是未知，评审意见不能为空！", {title : "趣博信息科技"});
+					return
+				}
+			});
+		}else{
+			updateactionProjOpin1r2.execute();  //tbsProjOpinionDao#save
+		}
 	}
 	
 	// 提交表单
@@ -1083,6 +1095,17 @@ if(type == 1){
 	autoformCfm1.get("entity").set("waiver",waiver);
 	autoformCfm1.get("entity").set("opoose",opoose);
 	autoformCfm1.get("entity").set("agree",agree);
+	}
+};
+
+/** @Bind #tabControlMain.onTabChange */
+!function(self){
+	var panel = view.get("#panel");
+	panel.set("visible",true);
+	var tabControlMain = view.get("#tabControlMain");
+	debugger;
+	if(tabControlMain.get("currentTab.caption")!="项目明细"){
+		panel.set("visible",false);
 	}
 };
 

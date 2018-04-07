@@ -30,6 +30,7 @@ function GetCRStatus(ds){
 !function(self,arg,buttonAppr,buttonClose,buttonResend,DdlOutcome,OpinionGroupBox,DocGroupBox,tabInAppr,tabMain){
 	GetCRStatus(self);
 	if (taskName == "驳回修正" ){  //驳回
+		view.get("#autoformTbsProj_main").set("readOnly",true);
 		tabMain.set("currentIndex", 1);
 		buttonClose.set("visible",false);
 		buttonAppr.set("visible",false);

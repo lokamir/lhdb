@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasMeetingtype" parent="global:dataTypeTbsBasMeetingtype"/>
+  </Model>
+  <View>
+    <DataSet id="dataSetTbsBasMeetingtype">
+      <Property name="dataType">[dataTypeTbsBasMeetingtype]</Property>
+      <Property name="dataProvider">tbsBasMeetingtypeDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,|</Property>
+        <Property name="dataSet">dataSetTbsBasMeetingtype</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <DataGrid id="dataGridTbsBasMeetingtype">
+      <Property name="dataSet">dataSetTbsBasMeetingtype</Property>
+      <Property name="width">50%</Property>
+      <RowNumColumn/>
+      <DataColumn name="name">
+        <Property name="property">name</Property>
+      </DataColumn>
+      <DataColumn name="valid">
+        <Property name="property">valid</Property>
+        <Property name="visible">false</Property>
+      </DataColumn>
+    </DataGrid>
+    <UpdateAction id="updateActionSave">
+      <Property name="dataResolver">tbsBasMeetingtypeDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasMeetingtype</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

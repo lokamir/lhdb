@@ -559,7 +559,7 @@
     <Container id="Condition">
       <AutoForm id="autoformCondition">
         <Property name="createPrivateDataSet">true</Property>
-        <Property name="cols">380,*,*,150</Property>
+        <Property name="cols">*,*,*,*</Property>
         <Property name="labelWidth">80</Property>
         <Property name="dataType">dataTypeConditions</Property>
         <Property name="colPadding">1</Property>
@@ -569,14 +569,14 @@
           <Property name="editorWidth">250</Property>
           <Editor/>
         </AutoFormElement>
-        <AutoFormElement layoutConstraint="colSpan:3">
+        <AutoFormElement>
           <Property name="name">proj_Id</Property>
           <Property name="property">proj_Id</Property>
           <Property name="trigger">ddlTbsProj</Property>
           <Property name="editorWidth">250</Property>
           <Editor/>
         </AutoFormElement>
-        <AutoFormElement layoutConstraint="colSpan:4">
+        <AutoFormElement>
           <Property name="name">tbsCustomer</Property>
           <Property name="property">tbsCustomer</Property>
           <Property name="trigger">ddlTbsCustomer</Property>
@@ -584,9 +584,17 @@
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
+          <Property name="name">valid</Property>
+          <Property name="property">valid</Property>
+          <Property name="labelWidth">100</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
           <Property name="name">appfalocMin</Property>
           <Property name="property">appfalocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement layoutConstraint="colSpan:3">
@@ -594,12 +602,16 @@
           <Property name="property">appfalocMax</Property>
           <Property name="editorWidth">140</Property>
           <Property name="labelWidth">50</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
           <Property name="name">appnfalocMin</Property>
           <Property name="property">appnfalocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement layoutConstraint="colSpan:3">
@@ -607,12 +619,16 @@
           <Property name="property">appnfalocMax</Property>
           <Property name="labelWidth">50</Property>
           <Property name="editorWidth">140</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
           <Property name="name">appotlocMin</Property>
           <Property name="property">appotlocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -620,12 +636,8 @@
           <Property name="property">appotlocMax</Property>
           <Property name="labelWidth">50</Property>
           <Property name="editorWidth">140</Property>
-          <Editor/>
-        </AutoFormElement>
-        <AutoFormElement>
-          <Property name="name">valid</Property>
-          <Property name="property">valid</Property>
-          <Property name="labelWidth">100</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
       </AutoForm>
@@ -669,7 +681,7 @@
       </ToolBarButton>
     </ToolBar>
     <Container id="UI">
-      <Property name="height">82%</Property>
+      <Property name="height">100%</Property>
       <SplitPanel>
         <Property name="direction">top</Property>
         <Property name="position">50%</Property>
@@ -687,6 +699,11 @@
                   <DataColumn name="tbsBasBank_M">
                     <Property name="property">tbsBasBank_M</Property>
                     <Property name="trigger">DropdownTbsBankM</Property>
+                  </DataColumn>
+                  <DataColumn>
+                    <Property name="property">tbsBasBank_S</Property>
+                    <Property name="trigger">DropdownTbsBankS</Property>
+                    <Property name="name">tbsBasBank_S</Property>
                   </DataColumn>
                 </DataGrid>
               </Container>
@@ -929,6 +946,11 @@
                           <Property name="property">tbsBasBank_M</Property>
                           <Property name="trigger">DropdownTbsBankM</Property>
                         </DataColumn>
+                        <DataColumn>
+                          <Property name="property">tbsBasBank_S</Property>
+                          <Property name="trigger">DropdownTbsBankS</Property>
+                          <Property name="name">tbsBasBank_S</Property>
+                        </DataColumn>
                       </DataGrid>
                     </Container>
                   </ControlTab>
@@ -1086,6 +1108,7 @@
                       <Property name="name">appfaloc</Property>
                       <Property name="property">appfaloc</Property>
                       <Property name="labelPosition">top</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor>
                         <TextEditor id="appfaloc"/>
                       </Editor>
@@ -1108,6 +1131,7 @@
                       <Property name="name">appnfaloc</Property>
                       <Property name="property">appnfaloc</Property>
                       <Property name="labelPosition">top</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor>
                         <TextEditor id="appnfaloc"/>
                       </Editor>
@@ -1130,6 +1154,7 @@
                       <Property name="name">appotloc</Property>
                       <Property name="property">appotloc</Property>
                       <Property name="labelPosition">top</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor>
                         <TextEditor id="appotloc"/>
                       </Editor>
@@ -1306,6 +1331,23 @@
                 </Container>
               </SideControl>
             </SplitPanel>
+          </ControlTab>
+          <ControlTab>
+            <Property name="caption">承保说明</Property>
+            <AutoForm>
+              <Property name="dataSet">dataSetTbsProjundwrt</Property>
+              <Property name="rowPadding">500</Property>
+              <Property name="cols">*,*,*,*</Property>
+              <AutoFormElement layoutConstraint="colSpan:4;rowSpan:10">
+                <Property name="property">detailtext</Property>
+                <Property name="name">detailtext</Property>
+                <Property name="labelPosition">top</Property>
+                <Property name="height">500</Property>
+                <Editor>
+                  <TextArea/>
+                </Editor>
+              </AutoFormElement>
+            </AutoForm>
           </ControlTab>
           <ControlTab id="tabAttach">
             <Property name="caption">附件管理</Property>

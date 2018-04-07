@@ -1167,11 +1167,15 @@
                   <Property name="name">tbsBasConsway</Property>
                   <Property name="property">tbsBasConsway</Property>
                   <Property name="trigger">ddlTbsBasConsway</Property>
+                  <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">acptdate</Property>
                   <Property name="property">acptdate</Property>
+                  <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -1197,7 +1201,6 @@
                   <Property name="trigger">ddlTbsBasCurrency</Property>
                   <Editor/>
                 </AutoFormElement>
-                <Label/>
                 <Label/>
                 <AutoFormElement>
                   <Property name="name">bdate</Property>
@@ -1443,7 +1446,6 @@
                     <DataColumn name="tbsBasBank_S">
                       <Property name="property">tbsBasBank_S</Property>
                       <Property name="trigger">DropdownTbsBankS</Property>
-                      <Property name="visible">false</Property>
                     </DataColumn>
                   </DataGrid>
                 </Container>

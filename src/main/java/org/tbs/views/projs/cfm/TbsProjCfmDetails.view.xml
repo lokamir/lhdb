@@ -734,11 +734,11 @@
         <Property name="defaultValue">0</Property>
       </PropertyDef>
       <PropertyDef name="financial">
-        <Property name="label">财务顾问费用</Property>
+        <Property name="label">财务顾问费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="zxfy">
-        <Property name="label">咨询费用</Property>
+        <Property name="label">咨询费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="gatrateu">
@@ -945,11 +945,11 @@
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="financial">
-        <Property name="label">财务顾问费用</Property>
+        <Property name="label">财务顾问费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="zxfy">
-        <Property name="label">咨询费用</Property>
+        <Property name="label">咨询费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="gatrateu">
@@ -1897,9 +1897,9 @@
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
-                      <Property name="name">meetingtype</Property>
+                      <Property name="trigger">DropDownTbsBasMeetingtype</Property>
                       <Property name="property">meetingtype</Property>
-                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Property name="name">meetingtype</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
@@ -2181,7 +2181,7 @@
                     <AutoFormElement>
                       <Property name="name">meetingtype</Property>
                       <Property name="property">meetingtype</Property>
-                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Property name="trigger">DropDownTbsBasMeetingtype</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
@@ -2645,9 +2645,7 @@
       <Import id="Bdf2Dept" src="org.tbs.views.funs.Dropdown#Bdf2Dept"/>
       <Import id="Bdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
       <Import id="ddlTbsProj" src="org.tbs.views.funs.Dropdown#TbsProj"/>
-      <ListDropDown id="ddl_meetingtype">
-        <Property name="items">新项目,老项目新增,新项目变更,老项目变更,超时效项目,补议项目,其他,老项目换项目经理</Property>
-      </ListDropDown>
+      <Import id="ddl_meetingtype" src="org.tbs.views.funs.Dropdown#TbsBasMeetingtype"/>
       <ListDropDown id="ddlGatrateu">
         <Property name="items">‰/月,%/年,‰/笔</Property>
         <Property name="editable">false</Property>
@@ -2660,7 +2658,8 @@
         <Property name="autoOpen">true</Property>
       </DataSetDropDown>
     </Container>
-    <Panel>
+    <Panel id="panel">
+      <Property name="hideMode">display</Property>
       <Buttons>
         <Button id="btnPrint">
           <Property name="caption">打印</Property>

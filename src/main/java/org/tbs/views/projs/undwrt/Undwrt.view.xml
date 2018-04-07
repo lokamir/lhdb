@@ -644,6 +644,11 @@
                       <Property name="property">tbsBasBank_M</Property>
                       <Property name="trigger">DropdownTbsBankM</Property>
                     </DataColumn>
+                    <DataColumn>
+                      <Property name="property">tbsBasBank_S</Property>
+                      <Property name="trigger">DropdownTbsBankS</Property>
+                      <Property name="name">tbsBasBank_S</Property>
+                    </DataColumn>
                   </DataGrid>
                 </Container>
               </ControlTab>
@@ -799,7 +804,7 @@
                   <Property name="name">appfaloc</Property>
                   <Property name="property">appfaloc</Property>
                   <Property name="labelPosition">top</Property>
-                  <Property name="readOnly">false</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="appfaloc"/>
                   </Editor>
@@ -822,6 +827,7 @@
                   <Property name="name">appnfaloc</Property>
                   <Property name="property">appnfaloc</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="appnfaloc"/>
                   </Editor>
@@ -844,6 +850,7 @@
                   <Property name="name">appotloc</Property>
                   <Property name="property">appotloc</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="appotloc"/>
                   </Editor>
@@ -1022,6 +1029,23 @@
             </Container>
           </SideControl>
         </SplitPanel>
+      </ControlTab>
+      <ControlTab>
+        <Property name="caption">承保说明</Property>
+        <AutoForm>
+          <Property name="dataSet">dataSetTbsProjundwrt</Property>
+          <Property name="rowPadding">500</Property>
+          <Property name="cols">*,*,*,*</Property>
+          <AutoFormElement layoutConstraint="colSpan:4;rowSpan:10">
+            <Property name="property">detailtext</Property>
+            <Property name="name">detailtext</Property>
+            <Property name="labelPosition">top</Property>
+            <Property name="height">500</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
       </ControlTab>
       <ControlTab id="tabCN">
         <Property name="caption">出纳审批单</Property>

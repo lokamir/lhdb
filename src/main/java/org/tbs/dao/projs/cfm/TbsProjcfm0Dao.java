@@ -40,6 +40,7 @@ public class TbsProjcfm0Dao extends HibernateDao {
 			String valid = (String)params.get("valid");
 			Date date = (Date)params.get("jtrq");
 			String location = (String)params.get("location");
+			Integer projid = (Integer) params.get("projid");
 			String sn = (String)params.get("sn");
 			Integer keyinId = (Integer)params.get("keyinId");
 			String whereCase="";
@@ -49,7 +50,9 @@ public class TbsProjcfm0Dao extends HibernateDao {
 			}
 			if (StringHelper.isNotEmpty(sn)) {
 				whereCase += " AND sn like '%" + sn + "%' ";
-			}
+			}if (projid != 0) {
+				whereCase += " AND proj_Id = " + projid;
+		    }
 			if (StringHelper.isNotEmpty(valid)) {
 				if(valid.equals("1")||valid.equals("0")){
 					whereCase += " AND valid ="+valid;

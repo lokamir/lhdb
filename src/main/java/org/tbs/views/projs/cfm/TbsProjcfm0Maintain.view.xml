@@ -111,6 +111,13 @@
         <Property name="dataType">Time</Property>
         <Property name="label">会议时间</Property>
       </PropertyDef>
+      <PropertyDef name="tbsProj">
+        <Property name="label">项目名称</Property>
+        <Property name="dataType">dataTypeTbsProj</Property>
+      </PropertyDef>
+      <PropertyDef name="projid">
+        <Property></Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeBdf2User" parent="global:dataTypeBdf2User">
       <Property name="defaultDisplayProperty">cname</Property>
@@ -194,6 +201,15 @@
         <Property name="labelWidth">110</Property>
         <Property name="dataType">dataTypeConditions</Property>
         <AutoFormElement>
+          <Property name="name">tbsProj</Property>
+          <Property name="property">tbsProj</Property>
+          <Property name="label">项目名称</Property>
+          <Property name="width">100%</Property>
+          <Property name="hideMode">display</Property>
+          <Property name="trigger">ddlTbsProj</Property>
+          <Editor/>
+        </AutoFormElement>
+        <AutoFormElement>
           <Property name="name">sn</Property>
           <Property name="property">sn</Property>
           <Editor/>
@@ -207,11 +223,6 @@
           <Property name="name">jtrq</Property>
           <Property name="property">jtrq</Property>
           <Property name="trigger">defaultDateDropDown</Property>
-          <Editor/>
-        </AutoFormElement>
-        <AutoFormElement>
-          <Property name="name">location</Property>
-          <Property name="property">location</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -452,6 +463,7 @@
     </Dialog>
     <Container id="DdlContainer">
       <Import id="DropDownBdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
+      <Import id="ddlTbsProj" src="org.tbs.views.funs.Dropdown#TbsProj"/>
     </Container>
     <UpdateAction id="updateAction">
       <Property name="dataResolver">tbsProjcfm0Dao#save</Property>

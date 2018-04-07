@@ -23,7 +23,7 @@ var downloadbutton;//附件组件参数
 		var rq = new Date();
 		autoformTbsProj_main.set("entity.timestampInput", rq);
 		autoformTbsProj_main.set("entity.timestampUpdate", rq);
-		autoformTbsProj_main.set("entity.bdate", rq);
+		//autoformTbsProj_main.set("entity.bdate", rq);
 		autoformTbsProj_main.set("entity.tbsBasPs.id", 1);
 	}
 
@@ -110,6 +110,7 @@ var downloadbutton;//附件组件参数
 		
 		// In Approval：mainform -> readonly, show AB_role_form, hide btnSave & btnSubmit
 		if (fromAppr) {
+			view.get("#panel").set("visible",false);
 			//show tabInAppr
 			tabInAppr.set("visible",true);
 			tabControlMain.set("currentIndex", 0);
@@ -425,17 +426,28 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 /** @Bind #btnProjeaaApprSubmit.onClick */
 !function(self, arg, autoformTbsProj_role, autoformProjeaaOpinion,
 		ajaxactionApprSubmit, dataSetTbsProjeaa, updateactionProjeaa) {
-	if(dataSetTbsProjeaa.getData("#").validate("bdf2Dept")!="ok"){
-		dorado.MessageBox.alert("请填写申报部门", {
+	var outcome = view.get("#autoformProjeaaOpinion").get("entity.outcome");
+	var comment = view.get("#autoformProjeaaOpinion").get("entity.comment");
+	if (outcome == "驳回" && !comment) {
+		dorado.MessageBox.alert("驳回时审批意见不能为空！！", {
 			title : "趣博信息科技"
 		});
 		return false;
-	}
-	if(dataSetTbsProjeaa.getData("#").validate("bdf2User")!="ok"){
-		dorado.MessageBox.alert("请填写经办部门负责人", {
-			title : "趣博信息科技"
-		});
-		return false;
+	}else if(outcome == "通过"){
+		if(!dataSetTbsProjeaa.getData("#").get("bdf2Dept")){
+			dorado.MessageBox.alert("请填写申报部门", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
+		if(!dataSetTbsProjeaa.getData("#").get("bdf2User")){
+			dorado.MessageBox.alert("请填写经办部门负责人", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}else{
+			saveData(view.get("#autoformTbsProj_main"));
+		}
 	}
 	// 保存AB角数据
 	updateactionProjeaa.execute();
@@ -504,13 +516,14 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	var param = {
 		entity : data
 	};
-	if(data.getValidateState("by5")!="ok"){
+	if(!data.get("by5")){
 		dorado.MessageBox.alert("请填写企业简介", {
 			title : "趣博信息科技"
 		});
 		return false;
 	};
 	ajaxactionStartProcess.set("parameter", param).execute(function(result) {
+		saveData(view.get("#autoformTbsProj_main"));
 		dorado.MessageBox.alert(result, {
 			title : "趣博信息科技"
 		});
@@ -518,10 +531,7 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	datasetTbsProj.flushAsync();
 };
 
-/** @Bind #ajaxactionStartProcess.beforeExecute */
-!function(self,datasetTbsProj){
-	
-};
+
 
 /* =======================dialog取消按钮-清空当前数据操作=================== */
 /** @Bind #btnClose.onClick */
@@ -776,7 +786,7 @@ function saveData(self, arg, autoformTbsProj_main) {
 	var dialogMainForm = window.parent.$id("dialogMainForm").objects[0]; // get parent page
 	var datasetTbsProj = view.get("#datasetTbsProj");
 	var updateActionSave = view.get("#updateActionSave");
-
+	var custom = datasetTbsProj.getData("#").get("tbsCustomer");
 	// 子tab中的datagrid去空
 	var TbsProjCgg = datasetTbsProj.getData("#").get("tbsProjCggSet");
 	TbsProjCgg.each(function(entity) {
@@ -854,7 +864,12 @@ function saveData(self, arg, autoformTbsProj_main) {
 			title : "趣博信息科技"
 		});
 		return;
-	} else {
+	}else if (!custom){	
+		dorado.MessageBox.alert("请选择客户！", {
+			title : "趣博信息科技"
+		});
+		return;
+	}else {
 		updateActionSave.execute();
 		var btnSubmit = view.get("#btnSubmit");
 		btnSubmit.set("visible", true);
@@ -880,6 +895,14 @@ function GetUrlParam(name) {
 	return null;
 };
 
+/** @Bind #tabControlMain.onTabChange */
+!function(self){
+	if(self.get("currentTab.caption")=="立项审批单"){
+		view.get("#panel").set("visible",true);
+	}else{
+		view.get("#panel").set("visible",false);
+	}
+};
 
 /** @Bind #btnPrint.onClick */
 !function(self){
