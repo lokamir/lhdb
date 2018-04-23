@@ -38,7 +38,7 @@ var downloadbutton;//附件组件参数
 	if (fromAppr && !id) {
 		datasetTbsProj.flushAsync();
 	}
-
+	
 };
 
 // base on psid, set views' readOnly & visible property
@@ -186,7 +186,6 @@ var downloadbutton;//附件组件参数
 			}
 		}*/
 	}
-
 };
 
 /*====close detail====*/
@@ -446,7 +445,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 			});
 			return false;
 		}else{
-			saveData(view.get("#autoformTbsProj_main"));
+			//saveData(view.get("#autoformTbsProj_main"));
 		}
 	}
 	// 保存AB角数据
@@ -900,7 +899,7 @@ function GetUrlParam(name) {
 	if(self.get("currentTab.caption")=="立项审批单"){
 		view.get("#panel").set("visible",true);
 	}else{
-		view.get("#panel").set("visible",false);
+		//view.get("#panel").set("visible",false);
 	}
 };
 
@@ -919,3 +918,58 @@ function GetUrlParam(name) {
     var pref = localhostPaht+projectName;
     window.open(pref+"/ureport/preview?_t=1,5&_n=立项申请表&_u=file:立项申请表.ureport.xml&id="+id);
 };
+
+/** @Bind #riskavoidTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",true);
+	view.get("#memoElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",false);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
+
+
+///** @Bind #uEditor.onCreate */
+/*
+!function(self){
+	dorado.ueditor.registerMode("simple", []);
+};*/
+
+///** @Bind #riskavoidTextarea.onClick */
+/*
+!function(self){
+	var uEditor = view.get("#uEditor");
+	uEditor.set("property","riskavoid");
+	view.get("#dialogUeditor").show();	
+
+};*/
+
+///** @Bind #memoTextarea.onClick */
+/*
+!function(self){
+	var uEditor = view.get("#uEditor");
+	uEditor.set("property","memo");
+	view.get("#dialogUeditor").show();
+};*/
+
+///** @Bind #memo.onClick */
+/*
+!function(self){
+	var tipUeditor = view.get("#tipUeditor");
+	var riskavoid = view.get("#autoformTbsProj_main").get("entity.memo");
+	tipUeditor.set("content", riskavoid);
+	tipUeditor.set("anchorTarget", self);//利用FloatControl控件的anchorTarget特性Tip浮动的目标控件
+	tipUeditor.set("align", "right");
+	trackMouse: true;
+	tipUeditor.show();//显示Tip控件
+};*/
+
+///** @Bind #tipUeditor.onClick */
+/*
+!function(self){
+	self.hide();
+};*/

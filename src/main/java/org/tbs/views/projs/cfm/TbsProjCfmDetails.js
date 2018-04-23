@@ -84,6 +84,8 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		if (psid == 5) {
 			btnSubmit.set("visible", true);
 			autoformTbsProj_main.set("readOnly", false);
+			view.get("#riskavoidElement").set("readOnly", false);
+			view.get("#memoElement").set("readOnly", false);
 			projDetail.set("readOnly", false);
 			view.get("#datapilotTbsProjBank").set("visible", true);
 			view.get("#datapilotTbsProjBizvt").set("visible", true);
@@ -156,7 +158,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 		// In Approval：mainform -> readonly, show AB_role_form, hide btnSave &
 		// btnSubmit
 		if (fromAppr) {
-			view.get("#panel").set("visible",false);
+			//view.get("#panel").set("visible",false);
 			// hide all original buttons
 			tabInAppr.set("visible", true);
 			btnSave.set("visible", false);
@@ -188,6 +190,8 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 			} else if(psid == 36) {
 				tabInAppr.set("visible", true);
 				autoformTbsProj_main.set("readOnly", false);
+				view.get("#riskavoidElement").set("readOnly", false);
+				view.get("#memoElement").set("readOnly", false);
 				projDetail.set("readOnly", false);
 				view.get("#datapilotTbsProjBank").set("visible", true);
 				view.get("#datapilotTbsProjBizvt").set("visible", true);
@@ -458,7 +462,7 @@ function closeApprForm(self, arg) {
 	var dataProj= datasetTbsProj.getData("#");
 	var dataCfm0 = dataSetTbsProjcfm0.getData("#");
 	var outcome = autoformCfm0Opinion.get("entity.outcome");
-	
+	var confirmOutcome = true;
 	// validations for cfm0
 	if (outcome == null || outcome == "") {
 		dorado.MessageBox.alert("审批结果不能为空！！", {title : "趣博信息科技"});
@@ -503,17 +507,19 @@ function closeApprForm(self, arg) {
 		if (psid == 21) {
 			dataProjOpin1r2s.each(function(entity){
 				if(entity.get("outcome")=="未知"){
-					dorado.MessageBox.alert("审批结果不能是未知，评审意见不能为空！", {title : "趣博信息科技"});
-					return
+					confirmOutcome = false;
 				}
 			});
-		}else{
-			updateactionProjOpin1r2.execute();  //tbsProjOpinionDao#save
 		}
+		updateactionProjOpin1r2.execute();  //tbsProjOpinionDao#save
 	}
 	
 	// 提交表单
-	apprSubmit(psid, autoformCfm0Opinion, ajaxactionCfm0ApprSubmit); // projectCfm#cfm0ApprSubmit
+	if(confirmOutcome == true){
+		apprSubmit(psid, autoformCfm0Opinion, ajaxactionCfm0ApprSubmit); // projectCfm#cfm0ApprSubmit
+	}else if(confirmOutcome == false){
+		dorado.MessageBox.alert("审批结果不能是未知，评审意见不能为空！", {title : "趣博信息科技"});
+	};
 	
 
 };
@@ -1098,16 +1104,7 @@ if(type == 1){
 	}
 };
 
-/** @Bind #tabControlMain.onTabChange */
-!function(self){
-	var panel = view.get("#panel");
-	panel.set("visible",true);
-	var tabControlMain = view.get("#tabControlMain");
-	debugger;
-	if(tabControlMain.get("currentTab.caption")!="项目明细"){
-		panel.set("visible",false);
-	}
-};
+
 
 /** @Bind #btnPrint.onClick */
 !function(self){
@@ -1139,4 +1136,19 @@ if(type == 1){
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
     var pref = localhostPaht+projectName;
     window.open(pref+"/ureport/preview?_t=1,5&_n=业务审批表&_u=file:业务审批表.ureport.xml&id="+id+"&type="+type);
+};
+
+
+
+/** @Bind #riskavoidTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",true);
+	view.get("#memoElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",false);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
 };

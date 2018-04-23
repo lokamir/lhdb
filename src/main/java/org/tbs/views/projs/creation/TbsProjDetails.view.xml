@@ -733,6 +733,7 @@
                       <Property name="property">tbsBasCourt</Property>
                       <Property name="trigger">ddlTbsBasCourt</Property>
                       <Property name="name">tbsBasCourt</Property>
+                      <Property name="visible">false</Property>
                       <Editor/>
                     </DataColumn>
                   </DataGrid>
@@ -1026,14 +1027,6 @@
                     <TextArea layoutConstraint="colSpan:3"/>
                   </Editor>
                 </AutoFormElement>
-                <AutoFormElement>
-                  <Property name="name">riskavoid</Property>
-                  <Property name="property">riskavoid</Property>
-                  <Property name="labelPosition">top</Property>
-                  <Editor>
-                    <TextArea layoutConstraint="colSpan:3"/>
-                  </Editor>
-                </AutoFormElement>
                 <AutoFormElement layoutConstraint="colSpan:3">
                   <Property name="name">gatmem</Property>
                   <Property name="property">gatmem</Property>
@@ -1044,14 +1037,32 @@
                     <TextArea layoutConstraint="colSpan:2"/>
                   </Editor>
                 </AutoFormElement>
-                <AutoFormElement layoutConstraint="colSpan:3">
-                  <Property name="name">memo</Property>
-                  <Property name="property">memo</Property>
+                <Label/>
+                <AutoFormElement id="riskavoid" layoutConstraint="rowSpan:5;colSpan:1">
                   <Property name="labelPosition">top</Property>
+                  <Property name="editorType">TextArea</Property>
+                  <Property name="label">风险缓释措施</Property>
+                  <Property name="property">riskavoid</Property>
+                  <Property name="name">riskavoid</Property>
+                  <Property name="editable">false</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
-                    <TextArea/>
+                    <TextArea id="riskavoidTextarea"/>
                   </Editor>
                 </AutoFormElement>
+                <AutoFormElement id="memo" layoutConstraint="rowSpan:5;colSpan:1">
+                  <Property name="labelPosition">top</Property>
+                  <Property name="editorType">TextArea</Property>
+                  <Property name="label">备注</Property>
+                  <Property name="property">memo</Property>
+                  <Property name="name">memo</Property>
+                  <Property name="editable">false</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextArea id="memoTextarea"/>
+                  </Editor>
+                </AutoFormElement>
+                <Label layoutConstraint="colSpan:1;rowSpan:5"/>
                 <AutoFormElement>
                   <Property name="name">timestampInput</Property>
                   <Property name="property">timestampInput</Property>
@@ -1551,5 +1562,48 @@
     <AjaxAction id="ajaxactionStartProcess">
       <Property name="service">projectCreate#startProjCreateInstance</Property>
     </AjaxAction>
+    <Dialog id="dialogUeditor">
+      <Property name="maximizeable">true</Property>
+      <Property name="maximized">false</Property>
+      <Property name="width">90%</Property>
+      <Property name="height">80%</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">datasetTbsProj</Property>
+          <Property name="cols">*,*,*</Property>
+          <AutoFormElement id="riskavoidElement" layoutConstraint="colSpan:5;rowSpan:10">
+            <Property name="showLabel">false</Property>
+            <Property name="height">500</Property>
+            <Property name="property">riskavoid</Property>
+            <Property name="name">riskavoid</Property>
+            <Property name="hideMode">display</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement id="memoElement" layoutConstraint="colSpan:5;rowSpan:10">
+            <Property name="showLabel">false</Property>
+            <Property name="height">500</Property>
+            <Property name="property">memo</Property>
+            <Property name="name">memo</Property>
+            <Property name="hideMode">display</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
+    <UEditor id="uEditor">
+      <Property name="dataSet">datasetTbsProj</Property>
+      <Property name="mode">simple</Property>
+      <Property name="visible">false</Property>
+    </UEditor>
+    <Tip id="tipUeditor">
+      <Property name="hideMode">display</Property>
+      <Property name="arrowAlign">top</Property>
+    </Tip>
   </View>
 </ViewConfig>

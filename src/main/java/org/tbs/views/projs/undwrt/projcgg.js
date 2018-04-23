@@ -31,6 +31,8 @@ function GetCRStatus(ds){
 	GetCRStatus(self);
 	if (taskName == "驳回修正" ){  //驳回
 		view.get("#autoformTbsProj_main").set("readOnly",true);
+		view.get("#riskavoidElement").set("readOnly", true);
+		view.get("#memoElement").set("readOnly", true);
 		tabMain.set("currentIndex", 1);
 		buttonClose.set("visible",false);
 		buttonAppr.set("visible",false);
@@ -274,4 +276,15 @@ function GetCRStatus(ds){
 	view.get("#DialogTbsFunApprc").show();
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
 };
-
+/** @Bind #riskavoidTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",true);
+	view.get("#memoElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",false);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};

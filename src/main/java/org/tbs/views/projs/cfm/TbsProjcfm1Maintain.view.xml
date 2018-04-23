@@ -178,11 +178,11 @@
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="zxfy">
-        <Property name="label">咨询费用</Property>
+        <Property name="label">咨询费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="financial">
-        <Property name="label">财务顾问费用</Property>
+        <Property name="label">财务顾问费用（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
       </PropertyDef>
       <PropertyDef name="gatmem">
@@ -981,7 +981,7 @@
               <Property name="property">memo</Property>
               <Property name="labelPosition">top</Property>
               <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
+                <TextArea id="memo" layoutConstraint="colSpan:3"/>
               </Editor>
             </AutoFormElement>
             <AutoFormElement>

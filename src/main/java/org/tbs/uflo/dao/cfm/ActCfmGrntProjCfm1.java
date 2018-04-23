@@ -64,7 +64,15 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 		Long piId = processInstance.getId();
 		// update process instance id into cfm1
 		String sqlCfm1Update = "update tbs_projcfm1 set BY3 = '"
-			+ piId.toString() + "'" + " where ID = " + projcfm1Id;
+			+ piId.toString() + "'" + " , tobe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1)" +
+			" , actbe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome <> '缺席')" +
+			" , agree = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome = '同意')" +
+			" , opoose = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome = '反对')" +
+			" , WAIVER = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome = '弃权')" +
+			" , debarb = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome = '回避')" +
+			" , nobe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 and outcome = '缺席')" +
+			" , tobe = (select count(*) FROM tbs.tbs_proj_opinion where proj_id = " + businessId + " and CFM0_ID = "+ cfm0Id + " and cfmtype = 1 )" +
+			" where ID = " + projcfm1Id;
 		SQLQuery queryCfm1Update = session.createSQLQuery(sqlCfm1Update);
 		queryCfm1Update.executeUpdate();
 

@@ -45,8 +45,13 @@
 
 	/*=======================主表单修改按钮===================*/
 	/** @Bind #buttonEdit.onClick */
-	!function(self,arg,dialogEdit){
+	!function(self,arg,dialogEdit,memo){
 		dialogEdit.show();
+		var text = memo.get("value");
+		dorado.TipManager.initTip(memo.getDom(), {
+			trackMouse : true,
+		    text : text
+		});
 	};
 
 	/*========保存后刷新，执行query相同的方法=========*/

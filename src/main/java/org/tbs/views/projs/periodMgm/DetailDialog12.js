@@ -331,3 +331,16 @@ if(autoformTbsRiskProjcfm.get("entity")){
 	view.get("#DialogTbsFunApprc").show();
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
 };
+
+/** @Bind #riskavoidTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",true);
+	view.get("#memoElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#riskavoidElement").set("visible",false);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
