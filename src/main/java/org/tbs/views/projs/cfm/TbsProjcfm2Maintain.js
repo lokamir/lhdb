@@ -127,3 +127,22 @@
 	    var pref = localhostPaht+projectName;
 	    window.open(pref+"/ureport/preview?_t=1,5&_n=集体审定签批表&_u=file:"+path+"&id="+id);
 	};
+	
+	/** @Bind #riskavoidTextareaCfm2.onClick */
+	!function(self){
+		view.get("#autoFormTbsProjcfm2").set("visible",true);
+		//view.get("#autoFormTbsProj").set("visible",false);
+		view.get("#riskavoidCfm2").set("visible",true);
+		view.get("#gatmemCfm2").set("visible",false);
+		view.get("#memoCfm2").set("visible",false);
+		view.get("#dialogUeditor").show();
+	};
+	/** @Bind #memoTextareaCfm2.onClick */
+	!function(self){
+		view.get("#autoFormTbsProjcfm2").set("visible",true);
+		//view.get("#autoFormTbsProj").set("visible",false);
+		view.get("#riskavoidCfm2").set("visible",false);
+		view.get("#gatmemCfm2").set("visible",false);
+		view.get("#memoCfm2").set("visible",true);
+		view.get("#dialogUeditor").show();
+	};

@@ -134,3 +134,19 @@
 	    window.open(pref+"/ureport/preview?_t=1,5&_n=业务审核委员会决议&_u=file:"+path+"&id="+id);
 	};
 	
+	/** @Bind #riskavoidTextareaCfm1.onClick */
+	!function(self){
+		view.get("#autoFormTbsProjcfm1").set("visible",true);
+		//view.get("#autoFormTbsProj").set("visible",false);
+		view.get("#riskavoidCfm1").set("visible",true);
+		view.get("#memoCfm1").set("visible",false);
+		view.get("#dialogUeditor").show();
+	};
+	/** @Bind #memoTextareaCfm1.onClick */
+	!function(self){
+		view.get("#autoFormTbsProjcfm1").set("visible",true);
+		//view.get("#autoFormTbsProj").set("visible",false);
+		view.get("#riskavoidCfm1").set("visible",false);
+		view.get("#memoCfm1").set("visible",true);
+		view.get("#dialogUeditor").show();
+	};

@@ -1142,13 +1142,51 @@ if(type == 1){
 
 /** @Bind #riskavoidTextarea.onClick */
 !function(self){
+	view.get("#autoFormTbsProj").set("visible",true);
+	view.get("#autoFormTbsProjcfm1").set("visible",false);
+	view.get("#autoFormTbsProjcfm2").set("visible",false);
 	view.get("#riskavoidElement").set("visible",true);
 	view.get("#memoElement").set("visible",false);
 	view.get("#dialogUeditor").show();
 };
 /** @Bind #memoTextarea.onClick */
 !function(self){
+	view.get("#autoFormTbsProj").set("visible",true);
+	view.get("#autoFormTbsProjcfm1").set("visible",false);
+	view.get("#autoFormTbsProjcfm2").set("visible",false);
 	view.get("#riskavoidElement").set("visible",false);
 	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #riskavoidTextareaCfm2.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm2").set("visible",true);
+	view.get("#autoFormTbsProj").set("visible",false);
+	view.get("#riskavoidCfm2").set("visible",true);
+	view.get("#memoCfm2").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextareaCfm2.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm2").set("visible",true);
+	view.get("#autoFormTbsProj").set("visible",false);
+	view.get("#riskavoidCfm2").set("visible",false);
+	view.get("#memoCfm2").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #riskavoidTextareaCfm1.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm1").set("visible",true);
+	view.get("#autoFormTbsProj").set("visible",false);
+	view.get("#riskavoidCfm1").set("visible",true);
+	view.get("#memoCfm1").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextareaCfm1.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm1").set("visible",true);
+	view.get("#autoFormTbsProj").set("visible",false);
+	view.get("#riskavoidCfm1").set("visible",false);
+	view.get("#memoCfm1").set("visible",true);
 	view.get("#dialogUeditor").show();
 };
