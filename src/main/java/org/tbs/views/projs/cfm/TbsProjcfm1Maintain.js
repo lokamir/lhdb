@@ -121,6 +121,7 @@
 	!function(self){
 		var path =  "业务审核委员会决议.ureport.xml"; 
 		var id = view.get("#dataSetTbsProjcfm1").getData("#").get("tbsProj.id");
+		var cfmid = view.get("#dataSetTbsProjcfm1").getData("#").get("id");
 		//获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp      
 	    var curWwwPath=window.document.location.href;      
 	    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp      
@@ -131,7 +132,7 @@
 	    //获取带"/"的项目名，如：/uimcardprj      
 	    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
 	    var pref = localhostPaht+projectName;
-	    window.open(pref+"/ureport/preview?_t=1,5&_n=业务审核委员会决议&_u=file:"+path+"&id="+id);
+	    window.open(pref+"/ureport/preview?_t=1,5&_n=业务审核委员会决议&_u=file:"+path+"&id="+id+"&cfmid="+cfmid);
 	};
 	
 	/** @Bind #riskavoidTextareaCfm1.onClick */
