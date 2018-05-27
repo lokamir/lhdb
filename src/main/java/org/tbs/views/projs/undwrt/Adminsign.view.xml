@@ -256,6 +256,7 @@
                     <Property name="name">tbsBasBank</Property>
                     <Property name="property">tbsBasBank</Property>
                     <Property name="trigger">customDropDownTbsBasBank</Property>
+                    <Property name="visible">false</Property>
                     <Editor/>
                   </AutoFormElement>
                   <AutoFormElement>

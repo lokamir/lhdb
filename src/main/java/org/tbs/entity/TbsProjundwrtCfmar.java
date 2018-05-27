@@ -34,6 +34,11 @@ public class TbsProjundwrtCfmar implements Serializable {
 	 * PROJUNDWRT_SN:
 	 */
 	private String projundwrtSn;
+	
+	/**
+	 * 贷款利率（%）
+	 */
+	private BigDecimal lendingrate;
 
 	/**
 	 * 本次承保确认融资担保授信金额（元）tbs_projundwrt.appfaloc不可改:本次承保确认融资担保授信金额（元）tbs_projundwrt.appfaloc不可改
@@ -128,7 +133,7 @@ public class TbsProjundwrtCfmar implements Serializable {
 	}
 
 	public TbsProjundwrtCfmar(int id, Date timestampInput, String projSn,boolean valid,
-			String projundwrtSn, BigDecimal udtfaloc, BigDecimal udtnfaloc,
+			String projundwrtSn,BigDecimal lendingrate,BigDecimal udtfaloc, BigDecimal udtnfaloc,
 			BigDecimal udtotloc, BigDecimal udttotloc, int periodCfm,Date undbdate,Date undedate,
 			Date bdate, Date edate, String sn, String zht, String bzht,
 			boolean del, String by1, String by2, String by3, TbsProj tbsProj,
@@ -138,6 +143,7 @@ public class TbsProjundwrtCfmar implements Serializable {
 		this.timestampInput = timestampInput;
 		this.projSn = projSn;
 		this.projundwrtSn = projundwrtSn;
+		this.lendingrate = lendingrate;
 		this.udtfaloc = udtfaloc;
 		this.udtnfaloc = udtnfaloc;
 		this.udtotloc = udtotloc;
@@ -199,10 +205,19 @@ public class TbsProjundwrtCfmar implements Serializable {
 		return projundwrtSn;
 	}
 
+	public void setLendingrate(BigDecimal lendingrate) {
+		this.lendingrate = lendingrate;
+	}
+
+	@Column(name = "LENDINGRATE")
+	public BigDecimal getLendingrate() {
+		return lendingrate;
+	}
+	
 	public void setUdtfaloc(BigDecimal udtfaloc) {
 		this.udtfaloc = udtfaloc;
 	}
-
+	
 	@Column(name = "UDTFALOC")
 	public BigDecimal getUdtfaloc() {
 		return udtfaloc;
@@ -386,7 +401,7 @@ public class TbsProjundwrtCfmar implements Serializable {
 	public String toString() {
 		return "TbsProjundwrtCfmar [id=" + id + ",timestampInput="
 				+ timestampInput + ",projSn=" + projSn + ",projundwrtSn="
-				+ projundwrtSn + ",udtfaloc=" + udtfaloc + ",udtnfaloc="
+				+ projundwrtSn +",lendingrate=" + lendingrate + ",udtfaloc=" + udtfaloc + ",udtnfaloc="
 				+ udtnfaloc + ",udtotloc=" + udtotloc + ",udttotloc="
 				+ udttotloc + ",periodCfm=" + periodCfm + ",bdate=" + bdate
 				+ ",edate=" + edate + ",sn=" + sn + ",zht=" + zht + ",bzht="

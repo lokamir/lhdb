@@ -28,6 +28,9 @@
         <Property name="label">项目编号</Property>
         <Property name="readOnly">true</Property>
       </PropertyDef>
+      <PropertyDef name="lendingrate">
+        <Property name="label">贷款利率（%）</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProjundwrt">
         <Property name="dataType">dataTypeTbsProjundwrt</Property>
         <Property name="label">承保单编号</Property>
@@ -645,11 +648,16 @@
                 <Property name="property">bzht</Property>
                 <Editor/>
               </AutoFormElement>
-              <Label/>
+              <AutoFormElement>
+                <Property name="name">lendingrate</Property>
+                <Property name="property">lendingrate</Property>
+                <Editor/>
+              </AutoFormElement>
               <AutoFormElement>
                 <Property name="name">udtfaloc</Property>
                 <Property name="property">udtfaloc</Property>
                 <Property name="labelPosition">top</Property>
+                <Property name="readOnly">true</Property>
                 <Editor>
                   <TextEditor id="udtfaloc"/>
                 </Editor>
@@ -672,6 +680,7 @@
                 <Property name="name">udtnfaloc</Property>
                 <Property name="property">udtnfaloc</Property>
                 <Property name="labelPosition">top</Property>
+                <Property name="readOnly">true</Property>
                 <Editor>
                   <TextEditor id="udtnfaloc"/>
                 </Editor>
@@ -694,6 +703,7 @@
                 <Property name="name">udtotloc</Property>
                 <Property name="property">udtotloc</Property>
                 <Property name="labelPosition">top</Property>
+                <Property name="readOnly">true</Property>
                 <Editor>
                   <TextEditor id="udtotloc"/>
                 </Editor>

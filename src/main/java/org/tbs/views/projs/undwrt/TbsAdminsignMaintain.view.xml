@@ -315,6 +315,7 @@
               <Property name="property">tbsBasBank</Property>
               <Property name="name">tbsBasBank</Property>
               <Property name="align">left</Property>
+              <Property name="visible">false</Property>
             </DataColumn>
             <DataColumn>
               <Property name="name">by1</Property>
@@ -379,6 +380,7 @@
               <Property name="name">tbsBasBank</Property>
               <Property name="property">tbsBasBank</Property>
               <Property name="trigger">DropdownTbsBankM</Property>
+              <Property name="visible">false</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>

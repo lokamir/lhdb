@@ -242,6 +242,8 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					}else if(view.get("#autoformCfm2").get("entity")){
 						view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}
+					view.get("#autoFormTbsProjcfm1").set("readOnly",false);
+					view.get("#autoFormTbsProjcfm2").set("readOnly",false);
 				 	var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");

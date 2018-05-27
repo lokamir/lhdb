@@ -270,6 +270,7 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 
 /*========保存后刷新，执行query相同的方法=========*/
 /**@Bind #updateAction.onSuccess */
+/**@Bind #ajaxAction1.onSuccess */
 !function(self,arg,autoformCondition,dataSetTbsProjundwrt){ 
 //获取autoformCondition绑定的实体对象
 var entity = autoformCondition.get("entity");
@@ -375,11 +376,11 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 	var repay = entity.get("repay");
 	var repayinper = entity.get("repayinper");
 	var loantype = entity.get("loantype");
-	var by3 = entity.get("by3");	
+	//var by3 = entity.get("by3");	
 
-	if((!repay||!loantype||!by3||by3==0)||(repay!="到期一次性结清"&&!repayinper)){
+	if(!repay||!loantype||repay!="到期一次性结清"&&!repayinper){
 		arg.processDefault=false;
-		dorado.MessageBox.alert("\v\v\v承保期限、放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
+		dorado.MessageBox.alert("\v\v\v放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
 		return false;
 	}
 	var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
@@ -451,4 +452,17 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
     var pref = localhostPaht+projectName;
     window.open(pref+"/ureport/preview?_t=1,5&_n=承保审批表&_u=file:"+path+"&id="+id);
+};
+
+/** @Bind #repaymemTextarea.onClick */
+!function(self){
+	view.get("#repaymemElement").set("visible",true);
+	view.get("#loanmemElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #loanmemTextarea.onClick */
+!function(self){
+	view.get("#repaymemElement").set("visible",false);
+	view.get("#loanmemElement").set("visible",true);
+	view.get("#dialogUeditor").show();
 };

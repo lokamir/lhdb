@@ -1137,7 +1137,6 @@
                   <Property name="name">otloc</Property>
                   <Property name="property">otloc</Property>
                   <Property name="readOnly">false</Property>
-                  <Property name="visible">false</Property>
                   <Editor>
                     <TextEditor id="eaaotloc"/>
                   </Editor>

@@ -522,14 +522,19 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 		return false;
 	};
 	ajaxactionStartProcess.set("parameter", param).execute(function(result) {
-		saveData(view.get("#autoformTbsProj_main"));
+		//var pop = view.get("#autoformTbsProj_main");
+		//saveData(self,arg,pop);
 		dorado.MessageBox.alert(result, {
 			title : "趣博信息科技"
 		});
 	});
-	datasetTbsProj.flushAsync();
+	
 };
 
+/** @Bind #ajaxactionStartProcess.onSuccess */
+!function(datasetTbsProj){
+	datasetTbsProj.flushAsync();
+};
 
 
 /* =======================dialog取消按钮-清空当前数据操作=================== */

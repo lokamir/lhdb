@@ -128,7 +128,7 @@
 
    </task>
 
-   <task assignment-handler-bean="getApprover" g="120,1227,337,56" label="决策人审批（小于等于2000万:总经理; 大于2000万:董事长)" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="决策人审批" task-name="三要素变更-决策人审批" allow-specify-assignee="false">
+   <task assignment-handler-bean="getApprover" g="120,1227,337,56" label="决策人审批（小于等于4000万:总经理; 大于4000万:董事长)" assignment-type="Handler" url="org.tbs.views.projs.change.DetailDialog1.d" task-type="Normal" name="决策人审批" task-name="三要素变更-决策人审批" allow-specify-assignee="false">
 
       <description>${projName} -${projSn}-三要素变更</description>
 

@@ -108,10 +108,10 @@ function GetCRStatus(ds){
 		var repay = entity.get("repay");
 		var repayinper = entity.get("repayinper");
 		var loantype = entity.get("loantype");
-		var by3 = entity.get("by3");
-		if((!repay||!loantype||!by3||by3==0)||(repay!="到期一次性结清"&&!repayinper)){
+		//var by3 = entity.get("by3");
+		if(!repay||!loantype||(repay!="到期一次性结清"&&!repayinper)){
 			arg.processDefault=false;
-			dorado.MessageBox.alert("\v\v\v承保期限、放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
+			dorado.MessageBox.alert("\v\v\v放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
 			return false;
 		}
 		var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
@@ -399,3 +399,15 @@ function BizvtCountting(ds,appfaloc,appnfaloc,appotloc,bizvtloc){
 };
 
 
+/** @Bind #repaymemTextarea.onClick */
+!function(self){
+	view.get("#repaymemElement").set("visible",true);
+	view.get("#loanmemElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #loanmemTextarea.onClick */
+!function(self){
+	view.get("#repaymemElement").set("visible",false);
+	view.get("#loanmemElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};

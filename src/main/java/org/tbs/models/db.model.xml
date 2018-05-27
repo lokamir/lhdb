@@ -3249,6 +3249,9 @@
     <PropertyDef name="projundwrtSn">
       <Property></Property>
     </PropertyDef>
+    <PropertyDef name="lendingrate">
+      <Property name="dataType">BigDecimal</Property>
+    </PropertyDef>
     <PropertyDef name="udtfaloc">
       <Property name="dataType">BigDecimal</Property>
     </PropertyDef>

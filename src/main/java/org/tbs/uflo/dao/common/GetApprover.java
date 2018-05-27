@@ -112,7 +112,7 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 20000000.0) {
+			if (tm > 40000000.0) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -127,12 +127,12 @@ public class GetApprover implements AssignmentHandler {
 		// 决策审批2000w的限制金额判断是tbsproj.totloc,适用于决策审批
 		if (cn.equals("决策人审批")
 				&& pname.equals("projcfm") ) {
-			String sqlAmount = "select TOTLOC from tbs_proj where id = "
-					+ docid;
+			//String sqlAmount = "select TOTLOC from tbs_proj where id = " + docid;
+			String sqlAmount = "select VTOTLOC from tbs_projcfm1 where PROJ_ID = " + docid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 20000000.0) {
+			if (tm > 40000000.0) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -149,12 +149,12 @@ public class GetApprover implements AssignmentHandler {
 					+ docid;
 			SQLQuery queryProjid = session.createSQLQuery(sqlProjid);
 			String projid = queryProjid.uniqueResult().toString();
-			String sqlAmount = "select TOTLOC from tbs_proj where id = "
+			String sqlAmount = "select INITOTLOC from tbs_proj where id = "
 					+ projid;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 20000000.0) {
+			if (tm > 40000000.0) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -281,7 +281,7 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 20000000) {
+			if (tm > 40000000) {
 				String sql = "select account from tbs_approver where title like '董事长' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
 				users = sqlquery.list();

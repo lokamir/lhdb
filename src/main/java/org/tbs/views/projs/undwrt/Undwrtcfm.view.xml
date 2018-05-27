@@ -28,6 +28,9 @@
         <Property name="label">项目编号</Property>
         <Property name="readOnly">true</Property>
       </PropertyDef>
+      <PropertyDef name="lendingrate">
+        <Property name="label">贷款利率（%）</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProjundwrt">
         <Property name="dataType">dataTypeTbsProjundwrt</Property>
         <Property name="label">承保单编号</Property>
@@ -416,7 +419,12 @@
                   <Property name="tags">edit</Property>
                   <Editor/>
                 </AutoFormElement>
-                <Label/>
+                <AutoFormElement>
+                  <Property name="name">lendingrate</Property>
+                  <Property name="property">lendingrate</Property>
+                  <Property name="tags">edit</Property>
+                  <Editor/>
+                </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">udtfaloc</Property>
                   <Property name="property">udtfaloc</Property>

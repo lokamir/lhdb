@@ -502,6 +502,7 @@
                     <Property name="property">tbsBasCourt</Property>
                     <Property name="trigger">ddlTbsBasCourt</Property>
                     <Property name="name">tbsBasCourt</Property>
+                    <Property name="visible">false</Property>
                   </DataColumn>
                 </DataGrid>
               </Container>

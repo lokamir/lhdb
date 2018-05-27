@@ -266,6 +266,9 @@
         <Property></Property>
         <Property name="label">项目编号</Property>
       </PropertyDef>
+      <PropertyDef name="lendingrate">
+        <Property name="label">贷款利率（%）</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProjundwrt">
         <Property name="dataType">dataTypeTbsProjundwrt</Property>
       </PropertyDef>
@@ -898,6 +901,7 @@
                   <Property name="name">undbdate</Property>
                   <Property name="property">undbdate</Property>
                   <Property name="trigger">defaultDateDropDown</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="undbdate"/>
                   </Editor>
@@ -906,6 +910,7 @@
                   <Property name="name">undedate</Property>
                   <Property name="property">undedate</Property>
                   <Property name="trigger">defaultDateDropDown</Property>
+                  <Property name="readOnly">true</Property>
                   <Editor>
                     <TextEditor id="undedate"/>
                   </Editor>
@@ -958,7 +963,7 @@
                   <Property name="property">loanmem</Property>
                   <Property name="labelPosition">top</Property>
                   <Editor>
-                    <TextArea layoutConstraint="colSpan:3"/>
+                    <TextArea id="loanmemTextarea" layoutConstraint="colSpan:3"/>
                   </Editor>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -966,7 +971,7 @@
                   <Property name="property">repaymem</Property>
                   <Property name="labelPosition">top</Property>
                   <Editor>
-                    <TextArea layoutConstraint="colSpan:3"/>
+                    <TextArea id="repaymemTextarea" layoutConstraint="colSpan:3"/>
                   </Editor>
                 </AutoFormElement>
                 <Label/>
@@ -1241,5 +1246,39 @@
         <Property name="dataSet">dataSetTbsProjundwrt</Property>
       </UpdateItem>
     </UpdateAction>
+    <Dialog id="dialogUeditor">
+      <Property name="maximizeable">true</Property>
+      <Property name="maximized">false</Property>
+      <Property name="width">90%</Property>
+      <Property name="height">80%</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm>
+          <Property name="dataSet">dataSetTbsProjundwrt</Property>
+          <Property name="cols">*,*,*</Property>
+          <AutoFormElement id="loanmemElement" layoutConstraint="colSpan:5;rowSpan:10">
+            <Property name="showLabel">false</Property>
+            <Property name="height">500</Property>
+            <Property name="property">loanmem</Property>
+            <Property name="name">loanmem</Property>
+            <Property name="hideMode">display</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+          <AutoFormElement id="repaymemElement" layoutConstraint="colSpan:5;rowSpan:10">
+            <Property name="showLabel">false</Property>
+            <Property name="height">500</Property>
+            <Property name="property">repaymem</Property>
+            <Property name="name">repaymem</Property>
+            <Property name="hideMode">display</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
   </View>
 </ViewConfig>

@@ -2804,13 +2804,14 @@
           <Property name="cols">*,*,*</Property>
           <Property name="visible">false</Property>
           <Property name="hideMode">display</Property>
+          <Property name="readOnly">true</Property>
           <AutoFormElement id="riskavoidCfm1" layoutConstraint="colSpan:5;rowSpan:10">
             <Property name="showLabel">false</Property>
             <Property name="height">500</Property>
             <Property name="property">riskavoid</Property>
             <Property name="name">riskavoid</Property>
             <Property name="hideMode">display</Property>
-            <Property name="readOnly">true</Property>
+            <Property name="readOnly">false</Property>
             <Editor>
               <TextArea/>
             </Editor>
@@ -2821,7 +2822,7 @@
             <Property name="property">memo</Property>
             <Property name="name">memo</Property>
             <Property name="hideMode">display</Property>
-            <Property name="readOnly">true</Property>
+            <Property name="readOnly">false</Property>
             <Editor>
               <TextArea/>
             </Editor>
@@ -2842,13 +2843,14 @@
           <Property name="cols">*,*,*</Property>
           <Property name="visible">false</Property>
           <Property name="hideMode">display</Property>
+          <Property name="readOnly">true</Property>
           <AutoFormElement id="riskavoidCfm2" layoutConstraint="colSpan:5;rowSpan:10">
             <Property name="showLabel">false</Property>
             <Property name="height">500</Property>
             <Property name="property">riskavoid</Property>
             <Property name="name">riskavoid</Property>
             <Property name="hideMode">display</Property>
-            <Property name="readOnly">true</Property>
+            <Property name="readOnly">false</Property>
             <Editor>
               <TextArea/>
             </Editor>
@@ -2859,7 +2861,7 @@
             <Property name="property">memo</Property>
             <Property name="name">memo</Property>
             <Property name="hideMode">display</Property>
-            <Property name="readOnly">true</Property>
+            <Property name="readOnly">false</Property>
             <Editor>
               <TextArea/>
             </Editor>
