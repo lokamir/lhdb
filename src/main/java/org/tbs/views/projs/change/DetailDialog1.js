@@ -39,6 +39,8 @@ function getCfm1or2(id,by1,spcbtn){
 	}
 }
 
+
+
 /** @Bind view.onReady */
 !function(self, arg) {
 	if ("${request.getParameter('aprv')}"){
@@ -87,6 +89,10 @@ function getCfm1or2(id,by1,spcbtn){
 		autoform.set("entity.newperiodcfm", periodcfm);
 		autoform.set("entity.newbdate", bdate);
 		autoform.set("entity.newedate", edate);	
+		var dataSetTbsProj = view.get("#dataSetTbsProj");
+		dataSetTbsProj.set("parameter", projid).flush();
+		var projby5 = dataSetTbsProj.getData("#.by5");
+		view.get("#projDetail").set("entity.by3",projby5);
 		view.get("#btnPanel").set("visible",true);
 	} else if(aprv == 0){
 		//刷新projchange数据
@@ -130,6 +136,23 @@ function getCfm1or2(id,by1,spcbtn){
 		//取巧 避免没做改动时保存失败
 		var newfaloc = autoform.get("entity.newfaloc");
 		autoform.set("entity.newfaloc", newfaloc);	
+	}
+	if(["退回A角修正"].indexOf(nodeName)>=0){
+		view.get("#tabChangeMajcontCfm").set("visible",false);
+		view.get("#listDdlOutcome").set("items",["确认修改"]);
+		view.get("#dataSetTbsProjcfm0").set("readOnly",true);
+		view.get("#datasetTbsProjOpinion").set("readOnly",true);
+		view.get("#datasetTbsProjOpinion1r2").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm1").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm2").set("readOnly",true);
+		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",false);
+		view.get("#btnPanel").set("visible",false);
+		var businessId = "${request.getParameter('businessId')}";  
+		view.get("#dataSetTbsProjchangeMajcont").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
+		var dataSet = view.get("#dataSetTbsProjchangeMajcont").getData("#"); 
+		var projid = dataSet.get("tbsProj.id"); 
+		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
+		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
 	}
 	if(["B角确认","部门经理审批","风管经理审批","风管部门经理审批","分管风险领导"].indexOf(nodeName)>=0){
 		view.get("#tabChangeMajcontCfm").set("visible",false);
@@ -246,6 +269,8 @@ function getCfm1or2(id,by1,spcbtn){
 		view.get("#groupboxCfm0ProjOpin").set("visible",false);
 		view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
 		view.get("#datagridCfm1r2ProjOpin").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm1").set("readOnly",true);
+		view.get("#dataSetTbsProjcfm2").set("readOnly",true);
 		view.get("#tabChangeMajcontCfm").set("visible",true);
 		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
 		view.get("#autoformTbsProjCfm0").set("readOnly",true);
@@ -379,6 +404,14 @@ function getCfm1or2(id,by1,spcbtn){
 				uid:uid
 			};
 		if (outcome == "确认修改" &&nodeName =="驳回修改" ) {
+			saveChangeMajcont.execute({
+				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
+					if (result == true){
+						ajaxactionApprSubmit.set("parameter", params).execute();
+					}
+				}
+			});
+		}else if(nodeName == "退回A角修正"){
 			saveChangeMajcont.execute({
 				callback : function(result) {  //用回调方法是为了让字段的必填校验在界面上做出错提示
 					if (result == true){
@@ -636,10 +669,96 @@ function getCfm1or2(id,by1,spcbtn){
 	view.get("#iFrameCggMaintain").set("path", path);
 };
 
+//=========双击显示历史审批单明细==========
 /** @Bind #dataGridHis.onDataRowDoubleClick */
 !function(self) {
 	var path = "org.tbs.views.funs.MyTbsFunApprc.d?id=";
 	var taskHisId = self.getCurrentItem().get("id");
 	view.get("#DialogTbsFunApprc").show();
 	view.get("#iFrameTbsFunApprc").set("path", path+taskHisId);
+};
+
+//=========打印三要素变更业务审批表==========
+/** @Bind #btnPrint.onClick */
+!function(self){
+	var id = view.get("#dataSetTbsProj").getData("#").get("id");
+	var majcontid = view.get("#dataSetTbsProjchangeMajcont").getData("#").get("id");
+	var psid = view.get("#dataSetTbsProj").getData("#").get("tbsBasPs.id");
+	var str ="";
+	var a = "通过";
+	if(view.get("#datasetTbsProjOpinion1r2").getData("#")){
+		if(view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype") ==1){
+			str = "会议";
+		}else if (view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype") ==2){
+			str = "签批";
+		}
+	}else {
+		str = "会议";
+	}
+	if(psid ==36){
+		a = "驳回";
+	}
+	var type = str +a;
+	//获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp      
+    var curWwwPath=window.document.location.href;      
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp      
+    var pathName=window.document.location.pathname;      
+    var pos=curWwwPath.indexOf(pathName);      
+    //获取主机地址，如： http://localhost:8083      
+    var localhostPaht=curWwwPath.substring(0,pos);      
+    //获取带"/"的项目名，如：/uimcardprj      
+    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);      
+    var pref = localhostPaht+projectName;
+    window.open(pref+"/ureport/preview?_t=1,5&_n=三要素变更业务审批表&_u=file:三要素变更业务审批表.ureport.xml&id="+id+"&majcontid="+majcontid+"&type="+type);
+};
+
+/** @Bind #riskavoidTextarea.onClick */
+!function(self){
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",true);
+	view.get("#autoFormTbsProjcfm1").set("visible",false);
+	view.get("#autoFormTbsProjcfm2").set("visible",false);
+	view.get("#riskavoidElement").set("visible",true);
+	view.get("#memoElement").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",true);
+	view.get("#autoFormTbsProjcfm1").set("visible",false);
+	view.get("#autoFormTbsProjcfm2").set("visible",false);
+	view.get("#riskavoidElement").set("visible",false);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #riskavoidTextareaCfm2.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm2").set("visible",true);
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",false);
+	view.get("#riskavoidCfm2").set("visible",true);
+	view.get("#memoCfm2").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextareaCfm2.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm2").set("visible",true);
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",false);
+	view.get("#riskavoidCfm2").set("visible",false);
+	view.get("#memoCfm2").set("visible",true);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #riskavoidTextareaCfm1.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm1").set("visible",true);
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",false);
+	view.get("#riskavoidCfm1").set("visible",true);
+	view.get("#memoCfm1").set("visible",false);
+	view.get("#dialogUeditor").show();
+};
+/** @Bind #memoTextareaCfm1.onClick */
+!function(self){
+	view.get("#autoFormTbsProjcfm1").set("visible",true);
+	view.get("#autoFormTbsProjchangeMajcont").set("visible",false);
+	view.get("#riskavoidCfm1").set("visible",false);
+	view.get("#memoCfm1").set("visible",true);
+	view.get("#dialogUeditor").show();
 };

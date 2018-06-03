@@ -532,7 +532,7 @@
       <Property name="iconClass">silk silk-application-edit</Property>
       <Property name="caption">项目基本信息</Property>
       <Property name="closeAction">hide</Property>
-      <Property name="closeable">false</Property>
+      <Property name="closeable">true</Property>
       <Property name="maximizeable">true</Property>
       <Property name="maximized">true</Property>
       <Property name="minimized">false</Property>

@@ -43,7 +43,6 @@
 			+ "&bdate=" + bdate + "&edate=" + edate + "&periodcfm=" + periodcfm 
 			+ "&faloc=" + faloc + "&nfaloc=" + nfaloc + "&otloc=" + otloc + "&totloc=" + totloc
 	        + "&dt=" + new Date();
-	debugger;
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();
 };
