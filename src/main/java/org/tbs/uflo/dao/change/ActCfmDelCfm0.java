@@ -41,9 +41,9 @@ public class ActCfmDelCfm0 implements ActionHandler {
     public void handle(ProcessInstance processInstance, Context context) {
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
-	String projcfm0Id = (String)processClient.getProcessVariable("cfm0Id", processInstance);
+	Integer projcfm0Id = (Integer)processClient.getProcessVariable("cfm0Id", processInstance);
 
-	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProj.class,Integer.valueOf(businessId));
+	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class,Integer.valueOf(businessId));
 	String projname = tbsProjchangeMajcont.getTbsProj().getProjName();
 	// generate cfm0, use A role as keyin user
 	try{

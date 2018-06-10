@@ -376,6 +376,8 @@
           <Property name="name">udtfalocMin</Property>
           <Property name="property">udtfalocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement layoutConstraint="colSpan:3">
@@ -383,12 +385,16 @@
           <Property name="property">udtfalocMax</Property>
           <Property name="editorWidth">140</Property>
           <Property name="labelWidth">50</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
           <Property name="name">udtnfalocMin</Property>
           <Property name="property">udtnfalocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement layoutConstraint="colSpan:3">
@@ -396,12 +402,16 @@
           <Property name="property">udtnfalocMax</Property>
           <Property name="labelWidth">50</Property>
           <Property name="editorWidth">140</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
           <Property name="name">udtotlocMin</Property>
           <Property name="property">udtotlocMin</Property>
           <Property name="labelWidth">230</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
         <AutoFormElement>
@@ -409,6 +419,8 @@
           <Property name="property">udtotlocMax</Property>
           <Property name="labelWidth">50</Property>
           <Property name="editorWidth">140</Property>
+          <Property name="visible">false</Property>
+          <Property name="hideMode">display</Property>
           <Editor/>
         </AutoFormElement>
       </AutoForm>
@@ -447,9 +459,9 @@
       </ToolBarButton>
     </ToolBar>
     <Container id="UI">
-      <Property name="height">70%</Property>
+      <Property name="height">90%</Property>
       <SplitPanel>
-        <Property name="position">50%</Property>
+        <Property name="position">60%</Property>
         <Property name="direction">top</Property>
         <MainControl>
           <TabControl id="Sub">

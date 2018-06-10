@@ -1002,11 +1002,11 @@
     </DataType>
     <DataType name="dataTypeTbsProjcfm2Bizvt" parent="global:dataTypeTbsProjcfm2Bizvt">
       <PropertyDef name="tbsBasBiztype">
-        <Property name="dataType">dataTypeTbsBasBiztype</Property>
+        <Property name="dataType">datatypeTbsBasBiztype</Property>
         <Property name="label">业务类型</Property>
       </PropertyDef>
       <PropertyDef name="tbsBasBizvar">
-        <Property name="dataType">dataTypeTbsBasBizvar</Property>
+        <Property name="dataType">datatypeTbsBasBizvar</Property>
         <Property name="label">业务品种</Property>
       </PropertyDef>
       <PropertyDef name="vloc">
@@ -1780,10 +1780,10 @@
             <Property name="visible">false</Property>
             <SplitPanel>
               <Property name="direction">top</Property>
-              <Property name="position">95%</Property>
+              <Property name="position">70%</Property>
               <MainControl>
                 <Container>
-                  <Property name="visible">false</Property>
+                  <Property name="visible">true</Property>
                   <DataPilot id="dataPilotTbsProjCfm1">
                     <Property name="dataPath">#.tbsProjcfm1BizvtSet</Property>
                     <Property name="dataSet">dataSetTbsProjcfm1</Property>
@@ -1796,20 +1796,32 @@
                     <Property name="visible">true</Property>
                     <Property name="readOnly">true</Property>
                     <Property name="width">80%</Property>
-                    <DataColumn>
+                    <DataColumn id="tbsBasBiztypeCfm1">
                       <Property name="property">tbsBasBiztype</Property>
                       <Property name="name">tbsBasBiztype</Property>
                       <Property name="trigger">ddlTbsBasBiztype</Property>
                       <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="biztypeCfm1"/>
+                      </Editor>
                     </DataColumn>
-                    <DataColumn>
+                    <DataColumn id="tbsBasBizvarCfm1">
                       <Property name="property">tbsBasBizvar</Property>
                       <Property name="name">tbsBasBizvar</Property>
                       <Property name="trigger">ddlTbsBasBizvar</Property>
                       <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="bizvarCfm1"/>
+                      </Editor>
                     </DataColumn>
-                    <DataColumn name="vloc">
+                    <DataColumn id="vlocCfm1" name="vloc">
                       <Property name="property">vloc</Property>
+                      <Editor>
+                        <TextEditor id="bizvtlocCfm1">
+                          <Property name="displayFormat">#,##0.00</Property>
+                          <Property name="dataType">BigDecimal</Property>
+                        </TextEditor>
+                      </Editor>
                     </DataColumn>
                   </DataGrid>
                 </Container>
@@ -1924,20 +1936,37 @@
                       <Property name="property">vfaloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
-                      <Editor/>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="vfalocCfm1"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
                       <Property name="name">vnfaloc</Property>
                       <Property name="property">vnfaloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
-                      <Editor/>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="vnfalocCfm1"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
                       <Property name="name">votloc</Property>
                       <Property name="property">votloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="votlocCfm1"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vtotloc</Property>
+                      <Property name="property">vtotloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor/>
                     </AutoFormElement>
                     <Label/>
@@ -2098,20 +2127,32 @@
                     <Property name="dataPath">#.tbsProjcfm2BizvtSet</Property>
                     <Property name="readOnly">true</Property>
                     <Property name="width">80%</Property>
-                    <DataColumn>
+                    <DataColumn id="tbsBasBiztypeCfm2">
                       <Property name="property">tbsBasBiztype</Property>
                       <Property name="name">tbsBasBiztype</Property>
                       <Property name="trigger">ddlTbsBasBiztype</Property>
                       <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="biztypeCfm2"/>
+                      </Editor>
                     </DataColumn>
-                    <DataColumn>
+                    <DataColumn id="tbsBasBizvarCfm2">
                       <Property name="property">tbsBasBizvar</Property>
                       <Property name="name">tbsBasBizvar</Property>
                       <Property name="trigger">ddlTbsBasBizvar</Property>
                       <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="bizvarCfm2"/>
+                      </Editor>
                     </DataColumn>
-                    <DataColumn name="vloc">
+                    <DataColumn id="vlocCfm2" name="vloc">
                       <Property name="property">vloc</Property>
+                      <Editor>
+                        <TextEditor id="bizvtlocCfm2">
+                          <Property name="displayFormat">#,##0.00</Property>
+                          <Property name="dataType">BigDecimal</Property>
+                        </TextEditor>
+                      </Editor>
                     </DataColumn>
                   </DataGrid>
                 </Container>
@@ -2202,20 +2243,37 @@
                       <Property name="property">vfaloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
-                      <Editor/>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="vfalocCfm2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
                       <Property name="name">vnfaloc</Property>
                       <Property name="property">vnfaloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
-                      <Editor/>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="vnfalocCfm2"/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
                       <Property name="name">votloc</Property>
                       <Property name="property">votloc</Property>
                       <Property name="labelPosition">left</Property>
                       <Property name="labelWidth">220</Property>
+                      <Property name="readOnly">true</Property>
+                      <Editor>
+                        <TextEditor id="votlocCfm2"/>
+                      </Editor>
+                    </AutoFormElement>
+                    <AutoFormElement layoutConstraint="colSpan:2">
+                      <Property name="name">vtotloc</Property>
+                      <Property name="property">vtotloc</Property>
+                      <Property name="labelPosition">left</Property>
+                      <Property name="labelWidth">220</Property>
+                      <Property name="readOnly">true</Property>
                       <Editor/>
                     </AutoFormElement>
                     <Label/>

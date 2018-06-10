@@ -44,10 +44,10 @@ public class ActCfmDelCfm1 implements ActionHandler {
 	
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
-	String cfm1r2Id = (String)processClient.getProcessVariable("cfm1r2Id", processInstance);
+	Integer cfm1r2Id = (Integer)processClient.getProcessVariable("cfm1r2Id", processInstance);
 	Integer cfmFlag = Integer.parseInt(processClient.getProcessVariable("cfmFlag", processInstance).toString());
 
-	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProj.class,Integer.valueOf(businessId));
+	TbsProjchangeMajcont tbsProjchangeMajcont = (TbsProjchangeMajcont) session.get(TbsProjchangeMajcont.class,Integer.valueOf(businessId));
 	String projname = tbsProjchangeMajcont.getTbsProj().getProjName();
 	//int aRoleId = tbsProj.getBdf2User_A().getId();
 	// generate cfm0, use A role as keyin user

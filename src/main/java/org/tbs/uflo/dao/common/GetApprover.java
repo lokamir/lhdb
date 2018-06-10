@@ -128,7 +128,7 @@ public class GetApprover implements AssignmentHandler {
 		if (cn.equals("决策人审批")
 				&& pname.equals("projcfm") ) {
 			//String sqlAmount = "select TOTLOC from tbs_proj where id = " + docid;
-			String sqlAmount = "select VTOTLOC from tbs_projcfm1 where PROJ_ID = " + docid;
+			String sqlAmount = "select VTOTLOC from tbs_projcfm1 where PROJ_ID = " + docid + " order by id desc limit 1";
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
@@ -146,7 +146,7 @@ public class GetApprover implements AssignmentHandler {
 		}
 		if (cn.equals("决策人审批")&& pname.equals("compsry")) {
 			String sqlProjid = "select distinct proj_id from tbs_projcompsry where id = "
-					+ docid;
+					+ docid ;
 			SQLQuery queryProjid = session.createSQLQuery(sqlProjid);
 			String projid = queryProjid.uniqueResult().toString();
 			String sqlAmount = "select INITOTLOC from tbs_proj where id = "

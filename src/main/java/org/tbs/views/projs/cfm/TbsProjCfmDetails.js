@@ -722,6 +722,9 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	dataSet.set("totloc",faloc+nfaloc+otloc);
 	dataSet.set("nameloc",faloc+nfaloc+otloc);
 };
+
+
+
 /** 
  * ==============Page Countting END===============
  */
@@ -1191,4 +1194,174 @@ if(type == 1){
 	view.get("#riskavoidCfm1").set("visible",false);
 	view.get("#memoCfm1").set("visible",true);
 	view.get("#dialogUeditor").show();
+};
+
+
+//================================新修改CFM的类品金子表单计算=====================================
+//====================cfm1=============================
+/*=============projCfm1.totloc===========*/
+/** @Bind #vfalocCfm1.onPost */
+/** @Bind #vnfalocCfm1.onPost */
+/** @Bind #votlocCfm1.onPost */
+!function(self,arg,autoformCfm1,dataSetTbsProjcfm1){
+	var crs = autoformCfm1.get("entity"); 
+	var dataSet = dataSetTbsProjcfm1.getData("#");
+	var faloc = crs.get("vfaloc"); 
+	var nfaloc = crs.get("vnfaloc"); 
+	var otloc = crs.get("votloc");
+	dataSet.set("vtotloc",faloc+nfaloc+otloc);
+};
+
+/** @Bind #biztypeCfm1.onTextEdit */
+!function(self,arg,tbsBasBizvarCfm1,dataSetTbsProjcfm1){
+	var bizvtDS = dataSetTbsProjcfm1.getData("#.tbsProjcfm1BizvtSet");
+	tbsBasBizvarCfm1.set("readOnly", false);
+	bizvtDS.current.set("tbsBasBizvar","");
+	bizvtDS.current.set("vloc",0);
+};
+/** @Bind #bizvarCfm1.onPost */
+!function(self,arg,tbsBasBizvarCfm1){
+	tbsBasBizvarCfm1.set("readOnly", true);
+};
+
+
+
+/** @Bind #bizvtlocCfm1.onTextEdit */
+!function(self,arg,dataSetTbsProjcfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1,tbsBasBizvarCfm1){
+	debugger;
+	var newloc = bizvtlocCfm1.get("value");
+	var bizvtDS = dataSetTbsProjcfm1.getData("#.tbsProjcfm1BizvtSet");
+	var bztp = bizvtDS.current.get("tbsBasBiztype");
+	if (newloc){
+	bizvtDS.current.set("vloc",newloc);
+	}else{
+		bizvtDS.current.set("vloc",0);  //一定要设置0，否则删除后计算会不对
+	};
+	BizvtCounttingcfm(dataSetTbsProjcfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1,bztp,"tbsProjcfm1BizvtSet");
+};
+
+/** @Bind #dataPilotTbsProjCfm1.onSubControlAction */
+!function(self,arg,dataSetTbsProjcfm1,dataPilotTbsProjCfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1){
+	var code=arg.code;
+	var bizvtDS = dataSetTbsProjcfm1.getData("#.tbsProjcfm1BizvtSet");
+	switch (code) {
+	case "-":
+		arg.processDefault = false;
+		dorado.MessageBox.confirm("您真的要删除此项目吗？",
+				{title:"趣博信息科技",
+				 detailCallback:function(btnID, text)
+				 { if (btnID == "yes")
+				 	{bizvtDS.current.set("vloc",0);   
+				 	 var bztp = bizvtDS.current.get("tbsBasBiztype");  
+				 	 bizvtDS.remove();
+				 	 BizvtCounttingcfm(dataSetTbsProjcfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1,bztp,"tbsProjcfm1BizvtSet");	                                                    
+				 	}
+				 } 	
+				}
+		);
+		break;
+	}
+};
+
+//====================cfm2=============================
+/*=============projCfm2.totloc===========*/
+/** @Bind #vfalocCfm2.onPost */
+/** @Bind #vnfalocCfm2.onPost */
+/** @Bind #votlocCfm2.onPost */
+!function(self,arg,autoformCfm2,dataSetTbsProjcfm2){
+	var crs = autoformCfm2.get("entity"); 
+	var dataSet = dataSetTbsProjcfm2.getData("#");
+	var faloc = crs.get("vfaloc"); 
+	var nfaloc = crs.get("vnfaloc"); 
+	var otloc = crs.get("votloc");
+	dataSet.set("vtotloc",faloc+nfaloc+otloc);
+};
+
+/** @Bind #biztypeCfm2.onTextEdit */
+!function(self,arg,tbsBasBizvarCfm2,dataSetTbsProjcfm2){
+	var bizvtDS = dataSetTbsProjcfm2.getData("#.tbsProjcfm2BizvtSet");
+	tbsBasBizvarCfm2.set("readOnly", false);
+	bizvtDS.current.set("tbsBasBizvar","");
+	bizvtDS.current.set("vloc",0);
+};
+/** @Bind #bizvarCfm2.onPost */
+!function(self,arg,tbsBasBizvarCfm2){
+	tbsBasBizvarCfm2.set("readOnly", true);
+};
+
+
+
+/** @Bind #bizvtlocCfm2.onTextEdit */
+!function(self,arg,dataSetTbsProjcfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2,tbsBasBizvarCfm2){
+	debugger;
+	var newloc = bizvtlocCfm2.get("value");
+	var bizvtDS = dataSetTbsProjcfm2.getData("#.tbsProjcfm2BizvtSet");
+	var bztp = bizvtDS.current.get("tbsBasBiztype");
+	if (newloc){
+	bizvtDS.current.set("vloc",newloc);
+	}else{
+		bizvtDS.current.set("vloc",0);  //一定要设置0，否则删除后计算会不对
+	};
+	BizvtCounttingcfm(dataSetTbsProjcfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2,bztp,"tbsProjcfm2BizvtSet");
+};
+
+/** @Bind #dataPilotTbsProjCfm2.onSubControlAction */
+!function(self,arg,dataSetTbsProjcfm2,dataPilotTbsProjCfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2){
+	var code=arg.code;
+	var bizvtDS = dataSetTbsProjcfm2.getData("#.tbsProjcfm2BizvtSet");
+	switch (code) {
+	case "-":
+		arg.processDefault = false;
+		dorado.MessageBox.confirm("您真的要删除此项目吗？",
+				{title:"趣博信息科技",
+				 detailCallback:function(btnID, text)
+				 { if (btnID == "yes")
+				 	{bizvtDS.current.set("vloc",0);   
+				 	 var bztp = bizvtDS.current.get("tbsBasBiztype");  
+				 	 bizvtDS.remove();
+				 	 BizvtCounttingcfm(dataSetTbsProjcfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2,bztp,"tbsProjcfm2BizvtSet");	                                                    
+				 	}
+				 } 	
+				}
+		);
+		break;
+	}
+};
+
+//===================新修改CFM的类品金子表单函数===========================
+function BizvtCounttingcfm(ds,faloc,nfaloc,otloc,bizvtloc,bztp,cfm){
+	var cfm = cfm;
+	var bizvtDS = ds.getData("#."+cfm);
+	var projDS = ds.getData("#");
+	var sum1 = 0; 
+	var sum2 = 0; 
+	var sum3 = 0;
+	var del1 = 1; var del2 = 1; var del3 = 1; //表示全部删光
+	bizvtDS.each(function(data){
+			if (data.get("tbsBasBiztype") == "融资性担保") {		
+				sum1 += data.get("vloc")-0;
+				projDS.set("vfaloc",sum1);
+				del1 = 0;
+			};
+			if (data.get("tbsBasBiztype") == "非融资性担保") {		
+				sum2 += data.get("vloc")-0;
+				projDS.set("vnfaloc",sum2);
+				del2 = 0;
+			};
+			if (data.get("tbsBasBiztype") == "其他") {
+				sum3 += data.get("vloc")-0;
+				projDS.set("votloc",sum3);
+				del3 = 0;
+			}
+	});
+	projDS.set("vtotloc",sum1+sum2+sum3);
+	//全部删除的处理
+	if(del1 == 1){
+		projDS.set("vfaloc",0);
+	}else if (del2 == 1) {
+		projDS.set("vnfaloc",0);
+	}else if (del3 == 1) {
+		projDS.set("votloc",0);
+	}	
+	return null;
 };

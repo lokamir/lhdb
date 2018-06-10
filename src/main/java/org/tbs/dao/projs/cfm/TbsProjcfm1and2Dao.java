@@ -20,7 +20,7 @@ public class TbsProjcfm1and2Dao extends HibernateDao {
 	@DataProvider
 	public Collection<Vcfmall> loadAll(Integer projid) throws Exception {
 		if( projid!=0&&projid != null ){
-			String hql=" FROM " + Vcfmall.class.getName() + " where proj_id = " +projid;
+			String hql=" FROM " + Vcfmall.class.getName() + " where proj_id = " +projid + " order by CFM_ID";
 			return this.query(hql) ;
 		}else{
 			String hql=" FROM " + Vcfmall.class.getName();

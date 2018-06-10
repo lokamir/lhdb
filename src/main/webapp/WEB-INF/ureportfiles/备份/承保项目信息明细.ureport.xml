@@ -3,8 +3,7 @@
     d.INDUTYPE_ID,h.AFLB_ID,i.UDTTOTLOC,i.UNDBDATE,i.UNDEDATE,i.BY3,k.TOTLOC as rt, a.APPTOTLOC - k.TOTLOC as tt ,
     j.CAT3NAME,j.CAT2NAME,j.CAT1NAME,i.SN,i.ZHT,i.BZHT,concat(a.GATRATE,a.GATRATEU) as '担保费率',
     '实收费用总额','开票担保费','开票财务评审','开票咨询费','开票财务顾问费','开票其他费',
-    '风险分担比例','是否纳入基金',i.LENDINGRATE '贷款利率',a.UNDBDATE '承保开始日期',a.UNDEDATE '承保结束日期',
-      a.by3 '承保期限（月）','贷款用途','基金名称','承保备注'
+    '风险分担比例','是否纳入基金','贷款利率',a.UNDBDATE '承保开始日期',a.UNDEDATE '承保结束日期',a.by3 '承保期限（月）','贷款用途','基金名称','承保备注'
     FROM tbs.tbs_projundwrt a 
 left join tbs.tbs_proj b on a.PROJ_ID = b.ID and b.DEL = 0 
 left join tbs.tbs_customer d on a.CUS_ID =d.ID and d.DEL = 0 

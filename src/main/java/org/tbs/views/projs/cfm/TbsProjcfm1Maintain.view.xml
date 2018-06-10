@@ -755,9 +755,12 @@
             <Property name="cols">*,*,*</Property>
             <Property name="labelWidth">120</Property>
             <AutoFormElement>
-              <Property name="property">sn</Property>
-              <Property name="name">sn</Property>
+              <Property name="property">by2</Property>
+              <Property name="name">by2</Property>
               <Property name="readOnly">false</Property>
+              <Editor>
+                <TextEditor id="by2"/>
+              </Editor>
             </AutoFormElement>
             <AutoFormElement>
               <Property name="name">tbsProj</Property>
