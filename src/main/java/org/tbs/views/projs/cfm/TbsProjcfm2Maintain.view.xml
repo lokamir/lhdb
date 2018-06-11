@@ -185,6 +185,7 @@
       </PropertyDef>
       <PropertyDef name="by2">
         <Property></Property>
+        <Property name="label">会议决议单编号</Property>
       </PropertyDef>
       <PropertyDef name="by3">
         <Property></Property>
@@ -592,6 +593,13 @@
               <Property name="dataSet">dataSetTbsProjcfm2</Property>
               <Property name="readOnly">true</Property>
               <DataColumn>
+                <Property name="name">by2</Property>
+                <Property name="property">by2</Property>
+                <Property name="width">150</Property>
+                <Property name="align">left</Property>
+                <Editor/>
+              </DataColumn>
+              <DataColumn>
                 <Property name="property">tbsProj.projName</Property>
                 <Property name="name">tbsProj_projName</Property>
                 <Property name="width">200</Property>
@@ -712,8 +720,8 @@
             <Property name="cols">*,*,*</Property>
             <Property name="labelWidth">120</Property>
             <AutoFormElement>
-              <Property name="property">sn</Property>
-              <Property name="name">sn</Property>
+              <Property name="property">by2</Property>
+              <Property name="name">by2</Property>
               <Property name="readOnly">false</Property>
             </AutoFormElement>
             <AutoFormElement>

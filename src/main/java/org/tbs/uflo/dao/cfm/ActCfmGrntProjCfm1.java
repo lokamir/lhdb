@@ -60,7 +60,7 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 		String sqlProjcfm1ID = "select ID from tbs_projcfm1 where SN ='"
 			+ projcfm1_sn + "'";
 		SQLQuery queryProjcfm0ID = session.createSQLQuery(sqlProjcfm1ID);
-		String projcfm1Id = queryProjcfm0ID.uniqueResult().toString();
+		Integer projcfm1Id = Integer.parseInt(queryProjcfm0ID.uniqueResult().toString());
 		Long piId = processInstance.getId();
 		// update process instance id into cfm1
 		String sqlCfm1Update = "update tbs_projcfm1 set BY3 = '"
@@ -91,7 +91,7 @@ public class ActCfmGrntProjCfm1 implements ActionHandler {
 		String sqlProjcfm2ID = "select ID from tbs_projcfm2 where SN ='"
 			+ projcfm2_sn + "'";
 		SQLQuery queryProjcfm2ID = session.createSQLQuery(sqlProjcfm2ID);
-		String projcfm2Id = queryProjcfm2ID.uniqueResult().toString();
+		Integer projcfm2Id = Integer.parseInt(queryProjcfm2ID.uniqueResult().toString());
 		Long piId = processInstance.getId();
 		// update process instance id into cfm2
 		String sqlCfm2Update = "update tbs_projcfm2 set BY3 = '" + piId.toString() + "'" +

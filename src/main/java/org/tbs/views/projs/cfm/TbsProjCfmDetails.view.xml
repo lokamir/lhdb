@@ -971,6 +971,13 @@
       </PropertyDef>
       <PropertyDef name="by2">
         <Property></Property>
+        <Property name="defaultValue">直接输入后缀</Property>
+        <Property name="label">会议审议单编号</Property>
+        <Validator name="validator1" type="length">
+          <Property name="maxLength">3</Property>
+          <Property name="minLength">3</Property>
+        </Validator>
+        <Validator name="validator2" type="required"/>
       </PropertyDef>
       <PropertyDef name="by3">
         <Property></Property>
@@ -2112,10 +2119,10 @@
             <Property name="visible">false</Property>
             <SplitPanel>
               <Property name="direction">top</Property>
-              <Property name="position">95%</Property>
+              <Property name="position">70%</Property>
               <MainControl>
                 <Container>
-                  <Property name="visible">false</Property>
+                  <Property name="visible">true</Property>
                   <DataPilot id="dataPilotTbsProjCfm2">
                     <Property name="dataPath">#.tbsProjcfm2BizvtSet</Property>
                     <Property name="dataSet">dataSetTbsProjcfm2</Property>
@@ -2165,9 +2172,12 @@
                     <Property name="labelWidth">120</Property>
                     <Property name="readOnly">true</Property>
                     <AutoFormElement>
-                      <Property name="property">sn</Property>
-                      <Property name="name">sn</Property>
+                      <Property name="property">by2</Property>
+                      <Property name="name">by2</Property>
                       <Property name="readOnly">false</Property>
+                      <Editor>
+                        <TextEditor/>
+                      </Editor>
                     </AutoFormElement>
                     <AutoFormElement>
                       <Property name="name">projName</Property>

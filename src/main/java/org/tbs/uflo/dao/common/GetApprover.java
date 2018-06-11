@@ -88,7 +88,7 @@ public class GetApprover implements AssignmentHandler {
 			users = sqlquery.list();
 		}
 		if (cn.equals("评委审批") && (pname.equals("projcfm") || pname.equals("changemajcont"))) {
-			Integer cfm0Id = (Integer) processClient.getProcessVariable("cfm0Id",
+			String cfm0Id = (String) processClient.getProcessVariable("cfm0Id",
 					processInstance);
 			String sql = "select b.USERNAME_ from tbs_proj_opinion a, "
 					+ "bdf2_user b where a.uid=b.ID and a.CFM0_ID = " + cfm0Id
@@ -128,7 +128,7 @@ public class GetApprover implements AssignmentHandler {
 		if (cn.equals("决策人审批")
 				&& pname.equals("projcfm") ) {
 			//String sqlAmount = "select TOTLOC from tbs_proj where id = " + docid;
-			String sqlAmount = "select VTOTLOC from tbs_projcfm1 where PROJ_ID = " + docid + " order by id desc limit 1";
+			String sqlAmount = "select TOTLOC from v_cfmValid0 where PROJ_ID = " + docid + " and by3 = " + processInstance.getId() ;
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);

@@ -43,7 +43,7 @@ public class ActCfmDelCfm1 implements ActionHandler {
 	
 	Session session = context.getSession();
 	String businessId = processInstance.getBusinessId();
-	String cfm1r2Id = (String)processClient.getProcessVariable("cfm1r2Id", processInstance);
+	Integer cfm1r2Id = Integer.parseInt(processClient.getProcessVariable("cfm1r2Id", processInstance).toString());
 	Integer cfmFlag = Integer.parseInt(processClient.getProcessVariable("cfmFlag", processInstance).toString());
 
 	TbsProj tbsProj = (TbsProj) session.get(TbsProj.class,

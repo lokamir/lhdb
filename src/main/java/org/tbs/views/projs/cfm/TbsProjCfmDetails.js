@@ -231,7 +231,6 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				// set promoter DH's outcome to "回避"
 				targetDatas.each(function(targetData){
 					if (targetData.get("title") == "发起人部门经理"&&targetData.get("bdf2User.id")==uid) {
-						debugger;
 						view.get("#autoformCfm0Opinion").get("entity").set("outcome","回避");
 						view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
 					}
@@ -261,6 +260,15 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    	"elements.by2.labelAlign":"right"
 				    	});
 				    }
+				    if(autoformCfm2.get("entity")){
+					    autoformCfm2.set({
+					    	"readOnly":false,
+					    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+					    	"elements.by2.labelWidth":270,
+					    	"elements.by2.labelSpacing":0,
+					    	"elements.by2.labelAlign":"right"
+					    	});
+					    }
 				    //getSum();
 				    view.get("#tabControlMain").set("currentIndex",3);
 				    DialogTbsProjCfm2.set("readOnly", false);
@@ -554,6 +562,20 @@ function closeApprForm(self, arg) {
 	updateactionCfm1.execute();
 	}
 	if(type == "签批"){
+		if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
+			var by2 =view.get("#autoformCfm2").get("entity.by2");
+			if (view.get("#dataSetTbsProjcfm2").getData("#").validate("by2")!="ok"){
+				view.get("#autoformCfm2").set("entity.by2",by2);
+				dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+					title : "趣博信息科技"
+				});
+				return false;
+			}
+			view.get("#dataSetTbsProjcfm2").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
+			view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14)+by2);
+			
+		}
+		view.get("#dataSetTbsProjcfm2").getData("#").isDirty();
 		updateactionCfm2.execute();
 	}
 	// 提交表单

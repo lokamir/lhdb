@@ -60,7 +60,7 @@ public class ProjectCfm extends ProjectCreate {
 	    variables.put("cmpt", false);
 	    variables.put("passCount", 0);
 	    variables.put("approverCount", 0);
-	    variables.put("cfm0Id", 0);
+	    variables.put("cfm0Id", '0');
 	    variables.put("cfmFlag", 0);
 	    variables.put("cfm1r2Id", 0);
 	    info.setVariables(variables);
