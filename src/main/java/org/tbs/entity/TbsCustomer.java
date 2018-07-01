@@ -450,7 +450,7 @@ public class TbsCustomer implements Serializable {
 		this.legaler = legaler;
 	}
 
-	@Column(name = "LEGALER", length = 10)
+	@Column(name = "LEGALER", length = 100)
 	public String getLegaler() {
 		return legaler;
 	}

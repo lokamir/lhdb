@@ -99,6 +99,20 @@
       <PropertyDef name="by3">
         <Property name="label">承保期限（月）</Property>
       </PropertyDef>
+      <PropertyDef name="govfund">
+        <Property name="label">政府基金</Property>
+        <Property name="dataType">Integer</Property>
+        <Property name="mapping">
+          <Property name="mapValues">${dorado.getDataProvider(&quot;el#mapGovfundId&quot;).getResult()}</Property>
+        </Property>
+      </PropertyDef>
+      <PropertyDef name="burden">
+        <Property name="label">分担比例</Property>
+      </PropertyDef>
+      <PropertyDef name="fundproj">
+        <Property name="label">是否为政府基金</Property>
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProj" parent="global:dataTypeTbsProj">
       <Property name="defaultDisplayProperty">projName</Property>
@@ -400,11 +414,21 @@
                   <Property name="tags">edit</Property>
                   <Editor/>
                 </AutoFormElement>
-                <AutoFormElement layoutConstraint="colSpan:3">
+                <AutoFormElement>
                   <Property name="name">sn</Property>
                   <Property name="property">sn</Property>
                   <Property name="editorWidth">250</Property>
                   <Property name="tags">edit</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">govfund</Property>
+                  <Property name="property">govfund</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">fundproj</Property>
+                  <Property name="property">fundproj</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -573,6 +597,12 @@
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
+                  <Property name="name">burden</Property>
+                  <Property name="property">burden</Property>
+                  <Property name="trigger">burdenDropDown1</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
                   <Property name="name">valid</Property>
                   <Property name="property">valid</Property>
                   <Property name="tags">edit</Property>
@@ -712,6 +742,9 @@
         <Property name="editable">false</Property>
         <Property name="filterOnTyping">true</Property>
       </DataSetDropDown>
+      <ListDropDown id="burdenDropDown1">
+        <Property name="items">一九分担,二八分担,三七分担,四六分担,五五分担,六四分担,七三分担,八二分担,九一分担</Property>
+      </ListDropDown>
     </Container>
     <AjaxAction id="ajaxActionAppr">
       <Property name="service">tbsProjundwrtCfmarDao#ApprWF</Property>

@@ -1259,7 +1259,7 @@ public class TbsProj implements Serializable {
 		this.by5 = by5;
 	}
 
-	@Column(name = "BY5", length = 6000)
+	@Column(name = "BY5")
 	public String getBy5() {
 		return by5;
 	}
@@ -1268,7 +1268,7 @@ public class TbsProj implements Serializable {
 		this.by6 = by6;
 	}
 
-	@Column(name = "BY6", length = 300)
+	@Column(name = "BY6")
 	public String getBy6() {
 		return by6;
 	}

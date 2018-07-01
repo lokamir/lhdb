@@ -237,6 +237,14 @@ public class TbsProjcfm1 implements Serializable {
 	 */
 	private String by3;
 
+	/**
+	 * DECISION:
+	 */
+	private String decision;
+	
+	/**
+	 * GATRATEU:
+	 */
 	private String gatrateu;
 	
 	/**
@@ -282,7 +290,7 @@ public class TbsProjcfm1 implements Serializable {
 			Date edate, String loantype, String loanmem, String repay,
 			BigDecimal repayinper, String repaymem, BigDecimal gatrate,
 			BigDecimal psfy, BigDecimal qtfy,BigDecimal financial,BigDecimal zxfy, String gatmem,
-			String riskavoid, String by1, String by2, String by3,
+			String riskavoid, String by1, String by2, String by3,String decision,
 			TbsProj tbsProj, Bdf2Dept bdf2Dept, Bdf2User bdf2User,
 			Set<TbsProjcfm1Bizvt> tbsProjcfm1BizvtSet,
 			Set<TbsProjcfm1Opinion> tbsProjcfm1OpinionSet,
@@ -333,6 +341,7 @@ public class TbsProjcfm1 implements Serializable {
 		this.by1 = by1;
 		this.by2 = by2;
 		this.by3 = by3;
+		this.decision = decision;
 		this.tbsProj = tbsProj;
 		this.bdf2Dept = bdf2Dept;
 		this.bdf2User = bdf2User;
@@ -752,6 +761,15 @@ public class TbsProjcfm1 implements Serializable {
 		return by3;
 	}
 	
+	public void setDecision(String decision) {
+		this.decision = decision;
+	}
+
+	@Column(name = "DECISION")
+	public String getDecision() {
+		return decision;
+	}
+	
 	public void setGatrateu(String gatrateu) {
 		this.gatrateu = gatrateu;
 	}
@@ -836,7 +854,7 @@ public class TbsProjcfm1 implements Serializable {
 				+ ",repayinper=" + repayinper + ",repaymem=" + repaymem
 				+ ",gatrate=" + gatrate + ",psfy=" + psfy + ",qtfy=" + qtfy+ ",zxfy=" + zxfy+ ",financial=" + financial
 				+ ",gatmem=" + gatmem + ",riskavoid=" + riskavoid + ",by1="
-				+ by1 + ",by2=" + by2 + ",by3=" + by3 + ",gatrateu=" + gatrateu + ",tbsProj=" + tbsProj
+				+ by1 + ",by2=" + by2 + ",by3=" + by3 + ",decision=" + decision + ",gatrateu=" + gatrateu + ",tbsProj=" + tbsProj
 				+ ",bdf2Dept=" + bdf2Dept + ",bdf2User=" + bdf2User
 				+ ",tbsProjcfm1BizvtSet=" + tbsProjcfm1BizvtSet + ",tbsProjcfm1OpinionSet=" + tbsProjcfm1OpinionSet
 				+ ",tbsProjOpinionSet=" + tbsProjOpinionSet + "]";

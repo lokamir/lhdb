@@ -127,14 +127,30 @@ public class TbsProjundwrtCfmar implements Serializable {
 	private Date undedate;
 	private boolean valid;
 	private String pid;
+	
+	/**
+	 * *  2018-7-1 手动插入
+	 * 是否为政府基金项目，默认为0否:是否为政府基金项目，默认为0否
+	 */
+	private boolean fundproj;
+	
+	/**
+	 * 分摊比例
+	 */
+	private String burden;
+	
+	/**
+	 * 项目基本信息-政府基金名称
+	 */
+	private Integer govfund;
 
 	public TbsProjundwrtCfmar() {
 		super();
 	}
 
-	public TbsProjundwrtCfmar(int id, Date timestampInput, String projSn,boolean valid,
-			String projundwrtSn,BigDecimal lendingrate,BigDecimal udtfaloc, BigDecimal udtnfaloc,
-			BigDecimal udtotloc, BigDecimal udttotloc, int periodCfm,Date undbdate,Date undedate,
+	public TbsProjundwrtCfmar(int id, Date timestampInput, String projSn,boolean valid,boolean fundproj,
+			String projundwrtSn,BigDecimal lendingrate,BigDecimal udtfaloc, BigDecimal udtnfaloc,String burden,
+			BigDecimal udtotloc, BigDecimal udttotloc, int periodCfm,Date undbdate,Date undedate,Integer govfund,
 			Date bdate, Date edate, String sn, String zht, String bzht,
 			boolean del, String by1, String by2, String by3, TbsProj tbsProj,
 			TbsProjundwrt tbsProjundwrt, String pid) {
@@ -164,6 +180,9 @@ public class TbsProjundwrtCfmar implements Serializable {
 		this.undedate = undedate;
 		this.valid = valid;
 		this.pid = pid;
+		this.govfund = govfund;
+		this.burden = burden;
+		this.fundproj = fundproj;
 	}
 
 	public void setId(int id) {
@@ -398,6 +417,33 @@ public class TbsProjundwrtCfmar implements Serializable {
 		return pid;
 	}
 	
+	public void setFundproj(boolean fundproj) {
+		this.fundproj = fundproj;
+	}
+
+	@Column(name = "FUNDPROJ")
+	public boolean isFundproj() {
+		return fundproj;
+	}
+	
+	public void setBurden(String burden) {
+		this.burden = burden;
+	}
+
+	@Column(name = "BURDEN", length = 45)
+	public String getBurden() {
+		return burden;
+	}
+	
+	public void setGovfund(Integer govfund) {
+		this.govfund = govfund;
+	}
+
+	@Column(name = "GOVFUND", length = 45)
+	public Integer getGovfund() {
+		return govfund;
+	}
+	
 	public String toString() {
 		return "TbsProjundwrtCfmar [id=" + id + ",timestampInput="
 				+ timestampInput + ",projSn=" + projSn + ",projundwrtSn="
@@ -408,7 +454,7 @@ public class TbsProjundwrtCfmar implements Serializable {
 				+ bzht + ",del=" + del + ",by1=" + by1 + ",by2=" + by2
 				+ ",by3=" + by3 + ",tbsProj=" + tbsProj + ",tbsProjundwrt="
 				+ tbsProjundwrt + ",undbdate=" + undbdate + ",undedate=" + undedate + ",valid=" + valid 
-				+ ",pid=" + pid +"]" ;
+				+ ",pid=" + pid + ",fundproj=" + fundproj + ",burden=" + burden + ",govfund=" + govfund +"]" ;
 	}
 
 }

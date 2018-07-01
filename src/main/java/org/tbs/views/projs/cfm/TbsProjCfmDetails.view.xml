@@ -775,6 +775,9 @@
       <PropertyDef name="by3">
         <Property></Property>
       </PropertyDef>
+      <PropertyDef name="decision">
+        <Property name="label">会议决议</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="dataType">datatypeTbsProj</Property>
         <Property name="label">项目名称</Property>
@@ -982,6 +985,9 @@
       <PropertyDef name="by3">
         <Property></Property>
       </PropertyDef>
+      <PropertyDef name="decision">
+        <Property name="label">签批决议</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="dataType">datatypeTbsProj</Property>
         <Property name="label">项目名称</Property>
@@ -1129,6 +1135,16 @@
                   <Property name="label">审批结果</Property>
                   <Property name="trigger">listDdlOutcome</Property>
                   <Editor/>
+                </AutoFormElement>
+                <AutoFormElement id="decision" layoutConstraint="colSpan:3;rowSpan:10">
+                  <Property name="name">decision</Property>
+                  <Property name="property">decision</Property>
+                  <Property name="dataSet">dataSetTbsProjcfm1</Property>
+                  <Property name="height">200</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextArea/>
+                  </Editor>
                 </AutoFormElement>
                 <AutoFormElement layoutConstraint="colSpan:3">
                   <Property name="label">审批意见</Property>
@@ -2426,7 +2442,7 @@
         </Container>
       </ControlTab>
       <ControlTab id="tabDetail">
-        <Property name="caption">项目简介</Property>
+        <Property name="caption">项目基本资料</Property>
         <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
         <Container id="ContainerProjDetail">
           <Property name="containerUi">default</Property>
@@ -2436,8 +2452,8 @@
             <Property name="labelWidth">130</Property>
             <Property name="readOnly">true</Property>
             <AutoFormElement layoutConstraint="colSpan:5;rowSpan:10">
-              <Property name="name">by5</Property>
-              <Property name="property">by5</Property>
+              <Property name="name">by6</Property>
+              <Property name="property">by6</Property>
               <Property name="label">项目简介</Property>
               <Property name="height">500</Property>
               <Property name="labelPosition">top</Property>

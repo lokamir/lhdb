@@ -241,6 +241,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					}else if(view.get("#autoformCfm2").get("entity")){
 						view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}
+					view.get("#decision").set("readOnly", false);
 					view.get("#autoFormTbsProjcfm1").set("readOnly",false);
 					view.get("#autoFormTbsProjcfm2").set("readOnly",false);
 				 	var autoformCfm1 = view.get("#autoformCfm1");
@@ -259,6 +260,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    	"elements.by2.labelSpacing":0,
 				    	"elements.by2.labelAlign":"right"
 				    	});
+				    view.get("#decision").set("dataSet","dataSetTbsProjcfm1");
 				    }
 				    if(autoformCfm2.get("entity")){
 					    autoformCfm2.set({
@@ -268,6 +270,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 					    	"elements.by2.labelSpacing":0,
 					    	"elements.by2.labelAlign":"right"
 					    	});
+					    view.get("#decision").set("dataSet","dataSetTbsProjcfm2");
 					    }
 				    //getSum();
 				    view.get("#tabControlMain").set("currentIndex",3);
@@ -828,6 +831,11 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	var data = datasetTbsProj.getData("#");
 	if(data.isCascadeDirty()){
 		dorado.MessageBox.alert("请先保存", {
+			title : "趣博信息科技"
+		});
+		return;
+	}else if(!data.get("by6")){
+		dorado.MessageBox.alert("项目基本资料必填", {
 			title : "趣博信息科技"
 		});
 		return;

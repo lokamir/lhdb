@@ -413,4 +413,17 @@ public class El extends HibernateDao {
 		return mapValue;
 	}
 
+	// 政府基金映射（承保补录单）
+	// ${dorado.getDataProvider("el#mapGovfundId").getResult()}
+		@DataProvider
+		public Map<Integer,String> mapGovfundId() {
+			List<TbsBasGovfund> govfunds = this.query("from "
+					+ TbsBasGovfund.class.getName());
+			Map<Integer,String > mapValue = new LinkedHashMap<Integer,String>();
+			for (TbsBasGovfund govfund : govfunds) {
+				mapValue.put( govfund.getId(),govfund.getName());
+			}
+			return mapValue;
+		}
+	
 }
