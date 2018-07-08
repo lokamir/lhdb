@@ -835,6 +835,61 @@
         <Property name="readOnly">true</Property>
       </PropertyDef>
     </DataType>
+    <DataType name="dataTypeTbsFunFul" parent="global:dataTypeTbsFunFul">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="comments">
+        <Property></Property>
+        <Property name="label">备注</Property>
+      </PropertyDef>
+      <PropertyDef name="date">
+        <Property name="dataType">Date</Property>
+        <Property name="label">上传日期</Property>
+      </PropertyDef>
+      <PropertyDef name="fclass">
+        <Property></Property>
+        <Property name="label">文件类型</Property>
+      </PropertyDef>
+      <PropertyDef name="fname">
+        <Property></Property>
+        <Property name="label">文件名称</Property>
+      </PropertyDef>
+      <PropertyDef name="fid">
+        <Property></Property>
+        <Property name="label">来源</Property>
+      </PropertyDef>
+      <PropertyDef name="username">
+        <Property></Property>
+        <Property name="label">上传人</Property>
+      </PropertyDef>
+      <PropertyDef name="url"/>
+      <PropertyDef name="uppath">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="userId">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="by1">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by2">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by3">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="by4">
+        <Property></Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+      </PropertyDef>
+      <PropertyDef name="tbsFunFulTyp">
+        <Property name="dataType">dataTypeTbsFunFulTyp</Property>
+        <Property name="label">文件分类</Property>
+      </PropertyDef>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -869,6 +924,12 @@
       <Property name="dataType">[dataTypeTbsFunApprc]</Property>
       <Property name="dataProvider">getHisTasks#getHisTasksByPI</Property>
       <Property name="parameter">${request.getParameter(&quot;processInstanceId&quot;)}</Property>
+    </DataSet>
+    <DataSet id="dataSetTbsFunFul">
+      <Property name="dataType">[dataTypeTbsFunFul]</Property>
+      <Property name="dataProvider">flsmgm#getquery</Property>
+      <Property name="pageSize">15</Property>
+      <Property name="readOnly">false</Property>
     </DataSet>
     <VerticalTabControl id="tabControlMain">
       <Property name="verticalText">true</Property>
@@ -996,11 +1057,16 @@
               <Property name="labelWidth">150</Property>
               <Editor/>
             </AutoFormElement>
-            <AutoFormElement layoutConstraint="colSpan:3">
-              <Property name="name">memo</Property>
+            <AutoFormElement id="memo" layoutConstraint="rowSpan:2;colSpan:3">
+              <Property name="labelPosition">top</Property>
+              <Property name="editorType">TextArea</Property>
+              <Property name="label">备注</Property>
               <Property name="property">memo</Property>
+              <Property name="name">memo</Property>
+              <Property name="readOnly">false</Property>
+              <Property name="editable">false</Property>
               <Editor>
-                <TextArea layoutConstraint="colSpan:3"/>
+                <TextArea id="memoTextarea"/>
               </Editor>
             </AutoFormElement>
             <AutoFormElement>
@@ -2115,5 +2181,31 @@
         <Property name="dataSet">dataSetTbsProjRelease</Property>
       </UpdateItem>
     </UpdateAction>
+    <Dialog id="dialogUeditor">
+      <Property name="maximizeable">true</Property>
+      <Property name="maximized">false</Property>
+      <Property name="width">90%</Property>
+      <Property name="height">80%</Property>
+      <Buttons/>
+      <Children>
+        <AutoForm id="autoFormTbsProjRelease">
+          <Property name="dataSet">dataSetTbsProjRelease</Property>
+          <Property name="cols">*,*,*</Property>
+          <Property name="visible">false</Property>
+          <AutoFormElement id="memoElement" layoutConstraint="colSpan:3;rowSpan:3">
+            <Property name="showLabel">false</Property>
+            <Property name="height">300</Property>
+            <Property name="property">memo</Property>
+            <Property name="name">memo</Property>
+            <Property name="hideMode">display</Property>
+            <Property name="readOnly">true</Property>
+            <Editor>
+              <TextArea/>
+            </Editor>
+          </AutoFormElement>
+        </AutoForm>
+      </Children>
+      <Tools/>
+    </Dialog>
   </View>
 </ViewConfig>

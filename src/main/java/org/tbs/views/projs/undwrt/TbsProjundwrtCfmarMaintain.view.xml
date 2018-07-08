@@ -624,6 +624,7 @@
       <Property name="iconClass">silk silk-application-edit</Property>
       <Property name="showAnimateType">zoom</Property>
       <Property name="closeable">false</Property>
+      <Property name="maximizeable">true</Property>
       <Buttons>
         <Button id="buttonSave">
           <Property name="caption"> 确  认</Property>

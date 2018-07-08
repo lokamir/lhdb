@@ -199,8 +199,12 @@ var ProgressCellRenderer = $extend(dorado.widget.grid.SubControlCellRenderer, {
 	}else{
 		dorado.MessageBox.alert("没有文件需要上传！\n",{title:"趣博信息科技"});
 	}
-	
-	
+	//获取父页面控件并刷新
+	if(window.parent.$id("dataSetTbsFunFul")){
+		var group = window.parent.$id("dataSetTbsFunFul");
+		var component = group.objects[0];
+		component.set("parameter",by2).flushAsync();
+	}
 };
 
 
@@ -229,6 +233,12 @@ var ProgressCellRenderer = $extend(dorado.widget.grid.SubControlCellRenderer, {
 	resetButton.set("visible",true);
 	dorado.MessageBox.alert("文件 【"+filename+"】 \n上传成功!",{title:"趣博信息科技"});
 	dataSetTbsFunFul.flushAsync();
+	//获取父页面控件并刷新
+	if(window.parent.$id("dataSetTbsFunFul")){
+		var group = window.parent.$id("dataSetTbsFunFul");
+		var component = group.objects[0];
+		component.set("parameter",by2).flushAsync();
+	}
 };
 
 /** @Bind #singleUploadAction.beforeFileUpload */

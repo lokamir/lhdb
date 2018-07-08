@@ -6,6 +6,7 @@ var initfaloc;
 var initnfaloc;
 var initotloc;
 var inittotloc;
+var projsn;
 
 /** @Bind view.onReady */
 !function(self, arg) {
@@ -18,6 +19,7 @@ var inittotloc;
 	initnfaloc = "${request.getParameter('rlsnfaloc')}";
 	initotloc = "${request.getParameter('rlsotloc')}";
 	inittotloc = "${request.getParameter('rlstotloc')}";
+	projsn = "${request.getParameter('projsn')}";
 	var projname = "${request.getParameter('projname')}";
 	if (aprv == 2) {
 		var rq = new Date();
@@ -44,7 +46,11 @@ var inittotloc;
 		dataSet.getData("#").set("timestampInput", rq);	
 		dataSet.getData("#").set("timestampUpdate", rq);
 		dataSet.getData("#").set("rlsdate", rq);	
+		view.get("#autoFormTbsProjRelease").set("readOnly", false);
+		view.get("#memoElement").set("readOnly", false);
 	} else if (aprv == 0) {
+		view.get("#autoFormTbsProjRelease").set("readOnly", false);
+		view.get("#memoElement").set("readOnly", false);
 		var releaseid = "${request.getParameter('releaseid')}";
 		var releasevalid = "${request.getParameter('releasevalid')}";
 		if (releasevalid != "0"){
@@ -58,6 +64,8 @@ var inittotloc;
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
 		view.get("#dataSetTbsProjRelease").set("parameter", releaseid).flush();
+		//载入当前项目所有附件清单
+		view.get("#dataSetTbsFunFul").set("parameter",projsn).flushAsync();
 	} else {
 		var businessId = "${request.getParameter('businessId')}";  
 		view.get("#dataSetTbsProjRelease").set("parameter", businessId).flush();  // 这里为了立刻让dataset有值只能用flush，不能用flushasync
@@ -80,6 +88,13 @@ var inittotloc;
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
 		view.get("#projname2").set("visible",false);
 	}
+};
+
+/** @Bind #memoTextarea.onClick */
+!function(self){
+	view.get("#autoFormTbsProjRelease").set("visible",true);
+	view.get("#memoElement").set("visible",true);
+	view.get("#dialogUeditor").show();
 };
 
 /*=======数据保存后刷新父窗口，关闭自身========*/
@@ -137,7 +152,20 @@ var inittotloc;
 
 /*=======================发起流程===================*/
 /** @Bind #btnSubmit.onClick */
-!function(self, arg, dataSetTbsProj, dataSetTbsProjRelease, ajaxactionStartProcess, saveRelease) {
+!function(self, arg, dataSetTbsProj, dataSetTbsProjRelease, ajaxactionStartProcess, saveRelease,dataSetTbsFunFul) {
+	var fid = false;
+	var tbsFunFul = dataSetTbsFunFul.getData();
+	if(tbsFunFul){
+		tbsFunFul.each(function(file){
+			if(file.get("fid") == '项目解保'){
+				fid = true;
+			}
+		});
+	}
+	if(fid == false){
+		dorado.MessageBox.alert("发起申请解保至少需要一个附件！",{title:"趣博信息科技"});
+		return;
+	}
 	var projid = dataSetTbsProj.getData("#").get("id");
 	var releaseid = dataSetTbsProjRelease.getData("#").get("id");
 	var params ={

@@ -14,6 +14,7 @@
 	var dataSet = dataSetTbsProj.getData("#");
 	var projname = dataSet.get("projName");
 	var projid = dataSet.get("id");
+	var projsn = dataSet.get("sn");
 	var rlsfaloc = dataSet.get("tbsProjundwrtSet").current.get("rlsfaloc");
 	var rlsnfaloc = dataSet.get("tbsProjundwrtSet").current.get("rlsnfaloc");
 	var rlsotloc = dataSet.get("tbsProjundwrtSet").current.get("rlsotloc");
@@ -26,6 +27,7 @@
 	         + "&processInstanceId=" + processInstanceId + "&projname=" + projname
 	         + "&rlsfaloc=" + rlsfaloc + "&rlsnfaloc=" + rlsnfaloc
 	         + "&rlsotloc=" + rlsotloc + "&rlstotloc=" + rlstotloc
+	         + "&projsn=" + projsn 
 	         + "&dt=" + new Date();
 	iFrameProjDetails.set("path",detailpath);
 	dialogProjDetails.show();
