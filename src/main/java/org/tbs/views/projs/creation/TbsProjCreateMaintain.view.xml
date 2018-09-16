@@ -530,9 +530,11 @@
                   </DataColumn>
                   <DataColumn name="cggId">
                     <Property name="property">cggId</Property>
+                    <Property name="visible">false</Property>
                   </DataColumn>
                   <DataColumn name="valid">
                     <Property name="property">valid</Property>
+                    <Property name="width">100%</Property>
                   </DataColumn>
                 </DataGrid>
               </Container>

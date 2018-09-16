@@ -218,8 +218,11 @@ var downloadbutton;//附件组件参数
 	var newloc = bizvtloc.get("text");
 	var bizvtDS = datasetTbsProj.getData("#.tbsProjBizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
+	if(newloc.charAt(newloc.length-1)=="\."){
+		return;
+	}
 	if (newloc){
-	bizvtDS.current.set("loc",newloc);
+		bizvtDS.current.set("loc",newloc);
 	}else{
 		bizvtDS.current.set("loc",0);  //一定要设置0，否则删除后计算会不对
 	};

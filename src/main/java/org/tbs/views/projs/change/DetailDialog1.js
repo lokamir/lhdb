@@ -155,7 +155,7 @@ function getCfm1or2(id,by1,spcbtn){
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
 	}
-	if(["B角确认","部门经理审批","风管经理审批","风管部门经理审批","分管风险领导"].indexOf(nodeName)>=0){
+	if(["B角确认","部门经理审批","风管经理审批","风管部门经理审批","分管风险领导","法律合规部门经理审批"].indexOf(nodeName)>=0){
 		view.get("#tabChangeMajcontCfm").set("visible",false);
 		view.get("#listDdlOutcome").set("items",["通过","驳回"]);
 		view.get("#dataSetTbsProjcfm0").set("readOnly",true);

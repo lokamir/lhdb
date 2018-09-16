@@ -33,7 +33,7 @@ public class ProjectCfm extends ProjectCreate {
     private ProcessClient processClient;
 
     private int pass = 0;
-    private int confirm = 0;//三位领导必须签批（0没有完成，1完成签批）
+    //private int confirm = 0;//三位领导必须签批（0没有完成，1完成签批）2018年7月5日 放弃
     private int cmpt = 0; // 表示通过
 
     @Expose
@@ -159,13 +159,20 @@ public class ProjectCfm extends ProjectCreate {
 	    Session session = this.getSessionFactory().openSession();
 	    
 			try {
-				// total approver count except those ones who choose "avoid"
+				// total approver count except those ones who tobe
 				String sqlTotal = "select count(*) from tbs_proj_opinion where CFM0_ID = "
 						+ cfm0Id
-						+ " and CFMTYPE = 2 and del = 0 and (outcome <> '回避' ) and (outcome <> '缺席' )";
+						+ " and CFMTYPE = 2 and del = 0 ";
 				SQLQuery queryTotal = session.createSQLQuery(sqlTotal);
 				String total = queryTotal.uniqueResult().toString();
 				float tt = Float.valueOf(total);
+				// total approver count except those ones who choose "avoid"
+				String sqlTotalTobe = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and (outcome <> '回避' ) and (outcome <> '缺席' )";
+				SQLQuery queryTotalTobe = session.createSQLQuery(sqlTotalTobe);
+				String totalTobe = queryTotalTobe.uniqueResult().toString();
+				float ttTobe = Float.valueOf(totalTobe);
 
 				// total approver count who choose "agree"
 				String sqlAgrees = "select count(*) from tbs_proj_opinion where CFM0_ID = "
@@ -183,7 +190,23 @@ public class ProjectCfm extends ProjectCreate {
 				SQLQuery queryDisagrees = session.createSQLQuery(sqlDisagrees);
 				String disagrees = queryDisagrees.uniqueResult().toString();
 				
-				String sqlconfirmcount = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+				// total approver count who choose "Waivers"
+				String sqlWaivers = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and outcome = '弃权'";
+				SQLQuery querysqlWaivers = session.createSQLQuery(sqlWaivers);
+				String Waivers = querysqlWaivers.uniqueResult().toString();
+				float wa = Float.valueOf(Waivers);
+				
+				// total approver count who choose "Waivers"
+				String sqlDebarbs = "select count(*) from tbs_proj_opinion where CFM0_ID = "
+						+ cfm0Id
+						+ " and CFMTYPE = 2 and del = 0 and outcome = '回避'";
+				SQLQuery querysqlDebarbs = session.createSQLQuery(sqlDebarbs);
+				String Debarbs = querysqlDebarbs.uniqueResult().toString();
+				float db = Float.valueOf(Debarbs);
+				
+				/*String sqlconfirmcount = "select count(*) from tbs_proj_opinion where CFM0_ID = "
 						+ cfm0Id
 						+ " and CFMTYPE = 2 and del = 0 and title in ('总经理','分管风管总经理','风管经理')";
 				SQLQuery queryconfirmcount = session.createSQLQuery(sqlconfirmcount);
@@ -199,7 +222,7 @@ public class ProjectCfm extends ProjectCreate {
 					confirm=1;
 				}else{
 					confirm=0;
-				}
+				}*/
 				
 				
 				// count how many approvers left
@@ -215,37 +238,37 @@ public class ProjectCfm extends ProjectCreate {
 				double twoThird = 0.59; // 2/3审批通过
 				double oneThird = 0.29; // 1/3驳回通过
 
-				if (outcome.equals("同意")&& confirm == 1) {
-					if (ag / tt >= twoThird ) {
+				if (outcome.equals("同意")) {
+					if (ag / ttTobe >= twoThird && countTA == 1 ) {
 						this.pass = 1;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
-					}else if (da / tt >= oneThird) {
+					}else if (da / ttTobe >= oneThird && countTA == 1 ) {
 						this.pass = 0;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
 					}
-				} else if (outcome.equals("反对") && confirm == 1) {
-					if (da / tt >= oneThird) {
+				} else if (outcome.equals("反对")) {
+					if (da / ttTobe >= oneThird && countTA == 1 ) {
 						this.pass = 0;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
-					}else if (ag / tt >= twoThird ) {
+					}else if (ag / ttTobe >= twoThird && countTA == 1 ) {
 						this.pass = 1;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
 					}
 				} else {
-					if (da / tt >= oneThird && confirm == 1) {
+					if (da / ttTobe >= oneThird && countTA == 1 ) {
 						this.pass = 0;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
-					} else if (ag / tt >= twoThird && confirm == 1) {
+					} else if (ag / ttTobe >= twoThird && countTA == 1) {
 						this.pass = 1;
 						this.cmpt = 1;
 						processClient.saveProcessVariable(

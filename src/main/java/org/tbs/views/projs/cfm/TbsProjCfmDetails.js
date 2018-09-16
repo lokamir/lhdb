@@ -235,7 +235,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 						view.get("#autoformCfm0Opinion").getElement("outcome").set("readOnly", true);
 					}
 				});
-			} else if(psid == 8&&taskName == "评审会秘书录入会议决议单") {
+			} else if(psid == 8&&taskName == "决策审批-评审会秘书录入会议决议单") {
 					if(view.get("#autoformCfm1").get("entity")){
 						view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 					}else if(view.get("#autoformCfm2").get("entity")){
@@ -255,7 +255,8 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    if(autoformCfm1.get("entity")){
 				    autoformCfm1.set({
 				    	"readOnly":false,
-				    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+				    	//"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+				    	"elements.by2.label":"会议审议单编号           ",
 				    	"elements.by2.labelWidth":270,
 				    	"elements.by2.labelSpacing":0,
 				    	"elements.by2.labelAlign":"right"
@@ -265,7 +266,8 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    if(autoformCfm2.get("entity")){
 					    autoformCfm2.set({
 					    	"readOnly":false,
-					    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+					    	//"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+					    	"elements.by2.label":"会议审议单编号           ",
 					    	"elements.by2.labelWidth":270,
 					    	"elements.by2.labelSpacing":0,
 					    	"elements.by2.labelAlign":"right"
@@ -285,7 +287,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    groupboxCfm0Appr.set("visible", false);
 				    groupboxAppr.set("visible", false);
 				    listDdlOutcome.set("items",["确认修改"]);
-				}else if(psid == 8&&taskName == "主任委员审批"){
+				}else if(psid == 8&&taskName == "决策审批-主任委员审批"){
 					var autoformCfm1 = view.get("#autoformCfm1");
 				    var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				    var DialogTbsProjCfm1 = view.get("#DialogTbsProjCfm1");
@@ -302,12 +304,19 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				    tabInAppr.set("visible", true);
 				    groupboxCfm0.set("visible", false);
 				    groupboxCfm1r2ProjOpin.set("visible", true);
+				    if(autoformCfm1.get("entity")){
+				    	view.get("#decision").set("dataSet","dataSetTbsProjcfm1");
+				    }else if(autoformCfm2.get("entity")){
+				    	view.get("#decision").set("dataSet","dataSetTbsProjcfm2");
+				    }
 				    groupboxCfm1r2Appr.set("visible", true);
 				    groupboxCfm0Appr.set("visible", false);
 				    groupboxAppr.set("visible", false);
 					listDdlOutcome.set("items",["通过","驳回"]);
 				
 			} else if(psid == 26) {
+				var autoformCfm1 = view.get("#autoformCfm1");
+				var autoformCfm2 = view.get("#autoformCfm2");
 				var dataPilotTbsProjCfm1 = view.get("#dataPilotTbsProjCfm1");
 				var dataPilotTbsProjCfm2 = view.get("#dataPilotTbsProjCfm2");
 				tabInAppr.set("visible", true);
@@ -319,6 +328,11 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 				tabCfm0.set("visible", false);
 				dataPilotTbsProjCfm1.set("visible", false);
 				dataPilotTbsProjCfm2.set("visible", false);
+				if(autoformCfm1.get("entity")){
+			    	view.get("#decision").set("dataSet","dataSetTbsProjcfm1");
+			    }else if(autoformCfm2.get("entity")){
+			    	view.get("#decision").set("dataSet","dataSetTbsProjcfm2");
+			    }
 			} else {
 				// initialize outcome options
 				listDdlOutcome.set("items",["确认修改"]);
@@ -338,7 +352,7 @@ var uid = "${dorado.getDataProvider('el#Uid').getResult()}";
 /** @Bind #tabCfm1r2.onClick */
 /** @Bind #dataSetTbsProjcfm1.onLoadData */
 !function count(self){
-	if(taskName == '评审会秘书录入会议决议单'){
+	if(taskName == '决策审批-评审会秘书录入会议决议单'){
 	var datasetTbsProjOpinion1r2 = view.get("#datasetTbsProjOpinion1r2").getData();
 	var type = view.get("#datasetTbsProjOpinion1r2").getData("#").get("cfmtype");
 	var agree = 0;
@@ -548,34 +562,34 @@ function closeApprForm(self, arg) {
 	// 保存projCfm1 & projCfm2数据
 	var type = dataSetTbsProjcfm0.getData("#.type");
 	if(type == "会议"){
-		if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
+		if(psid == 8&&taskName == "决策审批-评审会秘书录入会议决议单"){
 		var by2 =view.get("#autoformCfm1").get("entity.by2");
 		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm1").set("entity.by2",by2);
-			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+			dorado.MessageBox.alert("决议单编号必填", {
 				title : "趣博信息科技"
 			});
 			return false;
 		}
 		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
-		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14)+by2);
+		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,6)+by2);
 		
 	}
 	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
 	updateactionCfm1.execute();
 	}
 	if(type == "签批"){
-		if(psid == 8&&taskName == "评审会秘书录入会议决议单"){
+		if(psid == 8&&taskName == "决策审批-评审会秘书录入会议决议单"){
 			var by2 =view.get("#autoformCfm2").get("entity.by2");
 			if (view.get("#dataSetTbsProjcfm2").getData("#").validate("by2")!="ok"){
 				view.get("#autoformCfm2").set("entity.by2",by2);
-				dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+				dorado.MessageBox.alert("决议单编号必填", {
 					title : "趣博信息科技"
 				});
 				return false;
 			}
 			view.get("#dataSetTbsProjcfm2").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
-			view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14)+by2);
+			view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,6)+by2);
 			
 		}
 		view.get("#dataSetTbsProjcfm2").getData("#").isDirty();
@@ -666,8 +680,11 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 	var newloc = bizvtloc.get("text");
 	var bizvtDS = datasetTbsProj.getData("#.tbsProjBizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
-	if (newloc){
-	bizvtDS.current.set("loc",newloc);
+	if(newloc.charAt(newloc.length-1)=="\."){
+		return;
+	}
+	if (newloc){			
+		bizvtDS.current.set("loc",newloc);
 	}else{
 		bizvtDS.current.set("loc",0);  //一定要设置0，否则删除后计算会不对
 	};
@@ -1258,10 +1275,12 @@ if(type == 1){
 
 /** @Bind #bizvtlocCfm1.onTextEdit */
 !function(self,arg,dataSetTbsProjcfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1,tbsBasBizvarCfm1){
-	debugger;
-	var newloc = bizvtlocCfm1.get("value");
+	var newloc = bizvtlocCfm1.get("text");
 	var bizvtDS = dataSetTbsProjcfm1.getData("#.tbsProjcfm1BizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
+	if(newloc.charAt(newloc.length-1)=="\."){
+		return;
+	}
 	if (newloc){
 	bizvtDS.current.set("vloc",newloc);
 	}else{
@@ -1323,10 +1342,12 @@ if(type == 1){
 
 /** @Bind #bizvtlocCfm2.onTextEdit */
 !function(self,arg,dataSetTbsProjcfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2,tbsBasBizvarCfm2){
-	debugger;
-	var newloc = bizvtlocCfm2.get("value");
+	var newloc = bizvtlocCfm2.get("text");
 	var bizvtDS = dataSetTbsProjcfm2.getData("#.tbsProjcfm2BizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
+	if(newloc.charAt(newloc.length-1)=="\."){
+		return;
+	}
 	if (newloc){
 	bizvtDS.current.set("vloc",newloc);
 	}else{

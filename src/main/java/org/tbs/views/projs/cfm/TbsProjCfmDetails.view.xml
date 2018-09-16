@@ -766,10 +766,6 @@
         <Property></Property>
         <Property name="label">会议审议单编号</Property>
         <Property name="defaultValue">直接输入后缀</Property>
-        <Validator name="validator1" type="length">
-          <Property name="maxLength">3</Property>
-          <Property name="minLength">3</Property>
-        </Validator>
         <Validator name="validator2" type="required"/>
       </PropertyDef>
       <PropertyDef name="by3">
@@ -976,10 +972,6 @@
         <Property></Property>
         <Property name="defaultValue">直接输入后缀</Property>
         <Property name="label">会议审议单编号</Property>
-        <Validator name="validator1" type="length">
-          <Property name="maxLength">3</Property>
-          <Property name="minLength">3</Property>
-        </Validator>
         <Validator name="validator2" type="required"/>
       </PropertyDef>
       <PropertyDef name="by3">

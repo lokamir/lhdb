@@ -186,6 +186,7 @@
       </PropertyDef>
       <PropertyDef name="by1">
         <Property></Property>
+        <Property name="label">注册资本（万元）</Property>
       </PropertyDef>
       <PropertyDef name="by2">
         <Property></Property>
@@ -570,6 +571,12 @@
             <AutoFormElement>
               <Property name="name">estdate</Property>
               <Property name="property">estdate</Property>
+              <Editor/>
+            </AutoFormElement>
+            <AutoFormElement>
+              <Property name="name">by1</Property>
+              <Property name="property">by1</Property>
+              <Property name="labelWidth">120</Property>
               <Editor/>
             </AutoFormElement>
             <AutoFormElement>
