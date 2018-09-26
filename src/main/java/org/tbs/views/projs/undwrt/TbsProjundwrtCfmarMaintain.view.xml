@@ -351,6 +351,19 @@
     <DataType name="dataTypeTbsCustomer" parent="global:dataTypeTbsCustomer">
       <Property name="defaultDisplayProperty">name</Property>
     </DataType>
+    <DataType name="dataTypeTbsBasBurden" parent="global:dataTypeTbsBasBurden">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property/>
+        <Property name="label">分担类型</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+      </PropertyDef>
+    </DataType>
   </Model>
   <View>
     <Property name="packages">silk,font-awesome,entypo</Property>
@@ -643,205 +656,207 @@
           <ControlTab>
             <Property name="caption">承保补录单</Property>
             <Property name="icon">url(>skin>common/icons.gif) -160px -140px</Property>
-            <AutoForm id="ddlAutoform">
-              <Property name="dataSet">dataSettbsProjundwrtCfmar</Property>
-              <Property name="cols">*,*,*</Property>
-              <Property name="labelWidth">120</Property>
-              <AutoFormElement layoutConstraint="colSpan:2">
-                <Property name="name">tbsProj</Property>
-                <Property name="property">tbsProj</Property>
-                <Property name="trigger">ddlTbsProj</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProjundwrt</Property>
-                <Property name="property">tbsProjundwrt</Property>
-                <Property name="trigger">dataSetDropDownProjundwrt</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">sn</Property>
-                <Property name="property">sn</Property>
-                <Property name="editorWidth">250</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">govfund</Property>
-                <Property name="property">govfund</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">fundproj</Property>
-                <Property name="property">fundproj</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">zht</Property>
-                <Property name="property">zht</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">bzht</Property>
-                <Property name="property">bzht</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">lendingrate</Property>
-                <Property name="property">lendingrate</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">udtfaloc</Property>
-                <Property name="property">udtfaloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor>
-                  <TextEditor id="udtfaloc"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.vfaloc</Property>
-                <Property name="property">tbsProj.vfaloc</Property>
-                <Property name="readOnly">true</Property>
-                <Property name="labelPosition">top</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.initfaloc</Property>
-                <Property name="property">tbsProj.initfaloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">udtnfaloc</Property>
-                <Property name="property">udtnfaloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor>
-                  <TextEditor id="udtnfaloc"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.vnfaloc</Property>
-                <Property name="property">tbsProj.vnfaloc</Property>
-                <Property name="readOnly">true</Property>
-                <Property name="labelPosition">top</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.initnfaloc</Property>
-                <Property name="property">tbsProj.initnfaloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">udtotloc</Property>
-                <Property name="property">udtotloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor>
-                  <TextEditor id="udtotloc"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.votloc</Property>
-                <Property name="property">tbsProj.votloc</Property>
-                <Property name="readOnly">true</Property>
-                <Property name="labelPosition">top</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.initotloc</Property>
-                <Property name="property">tbsProj.initotloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">udttotloc</Property>
-                <Property name="property">udttotloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="readOnly">true</Property>
-                <Editor>
-                  <TextEditor id="udttotloc"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.vtotloc</Property>
-                <Property name="property">tbsProj.vtotloc</Property>
-                <Property name="readOnly">true</Property>
-                <Property name="labelPosition">top</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">tbsProj.inittotloc</Property>
-                <Property name="property">tbsProj.inittotloc</Property>
-                <Property name="labelPosition">top</Property>
-                <Property name="visible">true</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">undbdate</Property>
-                <Property name="property">undbdate</Property>
-                <Property name="trigger">defaultDateDropDown</Property>
-                <Editor>
-                  <TextEditor id="undbdate"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">undedate</Property>
-                <Property name="property">undedate</Property>
-                <Property name="trigger">defaultDateDropDown</Property>
-                <Editor>
-                  <TextEditor id="undedate"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">by3</Property>
-                <Property name="property">by3</Property>
-                <Property name="readOnly">false</Property>
-                <Editor>
-                  <TextEditor id="by3"/>
-                </Editor>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">bdate</Property>
-                <Property name="property">bdate</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">edate</Property>
-                <Property name="property">edate</Property>
-                <Property name="readOnly">true</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="readOnly">true</Property>
-                <Property name="name">periodCfm</Property>
-                <Property name="property">periodCfm</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">timestampInput</Property>
-                <Property name="property">timestampInput</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">burden</Property>
-                <Property name="property">burden</Property>
-                <Property name="trigger">burdenDropDown1</Property>
-                <Editor/>
-              </AutoFormElement>
-              <AutoFormElement>
-                <Property name="name">valid</Property>
-                <Property name="property">valid</Property>
-                <Editor/>
-              </AutoFormElement>
-            </AutoForm>
+            <Container>
+              <AutoForm id="ddlAutoform">
+                <Property name="dataSet">dataSettbsProjundwrtCfmar</Property>
+                <Property name="cols">*,*,*</Property>
+                <Property name="labelWidth">120</Property>
+                <AutoFormElement layoutConstraint="colSpan:2">
+                  <Property name="name">tbsProj</Property>
+                  <Property name="property">tbsProj</Property>
+                  <Property name="trigger">ddlTbsProj</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProjundwrt</Property>
+                  <Property name="property">tbsProjundwrt</Property>
+                  <Property name="trigger">dataSetDropDownProjundwrt</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">sn</Property>
+                  <Property name="property">sn</Property>
+                  <Property name="editorWidth">250</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">govfund</Property>
+                  <Property name="property">govfund</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">fundproj</Property>
+                  <Property name="property">fundproj</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">zht</Property>
+                  <Property name="property">zht</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">bzht</Property>
+                  <Property name="property">bzht</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">lendingrate</Property>
+                  <Property name="property">lendingrate</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">udtfaloc</Property>
+                  <Property name="property">udtfaloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextEditor id="udtfaloc"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.vfaloc</Property>
+                  <Property name="property">tbsProj.vfaloc</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.initfaloc</Property>
+                  <Property name="property">tbsProj.initfaloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">udtnfaloc</Property>
+                  <Property name="property">udtnfaloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextEditor id="udtnfaloc"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.vnfaloc</Property>
+                  <Property name="property">tbsProj.vnfaloc</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.initnfaloc</Property>
+                  <Property name="property">tbsProj.initnfaloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">udtotloc</Property>
+                  <Property name="property">udtotloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextEditor id="udtotloc"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.votloc</Property>
+                  <Property name="property">tbsProj.votloc</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.initotloc</Property>
+                  <Property name="property">tbsProj.initotloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">udttotloc</Property>
+                  <Property name="property">udttotloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor>
+                    <TextEditor id="udttotloc"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.vtotloc</Property>
+                  <Property name="property">tbsProj.vtotloc</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">tbsProj.inittotloc</Property>
+                  <Property name="property">tbsProj.inittotloc</Property>
+                  <Property name="labelPosition">top</Property>
+                  <Property name="visible">true</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">undbdate</Property>
+                  <Property name="property">undbdate</Property>
+                  <Property name="trigger">defaultDateDropDown</Property>
+                  <Editor>
+                    <TextEditor id="undbdate"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">undedate</Property>
+                  <Property name="property">undedate</Property>
+                  <Property name="trigger">defaultDateDropDown</Property>
+                  <Editor>
+                    <TextEditor id="undedate"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">by3</Property>
+                  <Property name="property">by3</Property>
+                  <Property name="readOnly">false</Property>
+                  <Editor>
+                    <TextEditor id="by3"/>
+                  </Editor>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">bdate</Property>
+                  <Property name="property">bdate</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">edate</Property>
+                  <Property name="property">edate</Property>
+                  <Property name="readOnly">true</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="readOnly">true</Property>
+                  <Property name="name">periodCfm</Property>
+                  <Property name="property">periodCfm</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">timestampInput</Property>
+                  <Property name="property">timestampInput</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">burden</Property>
+                  <Property name="property">burden</Property>
+                  <Property name="trigger">burdenDropDown1</Property>
+                  <Editor/>
+                </AutoFormElement>
+                <AutoFormElement>
+                  <Property name="name">valid</Property>
+                  <Property name="property">valid</Property>
+                  <Editor/>
+                </AutoFormElement>
+              </AutoForm>
+            </Container>
           </ControlTab>
           <ControlTab id="tabAttach">
             <Property name="caption">附件管理</Property>
@@ -885,6 +900,11 @@
         <Property name="dataProvider">tbsProjundwrtCfmarDao#getAllProjundwrtByName</Property>
         <Property name="dataType">[dataTypeTbsProjundwrt]</Property>
       </DataSet>
+      <DataSet id="dataSetTbsBasBurden">
+        <Property name="dataType">[dataTypeTbsBasBurden]</Property>
+        <Property name="dataProvider">tbsBasBurdenDao#loadAll</Property>
+        <Property name="readOnly">false</Property>
+      </DataSet>
       <DataSetDropDown id="ddlTbsProj">
         <Property name="autoOpen">true</Property>
         <Property name="dataSet">dataSetTbsProj</Property>
@@ -900,9 +920,11 @@
         <Property name="editable">false</Property>
         <Property name="filterOnTyping">true</Property>
       </DataSetDropDown>
-      <ListDropDown id="burdenDropDown1">
-        <Property name="items">一九分担,二八分担,三七分担,四六分担,五五分担,六四分担,七三分担,八二分担,九一分担</Property>
-      </ListDropDown>
+      <DataSetDropDown id="burdenDropDown1">
+        <Property name="dataSet">dataSetTbsBasBurden</Property>
+        <Property name="displayProperty">name</Property>
+        <Property name="property">name</Property>
+      </DataSetDropDown>
     </Container>
     <UpdateAction id="updateAction">
       <Property name="dataResolver">tbsProjundwrtCfmarDao#save</Property>

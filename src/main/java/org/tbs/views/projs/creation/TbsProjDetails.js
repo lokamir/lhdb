@@ -347,7 +347,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		autoformTbsProj_main.set("readOnly", true);
 		tabTbsProj.set("visible",true);
 		groupboxProjeaaAppr.set("visible",true);
-		if(psid == 35 || psid == 4) {
+		if(psid == 35 || psid == 4|| psid == 3) {
 			autoformProjeaa.set("readOnly", false);
 			view.get("#datagridTbsProjBank").set("readOnly", false);
 			view.get("#datagridTbsProjBizvt").set("readOnly", false);
@@ -442,6 +442,12 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 			});
 			return false;
 		}
+		if(required(dataSetTbsProjeaa.getData("#").get("otloc"),dataSetTbsProjeaa.getData("#").get("nfaloc"),dataSetTbsProjeaa.getData("#").get("faloc"))){
+			dorado.MessageBox.alert("金额不能为空", {
+				title : "趣博信息科技"
+			});
+			return false;
+		}
 		if(!dataSetTbsProjeaa.getData("#").get("bdf2User")){
 			dorado.MessageBox.alert("请填写经办部门负责人", {
 				title : "趣博信息科技"
@@ -457,6 +463,13 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	apprSubmit(psid, autoformProjeaaOpinion, ajaxactionApprSubmit);
 };
 
+function required(i,r,q){
+	if(i!=null&&r!=null&&q!=null){
+		return false;
+	}else{
+		return true;
+	}
+}
 
 //******* 1.14 add  ********* end
 

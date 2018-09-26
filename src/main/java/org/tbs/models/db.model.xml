@@ -4323,4 +4323,16 @@
       <Property name="label">是否有效</Property>
     </PropertyDef>
   </DataType>
+  <DataType name="dataTypeTbsBasBurden">
+    <Property name="creationType">org.tbs.entity.TbsBasBurden</Property>
+    <PropertyDef name="id">
+      <Property name="dataType">int</Property>
+    </PropertyDef>
+    <PropertyDef name="name">
+      <Property></Property>
+    </PropertyDef>
+    <PropertyDef name="valid">
+      <Property name="dataType">boolean</Property>
+    </PropertyDef>
+  </DataType>
 </Model>

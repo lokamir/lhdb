@@ -123,7 +123,7 @@ public class WfChangeMajcont extends HibernateDao {
 			processInstanceId = uflotask.getProcessInstanceId(); // 获取processinstanceId
 			pi = (ProcessInstance) session.get(ProcessInstance.class, processInstanceId);
 			String projName = (String)processClient.getProcessVariable("projName", processInstanceId);
-			Integer cfm0Id = Integer.parseInt(processClient.getProcessVariable("cfm0Id", processInstanceId).toString());
+			String cfm0Id = processClient.getProcessVariable("cfm0Id", processInstanceId).toString();
 			Integer projId = Integer.parseInt(processClient.getProcessVariable("projId",processInstanceId).toString());	
 		if(nodename.equals("评审会秘书录入会议信息")){
 				// ===获取流程内的一些值===
@@ -139,7 +139,7 @@ public class WfChangeMajcont extends HibernateDao {
 				processClient.saveProcessVariable(processInstanceId,"cmpt", 0);
 				}
 			TbsProj tbsproj = (TbsProj) session.get(TbsProj.class, Integer.valueOf(projId));
-			TbsProjcfm0 projCfm0 = (TbsProjcfm0) session.get(TbsProjcfm0.class, cfm0Id);
+			TbsProjcfm0 projCfm0 = (TbsProjcfm0) session.get(TbsProjcfm0.class, Integer.parseInt(cfm0Id));
 			//Bdf2User user = (Bdf2User) session.get(Bdf2User.class, Integer.valueOf(uid));
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String sqlInsert = "insert into tbs_proj_opinion(PROJ_ID,CFM0_ID,CFMTYPE,TIMESTAMP_INPUT,UID,TITLE)"

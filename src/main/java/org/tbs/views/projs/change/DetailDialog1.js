@@ -231,6 +231,13 @@ function getCfm1or2(id,by1,spcbtn){
 		view.get("#datagridCfm0ProjOpin").set("readOnly",true);
 		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
 		view.get("#listDdlOutcome").set("items",["确认修改"]);
+		//秘书可以修改上会通知单和会议信息
+		//view.get("#autoformTbsProjCfm0").set("readOnly",false);
+		//view.get("#groupboxCfm1r2ProjOpin").set("visible",true);
+		//view.get("#datagridCfm1r2ProjOpin").set("readOnly",false);
+		//view.get("#dataSetTbsProjcfm0").set("readOnly",false);
+		//view.get("#datasetTbsProjOpinion1r2").set("readOnly",false);
+		
 		if(view.get("#autoformCfm1").get("entity")){
 			view.get("#autoformCfm1").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
 			view.get("#autoformCfm1").set("readOnly",false);
@@ -507,13 +514,13 @@ function getCfm1or2(id,by1,spcbtn){
 		var by2 =view.get("#autoformCfm1").get("entity.by2");
 		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm1").set("entity.by2",by2);
-			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+			dorado.MessageBox.alert("决议单编号必填", {
 				title : "趣博信息科技"
 			});
 			return false;
 		}
 		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
-		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14)+by2);
+		view.get("#autoformCfm1").set("entity.by2",view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,6)+by2);
 		
 	}
 	view.get("#dataSetTbsProjcfm1").getData("#").isDirty();
@@ -529,13 +536,13 @@ function getCfm1or2(id,by1,spcbtn){
 		var by2 =view.get("#autoformCfm2").get("entity.by2");
 		if (view.get("#dataSetTbsProjcfm2").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm2").set("entity.by2",by2);
-			dorado.MessageBox.alert("决议单编号必须是三位有效数字", {
+			dorado.MessageBox.alert("决议单编号必填", {
 				title : "趣博信息科技"
 			});
 			return false;
 		}
 		view.get("#dataSetTbsProjcfm2").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
-		view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14)+by2);
+		view.get("#autoformCfm2").set("entity.by2",view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,6)+by2);
 		
 	}
 	view.get("#dataSetTbsProjcfm2").getData("#").isDirty();
@@ -592,8 +599,8 @@ function getCfm1or2(id,by1,spcbtn){
 	}
 	
 	
-	var tbsProjcfm1BizvtSet = view.get("#dataSetTbsProjcfm1").getData("#.tbsProjcfm1BizvtSet")
-	var tbsProjcfm2BizvtSet = view.get("#dataSetTbsProjcfm2").getData("#.tbsProjcfm1BizvtSet")
+	var tbsProjcfm1BizvtSet = view.get("#dataSetTbsProjcfm1").getData("#.tbsProjcfm1BizvtSet");
+	var tbsProjcfm2BizvtSet = view.get("#dataSetTbsProjcfm2").getData("#.tbsProjcfm2BizvtSet");
 	if(tbsProjcfm1BizvtSet){
 		var crs = view.get("#autoformCfm1").get("entity"); 
 		crs.set("vfaloc",0); 
@@ -603,7 +610,7 @@ function getCfm1or2(id,by1,spcbtn){
 			entity.remove();
 		});
 	}
-	if(tbsProjcfm2BizvtSet){
+	else if(tbsProjcfm2BizvtSet){
 		var crs = view.get("#autoformCfm2").get("entity"); 
 		crs.set("vfaloc",0); 
 		crs.set("vnfaloc",0); 

@@ -1505,11 +1505,6 @@
         <Property></Property>
         <Property name="label">会议审议单编号</Property>
         <Property name="defaultValue">直接输入后缀</Property>
-        <Validator name="validator1" type="length">
-          <Property name="maxLength">3</Property>
-          <Property name="minLength">3</Property>
-          <Property name="resultMessage">填写三位有效数字</Property>
-        </Validator>
         <Validator name="validator2" type="required">
           <Property name="resultMessage">必填项目</Property>
         </Validator>
@@ -1715,11 +1710,6 @@
         <Property></Property>
         <Property name="label">会议审议单编号</Property>
         <Property name="defaultValue">直接输入后缀</Property>
-        <Validator name="validator1" type="length">
-          <Property name="maxLength">3</Property>
-          <Property name="minLength">3</Property>
-          <Property name="resultMessage">填写三位有效数字</Property>
-        </Validator>
         <Validator name="validator2" type="required">
           <Property name="resultMessage">必填项目</Property>
         </Validator>

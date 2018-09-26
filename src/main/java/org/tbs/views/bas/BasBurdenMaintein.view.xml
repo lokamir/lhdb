@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model>
+    <DataType name="dataTypeTbsBasBurden" parent="global:dataTypeTbsBasBurden">
+      <PropertyDef name="id">
+        <Property name="dataType">int</Property>
+      </PropertyDef>
+      <PropertyDef name="name">
+        <Property/>
+        <Property name="label">分担类型</Property>
+      </PropertyDef>
+      <PropertyDef name="valid">
+        <Property name="dataType">boolean</Property>
+        <Property name="label">是否有效</Property>
+      </PropertyDef>
+    </DataType>
+  </Model>
+  <View>
+    <Property name="packages">silk,font-awesome,entypo</Property>
+    <DataSet id="dataSetTbsBasBurden">
+      <Property name="dataType">[dataTypeTbsBasBurden]</Property>
+      <Property name="dataProvider">tbsBasBurdenDao#loadAll</Property>
+      <Property name="readOnly">false</Property>
+    </DataSet>
+    <ToolBar>
+      <DataPilot>
+        <Property name="itemCodes">+,-,x,pages</Property>
+        <Property name="dataSet">dataSetTbsBasBurden</Property>
+      </DataPilot>
+      <ToolBarButton>
+        <Property name="caption">保存</Property>
+        <Property name="action">updateActionSave</Property>
+        <Property name="iconClass">silk silk-disk</Property>
+      </ToolBarButton>
+    </ToolBar>
+    <Container id="dataGrid">
+      <Property name="height">95%</Property>
+      <DataGrid id="dataGridTbsBasBurden">
+        <Property name="dataSet">dataSetTbsBasBurden</Property>
+        <Property name="width">600</Property>
+        <Property name="filterMode">clientSide</Property>
+        <RowNumColumn/>
+        <DataColumn name="name">
+          <Property name="property">name</Property>
+        </DataColumn>
+        <DataColumn name="valid">
+          <Property name="property">valid</Property>
+        </DataColumn>
+      </DataGrid>
+    </Container>
+    <UpdateAction id="updateActionSave">
+      <ClientEvent name="onSuccess" signature="self,arg,dataSetTbsApprover">dataSetTbsApprover.flushAsync();&#xD;
+</ClientEvent>
+      <Property name="dataResolver">tbsBasBurdenDao#save</Property>
+      <UpdateItem>
+        <Property name="dataSet">dataSetTbsBasBurden</Property>
+      </UpdateItem>
+    </UpdateAction>
+  </View>
+</ViewConfig>

@@ -74,7 +74,7 @@ public class ActCfmGrntProjCfm0 extends HibernateDao implements ActionHandler  {
 		projcfm0_sn = tbsProjcfm0.getSn();
 	    
 	    // save cfm0Id into process variables
-	    processClient.saveProcessVariable(piId, "cfm0Id", projcfm0Id);
+	    processClient.saveProcessVariable(piId, "cfm0Id", projcfm0Id+"");
 	    
 	    
 	    // insert attendees for cfm0
