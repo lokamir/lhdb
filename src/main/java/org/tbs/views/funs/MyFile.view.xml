@@ -256,7 +256,6 @@
               <Property name="caption">保存</Property>
               <Property name="iconClass">fa fa-floppy-o</Property>
               <Property name="action">updateActionflsmgm</Property>
-              <Property name="tags">downbuttontag</Property>
             </ToolBarButton>
             <Button id="btnRefresh">
               <ClientEvent name="onClick" signature="self,arg,dataSetTbsFunFul">dataSetTbsFunFul.flush();</ClientEvent>
