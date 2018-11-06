@@ -4,6 +4,7 @@ var valid;
 var docid;
 var projid;
 var processInstanceId;
+var user = "${loginUser.getUsername()}";
 
 /*======获取当前这条记录的状态======*/
 function GetCRStatus(ds){
@@ -20,10 +21,16 @@ function GetCRStatus(ds){
 /** @Bind #dataSettbsProjundwrtCfmar.onLoadData */
 !function(self,arg,dataSettbsProjundwrtCfmar,buttonDel,buttonUflo,dataSetHistoryTask){
 	GetCRStatus(dataSettbsProjundwrtCfmar);
+	debugger;
     if (valid==0 && psid == 16){
     	buttonDel.set("disabled",false);
     	buttonUflo.set("disabled",false);
     	dataSettbsProjundwrtCfmar.set("readOnly",false);
+    }else if(valid==1 &&( user == dataSettbsProjundwrtCfmar.getData("#.username")||user == "admin" ||user == "admin2")){
+    	buttonDel.set("disabled",true);
+    	buttonUflo.set("disabled",true);
+    	dataSettbsProjundwrtCfmar.set("readOnly",false);//通过审批后金额等禁止修改，其他次要字段允许
+    	//view.get("^ban.readOnly",true);
     }else{
     	buttonDel.set("disabled",true);
     	buttonUflo.set("disabled",true);
@@ -59,7 +66,7 @@ function GetCRStatus(ds){
 /** @Bind #undbdate.onPost */
 /** @Bind #by3.onPost */
 !function(self,arg,ddlAutoform,buttonSave,udttotloc,dataSettbsProjundwrtCfmar){
-	var crs = ddlAutoform.get("entity"); 
+	/*var crs = ddlAutoform.get("entity"); 
 	var bdate = crs.get("bdate"); var edate = crs.get("edate");
 	var undbdate = crs.get("undbdate"); //var undedate = crs.get("undedate");
 	var by3 = crs.get("by3");
@@ -71,7 +78,7 @@ function GetCRStatus(ds){
 		buttonSave.set("disabled",true);
 	}else {
 		buttonSave.set("disabled",false);
-	};
+	};*/
 };
 
 /*========审批历史创建时刷新=========*/
@@ -150,6 +157,10 @@ dataSettbsProjundwrtCfmar.set("parameter",entity).flushAsync();
 /*=======================发送审批===================*/
 /** @Bind #buttonUflo.onClick */ 
 !function(self,arg,dataSettbsProjundwrtCfmar,Main,ajaxAction1){
+	/*if( user != dataSettbsProjundwrtCfmar.getData("#.username")&&user != admin &&user != admin2){
+		dorado.MessageBox.alert("必须本项目业务经理本人账号发起审批",{title:"趣博信息科技"});
+		return
+	}*/
 	var entity = Main.getCurrentEntity("entity");
 	var id_value = entity.get("id");
 	var maParamers = {docid:id_value}; 

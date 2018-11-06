@@ -1512,6 +1512,9 @@
       <PropertyDef name="by3">
         <Property></Property>
       </PropertyDef>
+      <PropertyDef name="decision">
+        <Property name="label">会议决议</Property>
+      </PropertyDef>
       <PropertyDef name="tbsProj">
         <Property name="dataType">dataTypeTbsProj</Property>
         <Property name="label">项目名称</Property>
@@ -1721,6 +1724,9 @@
         <Property name="dataType">dataTypeTbsProj</Property>
         <Property name="label">项目名称</Property>
       </PropertyDef>
+      <PropertyDef name="decision">
+        <Property name="label">签批决议</Property>
+      </PropertyDef>
       <Reference name="tbsProjcfm2BizvtSet">
         <Property name="parameter">$${this.id}</Property>
         <Property name="dataProvider">tbsProjcfm2Dao#loadTbsProjcfm2Bizvt</Property>
@@ -1866,6 +1872,18 @@
                   <Property name="label">审批结果</Property>
                   <Property name="trigger">listDdlOutcome</Property>
                   <Editor/>
+                </AutoFormElement>
+                <AutoFormElement id="decision" layoutConstraint="colSpan:3;rowSpan:10">
+                  <Property name="name">decision</Property>
+                  <Property name="property">decision</Property>
+                  <Property name="dataSet">dataSetTbsProjcfm1</Property>
+                  <Property name="height">200</Property>
+                  <Property name="readOnly">true</Property>
+                  <Property name="visible">false</Property>
+                  <Property name="hideMode">display</Property>
+                  <Editor>
+                    <TextArea/>
+                  </Editor>
                 </AutoFormElement>
                 <AutoFormElement layoutConstraint="colSpan:3">
                   <Property name="label">审批意见</Property>
@@ -2384,7 +2402,7 @@
                     <AutoFormElement>
                       <Property name="name">meetingtype</Property>
                       <Property name="property">meetingtype</Property>
-                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Property name="trigger">DropDownTbsBasMeetingtype</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement>
@@ -2698,7 +2716,7 @@
                     <AutoFormElement>
                       <Property name="name">meetingtype</Property>
                       <Property name="property">meetingtype</Property>
-                      <Property name="trigger">ddl_meetingtype</Property>
+                      <Property name="trigger">DropDownTbsBasMeetingtype</Property>
                       <Editor/>
                     </AutoFormElement>
                     <AutoFormElement layoutConstraint="colSpan:2">
@@ -3939,12 +3957,10 @@
       <Import id="ddlrepay" src="org.tbs.views.funs.Dropdown#ddlrepay"/>
       <Import id="Bdf2Dept" src="org.tbs.views.funs.Dropdown#Bdf2Dept"/>
       <Import id="Bdf2User" src="org.tbs.views.funs.Dropdown#Bdf2User"/>
+      <Import id="ddl_meetingtype" src="org.tbs.views.funs.Dropdown#TbsBasMeetingtype"/>
       <DataSetDropDown id="ddlTbsFunFulTyp">
         <Property name="dataSet">dataSetTbsFunFulTyp</Property>
       </DataSetDropDown>
-      <ListDropDown id="ddl_meetingtype">
-        <Property name="items">新项目,老项目新增,新项目变更,老项目变更,超时效项目,补议项目,其他</Property>
-      </ListDropDown>
       <ListDropDown id="ddl_meetingstyle">
         <Property name="items">会议,签批</Property>
       </ListDropDown>

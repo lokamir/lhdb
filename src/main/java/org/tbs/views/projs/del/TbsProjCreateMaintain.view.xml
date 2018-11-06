@@ -416,13 +416,10 @@
         <Property name="caption">查 询</Property>
         <Property name="iconClass">silk silk-zoom</Property>
       </ToolBarButton>
-      <ToolBarButton id="btnAdd">
-        <Property name="caption">新 增</Property>
-        <Property name="iconClass">silk silk-add</Property>
-      </ToolBarButton>
       <ToolBarButton id="btnDetails">
         <Property name="caption">明 细</Property>
         <Property name="iconClass">silk silk-application-form</Property>
+        <Property name="visible">false</Property>
       </ToolBarButton>
       <ToolBarButton id="btnDel">
         <Property name="caption">删 除</Property>
@@ -433,12 +430,6 @@
         <Property name="itemCodes">pages</Property>
         <Property name="dataSet">datasetTbsProj</Property>
       </DataPilot>
-      <ToolBarButton id="buttonCheck">
-        <Property name="caption">老项目审核</Property>
-        <Property name="iconClass">silk silk-application-form-edit</Property>
-        <Property name="visible">false</Property>
-        <Property name="hideMode">display</Property>
-      </ToolBarButton>
     </ToolBar>
     <Container id="UI">
       <Property name="height">82%</Property>
@@ -772,16 +763,23 @@
       <Import id="ddlrepay" src="org.tbs.views.funs.Dropdown#ddlrepay"/>
       <AutoMappingDropDown id="DropDownValid"/>
     </Container>
-    <UpdateAction id="updateActionSave">
-      <Property name="dataResolver">tbsProjCreateDao#save</Property>
-      <Property name="executingMessage">正在保存...</Property>
-      <Property name="successMessage">删除成功！</Property>
-      <UpdateItem>
-        <Property name="dataSet">datasetTbsProj</Property>
-      </UpdateItem>
-    </UpdateAction>
-    <AjaxAction id="ajaxCheck">
-      <Property name="service">checkProject#actionUpdate</Property>
+    <AjaxAction id="ajaxDelProj">
+      <Property name="service">delProj#actionDelProj</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxDelCfm0">
+      <Property name="service">delProj#actionDelCfm0</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxDelCfm1">
+      <Property name="service">delProj#actionDelCfm1</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxDelCfm2">
+      <Property name="service">delProj#actionDelCfm2</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxDelEaa">
+      <Property name="service">delProj#actionDelEaa</Property>
+    </AjaxAction>
+    <AjaxAction id="ajaxDelCusCompsry">
+      <Property name="service">delProj#actionDelCusCompsry</Property>
     </AjaxAction>
   </View>
 </ViewConfig>

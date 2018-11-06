@@ -217,6 +217,12 @@ function getCfm1or2(id,by1,spcbtn){
 		var projid = dataSet.get("tbsProj.id"); 
 		view.get("#dataSetTbsProj").set("parameter", projid).flushAsync();  
 		view.get("#dataSetTbsProjundwrt").set("parameter", projid).flushAsync();
+		view.get("#decision").set("readOnly", false);
+		view.get("#decision").set("visible", true);
+		view.get("#autoFormTbsProjcfm1").set("readOnly",false);
+		view.get("#autoFormTbsProjcfm2").set("readOnly",false);
+		view.get("#dataSetTbsProjcfm1").set("readOnly",false);
+		view.get("#dataSetTbsProjcfm2").set("readOnly",false);
 		getCfmOpinion(projid,dataSet.get("by1"));
 		getCfm1or2(projid,dataSet.get("by1"),spcbtn);
 		view.get("#tabCfm0").set("visible",true);
@@ -244,11 +250,13 @@ function getCfm1or2(id,by1,spcbtn){
 			view.get("#DialogTbsProjCfm1").set("readOnly",false);
 			view.get("#autoformCfm1").set({
 		    	"readOnly":false,
-		    	"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+		    	//"elements.by2.label":"会议审议单编号           "+view.get("#dataSetTbsProjcfm1").getData("#.sn").substring(0,14),
+		    	"elements.by2.label":"会议审议单编号           ",
 		    	"elements.by2.labelWidth":270,
 		    	"elements.by2.labelSpacing":0,
 		    	"elements.by2.labelAlign":"right"
 		    	});
+			view.get("#decision").set("dataSet","dataSetTbsProjcfm1");
 		}
 		else if(view.get("#autoformCfm2").get("entity")){
 			view.get("#autoformCfm2").get("entity").set("keyinId","${dorado.getDataProvider('el#Uid').getResult()}");
@@ -256,11 +264,13 @@ function getCfm1or2(id,by1,spcbtn){
 			view.get("#DialogTbsProjCfm2").set("readOnly",false);
 			view.get("#autoformCfm2").set({
 		    	"readOnly":false,
-		    	"elements.by2.label":"签批审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+		    	//"elements.by2.label":"签批审议单编号           "+view.get("#dataSetTbsProjcfm2").getData("#.sn").substring(0,14),
+		    	"elements.by2.label":"签批审议单编号           ",
 		    	"elements.by2.labelWidth":270,
 		    	"elements.by2.labelSpacing":0,
 		    	"elements.by2.labelAlign":"right"
 		    	});
+			view.get("#decision").set("dataSet","dataSetTbsProjcfm2");
 		}
 	}
 	if(nodeName == "主任委员审批"||nodeName =="决策人审批"){
@@ -287,6 +297,16 @@ function getCfm1or2(id,by1,spcbtn){
 		view.get("#datagridCfm0ProjOpin").set("readOnly",true);
 		view.get("#dataSetTbsProjchangeMajcont").set("readOnly",true);
 		view.get("#listDdlOutcome").set("items",["通过","驳回"]);
+		view.get("#decision").set("visible", true);
+		var autoformCfm1 = view.get("#autoformCfm1");
+		var autoformCfm2 = view.get("#autoformCfm2");
+		autoformCfm1.set("readOnly", true);
+		autoformCfm2.set("readOnly", true);
+		if(autoformCfm1.get("entity")){
+	    	view.get("#decision").set("dataSet","dataSetTbsProjcfm1");
+	    }else if(autoformCfm2.get("entity")){
+	    	view.get("#decision").set("dataSet","dataSetTbsProjcfm2");
+	    }
 	}
 	
 	if(nodeName == "评委审批"){

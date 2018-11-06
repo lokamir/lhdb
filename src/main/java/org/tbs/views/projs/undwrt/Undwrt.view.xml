@@ -206,7 +206,10 @@
       <PropertyDef name="rlstotloc">
         <Property name="dataType">BigDecimal</Property>
         <Property name="displayFormat">#,##0.00</Property>
-        <Property name="label">在保额（元）</Property>
+        <Property name="label">本承保审批单在保额（元）</Property>
+      </PropertyDef>
+      <PropertyDef name="sumrlstotloc">
+        <Property name="label">在保额</Property>
       </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProjundwrtBank" parent="global:dataTypeTbsProjundwrtBank">
@@ -797,8 +800,8 @@
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
-                  <Property name="name">rlstotloc</Property>
-                  <Property name="property">rlstotloc</Property>
+                  <Property name="name">sumrlstotloc</Property>
+                  <Property name="property">sumrlstotloc</Property>
                   <Property name="labelPosition">left</Property>
                   <Property name="labelWidth">100</Property>
                   <Property name="readOnly">true</Property>

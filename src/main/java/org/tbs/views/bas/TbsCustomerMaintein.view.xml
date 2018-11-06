@@ -510,13 +510,15 @@
         </SideControl>
       </SplitPanel>
     </Container>
-    <Dialog id="dialogEdit">
+    <Dialog id="dialogEdit" layout="native">
       <Property name="caption">客户详细资料</Property>
       <Property name="width">1000</Property>
       <Property name="height">500</Property>
       <Property name="autoAdjustPosition">true</Property>
       <Property name="iconClass">silk silk-application-edit</Property>
       <Property name="showAnimateType">zoom</Property>
+      <Property name="shadowMode">drop</Property>
+      <Property name="containerUi">default</Property>
       <Buttons>
         <Button id="buttonSave">
           <Property name="caption"> 确  认</Property>
@@ -758,56 +760,56 @@
               <Editor/>
             </AutoFormElement>
           </AutoForm>
+          <TabControl>
+            <ControlTab>
+              <Property name="caption">证件类型</Property>
+              <Container id="DialogTbsCustomerIdnum">
+                <DataPilot id="DialogDataPilot_1">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="itemCodes">+,-,x</Property>
+                  <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
+                </DataPilot>
+                <DataGrid id="DialogDataGridIdCardType_1">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
+                  <Property name="width">600</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="tbsBasIdcardtype">
+                    <Property name="property">tbsBasIdcardtype</Property>
+                    <Property name="trigger">DropDownTbsBasIdcardtype</Property>
+                    <Property name="caption">证件类型</Property>
+                  </DataColumn>
+                  <DataColumn name="idnum">
+                    <Property name="property">idnum</Property>
+                    <Property name="caption">证件号码</Property>
+                    <Editor/>
+                  </DataColumn>
+                </DataGrid>
+              </Container>
+            </ControlTab>
+            <ControlTab>
+              <Property name="caption">企业类型</Property>
+              <Container id="DialogTbsCustomerEnttype">
+                <DataPilot id="DialogDataPilot_2">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="itemCodes">+,-,x</Property>
+                  <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
+                </DataPilot>
+                <DataGrid id="DialogDataGridEntType_2">
+                  <Property name="dataSet">dataSetCustomer</Property>
+                  <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
+                  <Property name="width">300</Property>
+                  <RowNumColumn/>
+                  <DataColumn name="tbsBasEnttype">
+                    <Property name="property">tbsBasEnttype</Property>
+                    <Property name="trigger">DropDownTbsBasEnttype</Property>
+                    <Property name="caption">企业类型</Property>
+                  </DataColumn>
+                </DataGrid>
+              </Container>
+            </ControlTab>
+          </TabControl>
         </Container>
-        <TabControl>
-          <ControlTab>
-            <Property name="caption">证件类型</Property>
-            <Container id="DialogTbsCustomerIdnum">
-              <DataPilot id="DialogDataPilot_1">
-                <Property name="dataSet">dataSetCustomer</Property>
-                <Property name="itemCodes">+,-,x</Property>
-                <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
-              </DataPilot>
-              <DataGrid id="DialogDataGridIdCardType_1">
-                <Property name="dataSet">dataSetCustomer</Property>
-                <Property name="dataPath">#.tbsCustomerIdnumSet</Property>
-                <Property name="width">600</Property>
-                <RowNumColumn/>
-                <DataColumn name="tbsBasIdcardtype">
-                  <Property name="property">tbsBasIdcardtype</Property>
-                  <Property name="trigger">DropDownTbsBasIdcardtype</Property>
-                  <Property name="caption">证件类型</Property>
-                </DataColumn>
-                <DataColumn name="idnum">
-                  <Property name="property">idnum</Property>
-                  <Property name="caption">证件号码</Property>
-                  <Editor/>
-                </DataColumn>
-              </DataGrid>
-            </Container>
-          </ControlTab>
-          <ControlTab>
-            <Property name="caption">企业类型</Property>
-            <Container id="DialogTbsCustomerEnttype">
-              <DataPilot id="DialogDataPilot_2">
-                <Property name="dataSet">dataSetCustomer</Property>
-                <Property name="itemCodes">+,-,x</Property>
-                <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
-              </DataPilot>
-              <DataGrid id="DialogDataGridEntType_2">
-                <Property name="dataSet">dataSetCustomer</Property>
-                <Property name="dataPath">#.tbsCustomerEnttypeSet</Property>
-                <Property name="width">300</Property>
-                <RowNumColumn/>
-                <DataColumn name="tbsBasEnttype">
-                  <Property name="property">tbsBasEnttype</Property>
-                  <Property name="trigger">DropDownTbsBasEnttype</Property>
-                  <Property name="caption">企业类型</Property>
-                </DataColumn>
-              </DataGrid>
-            </Container>
-          </ControlTab>
-        </TabControl>
       </Children>
       <Tools/>
     </Dialog>

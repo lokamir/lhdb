@@ -99,6 +99,9 @@ function GetCRStatus(ds){
 !function(self,arg,dataSetTbsProjundwrt,appfaloc,appnfaloc,appotloc,bizvtloc,tbsBasBizvar){
 	var newloc = bizvtloc.get("text");
 	var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");
+	if(newloc.charAt(newloc.length-1)=="\."){
+		return;
+	}
 	if (newloc){
 	bizvtDS.current.set("loc",newloc);
 	}else{
@@ -193,6 +196,8 @@ function BizvtCountting(ds,appfaloc,appnfaloc,appotloc,bizvtloc){
 	    buttonSave.set("disabled",false);
 	};
 };
+
+
 
 ///** @Bind #undbdate.onPost */
 ///** @Bind #by3.onPost */

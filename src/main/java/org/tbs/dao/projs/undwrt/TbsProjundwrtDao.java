@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -58,6 +59,12 @@ public class TbsProjundwrtDao extends HibernateDao {
 	@Autowired
 	@Qualifier(InternalMessageSender.BEAN_ID)
 	private InternalMessageSender SendMsg;
+	
+	private List<Object> getGroupByProjid(int projid) {//计算项目在保额，用于虚拟属性
+	     String sql = "select sum(rlstotloc) from " + TbsProjundwrt.class.getName()+ " where proj_id = "+ projid +" group by proj_id ";
+	     List<Object> temp = this.query(sql);
+	     return temp;
+	}
 	
 	@DataProvider
 	public void loadAll(Page<TbsProjundwrt> page, Map<String, Object> params)
@@ -119,6 +126,18 @@ public class TbsProjundwrtDao extends HibernateDao {
 					+ " where id is null";
 			this.pagingQuery(page, hql, "select count(*) " + hql);
 		}
+		
+		// v-property start
+		List<TbsProjundwrt> results = new ArrayList<TbsProjundwrt>();
+		Collection<TbsProjundwrt> tbsProjundwrts = page.getEntities();
+		for (TbsProjundwrt tbsProjundwrt : tbsProjundwrts) {
+			TbsProjundwrt targetData = EntityUtils.toEntity(tbsProjundwrt);
+			List<Object> rlstotloc = this.getGroupByProjid(targetData.getTbsProj().getId());
+				EntityUtils.setValue(targetData, "sumrlstotloc", rlstotloc.get(0));
+				results.add(targetData);
+		}
+		page.setEntities(results); // v-property endding
+
 	}
 
 	@DataProvider
@@ -178,7 +197,16 @@ public class TbsProjundwrtDao extends HibernateDao {
 	
 	@DataProvider  // 单条数据 Autoform 显示，给undwrt的审批界面用 businessId传入
 	public Collection<TbsProjundwrt> loadsingle(String undwrtId) throws Exception {
-		return this.query("from " + TbsProjundwrt.class.getName() + " where id="+ undwrtId);
+		String sql = "from " + TbsProjundwrt.class.getName() + " where id="+ undwrtId;
+		List<TbsProjundwrt> results = new ArrayList<TbsProjundwrt>();
+		Collection<TbsProjundwrt> tbsProjundwrts = this.query(sql);
+		for (TbsProjundwrt tbsProjundwrt : tbsProjundwrts) {
+			TbsProjundwrt targetData = EntityUtils.toEntity(tbsProjundwrt);
+			List<Object> rlstotloc = this.getGroupByProjid(targetData.getTbsProj().getId());
+				EntityUtils.setValue(targetData, "sumrlstotloc", rlstotloc.get(0));
+				results.add(targetData);
+		}
+		return results;
 	}
 	
 	@DataResolver

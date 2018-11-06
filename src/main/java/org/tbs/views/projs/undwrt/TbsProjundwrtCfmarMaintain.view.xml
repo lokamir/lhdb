@@ -115,6 +115,9 @@
         <Property name="label">是否为政府基金</Property>
         <Property name="dataType">boolean</Property>
       </PropertyDef>
+      <PropertyDef name="username">
+        <Property name="label">录入人</Property>
+      </PropertyDef>
     </DataType>
     <DataType name="dataTypeTbsProj" parent="global:dataTypeTbsProj">
       <Property name="defaultDisplayProperty">projName</Property>
@@ -356,7 +359,7 @@
         <Property name="dataType">int</Property>
       </PropertyDef>
       <PropertyDef name="name">
-        <Property/>
+        <Property></Property>
         <Property name="label">分担类型</Property>
       </PropertyDef>
       <PropertyDef name="valid">
@@ -371,6 +374,7 @@
       <Property name="dataProvider">tbsProjundwrtCfmarDao#loadAll</Property>
       <Property name="dataType">[dataTypeTbsProjundwrtCfmar]</Property>
       <Property name="pageSize">15</Property>
+      <Property name="loadMode">lazy</Property>
     </DataSet>
     <DataSet id="dataSetTbsProjCgg">
       <Property name="dataProvider">tbsProjCreateDao#loadTbsProjCgg</Property>
@@ -477,7 +481,7 @@
       </ToolBarButton>
       <DataPilot>
         <Property name="itemCodes">pages</Property>
-        <Property name="dataSet">dataSetTbsProjundwrt</Property>
+        <Property name="dataSet">dataSettbsProjundwrtCfmar</Property>
       </DataPilot>
       <ToolBarButton id="buttonUflo">
         <Property name="caption">提交审批</Property>
@@ -597,6 +601,11 @@
               <Property name="name">undedate</Property>
               <Property name="width">100</Property>
             </DataColumn>
+            <DataColumn>
+              <Property name="property">username</Property>
+              <Property name="name">username</Property>
+              <Editor/>
+            </DataColumn>
           </DataGrid>
         </SideControl>
       </SplitPanel>
@@ -665,43 +674,51 @@
                   <Property name="name">tbsProj</Property>
                   <Property name="property">tbsProj</Property>
                   <Property name="trigger">ddlTbsProj</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">tbsProjundwrt</Property>
                   <Property name="property">tbsProjundwrt</Property>
                   <Property name="trigger">dataSetDropDownProjundwrt</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">sn</Property>
                   <Property name="property">sn</Property>
                   <Property name="editorWidth">250</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">govfund</Property>
                   <Property name="property">govfund</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">fundproj</Property>
                   <Property name="property">fundproj</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">zht</Property>
                   <Property name="property">zht</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">bzht</Property>
                   <Property name="property">bzht</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">lendingrate</Property>
                   <Property name="property">lendingrate</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -709,6 +726,7 @@
                   <Property name="property">udtfaloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor>
                     <TextEditor id="udtfaloc"/>
                   </Editor>
@@ -718,6 +736,7 @@
                   <Property name="property">tbsProj.vfaloc</Property>
                   <Property name="readOnly">true</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -725,6 +744,7 @@
                   <Property name="property">tbsProj.initfaloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -732,6 +752,7 @@
                   <Property name="property">udtnfaloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor>
                     <TextEditor id="udtnfaloc"/>
                   </Editor>
@@ -741,6 +762,7 @@
                   <Property name="property">tbsProj.vnfaloc</Property>
                   <Property name="readOnly">true</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -748,6 +770,7 @@
                   <Property name="property">tbsProj.initnfaloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -755,6 +778,7 @@
                   <Property name="property">udtotloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor>
                     <TextEditor id="udtotloc"/>
                   </Editor>
@@ -764,6 +788,7 @@
                   <Property name="property">tbsProj.votloc</Property>
                   <Property name="readOnly">true</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -771,6 +796,7 @@
                   <Property name="property">tbsProj.initotloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -778,6 +804,7 @@
                   <Property name="property">udttotloc</Property>
                   <Property name="labelPosition">top</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor>
                     <TextEditor id="udttotloc"/>
                   </Editor>
@@ -787,6 +814,7 @@
                   <Property name="property">tbsProj.vtotloc</Property>
                   <Property name="readOnly">true</Property>
                   <Property name="labelPosition">top</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
@@ -795,12 +823,14 @@
                   <Property name="labelPosition">top</Property>
                   <Property name="visible">true</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">undbdate</Property>
                   <Property name="property">undbdate</Property>
                   <Property name="trigger">defaultDateDropDown</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor>
                     <TextEditor id="undbdate"/>
                   </Editor>
@@ -809,6 +839,7 @@
                   <Property name="name">undedate</Property>
                   <Property name="property">undedate</Property>
                   <Property name="trigger">defaultDateDropDown</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor>
                     <TextEditor id="undedate"/>
                   </Editor>
@@ -817,6 +848,7 @@
                   <Property name="name">by3</Property>
                   <Property name="property">by3</Property>
                   <Property name="readOnly">false</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor>
                     <TextEditor id="by3"/>
                   </Editor>
@@ -825,34 +857,40 @@
                   <Property name="name">bdate</Property>
                   <Property name="property">bdate</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">edate</Property>
                   <Property name="property">edate</Property>
                   <Property name="readOnly">true</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="readOnly">true</Property>
                   <Property name="name">periodCfm</Property>
                   <Property name="property">periodCfm</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">timestampInput</Property>
                   <Property name="property">timestampInput</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">burden</Property>
                   <Property name="property">burden</Property>
                   <Property name="trigger">burdenDropDown1</Property>
+                  <Property name="tags">editallowed</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">valid</Property>
                   <Property name="property">valid</Property>
+                  <Property name="tags">ban</Property>
                   <Editor/>
                 </AutoFormElement>
               </AutoForm>

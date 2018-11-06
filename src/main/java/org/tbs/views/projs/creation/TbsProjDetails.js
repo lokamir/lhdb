@@ -426,7 +426,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 
 //******* 1.14 add  ******* start
 /** @Bind #btnProjeaaApprSubmit.onClick */
-!function(self, arg, autoformTbsProj_role, autoformProjeaaOpinion,
+!function(self, arg, autoformTbsProj_role, autoformProjeaaOpinion,updateActionSave,
 		ajaxactionApprSubmit, dataSetTbsProjeaa, updateactionProjeaa) {
 	var outcome = view.get("#autoformProjeaaOpinion").get("entity.outcome");
 	var comment = view.get("#autoformProjeaaOpinion").get("entity.comment");
@@ -458,7 +458,9 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		}
 	}
 	// 保存AB角数据
-	updateactionProjeaa.execute();
+	updateActionSave.execute(function(result) {
+		updateactionProjeaa.execute();
+		});
 	// 提交表单
 	apprSubmit(psid, autoformProjeaaOpinion, ajaxactionApprSubmit);
 };

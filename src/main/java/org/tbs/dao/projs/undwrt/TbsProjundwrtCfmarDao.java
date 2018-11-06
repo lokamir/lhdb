@@ -10,13 +10,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.annotations.common.util.StringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.tbs.dao.funs.GetSysInfo;
+import org.tbs.entity.Bdf2User;
 import org.tbs.entity.TbsProj;
 import org.tbs.entity.TbsProjundwrt;
 import org.tbs.entity.TbsProjundwrtCfmar;
@@ -53,6 +59,8 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 	@Autowired
 	@Qualifier(InternalMessageSender.BEAN_ID)
 	private InternalMessageSender SendMsg;
+	@Resource
+	private GetSysInfo gsi;
 	
 	@DataProvider  //下拉框带筛选,只给立项审批用
     public Collection<TbsProjundwrt> getAllProjundwrtByName(String name){
@@ -115,6 +123,21 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 			String hql="from "+TbsProjundwrtCfmar.class.getName()+" where id is null";
 			this.pagingQuery(page, hql, "select count(*) "+hql);
 		}
+		// v-property start
+		List<TbsProjundwrtCfmar> results = new ArrayList<TbsProjundwrtCfmar>();
+		Collection<TbsProjundwrtCfmar> tbsProjundwrtCfmars = page.getEntities();
+		for (TbsProjundwrtCfmar tbsProjundwrtCfmar : tbsProjundwrtCfmars) {
+			TbsProjundwrtCfmar targetData = EntityUtils.toEntity(tbsProjundwrtCfmar);
+			int keyinId = targetData.getTbsProjundwrt().getKeyinId();
+			Collection<Bdf2User> bdf2Users = gsi.getCnameById(keyinId);
+			for(Bdf2User bdf2User : bdf2Users){
+				if(bdf2User.getId() == keyinId){
+					EntityUtils.setValue(targetData, "username", bdf2User.getUsername());
+				}
+			}
+			results.add(targetData);
+		}
+		page.setEntities(results); // v-property endding
 	}
 	
 	@DataResolver
