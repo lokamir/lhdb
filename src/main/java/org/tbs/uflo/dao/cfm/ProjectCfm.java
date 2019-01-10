@@ -126,7 +126,9 @@ public class ProjectCfm extends ProjectCreate {
 		
 		// reset counter sign flags
 		this.cmpt = 0;
+		this.pass = 0;
 		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"cmpt", 0);
+		processClient.saveProcessVariable(Long.valueOf(processInstanceId),"passCount", 0);
 	    }
 	    
 	    // prepare for insert datetime
@@ -157,7 +159,8 @@ public class ProjectCfm extends ProjectCreate {
 	} else if (psid.equals("22")) {
 	    // counter sign case
 	    Session session = this.getSessionFactory().openSession();
-	    
+	    this.cmpt = 0;
+		this.pass = 0;
 			try {
 				// total approver count except those ones who tobe
 				String sqlTotal = "select count(*) from tbs_proj_opinion where CFM0_ID = "
@@ -244,6 +247,8 @@ public class ProjectCfm extends ProjectCreate {
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "passCount", 1);
 					}else if (da / ttTobe >= oneThird && countTA == 1 ) {
 						this.pass = 0;
 						this.cmpt = 1;
@@ -261,6 +266,8 @@ public class ProjectCfm extends ProjectCreate {
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "passCount", 1);
 					}
 				} else {
 					if (da / ttTobe >= oneThird && countTA == 1 ) {
@@ -273,6 +280,8 @@ public class ProjectCfm extends ProjectCreate {
 						this.cmpt = 1;
 						processClient.saveProcessVariable(
 								Long.valueOf(processInstanceId), "cmpt", 1);
+						processClient.saveProcessVariable(
+								Long.valueOf(processInstanceId), "passCount", 1);
 					} else if (countTA == 1) {
 						this.pass = 0;
 						this.cmpt = 1;
@@ -367,11 +376,15 @@ public class ProjectCfm extends ProjectCreate {
 	    
 	} else if (psid == 22) {
 	    if(this.cmpt == 1) {
-		if (this.pass == 1) {
-		    sqlProcedure = "call p_hisstatus(" + businessId + ",8,22)";
-		} else {
-		    sqlProcedure = "call p_hisstatus(" + businessId + ",36,22)";
-		}
+	    	if (this.pass == 1) {
+	    		sqlProcedure = "call p_hisstatus(" + businessId + ",8,22)";
+	    		Date now = new Date( );
+	    	      SimpleDateFormat ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+	    	      System.out.println("Current Date: " + ft.format(now));
+	    		System.out.println("pass="+pass+",businessId="+businessId );
+	    	} else {
+	    		sqlProcedure = "call p_hisstatus(" + businessId + ",36,22)";
+	    	}
 	    }
 	}else if (psid == 8) {
 		if (outcome.equals("通过") && nodeName.equals("主任委员审批")){

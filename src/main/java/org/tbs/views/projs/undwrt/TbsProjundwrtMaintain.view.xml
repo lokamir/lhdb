@@ -653,16 +653,15 @@
         <Property name="caption">修 改</Property>
         <Property name="iconClass">silk silk-table-edit</Property>
       </ToolBarButton>
-      <ToolBarButton id="buttonsave">
-        <Property name="caption">保 存</Property>
-        <Property name="action">updateAction</Property>
-        <Property name="iconClass">silk silk-disk</Property>
-        <Property name="visible">false</Property>
-      </ToolBarButton>
       <ToolBarButton id="buttonDel">
         <Property name="caption">删 除</Property>
         <Property name="tags">del</Property>
         <Property name="iconClass">silk silk-delete</Property>
+      </ToolBarButton>
+      <ToolBarButton id="buttonsave">
+        <Property name="caption">保 存</Property>
+        <Property name="action">updateAction</Property>
+        <Property name="iconClass">silk silk-disk</Property>
       </ToolBarButton>
       <ToolBarButton id="buttonQueryCgg">
         <Property name="caption">查询反担保信息</Property>

@@ -1554,6 +1554,7 @@
       <Property name="executingMessage">正在保存...</Property>
       <Property name="successMessage">保存成功！</Property>
       <Property name="async">true</Property>
+      <Property name="alwaysExecute">true</Property>
       <UpdateItem>
         <Property name="dataSet">datasetTbsProj</Property>
       </UpdateItem>

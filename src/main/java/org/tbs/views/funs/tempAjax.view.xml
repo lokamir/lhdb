@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewConfig>
+  <Arguments/>
+  <Context/>
+  <Model/>
+  <View>
+    <AjaxAction id="ajaxActionSql">
+      <ClientEvent name="beforeExecute">debugger;&#xD;
+var sql = view.get(&quot;#sql&quot;).get(&quot;text&quot;);&#xD;
+self.set(&quot;parameter&quot;,sql);</ClientEvent>
+      <Property name="service">tempAjax#ajaxActionSql</Property>
+      <Property name="successMessage">执行成功</Property>
+    </AjaxAction>
+    <Container>
+      <AutoForm>
+        <Property name="width">100%</Property>
+        <FormElement layoutConstraint="top">
+          <Property name="label">SQL语句</Property>
+          <Property name="labelAlign">left</Property>
+          <Property name="labelPosition">top</Property>
+          <Editor>
+            <TextArea id="sql">
+              <Property name="height">500</Property>
+            </TextArea>
+          </Editor>
+        </FormElement>
+      </AutoForm>
+    </Container>
+    <Container layout="vbox align:right">
+      <Property name="width">48%</Property>
+      <Button>
+        <Property name="action">ajaxActionSql</Property>
+        <Property name="caption">执行</Property>
+        <Property name="splitButton">false</Property>
+      </Button>
+    </Container>
+  </View>
+</ViewConfig>

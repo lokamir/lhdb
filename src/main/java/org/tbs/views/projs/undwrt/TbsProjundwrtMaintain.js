@@ -10,6 +10,7 @@ var processInstanceId;
 var uploadbutton = "disable";
 var downloadbutton = "disable";
 var readonly = false;
+var gobalvtotloc;
 
 /*======获取当前这条记录的状态======*/
 function GetCRStatus(ds){
@@ -21,6 +22,7 @@ function GetCRStatus(ds){
 	docsn=CurRec.get("sn");
 	by1=CurRec.get("by1");
 	processInstanceId = CurRec.get("pid");
+	gobalvtotloc = CurRec.get("tbsProj.vtotloc");
 }
 
 /*=======控制按钮,通过审批和审批中的禁止修改和删除和再次发起审批===*/
@@ -412,7 +414,8 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 /*=======再承保 start=======*/
 /** @Bind #buttonUfloN.onClick */
 !function(self,arg,dataSetTbsProjundwrt,ajaxUfloN,dialogUfloN){
-	if (docsn){
+	debugger;
+	if (docsn&&gobalvtotloc>0){
 	dorado.MessageBox.confirm("此操作将产生一张新的【承保审批单】\n您确定要再次承保该项目吗？",
 			{title:"趣博信息科技",
 			 detailCallback:function(btnID, text)
@@ -428,7 +431,9 @@ dataSetTbsProjundwrt.set("parameter",entity).flushAsync();
 			 } 	
 			}
 	);
-	};
+	}else{
+		dorado.MessageBox.alert("可承保金额不足",{title:"趣博信息科技"});
+		};
 };
 
 /*=======再承保 end=======*/

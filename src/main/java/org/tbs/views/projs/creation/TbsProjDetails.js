@@ -4,6 +4,7 @@ var id;
 var fromAppr = 1; // approve form
 var uploadbutton; //附件组件参数
 var downloadbutton;//附件组件参数
+var taskName = "${param.taskName}";
 
 /** @Bind view.onReady */
 !function(self, arg, autoformTbsProj_main) {	
@@ -430,6 +431,10 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		ajaxactionApprSubmit, dataSetTbsProjeaa, updateactionProjeaa) {
 	var outcome = view.get("#autoformProjeaaOpinion").get("entity.outcome");
 	var comment = view.get("#autoformProjeaaOpinion").get("entity.comment");
+	debugger;
+	if (taskName == 'A角确认'&&outcome == "通过"){
+		dataSetTbsProjeaa.getData("#").set("valid",true);
+	}
 	if (outcome == "驳回" && !comment) {
 		dorado.MessageBox.alert("驳回时审批意见不能为空！！", {
 			title : "趣博信息科技"
@@ -458,9 +463,10 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		}
 	}
 	// 保存AB角数据
-	updateActionSave.execute(function(result) {
+	updateActionSave.execute(function(result){
 		updateactionProjeaa.execute();
-		});
+	});
+	
 	// 提交表单
 	apprSubmit(psid, autoformProjeaaOpinion, ajaxactionApprSubmit);
 };
@@ -539,6 +545,17 @@ function apprSubmit(psid, autoformOpinion, ajaxactionApprSubmit) {
 		});
 		return false;
 	};
+	if(data.get("tbsProjBizvtSet").isEmpty()){
+		dorado.MessageBox.alert("业务类品金不能为空", {
+			title : "趣博信息科技"
+		});
+		return false;
+	}else if (data.get("tbsProjBizvtSet.current").isDirty()){
+		dorado.MessageBox.alert("请先点击确认保存", {
+			title : "趣博信息科技"
+		});
+		return false;
+	}
 	ajaxactionStartProcess.set("parameter", param).execute(function(result) {
 		//var pop = view.get("#autoformTbsProj_main");
 		//saveData(self,arg,pop);

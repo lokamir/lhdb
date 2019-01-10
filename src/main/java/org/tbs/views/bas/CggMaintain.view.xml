@@ -1492,6 +1492,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg9">
                 <Property name="dataSet">datasetTbsCggDy0912</Property>
@@ -1605,6 +1609,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg10">
                 <Property name="dataSet">datasetTbsCggDy0912</Property>
@@ -1719,6 +1727,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg11">
                 <Property name="dataSet">datasetTbsCggDy0912</Property>
@@ -1809,6 +1821,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0912</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg12">
                 <Property name="dataSet">datasetTbsCggDy0912</Property>
@@ -1895,6 +1911,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg5">
                 <Property name="dataSet">datasetTbsCggDy0507</Property>
@@ -2004,6 +2024,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg6">
                 <Property name="dataSet">datasetTbsCggDy0507</Property>
@@ -2112,6 +2136,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy0507</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg7">
                 <Property name="dataSet">datasetTbsCggDy0507</Property>
@@ -2220,6 +2248,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggDy8</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg8">
                 <Property name="dataSet">datasetTbsCggDy8</Property>
@@ -2346,6 +2378,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy13</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg13">
                 <Property name="dataSet">datasetTbsCggZy13</Property>
@@ -2438,6 +2474,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy14</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg14">
                 <Property name="dataSet">datasetTbsCggZy14</Property>
@@ -2528,6 +2568,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy15</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg15">
                 <Property name="dataSet">datasetTbsCggZy15</Property>
@@ -2616,6 +2660,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy16</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg16">
                 <Property name="dataSet">datasetTbsCggZy16</Property>
@@ -2710,6 +2758,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy17</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg17">
                 <Property name="dataSet">datasetTbsCggZy17</Property>
@@ -2794,6 +2846,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy18</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg18">
                 <Property name="dataSet">datasetTbsCggZy18</Property>
@@ -2878,6 +2934,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy1920</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg19">
                 <Property name="dataSet">datasetTbsCggZy1920</Property>
@@ -2976,6 +3036,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy1920</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg20">
                 <Property name="dataSet">datasetTbsCggZy1920</Property>
@@ -3056,6 +3120,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy21</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg21">
                 <Property name="dataSet">datasetTbsCggZy21</Property>
@@ -3152,6 +3220,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy22</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg22">
                 <Property name="dataSet">datasetTbsCggZy22</Property>
@@ -3242,6 +3314,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="itemCodes">pages</Property>
+                  <Property name="dataSet">datasetTbsCggZy23</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg23">
                 <Property name="dataSet">datasetTbsCggZy23</Property>
@@ -3521,6 +3597,10 @@
                   <Property name="caption">保存</Property>
                   <Property name="iconClass">silk silk-disk</Property>
                 </ToolBarButton>
+                <DataPilot>
+                  <Property name="dataSet">datasetTbsCggBzjzy</Property>
+                  <Property name="itemCodes">x</Property>
+                </DataPilot>
               </ToolBar>
               <DataGrid id="datagridTbsCgg41">
                 <Property name="dataSet">datasetTbsCggBzjzy</Property>

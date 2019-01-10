@@ -26,6 +26,7 @@ import com.bstek.uflo.client.service.ProcessClient;
 import com.bstek.uflo.client.service.TaskClient;
 import com.bstek.uflo.model.ProcessInstance;
 import com.bstek.uflo.model.task.Task;
+import com.bstek.uflo.model.task.TaskState;
 import com.bstek.uflo.service.StartProcessInfo;
 import com.bstek.uflo.service.TaskOpinion;
 
@@ -118,7 +119,9 @@ public class ProjectCreate extends HibernateDao {
 	TaskOpinion taskOpinion = new TaskOpinion(opinion);
 	// 开始审批，审批时一定要先开始任务，然后是下一步完成任务 //taskClient.saveTaskAppointor(arg0,arg1,
 	// arg2) //指定下节点任务人 10 class13min
-	taskClient.start(Long.valueOf(taskId));
+	if(taskClient.getTask(Long.valueOf(taskId)).getState()==TaskState.Created){
+		taskClient.start(Long.valueOf(taskId));
+	}
 	Session session = this.getSessionFactory().openSession();
 	// get prepared for send messages
 	Task uflotask = (Task) session.get(Task.class, Long.valueOf(taskId));

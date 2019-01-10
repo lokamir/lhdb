@@ -1163,6 +1163,7 @@ dorado.MessageBox.confirm(&quot;真的要删除当前流程模版？&quot;,funct
 });</ClientEvent>
                 <Property name="caption">删除流程</Property>
                 <Property name="icon">url(skin>common/icons.gif) -40px 0px</Property>
+                <Property name="visible">false</Property>
               </ToolBarButton>
               <ToolBarButton>
                 <ClientEvent name="onClick">view.id(&quot;dialogDeploy&quot;).show();</ClientEvent>
