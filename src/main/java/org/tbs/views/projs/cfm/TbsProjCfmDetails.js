@@ -1422,3 +1422,14 @@ function BizvtCounttingcfm(ds,faloc,nfaloc,otloc,bizvtloc,bztp,cfm){
 	}	
 	return null;
 };
+
+/** @Bind #autoformTbsProj_main.onReady */
+!function(self, arg, overlimitvalid) {
+	overlimitvalid.set("mapping", [ {
+		key : false,
+		value : "否"
+	}, {
+		key : true,
+		value : "是"
+	} ]);
+};

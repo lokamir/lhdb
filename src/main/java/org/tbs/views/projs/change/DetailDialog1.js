@@ -498,7 +498,6 @@ function getCfm1or2(id,by1,spcbtn){
 				});
 			};
 		}else if(nodeName == "评委审批"){
-			debugger;
 			var dataProjOpin1r2s = view.get("#datasetTbsProjOpinion1r2").get("data");
 			var loginUsername="${loginUser.getUsername()}";
 			dataProjOpin1r2s.each(function(dataProjOpin1r2){
@@ -511,6 +510,36 @@ function getCfm1or2(id,by1,spcbtn){
 					if (result == true){
 						ajaxactionApprSubmit.set("parameter", params).execute();
 					}
+				}
+			});
+		}else if(nodeName == "主任委员审批"){
+			if(spcbtn=="会议"){
+				var newfaloc = view.get("#dataSetTbsProjcfm1").getData("#").get("vfaloc");
+				var newnfaloc = view.get("#dataSetTbsProjcfm1").getData("#").get("vnfaloc");
+				var newotloc = view.get("#dataSetTbsProjcfm1").getData("#").get("votloc");
+				var newtotloc = view.get("#dataSetTbsProjcfm1").getData("#").get("vtotloc");
+				view.get("#dataSetTbsProjchangeMajcont").getData("#").set({
+					"newfaloc":newfaloc,
+					"newnfaloc":newnfaloc,
+					"newotloc":newotloc,
+					"newtotloc":newtotloc
+					});
+			}
+			if(spcbtn=="签批"){
+				var newfaloc = view.get("#dataSetTbsProjcfm2").getData("#").get("vfaloc");
+				var newnfaloc = view.get("#dataSetTbsProjcfm2").getData("#").get("vnfaloc");
+				var newotloc = view.get("#dataSetTbsProjcfm2").getData("#").get("votloc");
+				var newtotloc = view.get("#dataSetTbsProjcfm2").getData("#").get("vtotloc");
+				view.get("#dataSetTbsProjchangeMajcont").getData("#").set({
+					"newfaloc":newfaloc,
+					"newnfaloc":newnfaloc,
+					"newotloc":newotloc,
+					"newtotloc":newtotloc
+					});
+			}
+			saveChangeMajcont.execute({
+				callback : function(result) {//用回调方法
+					ajaxactionApprSubmit.set("parameter", params).execute();
 				}
 			});
 		}else{
@@ -530,13 +559,17 @@ function getCfm1or2(id,by1,spcbtn){
 		 datasetTbsProj, updateactionCfm1){
 	var type = dataSetTbsProjcfm0.getData("#.type");
 	if(type == "会议"){
-		if(nodeName== "评审会秘书录入会议决议单"){
+		if(nodeName== "评审会秘书录入会议决议单"){		
 		var by2 =view.get("#autoformCfm1").get("entity.by2");
+		var vtotloc =  view.get("#autoformCfm1").get("entity").get("vtotloc");
 		if (view.get("#dataSetTbsProjcfm1").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm1").set("entity.by2",by2);
 			dorado.MessageBox.alert("决议单编号必填", {
 				title : "趣博信息科技"
 			});
+			return false;
+		}else if (vtotloc == 0 ) {
+			dorado.MessageBox.alert("授信金额为必填项 ",{title:"趣博信息科技"});
 			return false;
 		}
 		view.get("#dataSetTbsProjcfm1").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
@@ -554,11 +587,15 @@ function getCfm1or2(id,by1,spcbtn){
 	if(type == "签批"){
 		if(nodeName== "评审会秘书录入会议决议单"){
 		var by2 =view.get("#autoformCfm2").get("entity.by2");
+		var vtotloc =  view.get("#autoformCfm1").get("entity").get("vtotloc");
 		if (view.get("#dataSetTbsProjcfm2").getData("#").validate("by2")!="ok"){
 			view.get("#autoformCfm2").set("entity.by2",by2);
 			dorado.MessageBox.alert("决议单编号必填", {
 				title : "趣博信息科技"
 			});
+			return false;
+		}else if (vtotloc == 0 ) {
+			dorado.MessageBox.alert("授信金额为必填项 ",{title:"趣博信息科技"});
 			return false;
 		}
 		view.get("#dataSetTbsProjcfm2").getData("#").dataType.set("validatorsDisabled", true);// 禁用当前数据对象所有的数据校验
@@ -626,6 +663,7 @@ function getCfm1or2(id,by1,spcbtn){
 		crs.set("vfaloc",0); 
 		crs.set("vnfaloc",0); 
 		crs.set("votloc",0);
+		crs.set("vtotloc",0);
 		tbsProjcfm1BizvtSet.each(function(entity){
 			entity.remove();
 		});
@@ -635,6 +673,7 @@ function getCfm1or2(id,by1,spcbtn){
 		crs.set("vfaloc",0); 
 		crs.set("vnfaloc",0); 
 		crs.set("votloc",0);
+		crs.set("vtotloc",0);
 		tbsProjcfm2BizvtSet.each(function(entity){
 			entity.set("vloc",0);
 		});
@@ -850,7 +889,6 @@ function getCfm1or2(id,by1,spcbtn){
 
 /** @Bind #bizvtlocCfm1.onTextEdit */
 !function(self,arg,dataSetTbsProjcfm1,vfaloc,vnfaloc,votloc,bizvtlocCfm1,tbsBasBizvarCfm1){
-	debugger;
 	var newloc = bizvtlocCfm1.get("value");
 	var bizvtDS = dataSetTbsProjcfm1.getData("#.tbsProjcfm1BizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
@@ -915,7 +953,6 @@ function getCfm1or2(id,by1,spcbtn){
 
 /** @Bind #bizvtlocCfm2.onTextEdit */
 !function(self,arg,dataSetTbsProjcfm2,vfaloc,vnfaloc,votloc,bizvtlocCfm2,tbsBasBizvarCfm2){
-	debugger;
 	var newloc = bizvtlocCfm2.get("value");
 	var bizvtDS = dataSetTbsProjcfm2.getData("#.tbsProjcfm2BizvtSet");
 	var bztp = bizvtDS.current.get("tbsBasBiztype");
@@ -986,4 +1023,15 @@ function BizvtCounttingcfm(ds,faloc,nfaloc,otloc,bizvtloc,bztp,cfm){
 		projDS.set("votloc",0);
 	}	
 	return null;
+};
+
+/** @Bind #AutoFormChangeMajcont.onReady */
+!function(self, arg, overlimitvalid) {
+	overlimitvalid.set("mapping", [ {
+		key : false,
+		value : "否"
+	}, {
+		key : true,
+		value : "是"
+	} ]);
 };

@@ -127,4 +127,20 @@ public class DelProj extends HibernateDao {
 			session.close();
 		}
 	}
+	@Expose
+	public void actionDelProjcgg(Map<String, Object> param) throws Exception {
+		
+		Integer projid = (Integer)param.get("projid");
+		Session session = this.getSessionFactory().openSession();
+		try {
+			String sql="DELETE FROM `tbs`.`tbs_proj_cgg` WHERE `PROJ_ID`= "+ projid ;
+			SQLQuery sqlquery=session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.flush();
+			session.close();
+		}
+	}
 }

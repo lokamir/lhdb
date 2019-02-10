@@ -283,5 +283,6 @@ var ProgressCellRenderer = $extend(dorado.widget.grid.SubControlCellRenderer, {
 !function(arg, self) {
 	var fname = arg.data.get("fname");
 	var url = arg.data.get("url"); 
+	url = url.trim().replace(/\s/g,"&#32;");
 	arg.dom.innerHTML = "<a href="+url+" target='_blank' title='点击下载'>"+fname+ "</a>";
 };

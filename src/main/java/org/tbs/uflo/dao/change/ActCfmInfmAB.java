@@ -54,7 +54,6 @@ public class ActCfmInfmAB implements ActionHandler {
 	String cusid = Integer.toString(tbsProjchangeMajcont.getTbsProj().getTbsCustomer().getId());
 	String docsn = tbsProjchangeMajcont.getSn();
 	TbsProj tbsProj = tbsProjchangeMajcont.getTbsProj();
-	
 	if (cfmFlag == 1) {
 	    TbsProjcfm1 cfm1 = (TbsProjcfm1) session.get(TbsProjcfm1.class, Integer.valueOf(cfm1r2Id));
 		String docsn1 = cfm1.getSn();
@@ -77,6 +76,11 @@ public class ActCfmInfmAB implements ActionHandler {
 	    String sql2="call p_hisloc (1,"+projId+","+cusid+",'"+docsn2+"')";
 	    SQLQuery sqlquery2=session.createSQLQuery(sql2);
 	    sqlquery2.executeUpdate();
+	}
+	if(tbsProjchangeMajcont.getOverlimit() == true){
+		String sqlOverlimitUpdate="update tbs_proj set OVERLIMIT = 1 where ID = " + projid;
+	    SQLQuery sqlqueryOverlimitUpdate=session.createSQLQuery(sqlOverlimitUpdate);
+	    sqlqueryOverlimitUpdate.executeUpdate();
 	}
 
 	// ===发送全部审批通过的消息===
@@ -103,10 +107,33 @@ public class ActCfmInfmAB implements ActionHandler {
 	Msgpkt.setTo(receivers);
 	Msgpkt.setSender(sender);
 	SendMsg.send(Msgpkt);
+
+	//2019年1月20日修复数据库存储过程<call p_hisloc  6>bug,为其添加一条红冲（本次上会议决审批后的金额）
+	//存储过程<call p_hisloc  6>再完成一次变更审议后，再也不会增加红冲了，是个BUG，在这里修复得话改动最小
+	String sql_count_hisloc_enbale = " select count(*) "
+			+ "from v_cfmall"
+			+ " WHERE proj_id=:projid and cus_id=:cusid " 
+			+ " and not exists (select * from tbs_proj_hisloc "
+			+ " where proj_id=:projid and cus_id=:cusid and oper=61) ";
+	SQLQuery sqlquery_count_hisloc_enbale = session.createSQLQuery(sql_count_hisloc_enbale);
+	int c = Integer.valueOf(sqlquery_count_hisloc_enbale.setString("projid", projid).setString("cusid", cusid).uniqueResult().toString());
+	if(c==0){
+		String sql_insert_hisloc = " insert into tbs_proj_hisloc    " +
+				"(PROJ_ID,PROJ_SN,CUS_NAME,CUS_ID,DOC_SN,DOC_CAT,FALOC,NFALOC,OTLOC,TOTLOC,PERIOD_CFM,BDATE,EDATE,bizvar_id,biztype_id,loc,oper)" +
+				"select PROJ_ID,PROJ_SN,CUS_NAME,CUS_ID,concat('【变更】',DOC_SN), " +
+				" DOC_CAT,0-FALOC,0-NFALOC,0-OTLOC,0-TOTLOC,PERIOD_CFM,BDATE,EDATE,if(bizvar_id='',null,bizvar_id)," +
+				" if(biztype_id='',null,biztype_id),if(loc='',null,loc),'61' " +
+				" from v_cfmall WHERE by3 =  :processId ";
+		SQLQuery sqlquery_insert_hisloc = session.createSQLQuery(sql_insert_hisloc);
+		sqlquery_insert_hisloc.setLong("processId",processInstance.getId()).executeUpdate();
+	}
+	
 	//更新金额
 	String sql_hisloc = "call p_hisloc(6" + "," + projid + "," + cusid + ",'" + docsn + "')";
 	SQLQuery sqlquery_hisloc = session.createSQLQuery(sql_hisloc);
 	sqlquery_hisloc.executeUpdate();
+	
+
     }
 
 }

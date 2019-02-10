@@ -664,7 +664,7 @@
                 <Container id="DialogTbsProjundwrtBizvt">
                   <DataPilot id="DialogDataPilot_1">
                     <Property name="dataSet">dataSetTbsProjundwrt</Property>
-                    <Property name="itemCodes">-,x</Property>
+                    <Property name="itemCodes">+,-,x</Property>
                     <Property name="dataPath">#.tbsProjundwrtBizvtSet</Property>
                     <Property name="hideMode">visibility</Property>
                   </DataPilot>
@@ -676,10 +676,10 @@
                     <DataColumn id="tbsBasBiztype" name="tbsBasBiztype">
                       <Property name="property">tbsBasBiztype</Property>
                       <Property name="trigger">DropDownTbsBasBiztype</Property>
-                      <Property name="readOnly">true</Property>
+                      <Property name="readOnly">false</Property>
                       <Editor>
                         <TextEditor id="biztype">
-                          <Property name="trigger">ddlTbsBasBiztype</Property>
+                          <Property name="trigger">DropDownTbsBasBiztype</Property>
                         </TextEditor>
                       </Editor>
                     </DataColumn>
@@ -929,13 +929,13 @@
                 <AutoFormElement>
                   <Property name="name">bdate</Property>
                   <Property name="property">bdate</Property>
-                  <Property name="readOnly">true</Property>
+                  <Property name="readOnly">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>
                   <Property name="name">edate</Property>
                   <Property name="property">edate</Property>
-                  <Property name="readOnly">true</Property>
+                  <Property name="readOnly">false</Property>
                   <Editor/>
                 </AutoFormElement>
                 <AutoFormElement>

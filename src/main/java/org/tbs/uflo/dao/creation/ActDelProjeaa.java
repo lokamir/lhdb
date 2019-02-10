@@ -31,6 +31,7 @@ public class ActDelProjeaa implements ActionHandler {
 	String businessId = processInstance.getBusinessId();
 	    
 	//update valid in projeaa
+	//这个操作实际 已经没用了，前端可以直接修改del=1后update
 	String sql="update tbs_projeaa set DEL = 1 where PROJ_ID = "+businessId+" and DEL = 0";
 	SQLQuery sqlquery=session.createSQLQuery(sql);
 	sqlquery.executeUpdate();

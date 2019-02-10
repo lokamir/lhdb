@@ -193,8 +193,17 @@ public class TbsProjundwrtCfmarDao extends HibernateDao {
 						sqlquery.executeUpdate();
 						undwrtCfmar.setPid(processInstanceId.toString());  //把processInstanceId放入单据的PID内
 						session.update(undwrtCfmar);
-					} 
-				} finally {
+					} else if(psid == 18){
+						String sql = "call p_hisstatus(" + projid + ",17,18)";
+						SQLQuery sqlquery = session.createSQLQuery(sql);
+						sqlquery.executeUpdate();
+						undwrtCfmar.setPid(processInstanceId.toString());  //把processInstanceId放入单据的PID内
+						session.update(undwrtCfmar);
+					}
+				} catch(Exception ex){
+					System.out.println("currentSession() - failed due to " + ex);
+				    throw ex;
+				}finally {
 					session.flush();
 					session.close();
 				}

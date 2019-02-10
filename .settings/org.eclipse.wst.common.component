@@ -3,7 +3,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <property name="context-root" value="bdf2"/>
         <property name="java-output-path" value="/bdf2/target/classes"/>
+        <property name="context-root" value="lhdb"/>
     </wb-module>
 </project-modules>

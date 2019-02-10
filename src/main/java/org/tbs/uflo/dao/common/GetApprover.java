@@ -9,8 +9,11 @@ package org.tbs.uflo.dao.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -113,12 +116,28 @@ public class GetApprover implements AssignmentHandler {
 		// 2018年7月5日邓婕要求改4500万
 		if (cn.equals("决策人审批")
 				&& pname.equals("changemajcont")) {
-			String sqlAmount = "SELECT NEWTOTLOC FROM tbs.tbs_projchange_majcont where id = "
+			String sqlAmount = "SELECT NEWTOTLOC,PROJ_ID FROM tbs.tbs_projchange_majcont where id = "
 					+ docid;
-			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
-			String amount = queryAmount.uniqueResult().toString();
+			SQLQuery queryList = session.createSQLQuery(sqlAmount);
+			List<String> resultList = queryList.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP).list();
+			List<String> resultnewtotloc =  new ArrayList<String>() ;
+			List<String> resultproj_id = new ArrayList<String>() ;
+			String amount = "0";
+			for (Object object : resultList) {  
+	            Map obj = (Map) object;  
+	            String newtotloc = obj.get("NEWTOTLOC").toString();  
+	            String proj_id = obj.get("PROJ_ID").toString();  
+	            resultnewtotloc.add(newtotloc);
+	            resultproj_id.add(proj_id);
+	        }  
+			if(!resultnewtotloc.isEmpty()){
+				amount = resultnewtotloc.get(0);
+			}else{
+				amount = "0";
+			}
 			float tm = Float.valueOf(amount);
-			if (tm > 45000000.0) {
+			Boolean overlimit = ifOverlimit(context, resultproj_id.get(0));
+			if (tm > 45000000.0||overlimit) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -138,7 +157,8 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 45000000.0) {
+			Boolean overlimit = ifOverlimit(context, docid);
+			if (tm > 45000000.0||overlimit) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -160,7 +180,8 @@ public class GetApprover implements AssignmentHandler {
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 45000000.0) {
+			Boolean overlimit = ifOverlimit(context, projid);
+			if (tm > 45000000.0||overlimit) {
 				// 董事长审批
 				String sql = "select account from tbs_approver where title like '董事长' and deptname = '董事局' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
@@ -282,12 +303,17 @@ public class GetApprover implements AssignmentHandler {
 		}
 		// 2017年3月19日注释 决策人根据金额判断董事长还是总经理
 		if (cn.equals("决策人审批") && pname.equals("undwrt")) {
+			String sqlProjid = "select PROJ_ID from tbs_projundwrt where id = "
+					+ docid ;
+			SQLQuery queryProjid = session.createSQLQuery(sqlProjid);
+			String projid = queryProjid.uniqueResult().toString();		
 			String sqlAmount = "select INITTOTLOC from tbs_proj where id = (select PROJ_ID from tbs_projundwrt where id = "
 					+ docid + ')';
 			SQLQuery queryAmount = session.createSQLQuery(sqlAmount);
 			String amount = queryAmount.uniqueResult().toString();
 			float tm = Float.valueOf(amount);
-			if (tm > 45000000) {
+			Boolean overlimit = ifOverlimit(context, projid);
+			if (tm > 45000000||overlimit) {
 				String sql = "select account from tbs_approver where title like '董事长' ";
 				SQLQuery sqlquery = session.createSQLQuery(sql);
 				users = sqlquery.list();
@@ -526,5 +552,19 @@ public class GetApprover implements AssignmentHandler {
 		}
 				
 		return users;
+	}
+	
+
+	private Boolean ifOverlimit(Context context,String projid){
+		Session session = context.getSession();
+		String sql = "select overlimit from tbs_proj where id  = "
+				+ projid ;
+		SQLQuery sqlquery = session.createSQLQuery(sql);
+		Integer overlimitint = (Integer)sqlquery.uniqueResult();
+		if(overlimitint==null){
+			overlimitint = 0;
+		}
+		boolean overlimit=(overlimitint==1)?true:false;
+		return overlimit;
 	}
 }

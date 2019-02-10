@@ -108,10 +108,12 @@ function GetCRStatus(ds){
 		var repay = entity.get("repay");
 		var repayinper = entity.get("repayinper");
 		var loantype = entity.get("loantype");
+		var bdate = entity.get("bdate");
+		var edate = entity.get("edate");
 		//var by3 = entity.get("by3");
-		if(!repay||!loantype||(repay!="到期一次性结清"&&!repayinper)){
+		if(!repay||!loantype||(repay!="到期一次性结清"&&!repayinper)||!edate||!bdate){
 			arg.processDefault=false;
-			dorado.MessageBox.alert("\v\v\v放款方式、还款方式、每次还款额必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
+			dorado.MessageBox.alert("\v\v\v放款方式、还款方式、每次还款额必填、授信起止日期必填 \n还款方式若为\"到期一次性结清\"，则后面每次还款额可以不填",{title:"趣博信息科技"});
 			return false;
 		}
 		var bizvtDS = dataSetTbsProjundwrt.getData("#.tbsProjundwrtBizvtSet");

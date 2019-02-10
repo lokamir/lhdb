@@ -203,6 +203,11 @@ public class TbsProj implements Serializable {
 	private boolean risk;
 
 	/**
+	 * 是否关联授信合并超限
+	 */
+	private Boolean overlimit;
+	
+	/**
 	 * BY1:
 	 */
 	private String by1;
@@ -419,7 +424,7 @@ public class TbsProj implements Serializable {
 			String loantype, String loanmem, String repay,
 			BigDecimal repayinper, String repaymem, BigDecimal gatrate,
 			BigDecimal psfy, BigDecimal qtfy, String gatmem, String riskavoid,
-			String memo, boolean del, int oldid, int sonid, boolean risk,
+			String memo, boolean del, int oldid, int sonid, boolean risk,Boolean overlimit,
 			String by1, String by2, String by3, TbsCustomer tbsCustomer,
 			boolean govplatform,boolean onenine,BigDecimal financial,//2017-06-01 手动加入
 			TbsBasConsway tbsBasConsway, TbsBasPs tbsBasPs,
@@ -484,6 +489,7 @@ public class TbsProj implements Serializable {
 		this.oldid = oldid;
 		this.sonid = sonid;
 		this.risk = risk;
+		this.overlimit = overlimit;
 		this.by1 = by1;
 		this.by2 = by2;
 		this.by3 = by3;
@@ -890,6 +896,15 @@ public class TbsProj implements Serializable {
 	@Column(name = "RISK")
 	public boolean isRisk() {
 		return risk;
+	}
+	
+	public void setOverlimit(Boolean overlimit) {
+		this.overlimit = overlimit;
+	}
+
+	@Column(name = "OVERLIMIT")
+	public Boolean getOverlimit() {
+		return overlimit;
 	}
 
 	public void setBy1(String by1) {
@@ -1405,7 +1420,7 @@ public class TbsProj implements Serializable {
 				+ ",repay=" + repay + ",repayinper=" + repayinper
 				+ ",repaymem=" + repaymem + ",gatrate=" + gatrate + ",psfy="
 				+ psfy + ",qtfy=" + qtfy + ",gatmem=" + gatmem + ",riskavoid="
-				+ riskavoid + ",memo=" + memo + ",del=" + del + ",oldid="
+				+ riskavoid + ",overlimit=" + overlimit + ",memo=" + memo + ",del=" + del + ",oldid="
 				+ oldid + ",sonid=" + sonid + ",risk=" + risk + ",by1=" + by1
 				+ ",by2=" + by2 + ",by3=" + by3 + ",tbsCustomer=" + tbsCustomer
 				+ ",tbsBasConsway=" + tbsBasConsway + ",tbsBasPs=" + tbsBasPs

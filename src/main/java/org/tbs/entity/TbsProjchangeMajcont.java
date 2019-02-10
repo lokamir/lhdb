@@ -147,6 +147,12 @@ public class TbsProjchangeMajcont implements Serializable {
 	 */
 	private String by3;
 	
+	/**
+	 * 是否关联授信合并超限
+	 */
+	private Boolean overlimit;
+	
+	
 	private TbsProj tbsProj;
 	private String memo;
 	private Set<TbsProjchangeMajcontCfm> tbsProjchangeMajcontCfmSet = new HashSet<TbsProjchangeMajcontCfm>(0);
@@ -162,7 +168,7 @@ public class TbsProjchangeMajcont implements Serializable {
 			BigDecimal newfaloc, BigDecimal newnfaloc, BigDecimal newotloc,
 			BigDecimal newtotloc, BigDecimal oldfaloc, BigDecimal oldnfaloc,
 			BigDecimal oldotloc, BigDecimal oldtotloc, String oldprojname,
-			String by1, String by2, String by3, TbsProj tbsProj,
+			String by1, String by2, String by3, Boolean overlimit,TbsProj tbsProj,
 			Set<TbsProjchangeMajcontCfm> tbsProjchangeMajcontCfmSet) {
 		super();
 		this.id = id;
@@ -191,6 +197,7 @@ public class TbsProjchangeMajcont implements Serializable {
 		this.by1 = by1;
 		this.by2 = by2;
 		this.by3 = by3;
+		this.overlimit = overlimit;
 		this.tbsProj = tbsProj;
 		this.memo = memo;
 		this.tbsProjchangeMajcontCfmSet = tbsProjchangeMajcontCfmSet;
@@ -437,6 +444,15 @@ public class TbsProjchangeMajcont implements Serializable {
 		return by3;
 	}
 
+	public void setOverlimit(Boolean overlimit) {
+		this.overlimit = overlimit;
+	}
+
+	@Column(name = "OVERLIMIT")
+	public Boolean getOverlimit() {
+		return overlimit;
+	}
+	
 	public void setTbsProj(TbsProj tbsProj) {
 		this.tbsProj = tbsProj;
 	}
@@ -480,7 +496,7 @@ public class TbsProjchangeMajcont implements Serializable {
 				+ newtotloc + ",oldfaloc=" + oldfaloc + ",oldnfaloc="
 				+ oldnfaloc + ",oldotloc=" + oldotloc + ",oldtotloc="
 				+ oldtotloc + ",oldprojname=" + oldprojname + ",by1=" + by1
-				+ ",by2=" + by2 + ",by3=" + by3 
+				+ ",by2=" + by2 + ",by3=" + by3 + ",overlimit=" + overlimit
 				+ ",tbsProj=" + tbsProj + ",memo=" + memo
 				+ ",tbsProjchangeMajcontCfmSet=" + tbsProjchangeMajcontCfmSet
 				+ "]";

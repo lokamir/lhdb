@@ -59,16 +59,25 @@
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">本次承保确认融资担保授信金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
       </PropertyDef>
       <PropertyDef name="udtnfaloc">
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">本次承保确认非融资担保授信金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
       </PropertyDef>
       <PropertyDef name="udtotloc">
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">本次承保确认其他类担保授信金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
       </PropertyDef>
       <PropertyDef name="udttotloc">
         <Property name="label">本次确认承保总金额（元）</Property>
@@ -324,7 +333,7 @@
         <Property name="dataType">int</Property>
       </PropertyDef>
       <PropertyDef name="name">
-        <Property/>
+        <Property></Property>
         <Property name="label">分担类型</Property>
       </PropertyDef>
       <PropertyDef name="valid">

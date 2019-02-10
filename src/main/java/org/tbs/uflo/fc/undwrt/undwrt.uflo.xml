@@ -25,15 +25,15 @@
       <sequence-flow g="79,614:5,-17" name="驳回" to="驳回修正"/>
       <sequence-flow g="4,-16" name="通过" to="分管风管总经理"/>
    </task>
-   <task assignment-handler-bean="getApprover" g="421,756,127,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="决策人审批" allow-specify-assignee="false">
+   <task assignment-handler-bean="getApprover" g="417,825,127,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="决策人审批" allow-specify-assignee="false">
       <description>${projName} -${projSn}-承保审批  PSID=15</description>
-      <sequence-flow g="2,-25" name="通过" to="Action"/>
-      <sequence-flow g="80,776:1,-16" name="驳回" to="驳回修正"/>
+      <sequence-flow g="13,-7" name="通过" to="Action"/>
+      <sequence-flow g="81,849:1,-16" name="驳回" to="驳回修正"/>
    </task>
-   <action handler-bean="actUndwrt" g="427,863,115,50" name="Action">
+   <action handler-bean="actUndwrt" g="425,914,115,50" name="Action">
       <sequence-flow to="结束"/>
    </action>
-   <end g="461,952,47,62" name="结束" terminate="true">
+   <end g="459,989,47,62" name="结束" terminate="true">
       <description>PSID=28</description>
    </end>
    <task g="19,207,115,50" assignment-type="ProcessPromoter" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="驳回修正" allow-specify-assignee="false">
@@ -73,7 +73,12 @@
    </join>
    <task assignment-handler-bean="getApprover" g="396,672,170,50" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="分管风管总经理" allow-specify-assignee="false">
       <description>${projName} -${projSn}-承保审批-分管总经理（风险） PSID=15</description>
-      <sequence-flow g="6,-16" name="通过" to="决策人审批"/>
       <sequence-flow g="80,697:4,-19" name="驳回" to="驳回修正"/>
+      <sequence-flow g="6,-16" name="通过" to="总经理审批"/>
+   </task>
+   <task assignment-handler-bean="getApprover" g="413,745,134,52" assignment-type="Handler" url="org.tbs.views.projs.undwrt.Undwrt.d" task-type="Normal" name="总经理审批" allow-specify-assignee="false">
+      <description>${projName} -${projSn}-承保审批  PSID=15</description>
+      <sequence-flow g="10,-7" name="通过" to="决策人审批"/>
+      <sequence-flow g="81,771:4,-22" name="驳回" to="驳回修正"/>
    </task>
 </uflo-process>

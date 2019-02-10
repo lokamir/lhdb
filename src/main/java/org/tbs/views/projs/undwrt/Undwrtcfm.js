@@ -91,10 +91,13 @@ function GetCRStatus(ds){
 /** @Bind #udtnfaloc.onPost */
 /** @Bind #udtotloc.onPost */
 !function(self,arg,ddlAutoform,buttonResend,udttotloc,dataSettbsProjundwrtCfmar){
-	/*var crs = ddlAutoform.get("entity"); 
+	var crs = ddlAutoform.get("entity"); 
 	var dataSet = dataSettbsProjundwrtCfmar.getData("#");
-	var udtfaloc = crs.get("udtfaloc"); var udtnfaloc = crs.get("udtnfaloc"); var udtotloc = crs.get("udtotloc");
-	var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");	
+	var udtfaloc = crs.get("udtfaloc"); 
+	var udtnfaloc = crs.get("udtnfaloc"); 
+	var udtotloc = crs.get("udtotloc");
+	dataSet.set("udttotloc",udtfaloc+udtnfaloc+udtotloc);
+	/*var vfaloc = crs.get("tbsProj.vfaloc"); var vnfaloc = crs.get("tbsProj.vnfaloc"); var votloc = crs.get("tbsProj.votloc");	
 	if (udtfaloc == 0 && udtnfaloc == 0 && udtotloc == 0 ) {
 		buttonResend.set("disabled",true);
 		dorado.MessageBox.alert("对不起，【本次承保金额】不能都为 【0.00】 ",{title:"趣博信息科技"});

@@ -920,6 +920,16 @@
       <PropertyDef name="tbsProj">
         <Property name="dataType">dataTypeTbsProj</Property>
       </PropertyDef>
+      <PropertyDef name="overlimit">
+        <Property name="label">关联授信合并超限</Property>
+        <Property name="mapping">
+          <Property name="mapValues"></Property>
+        </Property>
+        <Property name="dataType">Boolean</Property>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
+      </PropertyDef>
       <Reference name="tbsProjchangeMajcontCfmSet">
         <Property name="dataType">[dataTypeTbsProjchangeMajcontCfm]</Property>
         <Property name="parameter">$${this.id}</Property>
@@ -1430,6 +1440,7 @@
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">总可受理金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="bdate">
         <Property name="dataType">Date</Property>
@@ -1638,6 +1649,7 @@
         <Property name="dataType">BigDecimal</Property>
         <Property name="label">总可受理金额（元）</Property>
         <Property name="displayFormat">#,##0.00</Property>
+        <Validator name="validator1" type="required"/>
       </PropertyDef>
       <PropertyDef name="periodCfm">
         <Property name="dataType">int</Property>
@@ -1973,7 +1985,22 @@
                 <TextEditor id="newfaloc"/>
               </Editor>
             </AutoFormElement>
-            <Label/>
+            <AutoFormElement>
+              <Property name="name">overlimit</Property>
+              <Property name="property">overlimit</Property>
+              <Property name="trigger">listDropDown1</Property>
+              <Property name="hideMode">display</Property>
+              <Property name="labelWidth">150</Property>
+              <Property name="labelPosition">top</Property>
+              <Editor>
+                <TextEditor id="overlimitvalid">
+                  <Property name="mapping">
+                    <Property name="mapValues"></Property>
+                  </Property>
+                  <Property name="trigger">autoMappingDropDown1</Property>
+                </TextEditor>
+              </Editor>
+            </AutoFormElement>
             <AutoFormElement>
               <Property name="name">oldnfaloc</Property>
               <Property name="property">oldnfaloc</Property>
@@ -2084,6 +2111,7 @@
               <Property name="labelPosition">left</Property>
               <Editor/>
             </AutoFormElement>
+            <Label/>
           </AutoForm>
           <Panel layout="hbox">
             <Buttons>

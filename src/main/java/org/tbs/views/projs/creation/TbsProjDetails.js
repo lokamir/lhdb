@@ -431,9 +431,11 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 		ajaxactionApprSubmit, dataSetTbsProjeaa, updateactionProjeaa) {
 	var outcome = view.get("#autoformProjeaaOpinion").get("entity.outcome");
 	var comment = view.get("#autoformProjeaaOpinion").get("entity.comment");
-	debugger;
 	if (taskName == 'A角确认'&&outcome == "通过"){
 		dataSetTbsProjeaa.getData("#").set("valid",true);
+	}
+	if (taskName == 'A角确认'&&outcome == "驳回"){
+		dataSetTbsProjeaa.getData("#").set("del",1);
 	}
 	if (outcome == "驳回" && !comment) {
 		dorado.MessageBox.alert("驳回时审批意见不能为空！！", {
@@ -464,6 +466,7 @@ function BizvtCountting(ds,faloc,nfaloc,otloc,bizvtloc,bztp){
 	}
 	// 保存AB角数据
 	updateActionSave.execute(function(result){
+		debugger;
 		updateactionProjeaa.execute();
 	});
 	

@@ -94,6 +94,12 @@ var projid;
 	ajaxDelCusCompsry.set("parameter",{"cusid":cusid}).execute();
 };
 
+/** @Bind #ajaxDelCusCompsry.beforeExecute */
+!function(ajaxDelProjcgg,datasetTbsProj){
+	var projid = datasetTbsProj.getData("#.id");
+	ajaxDelProjcgg.set("parameter",{"projid":projid}).execute();
+};
+
 /* ========保存后刷新，执行query相同的方法========= */
 /** @Bind #updateActionSave.onSuccess */
 !function(self, arg, autoformCondition, datasetTbsProj) {

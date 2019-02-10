@@ -781,5 +781,8 @@
     <AjaxAction id="ajaxDelCusCompsry">
       <Property name="service">delProj#actionDelCusCompsry</Property>
     </AjaxAction>
+    <AjaxAction id="ajaxDelProjcgg">
+      <Property name="service">delProj#actionDelProjcgg</Property>
+    </AjaxAction>
   </View>
 </ViewConfig>

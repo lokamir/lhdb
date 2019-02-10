@@ -143,6 +143,16 @@
       <PropertyDef name="repaymem">
         <Property name="label">还款说明</Property>
       </PropertyDef>
+      <PropertyDef name="overlimit">
+        <Property name="label">关联授信合并超限</Property>
+        <Property name="mapping">
+          <Property name="mapValues"/>
+        </Property>
+        <Property name="dataType">Boolean</Property>
+        <Validator name="validator1" type="required">
+          <Property name="acceptZeroOrFalse">true</Property>
+        </Validator>
+      </PropertyDef>
       <PropertyDef name="riskavoid">
         <Property></Property>
         <Property name="label">风险缓释措施</Property>
@@ -1644,15 +1654,28 @@
                         <Editor/>
                       </AutoFormElement>
                       <AutoFormElement>
-                        <Property name="name">tbsBasPs</Property>
-                        <Property name="property">tbsBasPs</Property>
-                        <Property name="readOnly">true</Property>
-                        <Property name="trigger">ddlTbsBasPs</Property>
-                        <Editor/>
+                        <Property name="name">overlimit</Property>
+                        <Property name="property">overlimit</Property>
+                        <Property name="trigger">listDropDown1</Property>
+                        <Editor>
+                          <TextEditor id="overlimitvalid">
+                            <Property name="mapping">
+                              <Property name="mapValues"/>
+                            </Property>
+                            <Property name="trigger">autoMappingDropDown1</Property>
+                          </TextEditor>
+                        </Editor>
                       </AutoFormElement>
                       <AutoFormElement>
                         <Property name="name">valid</Property>
                         <Property name="property">valid</Property>
+                        <Editor/>
+                      </AutoFormElement>
+                      <AutoFormElement>
+                        <Property name="name">tbsBasPs</Property>
+                        <Property name="property">tbsBasPs</Property>
+                        <Property name="readOnly">true</Property>
+                        <Property name="trigger">ddlTbsBasPs</Property>
                         <Editor/>
                       </AutoFormElement>
                     </AutoForm>
