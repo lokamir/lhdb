@@ -41,6 +41,8 @@ function GetCRStatus(ds){
 			self.getData("#").set("sn","锡联担保2017-B-WT");
 		}
 		uploadbutton ="";
+    	view.get("#ddlAutoform").getElement("bdate").set("readOnly",false);
+    	view.get("#ddlAutoform").getElement("edate").set("readOnly",false);
 	}else{
 		tabMain.set("currentIndex", 0);
 		tabInAppr.set("visible",true);

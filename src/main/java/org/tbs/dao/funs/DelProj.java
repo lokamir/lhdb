@@ -143,4 +143,36 @@ public class DelProj extends HibernateDao {
 			session.close();
 		}
 	}
+	@Expose
+	public void actionDelProjundwrt(Map<String, Object> param) throws Exception {
+		
+		Integer projid = (Integer)param.get("projid");
+		Session session = this.getSessionFactory().openSession();
+		try {
+			String sql="update `tbs`.`tbs_projundwrt` set del = 1 WHERE `PROJ_ID`= "+ projid ;
+			SQLQuery sqlquery=session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.flush();
+			session.close();
+		}
+	}
+	@Expose
+	public void actionDelProjundwrtcfm(Map<String, Object> param) throws Exception {
+		
+		Integer projid = (Integer)param.get("projid");
+		Session session = this.getSessionFactory().openSession();
+		try {
+			String sql="update `tbs`.`tbs_projundwrt_cfmar` set del = 1 WHERE `PROJ_ID`= "+ projid ;
+			SQLQuery sqlquery=session.createSQLQuery(sql);
+			sqlquery.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.flush();
+			session.close();
+		}
+	}
 }

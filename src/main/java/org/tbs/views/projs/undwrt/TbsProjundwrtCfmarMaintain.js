@@ -26,6 +26,8 @@ function GetCRStatus(ds){
     	buttonDel.set("disabled",false);
     	buttonUflo.set("disabled",false);
     	dataSettbsProjundwrtCfmar.set("readOnly",false);
+    	view.get("#ddlAutoform").getElement("bdate").set("readOnly",false);
+    	view.get("#ddlAutoform").getElement("edate").set("readOnly",false);
     }else if(valid==1 &&( user == dataSettbsProjundwrtCfmar.getData("#.username")||user == "admin" ||user == "admin2")){
     	buttonDel.set("disabled",true);
     	buttonUflo.set("disabled",true);

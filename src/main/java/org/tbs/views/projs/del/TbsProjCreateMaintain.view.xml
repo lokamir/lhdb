@@ -784,5 +784,11 @@
     <AjaxAction id="ajaxDelProjcgg">
       <Property name="service">delProj#actionDelProjcgg</Property>
     </AjaxAction>
+    <AjaxAction id="actionDelProjundwrt">
+      <Property name="service">delProj#actionDelProjundwrt</Property>
+    </AjaxAction>
+    <AjaxAction id="actionDelProjundwrtcfm">
+      <Property name="service">delProj#actionDelProjundwrtcfm</Property>
+    </AjaxAction>
   </View>
 </ViewConfig>

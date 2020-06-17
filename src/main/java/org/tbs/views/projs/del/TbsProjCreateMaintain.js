@@ -100,6 +100,18 @@ var projid;
 	ajaxDelProjcgg.set("parameter",{"projid":projid}).execute();
 };
 
+/** @Bind #ajaxDelProjcgg.beforeExecute */
+!function(actionDelProjundwrt,datasetTbsProj){
+	var projid = datasetTbsProj.getData("#.id");
+	actionDelProjundwrt.set("parameter",{"projid":projid}).execute();
+};
+
+/** @Bind #actionDelProjundwrt.beforeExecute */
+!function(actionDelProjundwrtcfm,datasetTbsProj){
+	var projid = datasetTbsProj.getData("#.id");
+	actionDelProjundwrtcfm.set("parameter",{"projid":projid}).execute();
+};
+
 /* ========保存后刷新，执行query相同的方法========= */
 /** @Bind #updateActionSave.onSuccess */
 !function(self, arg, autoformCondition, datasetTbsProj) {
